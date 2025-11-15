@@ -1,5 +1,4 @@
 from app.database import Base
+from app.models.user import User, UserRole
 
-# Import all models here for Alembic to discover
-# from app.models.user import User
-# from app.models.protocol import Protocol
+__all__ = ["Base", "User", "UserRole"]
