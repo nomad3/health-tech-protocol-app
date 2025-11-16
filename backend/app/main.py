@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
-from app.api.v1 import auth, protocols, admin
+from app.api.v1 import auth, protocols, admin, patients
 
 app = FastAPI(
     title="PsyProtocol API",
@@ -23,6 +23,7 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(protocols.router)
 app.include_router(admin.router)
+app.include_router(patients.router)
 
 
 @app.get("/health")

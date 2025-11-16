@@ -14,8 +14,11 @@ def get_unique_email(prefix="user"):
     return f"{prefix}-{uuid.uuid4()}@example.com"
 
 
-# Create test database tables
-Base.metadata.create_all(bind=engine)
+@pytest.fixture(scope="module", autouse=True)
+def setup_database():
+    """Create tables before tests."""
+    Base.metadata.create_all(bind=engine)
+    yield
 
 
 @pytest.fixture
