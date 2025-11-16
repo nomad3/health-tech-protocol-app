@@ -1,0 +1,928 @@
+{
+  "protocol": {
+    "name": "Ketamine Infusion Therapy for Treatment-Resistant Depression",
+    "version": "1.0",
+    "therapy_type": "ketamine_psychedelic",
+    "condition_treated": "Treatment-Resistant Depression (TRD), Major Depressive Disorder",
+    "evidence_level": "clinical_practice",
+    "overview": "Evidence-based ketamine infusion protocol for treatment-resistant depression. Uses sub-anesthetic doses of intravenous ketamine (0.5 mg/kg) administered over 40 minutes in a monitored clinical setting. Based on extensive research demonstrating rapid antidepressant effects, often within hours to days.",
+    "duration_weeks": 4,
+    "total_sessions": 11,
+    "evidence_sources": [
+      "Zarate CA, et al. Arch Gen Psychiatry. 2006;63(8):856-864 (PMID: 16894061)",
+      "Murrough JW, et al. Am J Psychiatry. 2013;170(10):1134-1142 (PMID: 23982301)",
+      "Wilkinson ST, et al. Am J Psychiatry. 2018;175(1):43-50 (PMID: 28969441)",
+      "Feder A, et al. JAMA Psychiatry. 2021;78(5):478-486 (PMID: 33533876)",
+      "American Psychiatric Association Guidelines on Ketamine for Depression",
+      "Consensus Statement on Ketamine in Mood Disorders (2017)"
+    ]
+  },
+  "steps": [
+    {
+      "sequence_order": 1,
+      "step_type": "screening",
+      "title": "Comprehensive Psychiatric Evaluation",
+      "description": "Detailed psychiatric assessment to confirm treatment-resistant depression, assess severity, evaluate prior treatment history, and determine appropriateness for ketamine therapy.",
+      "duration_minutes": 90,
+      "required_roles": ["psychiatrist", "psychiatric_nurse_practitioner"],
+      "clinical_scales": [
+        "MADRS (Montgomery-Åsberg Depression Rating Scale)",
+        "PHQ-9 (Patient Health Questionnaire-9)",
+        "GAD-7 (Generalized Anxiety Disorder-7)",
+        "QIDS-SR-16 (Quick Inventory of Depressive Symptomatology)",
+        "Columbia-Suicide Severity Rating Scale (C-SSRS)",
+        "Patient Health Questionnaire-15 (PHQ-15) for somatic symptoms"
+      ],
+      "diagnostic_criteria": {
+        "depression_severity": "MADRS ≥ 20 (moderate to severe) OR PHQ-9 ≥ 10",
+        "trd_criteria": "Failed at least 2 adequate antidepressant trials in current episode",
+        "adequate_trial_definition": "≥6 weeks at therapeutic dose",
+        "current_episode_duration": "≥ 4 weeks"
+      },
+      "documentation_requirements": {
+        "psychiatric_history": [
+          "Detailed depression history (onset, course, prior episodes)",
+          "Complete medication history with specific agents, doses, durations, responses",
+          "Prior psychiatric hospitalizations",
+          "Suicide attempt history and current suicidal ideation",
+          "Comorbid psychiatric diagnoses (anxiety, PTSD, OCD, etc.)",
+          "Substance use history (critical for ketamine - abuse potential)",
+          "Prior response to ketamine or other psychedelics"
+        ],
+        "treatment_resistance_documentation": [
+          "List of all antidepressant trials with adequacy assessment",
+          "Response to psychotherapy",
+          "Response to other treatments (ECT, TMS, etc.)",
+          "Barriers to treatment response"
+        ],
+        "current_treatment": [
+          "Current medications (psychiatric and medical)",
+          "Current psychotherapy",
+          "Recent medication changes"
+        ]
+      }
+    },
+    {
+      "sequence_order": 2,
+      "step_type": "screening",
+      "title": "Medical Clearance & Cardiovascular Assessment",
+      "description": "Comprehensive medical evaluation with emphasis on cardiovascular health, as ketamine increases blood pressure and heart rate. Essential safety screening before ketamine administration.",
+      "duration_minutes": 60,
+      "required_roles": ["physician", "nurse_practitioner", "cardiologist_if_indicated"],
+      "vitals_monitoring": {
+        "required": ["blood_pressure", "heart_rate", "temperature", "weight", "height", "bmi"],
+        "critical_parameters": {
+          "baseline_bp": "Must be <140/90 mmHg (uncontrolled hypertension is contraindication)",
+          "baseline_hr": "Must be 50-100 bpm (evaluate if outside range)"
+        }
+      },
+      "lab_tests_required": [
+        "Complete Blood Count (CBC)",
+        "Comprehensive Metabolic Panel (CMP) - especially liver and kidney function",
+        "Thyroid Function Tests (TSH, Free T4)",
+        "Electrocardiogram (ECG) - mandatory for all patients",
+        "Urine drug screen (assess for substance use)",
+        "Pregnancy test (for women of childbearing potential)"
+      ],
+      "cardiovascular_assessment": {
+        "ecg_review": [
+          "Rule out arrhythmias",
+          "Assess QTc interval",
+          "Look for ischemic changes",
+          "Evaluate conduction abnormalities"
+        ],
+        "risk_stratification": [
+          "History of cardiovascular disease",
+          "Uncontrolled hypertension (BP >140/90)",
+          "Recent myocardial infarction (<6 months)",
+          "Unstable angina",
+          "Congestive heart failure",
+          "Cerebrovascular disease or stroke history",
+          "Intracranial mass or increased intracranial pressure"
+        ]
+      },
+      "other_medical_screening": [
+        "Hepatic function (ketamine metabolized by liver)",
+        "Renal function",
+        "Thyroid disorders (treat if present)",
+        "Active substance use disorders",
+        "Urological issues (ketamine can cause cystitis with chronic use)"
+      ]
+    },
+    {
+      "sequence_order": 3,
+      "step_type": "screening",
+      "title": "Substance Use & Abuse Potential Assessment",
+      "description": "Thorough evaluation of substance use history and abuse potential, given ketamine's dissociative properties and potential for misuse. Critical for patient selection and risk mitigation.",
+      "duration_minutes": 30,
+      "required_roles": ["psychiatrist", "addiction_specialist_if_indicated"],
+      "assessment_components": {
+        "current_substance_use": [
+          "Alcohol use (quantity, frequency, pattern)",
+          "Cannabis use",
+          "Stimulant use (cocaine, amphetamines)",
+          "Opioid use",
+          "Benzodiazepine use",
+          "Hallucinogen use (LSD, psilocybin, MDMA)",
+          "Dissociative use (ketamine, DXM, PCP)",
+          "Other recreational drugs"
+        ],
+        "substance_use_history": [
+          "Past substance use disorders",
+          "Treatment for addiction",
+          "Recovery status and duration of sobriety",
+          "Relapse history"
+        ],
+        "risk_assessment": [
+          "Addictive personality traits",
+          "Impulsivity assessment",
+          "Family history of addiction",
+          "Motivation for ketamine treatment (seeking therapeutic effect vs. dissociative high)",
+          "Support system and accountability"
+        ]
+      },
+      "risk_mitigation_strategies": [
+        "Informed consent about abuse potential",
+        "Treatment agreement outlining expectations",
+        "Structured protocol with limited take-home options",
+        "Monitoring for signs of misuse",
+        "Involving family/support persons with consent"
+      ]
+    },
+    {
+      "sequence_order": 4,
+      "step_type": "decision_point",
+      "title": "Eligibility Determination & Route Selection",
+      "description": "Evaluate all screening data to determine patient eligibility for ketamine therapy and select optimal administration route (IV vs. intranasal vs. oral).",
+      "duration_minutes": 30,
+      "required_roles": ["psychiatrist", "medical_director"],
+      "evaluation_rules": {
+        "type": "safety_assessment",
+        "absolute_contraindications": [
+          {
+            "condition": "uncontrolled_hypertension",
+            "criteria": "BP persistently >140/90 despite medication",
+            "action": "exclude_until_controlled",
+            "rationale": "Ketamine increases BP acutely; risk of hypertensive crisis"
+          },
+          {
+            "condition": "recent_cardiovascular_event",
+            "criteria": "MI, stroke, or unstable angina within 6 months",
+            "action": "exclude_from_treatment",
+            "rationale": "Cardiovascular stress from ketamine too risky"
+          },
+          {
+            "condition": "severe_heart_failure",
+            "criteria": "NYHA Class III-IV heart failure",
+            "action": "exclude_from_treatment",
+            "rationale": "Cannot tolerate hemodynamic changes"
+          },
+          {
+            "condition": "intracranial_pathology",
+            "criteria": "Brain tumor, aneurysm, increased ICP",
+            "action": "exclude_from_treatment",
+            "rationale": "Ketamine increases intracranial pressure"
+          },
+          {
+            "condition": "active_psychosis",
+            "criteria": "Current psychotic symptoms",
+            "action": "exclude_from_treatment",
+            "rationale": "Ketamine may worsen psychotic symptoms"
+          },
+          {
+            "condition": "schizophrenia_spectrum",
+            "criteria": "Diagnosis of schizophrenia or schizoaffective disorder",
+            "action": "exclude_from_treatment",
+            "rationale": "Risk of exacerbating psychosis"
+          },
+          {
+            "condition": "hyperthyroidism_uncontrolled",
+            "criteria": "Untreated or poorly controlled hyperthyroidism",
+            "action": "defer_until_controlled",
+            "rationale": "Ketamine may precipitate thyroid storm"
+          },
+          {
+            "condition": "pregnancy_breastfeeding",
+            "criteria": "Currently pregnant or breastfeeding",
+            "action": "exclude_from_treatment",
+            "rationale": "Safety not established"
+          },
+          {
+            "condition": "severe_liver_disease",
+            "criteria": "Cirrhosis, hepatic failure",
+            "action": "exclude_from_treatment",
+            "rationale": "Impaired ketamine metabolism"
+          },
+          {
+            "condition": "active_substance_use_disorder",
+            "criteria": "Current moderate-severe SUD (except tobacco)",
+            "action": "defer_until_treatment",
+            "rationale": "High risk of ketamine misuse"
+          }
+        ],
+        "relative_contraindications": [
+          {
+            "condition": "controlled_hypertension",
+            "management": "Close BP monitoring, ensure medications optimized, may proceed with caution"
+          },
+          {
+            "condition": "bipolar_disorder",
+            "management": "Ensure mood stabilizer on board, monitor for mania, may proceed with caution"
+          },
+          {
+            "condition": "substance_use_history",
+            "management": "Enhanced monitoring, treatment agreement, support person involvement"
+          },
+          {
+            "condition": "dissociative_disorder",
+            "management": "Careful consideration, may worsen dissociation, proceed only if benefits outweigh risks"
+          }
+        ],
+        "route_selection": {
+          "intravenous_infusion": {
+            "indications": "Gold standard, most evidence, best for acute treatment, controlled dosing",
+            "advantages": ["Precise dosing", "Controlled onset and offset", "Most research support"],
+            "disadvantages": ["IV access required", "Clinical setting needed", "More expensive"],
+            "typical_protocol": "0.5 mg/kg over 40 minutes, 2-3 times per week for 2-4 weeks"
+          },
+          "intranasal_esketamine": {
+            "indications": "FDA-approved for TRD (Spravato), convenient, no IV needed",
+            "advantages": ["FDA-approved", "Self-administered (supervised)", "No IV needed"],
+            "disadvantages": ["More expensive", "Insurance issues", "Nasal irritation", "Variable absorption"],
+            "typical_protocol": "56-84 mg intranasally twice weekly, requires 2-hour observation",
+            "notes": "Spravato has REMS program requirements"
+          },
+          "oral_ketamine": {
+            "indications": "Maintenance therapy, cost-effective, at-home use possible",
+            "advantages": ["Convenient", "Less expensive", "Possible at-home use with proper monitoring"],
+            "disadvantages": ["Lower bioavailability", "Variable absorption", "Less evidence", "Abuse potential with at-home use"],
+            "typical_protocol": "0.5-1.0 mg/kg oral, 2-3 times per week"
+          },
+          "intramuscular_ketamine": {
+            "indications": "Alternative when IV access difficult",
+            "advantages": ["No IV needed", "Predictable absorption"],
+            "disadvantages": ["Painful", "Less common in practice"],
+            "typical_protocol": "0.5 mg/kg IM"
+          }
+        }
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "iv_ketamine_selected",
+          "next_step": 5,
+          "description": "IV infusion protocol - gold standard for acute treatment"
+        },
+        {
+          "outcome_id": "intranasal_esketamine_selected",
+          "next_step": 5,
+          "description": "Intranasal esketamine (Spravato) protocol"
+        },
+        {
+          "outcome_id": "excluded_from_treatment",
+          "next_step": "exit_protocol",
+          "description": "Contraindication present, refer to alternative treatments"
+        }
+      ]
+    },
+    {
+      "sequence_order": 5,
+      "step_type": "preparation",
+      "title": "Pre-Treatment Education & Informed Consent",
+      "description": "Comprehensive patient education about ketamine therapy, expected effects, risks, benefits, treatment expectations, and obtaining detailed informed consent.",
+      "duration_minutes": 60,
+      "required_roles": ["psychiatrist", "nurse"],
+      "education_topics": [
+        "Mechanism of action (NMDA receptor antagonist, rapid antidepressant)",
+        "Expected timeline of response (often within hours to days)",
+        "Dissociative effects during infusion (floating, detachment, perceptual changes)",
+        "Duration of effects (dissociation lasts ~2 hours, antidepressant effects days to weeks)",
+        "Treatment protocol (6 infusions over 2-4 weeks typically)",
+        "Need for maintenance (often required to sustain benefits)",
+        "Safety monitoring during infusions",
+        "Common side effects (dissociation, nausea, elevated BP)",
+        "Rare but serious risks (hypertensive crisis, emergence reactions, bladder toxicity with chronic use)",
+        "Abuse potential and safeguards",
+        "Post-infusion restrictions (no driving for 24 hours, responsible adult required)",
+        "Integration and psychotherapy to maximize benefits",
+        "Costs and insurance coverage"
+      ],
+      "informed_consent_elements": [
+        "Off-label use (except Spravato which is FDA-approved)",
+        "Expected benefits and limitations",
+        "Alternative treatments available",
+        "Risks and side effects",
+        "Monitoring procedures",
+        "Treatment agreement (no drug diversion, adherence to protocol)",
+        "Right to discontinue treatment",
+        "Research participation (if applicable)"
+      ],
+      "practical_preparation": [
+        "NPO guidelines: no food 4 hours before, clear liquids okay up to 2 hours before",
+        "Continue most medications (verify with physician)",
+        "Arrange ride home after each infusion",
+        "Wear comfortable clothing",
+        "Bring music or playlist if desired (some patients prefer)",
+        "Clear schedule day of infusion (no work, no responsibilities)"
+      ]
+    },
+    {
+      "sequence_order": 6,
+      "step_type": "intervention",
+      "title": "Ketamine Infusion Session 1",
+      "description": "First ketamine infusion session. Standard dose of 0.5 mg/kg IV over 40 minutes with continuous monitoring. Critical to establish tolerance, assess response, and refine protocol.",
+      "duration_minutes": 120,
+      "required_roles": ["physician", "nurse", "mental_health_clinician"],
+      "pre_infusion_procedures": {
+        "arrival_and_setup": [
+          "Patient check-in and vital signs",
+          "Brief psychiatric assessment (mood, suicidal ideation)",
+          "Administer baseline scales (if first infusion or weekly check)",
+          "IV line placement (typically 20-22 gauge)",
+          "Patient positioned in comfortable recliner",
+          "Monitoring equipment attached (BP cuff, pulse oximetry, telemetry if indicated)"
+        ],
+        "baseline_vitals": {
+          "required": ["blood_pressure", "heart_rate", "respiratory_rate", "oxygen_saturation", "temperature"],
+          "pre_infusion_check": "Ensure BP <140/90, HR 50-100 before starting"
+        },
+        "pre_medications": [
+          "Anti-nausea medication optional (ondansetron 4 mg IV if patient prone to nausea)",
+          "Anxiolytic rarely needed (benzodiazepine may reduce ketamine efficacy)"
+        ]
+      },
+      "infusion_protocol": {
+        "dose_calculation": "0.5 mg/kg based on actual body weight",
+        "example": "For 70 kg patient: 35 mg ketamine",
+        "preparation": "Ketamine diluted in 50-100 mL normal saline",
+        "infusion_rate": "Administered over 40 minutes via infusion pump",
+        "monitoring_location": "Comfortable private room, low lighting, minimal stimulation"
+      },
+      "vitals_monitoring": {
+        "required": ["blood_pressure", "heart_rate", "respiratory_rate", "oxygen_saturation"],
+        "frequency": "Every 10 minutes during infusion and 30 minutes post-infusion",
+        "alert_parameters": {
+          "systolic_bp": "> 180 mmHg or increase >40 mmHg from baseline",
+          "diastolic_bp": "> 110 mmHg",
+          "heart_rate": "> 110 bpm or increase >30 bpm from baseline",
+          "oxygen_saturation": "< 92%",
+          "respiratory_rate": "< 10 or > 24 breaths/min"
+        },
+        "management_if_elevated": {
+          "hypertension": [
+            "First line: reassurance, deep breathing, reducing stimulation",
+            "If persistent BP >180/110: slow or pause infusion",
+            "If severe or symptomatic: antihypertensive (labetalol 10-20 mg IV or hydralazine 10 mg IV)",
+            "Resume infusion at slower rate once BP controlled"
+          ],
+          "tachycardia": "Usually resolves spontaneously; beta-blocker rarely needed",
+          "respiratory_depression": "Very rare at 0.5 mg/kg; stimulate patient, reduce infusion rate, have airway support available"
+        }
+      },
+      "dissociation_monitoring": {
+        "scales": "CADSS (Clinician-Administered Dissociative States Scale) - administered at 40 min and 80 min",
+        "observation": [
+          "Level of dissociation (mild, moderate, profound)",
+          "Patient's ability to communicate",
+          "Emotional state (calm, anxious, distressed)",
+          "Perceptual distortions reported"
+        ],
+        "patient_experience": [
+          "Typical onset: 5-10 minutes into infusion",
+          "Peak: 30-40 minutes (end of infusion)",
+          "Effects: floating sensation, detachment from body/surroundings, visual distortions, time distortion, dreamlike state",
+          "Resolution: gradual over 1-2 hours post-infusion"
+        ]
+      },
+      "supportive_care_during_infusion": {
+        "environment": [
+          "Dim lighting, quiet room",
+          "Minimal conversation or stimulation",
+          "Eyeshades available if patient prefers",
+          "Soft music (patient choice or ambient)",
+          "Blanket for warmth"
+        ],
+        "clinician_presence": [
+          "Nurse remains in room continuously",
+          "Physician nearby and available",
+          "Mental health clinician checks in periodically",
+          "Calm, reassuring presence"
+        ],
+        "managing_distress": [
+          "Verbal reassurance: 'You're safe, this is temporary, you're doing great'",
+          "Grounding techniques if needed: touch, orientation to reality",
+          "Rarely: slow infusion if severe distress",
+          "Very rarely: benzodiazepine rescue (impairs antidepressant effect, avoid if possible)"
+        ]
+      },
+      "post_infusion_monitoring": {
+        "duration": "Minimum 60-90 minutes post-infusion",
+        "vitals": "Every 15-30 minutes until stable and near baseline",
+        "dissociation_resolution": "Patient should be alert, oriented, communicative before discharge",
+        "mood_assessment": "Brief check-in about mood changes",
+        "side_effects": "Assess nausea, headache, dizziness",
+        "discharge_criteria": [
+          "Vital signs stable and near baseline",
+          "Dissociative effects resolved (can walk, talk normally)",
+          "No acute distress",
+          "Responsible adult present to drive patient home",
+          "Patient understands post-infusion instructions"
+        ]
+      },
+      "post_infusion_instructions": [
+        "Rest at home for remainder of day",
+        "No driving or operating machinery for 24 hours",
+        "Light meals (may have some nausea)",
+        "Stay hydrated",
+        "No alcohol or recreational drugs",
+        "Safe to take usual medications",
+        "Call clinic if severe headache, persistent nausea, chest pain, concerning symptoms",
+        "Journal about experience if desired",
+        "Next infusion scheduled in 2-4 days"
+      ],
+      "clinical_documentation": [
+        "Dose administered and infusion completion",
+        "Vital signs throughout session",
+        "CADSS scores",
+        "Behavioral observations",
+        "Tolerability",
+        "Any adverse events",
+        "Subjective report of dissociative experience",
+        "Early mood changes noted"
+      ]
+    },
+    {
+      "sequence_order": 7,
+      "step_type": "intervention",
+      "title": "Ketamine Infusion Sessions 2-3 (Week 1)",
+      "description": "Second and third infusion sessions, typically scheduled 2-4 days apart during first week. Same protocol as Session 1 with ongoing assessment of tolerability and early response.",
+      "duration_minutes": 120,
+      "required_roles": ["physician", "nurse", "mental_health_clinician"],
+      "session_structure": {
+        "pre_infusion_check_in": [
+          "How did you feel after last infusion?",
+          "Any mood changes noticed?",
+          "Sleep changes?",
+          "Suicidal ideation assessment",
+          "Side effects or concerns from previous infusion?",
+          "Any interim substance use?"
+        ],
+        "infusion_protocol": "Same as Session 1: 0.5 mg/kg over 40 minutes",
+        "vitals_monitoring": "Every 10 minutes during infusion, every 15-30 minutes for 90 min post-infusion",
+        "dissociation_monitoring": "CADSS at 40 min and 80 min"
+      },
+      "response_monitoring": {
+        "early_responders": "Some patients notice mood improvement within 24-72 hours of first or second infusion",
+        "typical_timeline": "Most patients begin noticing effects after 2-4 infusions",
+        "suicidal_ideation": "Often rapid reduction in suicidal thoughts (within hours to days)",
+        "energy_and_motivation": "May increase before mood fully lifts"
+      },
+      "dose_adjustments": {
+        "if_minimal_dissociation_session_1": "May consider increasing to 0.6-0.75 mg/kg for subsequent sessions",
+        "if_excessive_distress_session_1": "May decrease to 0.4 mg/kg or slow infusion rate",
+        "if_bp_very_elevated": "May need antihypertensive pre-treatment or dose reduction",
+        "standard_approach": "Most patients continue 0.5 mg/kg for all sessions"
+      }
+    },
+    {
+      "sequence_order": 8,
+      "step_type": "intervention",
+      "title": "Ketamine Infusion Sessions 4-6 (Weeks 2-3)",
+      "description": "Completion of acute treatment phase with infusions 4, 5, and 6. Scheduled 2-3 times per week. Assessment of cumulative response and planning for maintenance.",
+      "duration_minutes": 120,
+      "required_roles": ["physician", "nurse", "mental_health_clinician"],
+      "session_structure": {
+        "weekly_assessments": [
+          "Administer PHQ-9, GAD-7 weekly (typically before Session 4)",
+          "MADRS if being tracked",
+          "Suicidal ideation (C-SSRS)",
+          "Side effects review",
+          "Functional improvement assessment"
+        ],
+        "infusion_protocol": "Continue same dose (typically 0.5 mg/kg over 40 minutes)",
+        "cumulative_effects": "Antidepressant response typically builds with each infusion",
+        "patient_education": "Discuss maintenance planning, duration of effects, relapse prevention"
+      },
+      "response_patterns": {
+        "robust_responders": "50-70% experience significant improvement (≥50% symptom reduction)",
+        "partial_responders": "Additional 20-30% have moderate improvement",
+        "non_responders": "10-20% have minimal to no benefit",
+        "suicidal_ideation": "Often dramatic reduction even in partial responders",
+        "anxiety": "Often improves along with depression"
+      }
+    },
+    {
+      "sequence_order": 9,
+      "step_type": "followup",
+      "title": "End of Acute Phase Assessment (Week 3-4)",
+      "description": "Comprehensive assessment after completing 6 infusions to evaluate treatment response and determine next steps (maintenance, additional acute infusions, or alternative treatments).",
+      "duration_minutes": 60,
+      "required_roles": ["psychiatrist", "mental_health_clinician"],
+      "clinical_scales": [
+        "MADRS",
+        "PHQ-9",
+        "GAD-7",
+        "QIDS-SR-16",
+        "C-SSRS",
+        "Clinical Global Impression - Improvement (CGI-I)",
+        "Patient Global Impression - Change (PGI-C)",
+        "Sheehan Disability Scale (functional improvement)"
+      ],
+      "assessment_components": {
+        "symptom_response": [
+          "Depression severity compared to baseline",
+          "Percentage improvement in MADRS or PHQ-9",
+          "Response status: ≥50% improvement",
+          "Remission status: MADRS <10 or PHQ-9 <5",
+          "Suicidal ideation changes",
+          "Anxiety symptom changes",
+          "Functional improvement (work, relationships, self-care)"
+        ],
+        "tolerability_review": [
+          "Overall tolerability of infusions",
+          "Side effects experienced",
+          "Dissociative experiences (positive, neutral, or negative)",
+          "Cardiovascular tolerability",
+          "Impact on daily life"
+        ],
+        "patient_perspective": [
+          "Subjective sense of benefit",
+          "Quality of life changes",
+          "What's better, what's still difficult",
+          "Satisfaction with treatment",
+          "Interest in continuing"
+        ]
+      }
+    },
+    {
+      "sequence_order": 10,
+      "step_type": "decision_point",
+      "title": "Treatment Response Evaluation & Maintenance Planning",
+      "description": "Clinical decision-making based on response to acute ketamine treatment. Determine need for maintenance infusions, frequency, and duration of continued treatment.",
+      "duration_minutes": 30,
+      "required_roles": ["psychiatrist"],
+      "evaluation_rules": {
+        "type": "response_assessment",
+        "response_categories": [
+          {
+            "category": "remission",
+            "definition": "MADRS <10 or PHQ-9 <5, functional recovery",
+            "prevalence": "30-40% of patients",
+            "recommendation": "Maintenance protocol to sustain remission",
+            "maintenance_frequency": "Start with infusions every 2-4 weeks, titrate to individual need"
+          },
+          {
+            "category": "response",
+            "definition": "≥50% symptom reduction but still symptomatic",
+            "prevalence": "30-40% of patients",
+            "recommendation": "Maintenance protocol, consider adjunctive treatments",
+            "maintenance_frequency": "Every 1-3 weeks initially"
+          },
+          {
+            "category": "partial_response",
+            "definition": "25-49% improvement",
+            "prevalence": "10-20% of patients",
+            "recommendation": "Consider additional acute infusions, increase dose, or add adjunctive therapy",
+            "options": [
+              "2-4 additional infusions at current dose",
+              "Increase dose to 0.75 mg/kg",
+              "Add psychotherapy",
+              "Optimize concurrent medications",
+              "Consider alternative routes (intranasal)"
+            ]
+          },
+          {
+            "category": "non_response",
+            "definition": "<25% improvement",
+            "prevalence": "10-20% of patients",
+            "recommendation": "Discontinue ketamine, pursue alternative treatments",
+            "alternatives": [
+              "ECT (electroconvulsive therapy)",
+              "TMS (transcranial magnetic stimulation)",
+              "Psilocybin-assisted therapy (if available)",
+              "Medication optimization",
+              "Intensive psychotherapy"
+            ]
+          }
+        ],
+        "maintenance_protocols": {
+          "standard_approach": {
+            "initial_frequency": "Every 2-4 weeks",
+            "titration_strategy": "Increase interval gradually if sustained response; decrease if symptoms return",
+            "typical_patterns": [
+              "Some patients stable on monthly infusions",
+              "Others need every 2 weeks",
+              "Some need weekly long-term"
+            ],
+            "duration": "Often 6-12 months, some patients require indefinite maintenance",
+            "goal": "Find minimum frequency that maintains response"
+          },
+          "relapse_prevention": [
+            "Continue concurrent antidepressants (may provide additive benefit)",
+            "Ongoing psychotherapy strongly recommended",
+            "Early intervention if symptoms begin to return (bring infusion forward)",
+            "Lifestyle factors (sleep, exercise, stress management, social connection)"
+          ]
+        },
+        "factors_affecting_maintenance_need": [
+          "Severity of baseline depression (more severe → longer maintenance)",
+          "Duration of current episode (longer episode → longer maintenance)",
+          "Number of prior episodes (recurrent depression → longer maintenance)",
+          "Concurrent treatments (psychotherapy, medications)",
+          "Life stressors and supports",
+          "Individual pharmacodynamics (some patients metabolize faster)"
+        ],
+        "discontinuation_considerations": {
+          "appropriate_timing": "After sustained remission for 6-12 months with good life circumstances",
+          "approach": "Gradually lengthen intervals between infusions",
+          "monitoring": "Close follow-up for early signs of relapse",
+          "relapse_management": "Resume infusions at previous effective frequency"
+        }
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "start_maintenance",
+          "next_step": 11,
+          "description": "Patient responded, begin maintenance infusion protocol"
+        },
+        {
+          "outcome_id": "additional_acute_infusions",
+          "next_step": 8,
+          "description": "Partial response, continue with additional infusions"
+        },
+        {
+          "outcome_id": "discontinue_ketamine",
+          "next_step": "exit_protocol",
+          "description": "Insufficient response, pursue alternative treatments"
+        }
+      ]
+    },
+    {
+      "sequence_order": 11,
+      "step_type": "followup",
+      "title": "Maintenance Ketamine Infusions",
+      "description": "Ongoing ketamine infusions at individualized intervals to maintain antidepressant response. Typically every 2-4 weeks initially, adjusted based on symptom trajectory.",
+      "duration_minutes": 120,
+      "required_roles": ["physician", "nurse"],
+      "maintenance_structure": {
+        "infusion_protocol": "Same as acute phase: 0.5 mg/kg over 40 minutes (unless dose was adjusted)",
+        "initial_frequency": "Every 2-4 weeks",
+        "monitoring": {
+          "vitals": "Every 10 minutes during infusion as in acute phase",
+          "scales": "PHQ-9 and GAD-7 before each infusion; MADRS monthly",
+          "suicidal_ideation": "C-SSRS at each visit",
+          "functional_status": "Sheehan Disability Scale monthly or quarterly"
+        },
+        "interval_adjustment": {
+          "if_symptoms_returning_before_scheduled_infusion": "Decrease interval (e.g., from 4 weeks to 3 weeks)",
+          "if_sustained_remission_well_past_scheduled_infusion": "Cautiously increase interval (e.g., from 3 weeks to 4 weeks)",
+          "goal": "Find longest interval that maintains remission"
+        }
+      },
+      "long_term_monitoring": {
+        "bladder_health": {
+          "concern": "Chronic ketamine use can cause bladder toxicity (ketamine cystitis)",
+          "risk": "Much lower with therapeutic dosing vs. recreational abuse, but monitor",
+          "screening": [
+            "Ask about urinary symptoms (frequency, urgency, pain, hematuria) at each visit",
+            "If symptoms develop: urology referral, urinalysis, consider cystoscopy",
+            "May need to discontinue ketamine if cystitis develops"
+          ]
+        },
+        "cognitive_function": {
+          "concern": "Chronic ketamine might affect memory or cognition",
+          "monitoring": "Subjective assessment; formal neuropsych testing if concerns arise",
+          "evidence": "Limited data on long-term therapeutic ketamine; most studies reassuring"
+        },
+        "abuse_potential": {
+          "monitoring": [
+            "Signs of misuse (requesting early refills, seeking ketamine from other sources)",
+            "Increasing tolerance (needing higher doses)",
+            "Preoccupation with dissociative effects rather than antidepressant effects",
+            "Urine drug screens periodically if concerns"
+          ],
+          "red_flags": "If abuse suspected, discontinue and refer to addiction treatment"
+        },
+        "cardiovascular": {
+          "monitoring": "Baseline ECG annually; more frequent if concerns",
+          "blood_pressure": "Check at each infusion; ensure home BP remains controlled"
+        },
+        "hepatic_function": {
+          "monitoring": "LFTs every 6-12 months (ketamine metabolized by liver)"
+        }
+      },
+      "adjunctive_treatments": {
+        "psychotherapy": [
+          "Strongly recommended to maintain gains",
+          "CBT, DBT, or other evidence-based therapy",
+          "Integration work (processing insights from dissociative experiences)",
+          "Relapse prevention strategies"
+        ],
+        "medications": [
+          "Continue or optimize concurrent antidepressants",
+          "Ketamine may allow reduction of other medications in some cases",
+          "Avoid benzodiazepines if possible (may impair ketamine efficacy)"
+        ],
+        "lifestyle": [
+          "Sleep hygiene",
+          "Regular exercise",
+          "Stress management",
+          "Social connection",
+          "Meaningful activities"
+        ]
+      }
+    }
+  ],
+  "ongoing_monitoring": {
+    "during_maintenance_phase": {
+      "frequency": "At each infusion visit",
+      "assessments": [
+        "PHQ-9, GAD-7 at each visit",
+        "MADRS monthly",
+        "C-SSRS at each visit",
+        "Sheehan Disability Scale quarterly",
+        "Bladder symptom screening at each visit",
+        "Cognitive function subjective assessment",
+        "LFTs every 6-12 months",
+        "ECG annually"
+      ]
+    },
+    "long_term_outcomes": {
+      "durability": "Many patients maintain response for months to years with maintenance infusions",
+      "relapse_rates": "Higher if maintenance discontinued prematurely",
+      "quality_of_life": "Often significant improvement in functioning and life satisfaction",
+      "safety": "Generally well-tolerated long-term at therapeutic doses"
+    }
+  },
+  "safety_monitoring": {
+    "absolute_contraindications": [
+      "Uncontrolled hypertension",
+      "Recent MI, stroke, or unstable angina (<6 months)",
+      "Severe heart failure (NYHA Class III-IV)",
+      "Intracranial mass, aneurysm, increased ICP",
+      "Schizophrenia or active psychosis",
+      "Severe hepatic impairment",
+      "Pregnancy or breastfeeding",
+      "Active moderate-severe substance use disorder",
+      "Hyperthyroidism (uncontrolled)"
+    ],
+    "adverse_effects_monitoring": [
+      {
+        "effect": "Dissociation during infusion",
+        "frequency": "Universal (desired effect at therapeutic doses)",
+        "management": "Supportive care, reassurance; resolves post-infusion",
+        "duration": "1-2 hours"
+      },
+      {
+        "effect": "Elevated blood pressure",
+        "frequency": "Very common (70-80%)",
+        "management": "Usually mild; slow infusion or antihypertensive if severe",
+        "duration": "During and shortly after infusion"
+      },
+      {
+        "effect": "Nausea/vomiting",
+        "frequency": "Common (20-30%)",
+        "management": "Prophylactic ondansetron",
+        "duration": "During infusion, occasionally after"
+      },
+      {
+        "effect": "Headache",
+        "frequency": "Occasional (10-15%)",
+        "management": "Acetaminophen or NSAIDs post-infusion",
+        "duration": "Hours to 1 day"
+      },
+      {
+        "effect": "Dizziness/vertigo",
+        "frequency": "Common (30-40%)",
+        "management": "Resolve spontaneously; ambulate with assistance",
+        "duration": "1-2 hours post-infusion"
+      },
+      {
+        "effect": "Anxiety/panic during infusion",
+        "frequency": "Occasional (5-10%)",
+        "management": "Reassurance, grounding; rarely benzodiazepine",
+        "duration": "During infusion"
+      },
+      {
+        "effect": "Emergence reactions (agitation, confusion)",
+        "frequency": "Rare (1-3%)",
+        "management": "Benzodiazepine, supportive care, monitor until resolved",
+        "duration": "Minutes to hours"
+      },
+      {
+        "effect": "Bladder toxicity (cystitis)",
+        "frequency": "Rare with therapeutic use (<1%), more common with chronic abuse",
+        "management": "Urology referral, discontinue ketamine",
+        "duration": "Can be chronic if severe"
+      },
+      {
+        "effect": "Cognitive impairment",
+        "frequency": "Unclear; likely rare with therapeutic dosing",
+        "management": "Monitor subjectively; neuropsych testing if concerns; consider discontinuation",
+        "duration": "Unclear"
+      },
+      {
+        "effect": "Abuse/dependence",
+        "frequency": "Low in monitored therapeutic setting (<5%), higher in vulnerable individuals",
+        "management": "Screen carefully, monitor for signs, discontinue if misuse",
+        "duration": "Ongoing if develops"
+      }
+    ],
+    "emergency_protocols": {
+      "hypertensive_crisis": "BP >200/120 or symptomatic: stop infusion, IV antihypertensive (labetalol, hydralazine), cardiology consult, transfer if unstable",
+      "severe_emergence_reaction": "Benzodiazepine (lorazepam 1-2 mg IV/IM), supportive care, monitor until resolved, psychiatry consult",
+      "cardiovascular_event": "Chest pain, arrhythmia: stop infusion, ECG, cardiac monitoring, emergency medicine/cardiology consult, transfer if needed",
+      "respiratory_depression": "Very rare at 0.5 mg/kg but monitor: stimulate patient, supplemental O2, airway support, stop infusion",
+      "severe_psychotic_reaction": "Benzodiazepine, antipsychotic if needed, psychiatry consult, possible hospitalization"
+    }
+  },
+  "special_populations": {
+    "elderly_patients": {
+      "considerations": [
+        "Higher cardiovascular risk - thorough cardiac clearance",
+        "May be more sensitive to dissociative effects",
+        "Consider lower starting dose (0.4 mg/kg)",
+        "Enhanced monitoring during infusions",
+        "Careful fall risk assessment post-infusion"
+      ]
+    },
+    "bipolar_depression": {
+      "considerations": [
+        "Risk of inducing mania/hypomania",
+        "Ensure mood stabilizer on board",
+        "Close monitoring for mood elevation",
+        "May still be beneficial for bipolar depression",
+        "Consider lower dose or slower infusion"
+      ]
+    },
+    "comorbid_ptsd": {
+      "considerations": [
+        "Ketamine shows promise for PTSD in addition to depression",
+        "Dissociative effects may be triggering for some trauma survivors",
+        "Trauma-informed approach essential",
+        "Enhanced preparation and support",
+        "Psychotherapy integration critical"
+      ]
+    },
+    "patients_with_substance_use_history": {
+      "considerations": [
+        "Higher risk of ketamine misuse",
+        "Require careful screening and ongoing monitoring",
+        "Treatment agreement essential",
+        "Consider involving support person",
+        "Intranasal or oral formulations have higher abuse potential than supervised IV",
+        "Close follow-up and accountability measures"
+      ]
+    }
+  },
+  "integration_and_psychotherapy": {
+    "importance": "Ketamine should not be standalone treatment; psychotherapy integration enhances and sustains outcomes",
+    "recommended_approaches": [
+      "Ketamine-Assisted Psychotherapy (KAP): Psychotherapy sessions before, during, and after infusions",
+      "Cognitive-Behavioral Therapy (CBT): Evidence-based for depression",
+      "Mindfulness-Based Cognitive Therapy (MBCT): Relapse prevention",
+      "Acceptance and Commitment Therapy (ACT): Values-based living",
+      "Psychodynamic therapy: Processing insights from dissociative experiences"
+    ],
+    "integration_sessions": {
+      "timing": "Within 1-2 days after each infusion ideally",
+      "focus": [
+        "Processing dissociative experience and any insights",
+        "Connecting experience to therapeutic goals",
+        "Translating insights into behavioral changes",
+        "Addressing emotions or content that arose",
+        "Building on momentum of improved mood"
+      ]
+    }
+  },
+  "cost_and_access_considerations": {
+    "iv_ketamine": {
+      "typical_cost": "$400-800 per infusion",
+      "insurance": "Often not covered (off-label); improving with more evidence",
+      "acute_phase_cost": "$2400-4800 for 6 infusions",
+      "maintenance_cost": "$400-800 per month (if monthly infusions)"
+    },
+    "intranasal_esketamine": {
+      "typical_cost": "$600-900 per dose (varies by dose)",
+      "insurance": "Better coverage (FDA-approved) but often requires prior authorization",
+      "REMS_requirements": "Must be administered in certified clinic with observation"
+    },
+    "access_barriers": [
+      "High out-of-pocket cost",
+      "Limited number of providers offering ketamine",
+      "Geographic limitations (mostly urban centers)",
+      "Time commitment (infusion visits)",
+      "Transportation needs (cannot drive after)"
+    ]
+  },
+  "clinical_pearls": [
+    "Ketamine provides rapid relief often within hours to days - transformative for suicidal patients",
+    "Most robust evidence for treatment-resistant depression, but also used for other indications",
+    "Dissociation is part of the therapeutic effect - don't try to eliminate it",
+    "Blood pressure elevation is expected and usually mild - monitor but don't overreact",
+    "Maintenance is almost always needed - plan for long-term treatment",
+    "Integration therapy maximizes and sustains benefits - ketamine alone is not enough",
+    "Screen carefully for abuse potential - rare in monitored settings but real risk",
+    "Not a cure - it's a tool to provide symptom relief and window for therapeutic work",
+    "Works best as part of comprehensive treatment plan (therapy, lifestyle, support)"
+  ]
+}

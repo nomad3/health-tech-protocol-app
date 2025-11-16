@@ -1,0 +1,793 @@
+{
+  "protocol": {
+    "name": "LSD Microdosing Protocol for Mood, Creativity, and Cognitive Enhancement",
+    "version": "1.0",
+    "therapy_type": "lsd_microdosing",
+    "condition_treated": "Subclinical Depression, Anxiety, Low Creativity, Cognitive Performance Enhancement",
+    "evidence_level": "emerging_research",
+    "overview": "Evidence-informed LSD microdosing protocol for mood enhancement, creativity, focus, and general well-being. Uses sub-perceptual doses (typically 5-20 micrograms) on an intermittent schedule. Based on emerging research, anecdotal reports, and harm reduction principles. Note: LSD is Schedule I in most countries; this protocol is for informational/research purposes.",
+    "duration_weeks": 12,
+    "total_sessions": 8,
+    "evidence_sources": [
+      "Fadiman J, Korb S. J Psychoactive Drugs. 2019;51(2):113-122 (PMID: 30925849)",
+      "Polito V, Stevenson RJ. PLoS One. 2019;14(2):e0211023 (PMID: 30726251)",
+      "Hutten NRPW, et al. J Psychopharmacol. 2019;33(9):1039-1051 (PMID: 31328653)",
+      "Family N, et al. Sci Rep. 2020;10:4714 (PMID: 32170127)",
+      "Szigeti B, et al. eLife. 2021;10:e62878 (PMID: 33648632)",
+      "Rootman JM, et al. Sci Rep. 2021;11:14920 (PMID: 34290276)",
+      "Kuypers KPC, et al. Psychopharmacology. 2019;236(2):841-851 (PMID: 30357434)"
+    ]
+  },
+  "steps": [
+    {
+      "sequence_order": 1,
+      "step_type": "screening",
+      "title": "Initial Assessment & Goal Setting",
+      "description": "Comprehensive baseline assessment to establish goals for microdosing, screen for contraindications, assess mental health status, and set realistic expectations.",
+      "duration_minutes": 90,
+      "required_roles": ["physician", "psychologist", "psychedelic_integration_therapist"],
+      "assessment_components": {
+        "mental_health_screening": [
+          "Current mood and anxiety symptoms",
+          "History of depression or anxiety disorders",
+          "Current medications (especially psychiatric)",
+          "Substance use history",
+          "Personal or family history of psychosis or bipolar disorder",
+          "Current life stressors and supports"
+        ],
+        "goals_and_intentions": [
+          "What do you hope to gain from microdosing?",
+          "Specific areas of improvement (mood, creativity, focus, relationships, etc.)",
+          "What have you tried before?",
+          "What would success look like?",
+          "Realistic vs. unrealistic expectations"
+        ],
+        "prior_psychedelic_experience": [
+          "Any prior LSD or psychedelic use?",
+          "Prior microdosing experience?",
+          "Response to previous psychedelics",
+          "Set and setting quality in past"
+        ]
+      },
+      "clinical_scales": [
+        "PHQ-9 (depression screening)",
+        "GAD-7 (anxiety screening)",
+        "WHO-5 Well-Being Index",
+        "Cognitive Failures Questionnaire",
+        "Creativity Self-Assessment",
+        "Sleep Quality Index (PSQI)"
+      ],
+      "education_topics": [
+        "What is microdosing? (sub-perceptual doses, not 'tripping')",
+        "Expected effects (subtle mood lift, enhanced focus, increased openness)",
+        "Not expected effects (no hallucinations, no radical personality change)",
+        "Dosing schedules (Fadiman protocol, Stamets stack, daily, etc.)",
+        "Legal status and risks",
+        "Importance of quality, accurate dosing (volumetric dosing)",
+        "Timeline for noticing effects (days to weeks)",
+        "Placebo effect considerations (may account for significant portion of effects)",
+        "Harm reduction principles"
+      ],
+      "documentation_requirements": {
+        "baseline_metrics": [
+          "Mood state",
+          "Anxiety level",
+          "Sleep quality",
+          "Productivity/focus assessment",
+          "Creativity self-rating",
+          "Social functioning",
+          "Physical health"
+        ]
+      }
+    },
+    {
+      "sequence_order": 2,
+      "step_type": "screening",
+      "title": "Medical & Psychological Contraindication Screening",
+      "description": "Evaluate medical and psychiatric contraindications to ensure patient safety. LSD microdosing, while lower risk than full doses, still requires careful screening.",
+      "duration_minutes": 60,
+      "required_roles": ["physician", "psychiatrist"],
+      "vitals_monitoring": {
+        "required": ["blood_pressure", "heart_rate", "weight"],
+        "baseline_documentation": "Establish baseline cardiovascular status"
+      },
+      "medical_screening": {
+        "cardiovascular": [
+          "History of heart disease (LSD can cause vasoconstriction, mild BP/HR elevation)",
+          "Uncontrolled hypertension",
+          "Arrhythmias",
+          "Valvular heart disease (concern for cardiac fibrosis with chronic serotonergic drugs)"
+        ],
+        "neurological": [
+          "Seizure disorder",
+          "Migraine with aura (may be exacerbated)",
+          "Other neurological conditions"
+        ],
+        "other": [
+          "Liver or kidney disease (clearance considerations)",
+          "Pregnancy or breastfeeding (contraindicated)",
+          "Plans to conceive (defer microdosing)"
+        ]
+      },
+      "psychiatric_screening": {
+        "absolute_contraindications": [
+          "Personal history of schizophrenia or psychotic disorder",
+          "First-degree relative with schizophrenia (high genetic risk)",
+          "Bipolar I disorder with manic episodes",
+          "Active psychosis or delusions",
+          "Severe personality disorder with poor reality testing"
+        ],
+        "relative_contraindications": [
+          "Bipolar II disorder (proceed with extreme caution, monitor for hypomania)",
+          "Severe anxiety or panic disorder (may worsen)",
+          "PTSD with dissociative symptoms",
+          "Obsessive-compulsive disorder (can worsen obsessions in some)",
+          "Current severe depression with suicidal ideation (needs more intensive treatment)"
+        ],
+        "medication_interactions": [
+          "SSRIs/SNRIs: Common combo, but may reduce LSD effects; no serotonin syndrome risk",
+          "MAOIs: Potentially dangerous interaction, absolute contraindication",
+          "Lithium: Potentially increases seizure risk, contraindicated",
+          "Antipsychotics: Block LSD effects, may be taking for reason that contraindicates LSD",
+          "Tramadol: Potential serotonin syndrome risk, avoid",
+          "St. John's Wort: Serotonergic, use caution"
+        ]
+      }
+    },
+    {
+      "sequence_order": 3,
+      "step_type": "decision_point",
+      "title": "Eligibility & Protocol Selection",
+      "description": "Determine patient eligibility based on screening and select optimal microdosing protocol (dosing schedule, dose, duration) based on individual factors and goals.",
+      "duration_minutes": 30,
+      "required_roles": ["physician", "psychedelic_guide"],
+      "evaluation_rules": {
+        "type": "safety_and_protocol_selection",
+        "eligibility_assessment": {
+          "proceed": "No absolute contraindications, realistic expectations, willingness to track metrics",
+          "defer": "Relative contraindication that needs optimization (e.g., unstable mood), medication adjustment needed",
+          "exclude": "Absolute contraindication present (psychosis history, family schizophrenia, lithium use, MAOI use, pregnancy)"
+        },
+        "protocol_selection": {
+          "dosing_schedules": [
+            {
+              "name": "Fadiman Protocol (Classic)",
+              "schedule": "Day 1: Dose, Day 2: Transition (no dose), Day 3: Normal (no dose), Day 4: Dose again",
+              "pattern": "Every 3 days (1 day on, 2 days off)",
+              "frequency": "~2 doses per week",
+              "rationale": "Allows observation of effects, transition day, and return to baseline; prevents tolerance",
+              "best_for": "Beginners, those wanting clear on/off comparison, researchers tracking effects"
+            },
+            {
+              "name": "Stamets Stack (Enhanced)",
+              "schedule": "5 days on, 2 days off (weekly cycle)",
+              "additional_components": "LSD + psilocybin mushroom microdose + niacin + lion's mane mushroom",
+              "frequency": "5 doses per week",
+              "rationale": "Paul Stamets protocol for neurogenesis and cognitive enhancement; niacin for peripheral vasodilation, lion's mane for nerve growth factor",
+              "best_for": "Cognitive enhancement focus, experienced microdosers",
+              "note": "This protocol combines LSD or psilocybin with other supplements"
+            },
+            {
+              "name": "Every Other Day",
+              "schedule": "Dose every other day",
+              "frequency": "3-4 doses per week",
+              "rationale": "More frequent dosing without daily tolerance build-up",
+              "best_for": "Those who benefit from more frequent dosing, depression/anxiety management"
+            },
+            {
+              "name": "Intuitive/As-Needed",
+              "schedule": "Dose when you feel you need it (1-3 times per week)",
+              "frequency": "Variable, typically 1-3 per week",
+              "rationale": "Flexible approach based on individual response and needs",
+              "best_for": "Experienced microdosers who know their response well",
+              "caution": "Requires self-awareness to avoid overuse"
+            },
+            {
+              "name": "Daily Microdosing",
+              "schedule": "Every day for 30 days, then break",
+              "frequency": "7 days per week for limited duration",
+              "rationale": "Some use for short intensive period, though tolerance is a concern",
+              "best_for": "Short-term intervention, not recommended long-term",
+              "caution": "Risk of tolerance, receptor downregulation; take extended breaks"
+            }
+          ],
+          "recommended_default": "Fadiman Protocol (every 3 days) for first-time microdosers"
+        },
+        "dose_determination": {
+          "typical_range": "5-20 micrograms LSD",
+          "threshold_dose": "~20-25 mcg (beginning of perceptual effects)",
+          "sub_perceptual_target": "Below threshold - no obvious intoxication",
+          "starting_recommendation": {
+            "conservative_start": "5-8 mcg (very sensitive individuals, first-timers)",
+            "standard_start": "10 mcg (most common starting dose)",
+            "higher_start": "15 mcg (if experienced or less sensitive)"
+          },
+          "calibration_approach": "Start low, increase gradually until finding sweet spot (just below perceptual threshold)",
+          "volumetric_dosing": {
+            "importance": "CRITICAL - LSD doses are tiny, accurate measurement essential",
+            "method": "Dissolve known amount of LSD (e.g., 100 mcg tab) in measured volume of distilled water or alcohol (e.g., 10 mL)",
+            "calculation": "If 100 mcg in 10 mL, then 1 mL = 10 mcg; use oral syringe for accurate measurement",
+            "storage": "Amber glass bottle, refrigerated, protected from light",
+            "stability": "Stable for weeks to months if stored properly"
+          },
+          "signs_dose_too_high": [
+            "Mild visual changes (breathing walls, color enhancement)",
+            "Difficulty concentrating",
+            "Feeling 'high' or altered",
+            "Social awkwardness, overstimulation"
+          ],
+          "signs_dose_too_low": "No noticeable effects even after several weeks",
+          "goal": "Subtle enhancement, not impairment - 'feeling more like yourself at your best'"
+        }
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "fadiman_protocol",
+          "next_step": 4,
+          "description": "Classic protocol: dose every 3 days"
+        },
+        {
+          "outcome_id": "alternative_schedule",
+          "next_step": 4,
+          "description": "Every other day or other selected schedule"
+        },
+        {
+          "outcome_id": "defer_treatment",
+          "next_step": "exit_protocol",
+          "description": "Contraindication or patient not ready"
+        }
+      ]
+    },
+    {
+      "sequence_order": 4,
+      "step_type": "preparation",
+      "title": "Dose Calibration & First Microdose",
+      "description": "Initial microdosing session to calibrate dose, ensure it is truly sub-perceptual, and educate on tracking and expectations. Ideally supervised or with check-in.",
+      "duration_minutes": 180,
+      "required_roles": ["psychedelic_guide", "physician"],
+      "calibration_protocol": {
+        "setting": "Comfortable, safe environment; ideally at home on a free day",
+        "timing": "Morning (7-9 AM) to assess effects throughout day and avoid sleep interference",
+        "preparation": [
+          "Good sleep night before",
+          "Healthy breakfast",
+          "Clear schedule (no important commitments first calibration day)",
+          "Notebook or app ready for tracking"
+        ],
+        "first_dose": {
+          "recommended": "Start with 10 mcg (or 5 mcg if very cautious)",
+          "administration": "Oral - sublingual for faster onset, or swallow",
+          "volumetric_dosing": "Use prepared volumetric solution with oral syringe",
+          "documentation": "Record exact dose, time, stomach contents"
+        },
+        "monitoring_timeline": {
+          "T+30_min": "Beginning to notice anything? (Ideally no at proper microdose)",
+          "T+60_min": "Any perceptual changes, mood shifts, energy changes?",
+          "T+90_min": "Peak effects (if any) usually around this time",
+          "T+180_min": "Assess overall effect - too much, too little, or just right?",
+          "end_of_day": "Reflect on entire day - productivity, mood, social interactions, creativity",
+          "next_morning": "Sleep quality, residual effects?"
+        },
+        "what_to_track": {
+          "subjective_effects": [
+            "Mood (scale 1-10)",
+            "Energy level (1-10)",
+            "Focus/concentration (1-10)",
+            "Creativity (1-10)",
+            "Anxiety level (1-10)",
+            "Social ease (1-10)",
+            "Any perceptual changes (yes/no, describe)",
+            "Physical sensations",
+            "Notable thoughts or insights"
+          ],
+          "objective_tracking": [
+            "Productivity (tasks completed)",
+            "Work quality",
+            "Exercise or activity",
+            "Social interactions quality",
+            "Sleep hours and quality"
+          ]
+        }
+      },
+      "dose_adjustment": {
+        "if_no_effects": "Increase by 2-5 mcg next dose",
+        "if_subtle_positive_effects": "Stay at this dose - you found it!",
+        "if_too_strong": "Decrease by 2-5 mcg next dose",
+        "calibration_period": "First 2-3 doses are for finding optimal dose"
+      },
+      "safety_instructions": [
+        "Do not drive or operate machinery if feeling ANY alteration",
+        "Have a sober, trusted person you can call if needed",
+        "Avoid combining with alcohol or other drugs during calibration",
+        "If uncomfortable effects, remind yourself it's temporary (will pass in 6-8 hours)",
+        "Stay hydrated, eat regularly"
+      ]
+    },
+    {
+      "sequence_order": 5,
+      "step_type": "followup",
+      "title": "Week 1 Check-In & Protocol Refinement",
+      "description": "First check-in after 3-4 microdoses to review experiences, refine dose if needed, address concerns, and ensure proper tracking.",
+      "duration_minutes": 45,
+      "required_roles": ["psychedelic_guide", "therapist"],
+      "check_in_structure": {
+        "experience_review": [
+          "How have the microdose days felt?",
+          "Any perceptual effects? (If yes, dose likely too high)",
+          "Mood, energy, focus changes noticed?",
+          "Any uncomfortable effects?",
+          "How about the 'off' days - any difference?",
+          "Sleep quality?",
+          "Any unexpected effects?"
+        ],
+        "tracking_review": [
+          "Review patient's tracking data",
+          "Are they seeing patterns?",
+          "Any noticeable differences between dose days and off days?",
+          "Consistency of effects or variable?"
+        ],
+        "dose_optimization": [
+          "Current dose too high, too low, or appropriate?",
+          "Make adjustments if needed",
+          "Aim for subtle, barely noticeable effects - 'like a good day'"
+        ],
+        "protocol_adherence": [
+          "Sticking to schedule?",
+          "Any temptation to dose more frequently?",
+          "Any challenges with the routine?"
+        ],
+        "expectation_management": [
+          "Remind: effects are subtle, not dramatic",
+          "Changes may be more noticeable in retrospect after a few weeks",
+          "Placebo effect is real and that's okay - it's part of the benefit",
+          "Not a magic bullet - works best with healthy lifestyle, therapy, etc."
+        ]
+      },
+      "clinical_scales": [
+        "PHQ-9 (brief version or full)",
+        "GAD-7 (brief)",
+        "Subjective well-being check"
+      ],
+      "dose_adjustments": {
+        "increase_dose": "If no effects after 3-4 doses and no perceptual changes",
+        "decrease_dose": "If any perceptual effects or feeling 'too stimulated'",
+        "maintain_dose": "If subtle positive effects without impairment"
+      }
+    },
+    {
+      "sequence_order": 6,
+      "step_type": "followup",
+      "title": "Week 4 Evaluation - Early Outcomes",
+      "description": "Month 1 evaluation to assess early benefits, side effects, adherence, and whether to continue protocol. Decision point for continuation.",
+      "duration_minutes": 60,
+      "required_roles": ["physician", "therapist"],
+      "assessment_components": {
+        "symptom_tracking": [
+          "Compare PHQ-9, GAD-7 to baseline",
+          "Mood trajectory over the month",
+          "Anxiety changes",
+          "Sleep quality changes",
+          "Energy and motivation",
+          "Cognitive function (focus, memory, creativity)",
+          "Social functioning"
+        ],
+        "subjective_assessment": [
+          "Do you feel different?",
+          "What's better? What's the same or worse?",
+          "Quality of life changes?",
+          "Productivity or creativity shifts?",
+          "Relationships improved?",
+          "Overall: is it helping?"
+        ],
+        "tracking_data_review": [
+          "Review 4 weeks of daily tracking",
+          "Dose days vs. off days patterns",
+          "Consistency of effects",
+          "Unexpected findings"
+        ],
+        "side_effects": [
+          "Any negative effects?",
+          "Insomnia or sleep disruption?",
+          "Anxiety or agitation?",
+          "Physical discomfort?",
+          "Interpersonal issues?",
+          "Cognitive impairment or distractibility?"
+        ],
+        "adherence": [
+          "How well did you stick to the schedule?",
+          "Any missed doses or extra doses?",
+          "Barriers to adherence?"
+        ]
+      },
+      "clinical_scales": [
+        "PHQ-9",
+        "GAD-7",
+        "WHO-5 Well-Being Index",
+        "Cognitive Failures Questionnaire",
+        "Sleep Quality (PSQI)",
+        "Creativity self-rating",
+        "Patient Global Impression of Change (PGIC)"
+      ],
+      "outcome_categories": {
+        "clear_benefit": "Measurable improvement in mood, cognition, or well-being; minimal side effects",
+        "subtle_benefit": "Small improvements or subjective sense of benefit; hard to quantify",
+        "unclear": "No clear pattern yet; may need more time or dose adjustment",
+        "no_benefit": "No noticeable changes after 4 weeks",
+        "negative_effects": "Side effects outweigh benefits"
+      }
+    },
+    {
+      "sequence_order": 7,
+      "step_type": "decision_point",
+      "title": "Continue, Adjust, or Discontinue Decision",
+      "description": "Clinical decision based on Week 4 evaluation: continue current protocol, adjust dose/schedule, or discontinue microdosing.",
+      "duration_minutes": 20,
+      "required_roles": ["physician", "therapist"],
+      "evaluation_rules": {
+        "type": "treatment_decision",
+        "decision_matrix": [
+          {
+            "outcome": "clear_benefit",
+            "decision": "Continue current protocol for another 8 weeks (total 12 weeks), then reassess",
+            "rationale": "Working well, maintain course"
+          },
+          {
+            "outcome": "subtle_benefit_or_unclear",
+            "decision": "Consider dose adjustment (increase if no perceptual effects yet) OR continue current protocol to give more time",
+            "rationale": "May need more time or optimization"
+          },
+          {
+            "outcome": "no_benefit",
+            "decision": "Options: (1) Try dose increase for 2-4 more weeks, (2) Try different schedule, (3) Discontinue",
+            "rationale": "Reassess whether worth continuing if no benefit"
+          },
+          {
+            "outcome": "negative_effects",
+            "decision": "Discontinue or significantly reduce dose",
+            "rationale": "Risks outweigh benefits"
+          }
+        ],
+        "dose_schedule_adjustments": {
+          "if_tolerance_developing": "Switch from daily or frequent dosing to Fadiman protocol; take tolerance break (1-2 weeks off)",
+          "if_effects_too_subtle": "Increase dose by 5 mcg; or increase frequency (e.g., Fadiman to every other day)",
+          "if_effects_too_strong": "Decrease dose by 5 mcg; or decrease frequency",
+          "if_sleep_issues": "Dose earlier in day, skip afternoon doses, or take 1-2 week break"
+        },
+        "tolerance_break_consideration": {
+          "when": "After 4-12 weeks of consistent microdosing",
+          "duration": "1-4 weeks off",
+          "rationale": "Prevent tolerance, reset receptor sensitivity, assess whether benefits persist",
+          "restarting": "Can resume at same dose/schedule after break"
+        }
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "continue_protocol",
+          "next_step": 8,
+          "description": "Continue current microdosing schedule for full 12-week trial"
+        },
+        {
+          "outcome_id": "adjust_protocol",
+          "next_step": 8,
+          "description": "Modify dose or schedule, continue for 8 more weeks"
+        },
+        {
+          "outcome_id": "discontinue",
+          "next_step": "exit_protocol",
+          "description": "Stop microdosing, consider alternatives"
+        }
+      ]
+    },
+    {
+      "sequence_order": 8,
+      "step_type": "followup",
+      "title": "Week 8 Mid-Point Check-In",
+      "description": "Brief check-in at 8 weeks to ensure continued safety, benefit, and adherence. Address any emerging issues.",
+      "duration_minutes": 30,
+      "required_roles": ["therapist", "physician"],
+      "check_in_focus": [
+        "How's it going overall?",
+        "Sustained benefits or diminishing?",
+        "Any new side effects or concerns?",
+        "Adherence to protocol?",
+        "Any life changes or stressors affecting response?",
+        "Considering tolerance break or continuation?"
+      ],
+      "clinical_scales": [
+        "PHQ-9 (brief)",
+        "GAD-7 (brief)",
+        "Well-being check"
+      ],
+      "safety_check": [
+        "Any signs of psychological dependence? (Anxiety about missing doses, preoccupation with microdosing)",
+        "Any cardiovascular symptoms?",
+        "Cognitive function maintained?",
+        "Sleep quality?"
+      ]
+    },
+    {
+      "sequence_order": 9,
+      "step_type": "followup",
+      "title": "Week 12 Final Evaluation & Long-Term Planning",
+      "description": "Comprehensive end-of-protocol evaluation at 12 weeks. Assess overall outcomes, decide on long-term approach (continue, tolerance break, discontinue), and create maintenance plan.",
+      "duration_minutes": 90,
+      "required_roles": ["physician", "therapist", "psychedelic_integration_therapist"],
+      "final_assessment": {
+        "comprehensive_outcomes": [
+          "Compare all metrics to baseline (PHQ-9, GAD-7, well-being, creativity, cognition, sleep)",
+          "Review 12 weeks of tracking data for patterns",
+          "Quantitative changes in symptoms",
+          "Qualitative life improvements",
+          "Areas that improved vs. unchanged",
+          "Unexpected benefits or drawbacks"
+        ],
+        "subjective_global_assessment": [
+          "Overall, was microdosing worth it?",
+          "What changed in your life?",
+          "What would you attribute to microdosing vs. other factors?",
+          "Did it meet your initial goals?",
+          "Would you recommend it to others in your situation?"
+        ],
+        "safety_review": [
+          "Any adverse effects over 12 weeks?",
+          "Cardiovascular stability?",
+          "Psychological stability (no psychotic symptoms, mood destabilization)?",
+          "No problematic use patterns?",
+          "Cognitive function maintained or improved?"
+        ]
+      },
+      "clinical_scales": [
+        "PHQ-9",
+        "GAD-7",
+        "WHO-5 Well-Being Index",
+        "Cognitive Failures Questionnaire",
+        "PSQI (sleep quality)",
+        "Creativity assessment",
+        "Overall quality of life",
+        "Patient Global Impression of Change (PGIC)",
+        "Satisfaction with treatment"
+      ],
+      "long_term_planning": {
+        "if_successful": {
+          "options": [
+            "Continue indefinitely with periodic tolerance breaks (1 week off every 4-8 weeks)",
+            "Take extended tolerance break (4-8 weeks) then reassess if you want to resume",
+            "Taper to less frequent schedule (e.g., weekly instead of twice weekly)",
+            "Discontinue and see if benefits persist (they often do)"
+          ],
+          "recommended_approach": "Tolerance break of 4 weeks, then reassess. Many benefits may persist without continued dosing.",
+          "monitoring": "Monthly check-ins for 3 months, then as needed"
+        },
+        "if_partially_successful": {
+          "options": [
+            "Continue with dose/schedule optimization",
+            "Take tolerance break then retry",
+            "Explore adjunctive approaches (therapy, meditation, lifestyle changes)",
+            "Consider alternatives (psilocybin microdosing, therapeutic full doses, etc.)"
+          ]
+        },
+        "if_unsuccessful": {
+          "options": [
+            "Discontinue microdosing",
+            "Consider whether dosing was accurate (underdosing common issue)",
+            "Explore other evidence-based treatments for your goals",
+            "Consider therapeutic-dose psychedelic sessions if appropriate"
+          ]
+        }
+      },
+      "harm_reduction_recommendations": {
+        "long_term_safety": [
+          "Annual cardiovascular check-up (concern for valvular heart disease with chronic serotonergic agonism is theoretical but monitor)",
+          "Periodic mental health screening",
+          "Avoid long-term daily use (risk of tolerance, receptor changes)",
+          "Take regular breaks to reset",
+          "Don't increase dose over time chasing effects (tolerance sign)",
+          "Quality control of source material (purity, accurate dosing)"
+        ],
+        "red_flags_to_discontinue": [
+          "Developing tolerance (needing higher doses for same effect)",
+          "Psychological dependence (anxiety without it, preoccupation)",
+          "Mood destabilization (hypomania, depression worsening)",
+          "Psychotic symptoms (paranoia, delusions, hallucinations outside of dosing)",
+          "Cardiovascular symptoms",
+          "Cognitive impairment",
+          "Interpersonal problems related to use"
+        ]
+      }
+    }
+  ],
+  "ongoing_monitoring": {
+    "if_continuing_long_term": {
+      "frequency": "Monthly check-ins first 3 months after initial protocol, then quarterly",
+      "assessments": [
+        "PHQ-9, GAD-7 quarterly",
+        "Well-being and functioning check",
+        "Safety monitoring (cardiovascular, psychological)",
+        "Tolerance or dependence screening",
+        "Adherence to harm reduction guidelines"
+      ],
+      "tolerance_breaks": {
+        "recommendation": "1 week off every 4-8 weeks of continuous microdosing, or 4-8 weeks off after 12 weeks continuous",
+        "purpose": "Prevent tolerance, receptor downregulation, and allow assessment of benefits without substance",
+        "during_break": "Note if symptoms return or benefits persist (often persist)"
+      },
+      "annual_review": {
+        "comprehensive_assessment": "Yearly evaluation of continued benefit, safety, and need for continuation",
+        "cardiovascular_screen": "BP, HR, ECG (concern for cardiac valve issues with chronic 5-HT2B agonism is theoretical but prudent)",
+        "mental_health_review": "Ensure ongoing psychological stability"
+      }
+    }
+  },
+  "safety_monitoring": {
+    "absolute_contraindications": [
+      "Personal history of psychotic disorder",
+      "First-degree family member with schizophrenia",
+      "Bipolar I disorder",
+      "Current MAOI use",
+      "Lithium therapy",
+      "Pregnancy or breastfeeding",
+      "Severe cardiovascular disease"
+    ],
+    "relative_contraindications": [
+      "Bipolar II disorder",
+      "Severe anxiety or panic disorder",
+      "SSRI/SNRI use (may reduce effects)",
+      "Seizure disorder",
+      "Migraine with aura"
+    ],
+    "potential_adverse_effects": [
+      {
+        "effect": "Mild anxiety or overstimulation",
+        "frequency": "Occasional (10-20%)",
+        "management": "Reduce dose, dose earlier in day, or skip doses",
+        "duration": "Hours (on dose day)"
+      },
+      {
+        "effect": "Sleep disturbance or insomnia",
+        "frequency": "Occasional (10-15%)",
+        "management": "Dose earlier in day (morning only), reduce dose, or take break",
+        "duration": "Night of dose day"
+      },
+      {
+        "effect": "Headache",
+        "frequency": "Occasional (5-10%)",
+        "management": "Hydration, reduce dose, consider break",
+        "duration": "Hours to day"
+      },
+      {
+        "effect": "Subtle perceptual changes (dose too high)",
+        "frequency": "Common if dose not calibrated (20-30%)",
+        "management": "Reduce dose to truly sub-perceptual level",
+        "duration": "Hours (on dose day)"
+      },
+      {
+        "effect": "Gastrointestinal discomfort",
+        "frequency": "Occasional (5-10%)",
+        "management": "Take with food, reduce dose",
+        "duration": "Hours"
+      },
+      {
+        "effect": "Mood lability or irritability",
+        "frequency": "Rare (1-5%)",
+        "management": "Discontinue, consider whether underlying mood disorder",
+        "duration": "Variable"
+      },
+      {
+        "effect": "Increased anxiety (paradoxical)",
+        "frequency": "Occasional (5-10%)",
+        "management": "Reduce dose or discontinue; may not be right approach for this individual",
+        "duration": "Hours to days"
+      },
+      {
+        "effect": "Psychological dependence (feeling need to dose)",
+        "frequency": "Rare with proper protocol (1-3%)",
+        "management": "Tolerance break, address underlying issues, discontinue",
+        "duration": "Resolves with abstinence"
+      },
+      {
+        "effect": "HPPD (Hallucinogen Persisting Perception Disorder)",
+        "frequency": "Very rare with microdosing (<1%)",
+        "management": "Discontinue immediately, supportive care, usually resolves",
+        "duration": "Days to months, usually self-limiting"
+      }
+    ],
+    "signs_of_problematic_use": [
+      "Dosing more frequently than protocol",
+      "Increasing dose over time (tolerance chasing)",
+      "Anxiety or distress on off days",
+      "Preoccupation with microdosing",
+      "Neglecting other self-care (exercise, therapy, sleep) in favor of microdosing",
+      "Mood destabilization"
+    ]
+  },
+  "special_populations": {
+    "individuals_on_ssris_snris": {
+      "considerations": [
+        "Very common combination",
+        "SSRIs/SNRIs may blunt LSD effects due to receptor downregulation",
+        "No serotonin syndrome risk (LSD is agonist, not releaser)",
+        "May need higher LSD microdose or may not respond as well",
+        "Safe to combine from pharmacological standpoint",
+        "Do not discontinue SSRIs to microdose without medical supervision"
+      ]
+    },
+    "individuals_with_adhd": {
+      "considerations": [
+        "Anecdotal reports of benefit for focus and executive function",
+        "Limited research evidence",
+        "May respond differently than neurotypical individuals",
+        "Consider interaction with ADHD stimulant medications",
+        "Track ADHD symptoms specifically"
+      ]
+    },
+    "individuals_with_trauma_history": {
+      "considerations": [
+        "LSD can bring up suppressed emotions or memories",
+        "May be therapeutic if processing with therapist",
+        "Can be destabilizing if not in therapy or unprepared",
+        "Trauma-informed approach essential",
+        "Close monitoring and integration support"
+      ]
+    },
+    "creative_professionals": {
+      "considerations": [
+        "Common user group seeking creativity enhancement",
+        "Evidence is mixed - some studies show benefit, others placebo",
+        "May enhance divergent thinking (idea generation)",
+        "May or may not enhance convergent thinking (problem-solving)",
+        "Track creative output objectively (projects completed, quality ratings)"
+      ]
+    }
+  },
+  "placebo_considerations": {
+    "importance": "Recent research suggests significant placebo effect in microdosing",
+    "studies": [
+      "Szigeti et al. (2021): Self-blinding citizen science trial found placebo accounted for much of benefit",
+      "However, expectancy effects are part of therapeutic benefit - not a reason to dismiss"
+    ],
+    "implications": [
+      "Set realistic expectations - benefits may be subtle or partially placebo",
+      "Placebo response is still a real benefit if improving quality of life",
+      "Combine with other evidence-based practices (therapy, lifestyle changes)",
+      "Don't rely solely on microdosing as treatment for serious conditions",
+      "Self-experimentation and tracking help determine individual response"
+    ],
+    "self_blinding_option": {
+      "description": "Some individuals use self-blinding protocol (mix microdoses with placebo in identical capsules, randomize)",
+      "purpose": "Control for placebo effect and discern true drug effects",
+      "practicality": "Requires extra effort but increases scientific rigor of self-experiment"
+    }
+  },
+  "legal_and_ethical_considerations": {
+    "legal_status": {
+      "most_countries": "LSD is Schedule I (USA) or equivalent - illegal to possess, distribute, or use",
+      "exceptions": "Some jurisdictions decriminalizing or researching psychedelics",
+      "risk": "Legal consequences including arrest, prosecution, criminal record",
+      "medical_recommendation": "This protocol is for informational, educational, or research purposes in legal contexts only"
+    },
+    "sourcing_concerns": {
+      "purity": "Illicit LSD purity and dosing highly variable",
+      "safety": "Risk of adulterants, incorrect dosing, contamination",
+      "recommendation": "If legal/research setting, obtain from legitimate research chemical supplier or pharmacy; if not, test substances and use harm reduction"
+    },
+    "workplace_considerations": {
+      "drug_testing": "LSD generally not tested for in standard workplace drug screens, but specialized tests exist",
+      "impairment": "True microdose should not cause impairment, but individual responses vary",
+      "disclosure": "Consider risks/benefits of disclosing microdosing to employer"
+    }
+  },
+  "clinical_pearls": [
+    "Less is more - truly sub-perceptual dosing is the goal, not feeling 'high'",
+    "Patience required - effects are subtle and may take weeks to notice",
+    "Tracking is essential - without it, hard to discern patterns or benefits",
+    "Placebo effect is real and significant - that's okay, it's still benefit",
+    "Not a magic bullet - works best combined with therapy, lifestyle optimization, social connection",
+    "Quality and accurate dosing matter - volumetric dosing is essential",
+    "Tolerance breaks prevent receptor downregulation and allow reassessment",
+    "Individual responses vary wildly - some people benefit greatly, others not at all",
+    "Safety screening is important - psychedelics, even at low doses, are not for everyone",
+    "Integration and reflection enhance benefits - journaling, therapy, mindfulness",
+    "Legal risks are real - proceed with caution and awareness of jurisdiction",
+    "Research is still emerging - we don't have all the answers yet"
+  ]
+}

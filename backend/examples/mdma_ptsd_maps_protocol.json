@@ -1,0 +1,1229 @@
+{
+  "protocol": {
+    "name": "MDMA-Assisted Therapy for PTSD (MAPS Phase 3 Protocol)",
+    "version": "1.0",
+    "therapy_type": "mdma_psychedelic",
+    "condition_treated": "Post-Traumatic Stress Disorder (PTSD)",
+    "evidence_level": "phase_3_clinical_trial_fda_approved",
+    "overview": "FDA-approved MDMA-assisted psychotherapy protocol based on MAPS Phase 3 trials (MAPP1 and MAPP2). Combines manualized trauma-focused therapy with 3 MDMA dosing sessions for treatment of PTSD. FDA granted Breakthrough Therapy designation and approved August 2024. Represents first FDA-approved psychedelic therapy.",
+    "duration_weeks": 18,
+    "total_sessions": 18,
+    "evidence_sources": [
+      "Mitchell JM, et al. Nat Med. 2021;27(6):1025-1033 (PMID: 33972795) - MAPP1 Trial",
+      "Mithoefer MC, et al. J Psychopharmacol. 2018;32(12):1295-1307 (PMID: 30179152)",
+      "Mithoefer MC, et al. J Psychopharmacol. 2019;33(1):16-24 (PMID: 30707853)",
+      "Jerome L, et al. J Psychopharmacol. 2020;34(2):145-156 (PMID: 31884849)",
+      "MAPS Public Benefit Corporation Phase 3 Protocol (NCT03537014, NCT04077437)",
+      "FDA Approval August 11, 2024",
+      "MAPS Therapy Training Manual for MDMA-Assisted Psychotherapy"
+    ]
+  },
+  "steps": [
+    {
+      "sequence_order": 1,
+      "step_type": "screening",
+      "title": "PTSD Diagnostic Assessment & Trauma History",
+      "description": "Comprehensive PTSD diagnostic evaluation using gold-standard CAPS-5 interview to confirm diagnosis, assess symptom severity, characterize trauma history, and establish baseline.",
+      "duration_minutes": 120,
+      "required_roles": ["clinical_psychologist", "psychiatrist", "caps_trained_rater"],
+      "diagnostic_procedures": {
+        "caps_5_interview": {
+          "name": "Clinician-Administered PTSD Scale for DSM-5 (CAPS-5)",
+          "description": "Gold-standard structured interview for PTSD diagnosis and severity",
+          "duration": "45-60 minutes",
+          "administered_by": "Trained clinician/rater (separate from therapy team to reduce bias)",
+          "scoring": "0-80 scale; severity ratings for each symptom cluster",
+          "diagnostic_threshold": "CAPS-5 score ≥ 23 (moderate to severe PTSD)",
+          "symptom_clusters": [
+            "Intrusion symptoms (re-experiencing)",
+            "Avoidance",
+            "Negative alterations in cognition and mood",
+            "Alterations in arousal and reactivity"
+          ]
+        },
+        "trauma_history_assessment": [
+          "Index trauma (primary trauma being treated)",
+          "Age at index trauma",
+          "Single incident vs. complex/repeated trauma",
+          "Other traumatic events (childhood abuse, combat, assault, accidents, etc.)",
+          "Time since trauma",
+          "Previous trauma treatment and response",
+          "Current trauma triggers and avoidance patterns"
+        ]
+      },
+      "clinical_scales": [
+        "CAPS-5 (Clinician-Administered PTSD Scale) - PRIMARY OUTCOME",
+        "PCL-5 (PTSD Checklist for DSM-5) - self-report",
+        "Sheehan Disability Scale (SDS) - functional impairment",
+        "Dissociative Experiences Scale (DES)",
+        "Childhood Trauma Questionnaire (CTQ)",
+        "Beck Depression Inventory (BDI-II)",
+        "Beck Anxiety Inventory (BAI)"
+      ],
+      "inclusion_criteria": {
+        "ptsd_diagnosis": "CAPS-5 diagnosis of PTSD, score ≥ 23",
+        "chronicity": "PTSD symptoms present for ≥ 6 months",
+        "prior_treatment": "At least one prior evidence-based trauma treatment (PE, CPT, EMDR) with inadequate response (per MAPS protocol)",
+        "stability": "Stable medications (if any) for ≥ 4 weeks",
+        "age": "18-65 years (some protocols 18+)",
+        "capacity": "Able to provide informed consent and participate in therapy"
+      },
+      "documentation_requirements": {
+        "trauma_narrative": "Detailed account of index trauma and other significant traumas",
+        "symptom_timeline": "Onset, course, and fluctuations in PTSD symptoms",
+        "treatment_history": [
+          "Prior psychotherapy (types, duration, response)",
+          "Prior medications (SSRIs, SNRIs, prazosin, etc.)",
+          "Prior PTSD-focused treatments (PE, CPT, EMDR)",
+          "Reasons for treatment failure or inadequate response"
+        ],
+        "functional_impairment": [
+          "Impact on work/school",
+          "Impact on relationships",
+          "Impact on self-care and daily functioning",
+          "Avoidance behaviors and restrictions"
+        ]
+      }
+    },
+    {
+      "sequence_order": 2,
+      "step_type": "screening",
+      "title": "Medical & Psychiatric Screening",
+      "description": "Comprehensive medical and psychiatric evaluation to identify contraindications, ensure cardiovascular safety, screen for comorbidities, and assess suicide risk.",
+      "duration_minutes": 90,
+      "required_roles": ["physician", "psychiatrist"],
+      "vitals_monitoring": {
+        "required": ["blood_pressure", "heart_rate", "temperature", "weight", "height", "bmi"],
+        "cardiovascular_focus": "MDMA causes transient increases in BP and HR; baseline cardiovascular health essential"
+      },
+      "lab_tests_required": [
+        "Complete Blood Count (CBC)",
+        "Comprehensive Metabolic Panel (CMP) - liver and kidney function",
+        "Thyroid Function Tests (TSH, Free T4)",
+        "Electrocardiogram (ECG) - mandatory for all participants",
+        "Pregnancy test (for women of childbearing potential)",
+        "Urine drug screen",
+        "HIV test (if risk factors - MDMA can affect immune function)"
+      ],
+      "cardiovascular_assessment": {
+        "critical_importance": "MDMA causes dose-dependent increases in BP (20-30 mmHg) and HR (20-30 bpm) acutely",
+        "ecg_evaluation": [
+          "Rule out arrhythmias, conduction delays, ischemia",
+          "QTc interval < 450 ms (QT prolongation is relative contraindication)",
+          "No signs of structural heart disease"
+        ],
+        "blood_pressure_criteria": [
+          "Baseline BP must be < 140/90 mmHg",
+          "History of hypertension acceptable if well-controlled on medication",
+          "Uncontrolled hypertension is absolute contraindication"
+        ],
+        "cardiovascular_history": [
+          "Prior myocardial infarction",
+          "Coronary artery disease",
+          "Heart failure",
+          "Arrhythmias",
+          "Valvular disease",
+          "Congenital heart disease",
+          "Stroke or TIA",
+          "Peripheral vascular disease"
+        ]
+      },
+      "psychiatric_comorbidity_assessment": {
+        "common_comorbidities": [
+          "Major depressive disorder (very common with PTSD, not exclusionary)",
+          "Generalized anxiety disorder (common, not exclusionary)",
+          "Panic disorder (common, not exclusionary)",
+          "Substance use disorders (requires careful assessment)"
+        ],
+        "exclusionary_conditions": [
+          "Current or past psychotic disorder",
+          "Bipolar I disorder",
+          "Borderline personality disorder (relative contraindication - requires careful consideration)",
+          "Dissociative identity disorder",
+          "Active eating disorder (severe)",
+          "Active suicidal ideation with intent and plan"
+        ]
+      },
+      "substance_use_screening": {
+        "current_use_assessment": [
+          "Alcohol use (quantity, frequency, pattern)",
+          "Cannabis use",
+          "MDMA/ecstasy use history (prior exposure, reactions)",
+          "Stimulant use (cocaine, amphetamines)",
+          "Opioid use",
+          "Benzodiazepine use",
+          "Other substances"
+        ],
+        "substance_use_disorders": [
+          "Active moderate-severe SUD is exclusionary (except tobacco, caffeine)",
+          "Past SUD with ≥ 6 months sobriety acceptable",
+          "Cannabis use disorder evaluated case-by-case"
+        ],
+        "prior_mdma_use": [
+          "Not exclusionary (many PTSD patients have self-medicated with MDMA)",
+          "Important to assess prior responses (positive or negative)",
+          "Document quantity, frequency, and context of use"
+        ]
+      },
+      "suicide_risk_assessment": {
+        "tools": "Columbia-Suicide Severity Rating Scale (C-SSRS)",
+        "assessment": [
+          "Lifetime suicidal ideation and attempts",
+          "Current suicidal ideation (passive vs. active)",
+          "Intent and plan",
+          "Access to means",
+          "Protective factors",
+          "Risk factors (hopelessness, isolation, substance use)"
+        ],
+        "criteria": [
+          "Active suicidal ideation with intent and plan is exclusionary",
+          "Passive suicidal ideation or history of attempts without current intent is not exclusionary",
+          "Safety plan must be in place before enrollment"
+        ]
+      }
+    },
+    {
+      "sequence_order": 3,
+      "step_type": "decision_point",
+      "title": "Safety & Eligibility Determination",
+      "description": "Comprehensive review of all screening data to determine patient eligibility based on MAPS protocol inclusion/exclusion criteria.",
+      "duration_minutes": 45,
+      "required_roles": ["psychiatrist", "medical_director", "study_physician"],
+      "evaluation_rules": {
+        "type": "safety_assessment",
+        "absolute_contraindications": [
+          {
+            "condition": "cardiovascular_disease",
+            "criteria": "Uncontrolled hypertension (BP >140/90), recent MI (<6 months), unstable angina, significant arrhythmia, heart failure",
+            "action": "exclude_from_treatment",
+            "rationale": "MDMA acutely increases BP and HR; too risky"
+          },
+          {
+            "condition": "psychotic_disorder",
+            "criteria": "Current or past schizophrenia, schizoaffective disorder, or psychotic disorder",
+            "action": "exclude_from_treatment",
+            "rationale": "Risk of exacerbating psychosis"
+          },
+          {
+            "condition": "bipolar_i_disorder",
+            "criteria": "History of manic episodes",
+            "action": "exclude_from_treatment",
+            "rationale": "MDMA may trigger mania"
+          },
+          {
+            "condition": "seizure_disorder",
+            "criteria": "History of seizures (except childhood febrile seizures)",
+            "action": "exclude_from_treatment",
+            "rationale": "MDMA lowers seizure threshold"
+          },
+          {
+            "condition": "severe_hepatic_impairment",
+            "criteria": "Cirrhosis, hepatic failure, significantly elevated LFTs",
+            "action": "exclude_from_treatment",
+            "rationale": "MDMA metabolized by liver; risk of toxicity"
+          },
+          {
+            "condition": "pregnancy_breastfeeding",
+            "criteria": "Currently pregnant, planning pregnancy, or breastfeeding",
+            "action": "exclude_from_treatment",
+            "rationale": "Safety not established; potential neurotoxicity to fetus"
+          },
+          {
+            "condition": "active_substance_use_disorder",
+            "criteria": "Current moderate-severe SUD (except tobacco, caffeine)",
+            "action": "exclude_from_treatment",
+            "rationale": "Substance use may interfere with therapy; risk of MDMA misuse"
+          },
+          {
+            "condition": "active_suicidal_intent",
+            "criteria": "Current suicidal ideation with intent and plan",
+            "action": "exclude_from_treatment",
+            "rationale": "Requires higher level of care; safety risk"
+          }
+        ],
+        "relative_contraindications": [
+          {
+            "condition": "borderline_personality_disorder",
+            "management": "Carefully evaluate capacity for therapeutic relationship, emotional regulation, and safety; may proceed with enhanced support"
+          },
+          {
+            "condition": "dissociative_disorder",
+            "management": "Significant dissociation may complicate MDMA sessions; assess capacity to remain present; specialized training needed"
+          },
+          {
+            "condition": "controlled_hypertension",
+            "management": "Ensure excellent BP control, have rescue medications available, enhanced monitoring during sessions"
+          },
+          {
+            "condition": "depression_with_suicidal_ideation",
+            "management": "Passive ideation okay; establish safety plan; close monitoring"
+          }
+        ],
+        "medication_contraindications": [
+          {
+            "medication_class": "MAOIs",
+            "action": "Absolute contraindication; washout ≥ 14 days required",
+            "rationale": "Risk of serotonin syndrome, hypertensive crisis"
+          },
+          {
+            "medication_class": "SSRIs_SNRIs",
+            "action": "Must taper and discontinue; washout ≥ 5 half-lives before MDMA (typically 2-4 weeks)",
+            "rationale": "SSRIs block MDMA effects (diminish therapeutic response); some serotonin syndrome risk"
+          },
+          {
+            "medication_class": "lithium",
+            "action": "Discontinue with psychiatric oversight; adequate washout",
+            "rationale": "May increase seizure risk with MDMA"
+          },
+          {
+            "medication_class": "antipsychotics",
+            "action": "Typically need to discontinue (are usually prescribed for conditions that exclude patient)",
+            "rationale": "May block MDMA effects; patient likely has exclusionary diagnosis"
+          },
+          {
+            "medication_class": "benzodiazepines",
+            "action": "Taper and discontinue if possible; low-dose PRN acceptable",
+            "rationale": "May diminish MDMA therapeutic effects; available as rescue medication during sessions"
+          },
+          {
+            "medication_class": "beta_blockers",
+            "action": "Continue if for essential hypertension control",
+            "rationale": "Needed for cardiovascular safety; may slightly blunt MDMA effects"
+          }
+        ],
+        "acceptable_concomitant_medications": [
+          "Antihypertensives (if BP well-controlled)",
+          "Thyroid replacement",
+          "Non-psychiatric medications for medical conditions",
+          "PRN medications (avoid during sessions)"
+        ]
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "eligible_for_treatment",
+          "next_step": 4,
+          "description": "Patient meets all criteria, no contraindications, ready for preparation phase"
+        },
+        {
+          "outcome_id": "eligible_after_medication_taper",
+          "next_step": 4,
+          "description": "Eligible after tapering SSRIs or other interfering medications"
+        },
+        {
+          "outcome_id": "excluded_from_treatment",
+          "next_step": "exit_protocol",
+          "description": "Absolute contraindication present, refer to alternative PTSD treatments"
+        }
+      ]
+    },
+    {
+      "sequence_order": 4,
+      "step_type": "preparation",
+      "title": "Preparation Session 1 - Therapeutic Alliance & Education",
+      "description": "First of three 90-minute preparation sessions focused on establishing therapeutic alliance, educating about MDMA-assisted therapy, and beginning trauma processing in preparation for MDMA sessions.",
+      "duration_minutes": 90,
+      "required_roles": ["therapist_facilitator", "co_therapist"],
+      "therapist_team_structure": {
+        "model": "Co-therapist dyad (two therapists work together throughout protocol)",
+        "composition": "Often male-female dyad to represent diversity and provide balanced perspectives",
+        "roles": [
+          "Both therapists present for all preparation, MDMA, and integration sessions",
+          "Shared responsibility for holding safe therapeutic container",
+          "Non-directive, supportive presence during MDMA sessions",
+          "Active trauma-focused work during preparation and integration"
+        ],
+        "training": "MAPS-certified MDMA therapy training (120+ hours didactic + supervised practice)"
+      },
+      "session_structure": {
+        "rapport_building": [
+          "Introduction to both therapists and their backgrounds",
+          "Patient sharing story, trauma history, and PTSD impact",
+          "Establishing trust and safety in therapeutic relationship",
+          "Addressing any concerns or fears about treatment",
+          "Collaborative goal-setting"
+        ],
+        "education_about_mdma": [
+          "Pharmacology of MDMA (serotonin, dopamine, oxytocin release)",
+          "Expected psychological effects (empathy, openness, reduced fear, increased self-compassion)",
+          "Physical effects (increased HR/BP, jaw clenching, sweating, pupil dilation, nausea)",
+          "Timeline: onset (30-45 min), peak (2-3 hours), descent (3-4 hours), return (6-8 hours)",
+          "Safety of therapeutic MDMA vs. street ecstasy (pure, measured dose, medical monitoring)",
+          "Difference from recreational use (therapeutic setting, trauma-focused intention)",
+          "Research findings (efficacy, safety profile, FDA approval)"
+        ],
+        "therapy_framework_introduction": [
+          "Inner healing intelligence principle (trust body's innate wisdom)",
+          "Non-directive approach during MDMA sessions (therapists follow patient's process)",
+          "Importance of staying present with difficult emotions/memories",
+          "Use of music to support emotional processing",
+          "Eyeshades to enhance introspection",
+          "Physical touch only with consent (e.g., holding hand if patient requests support)"
+        ],
+        "trauma_processing_begins": [
+          "Identifying specific traumatic memories to work with",
+          "Exploring PTSD symptoms and their origins",
+          "Discussing avoidance patterns",
+          "Beginning to approach trauma material in safe, titrated way",
+          "Not full exposure therapy, but gentle engagement"
+        ],
+        "safety_and_boundaries": [
+          "Confidentiality",
+          "Consent for any physical touch during MDMA sessions",
+          "Permission to express anything without judgment",
+          "Therapists' role as non-directive guides, not directors",
+          "Safety protocols during MDMA sessions"
+        ]
+      },
+      "therapeutic_stance": {
+        "core_principles": [
+          "Non-directive: Follow patient's inner process, don't impose agenda",
+          "Inner healing intelligence: Trust patient's psyche to guide healing",
+          "Unconditional positive regard: Accept all experiences without judgment",
+          "Presence: Be fully present with whatever arises",
+          "Safety: Hold container of safety for difficult material to emerge"
+        ],
+        "therapist_guidelines": [
+          "Listen more than talk",
+          "Reflect and validate rather than interpret",
+          "Support patient going toward difficult material, not avoiding",
+          "Encourage embodiment and somatic awareness",
+          "Minimal intervention during peak MDMA effects"
+        ]
+      }
+    },
+    {
+      "sequence_order": 5,
+      "step_type": "preparation",
+      "title": "Preparation Session 2 - Deepening Trauma Work",
+      "description": "Second preparation session continuing trauma processing, deepening therapeutic relationship, and further preparing for MDMA experience.",
+      "duration_minutes": 90,
+      "required_roles": ["therapist_facilitator", "co_therapist"],
+      "session_structure": {
+        "trauma_exploration": [
+          "Exploring specific traumatic memories in more detail",
+          "Identifying triggers, flashbacks, and avoidance patterns",
+          "Processing emotions related to trauma (guilt, shame, anger, grief)",
+          "Cognitive processing (beliefs about self, world, safety)",
+          "Beginning to build capacity to stay present with trauma material"
+        ],
+        "mdma_session_preparation": [
+          "Discussing intentions for first MDMA session",
+          "What do you hope to work on?",
+          "Fears or concerns about MDMA experience?",
+          "Revisiting set and setting concepts",
+          "Practicing with eyeshades and music (optional)"
+        ],
+        "building_trust_surrender": [
+          "Practicing letting go of control",
+          "Trusting therapists and process",
+          "Trusting inner healing intelligence",
+          "Normalizing vulnerability and emotional expression"
+        ],
+        "somatic_awareness": [
+          "Tuning into body sensations",
+          "Noticing where trauma is held in body",
+          "Breathwork and grounding techniques",
+          "Building somatic resources"
+        ]
+      }
+    },
+    {
+      "sequence_order": 6,
+      "step_type": "preparation",
+      "title": "Preparation Session 3 - Final Preparation",
+      "description": "Third and final preparation session before first MDMA session. Final trauma processing, intention setting, and practical preparation for MDMA day.",
+      "duration_minutes": 90,
+      "required_roles": ["therapist_facilitator", "co_therapist"],
+      "session_structure": {
+        "final_trauma_processing": [
+          "Any remaining trauma material to explore before MDMA session",
+          "Identifying specific memories or themes to work with during MDMA",
+          "Building confidence in ability to stay present with difficulty"
+        ],
+        "intention_setting": [
+          "Articulating intentions for MDMA session",
+          "What healing are you seeking?",
+          "What do you need to face or release?",
+          "Balancing specific intentions with openness to what emerges"
+        ],
+        "practical_preparation": [
+          "Review of MDMA session timeline and structure",
+          "What to wear (comfortable clothing)",
+          "What to eat (light breakfast, NPO 4 hours before)",
+          "Arrive rested and prepared",
+          "Transportation arranged (cannot drive after session)",
+          "Clear schedule for day of and day after"
+        ],
+        "informed_consent_review": [
+          "Re-confirm understanding of MDMA effects, risks, benefits",
+          "Opportunity to ask final questions",
+          "Consent to proceed with MDMA dosing"
+        ],
+        "therapeutic_relationship_check": [
+          "Feeling safe and trusting of therapy team?",
+          "Any lingering concerns or hesitations?",
+          "Reinforcement of unconditional support"
+        ]
+      }
+    },
+    {
+      "sequence_order": 7,
+      "step_type": "decision_point",
+      "title": "MDMA Dose Determination",
+      "description": "Clinical decision-making to determine MDMA dose based on MAPS protocol, patient factors, and safety considerations.",
+      "duration_minutes": 15,
+      "required_roles": ["psychiatrist", "study_physician"],
+      "evaluation_rules": {
+        "type": "dose_calculation",
+        "maps_dosing_protocol": {
+          "initial_dose": "80-120 mg MDMA (as MDMA hydrochloride)",
+          "supplemental_dose": "40-60 mg (half of initial dose) given 1.5-2 hours after initial dose",
+          "standard_protocol": "120 mg initial + 60 mg supplemental (most common in Phase 3 trials)",
+          "total_session_dose": "120-180 mg cumulative"
+        },
+        "dose_selection_factors": [
+          {
+            "factor": "body_weight",
+            "consideration": "MAPS used fixed dosing (not mg/kg), but weight is consideration",
+            "ranges": [
+              {"weight": "<60 kg", "recommendation": "80 mg + 40 mg (lower end)"},
+              {"weight": "60-90 kg", "recommendation": "120 mg + 60 mg (standard)"},
+              {"weight": ">90 kg", "recommendation": "120 mg + 60 mg (standard; rarely higher)"}
+            ]
+          },
+          {
+            "factor": "prior_mdma_experience",
+            "naive": "Standard dose 120+60 mg (naivety not a reason to reduce)",
+            "experienced": "Standard dose; tolerance unlikely if abstinent",
+            "adverse_reaction_history": "Consider lower initial dose (80-100 mg)"
+          },
+          {
+            "factor": "anxiety_sensitivity",
+            "high_anxiety": "Some clinicians start lower (80-100 mg) for highly anxious patients, but MAPS protocol used standard dosing",
+            "standard_approach": "120 mg + 60 mg regardless of anxiety"
+          },
+          {
+            "factor": "cardiovascular_considerations",
+            "controlled_hypertension": "Standard dose with enhanced monitoring",
+            "borderline_cardiovascular": "Consider 80-100 mg initial dose"
+          },
+          {
+            "factor": "age",
+            "older_adults": "May use lower end (80-100 mg) for age >60, though MAPS trials capped at 65"
+          }
+        ],
+        "session_2_and_3_dosing": {
+          "approach": "Can adjust based on Session 1 response",
+          "if_session_1_well_tolerated_good_response": "Same dose (120+60 mg)",
+          "if_session_1_insufficient_effect": "Increase initial dose to 120 mg (if was lower) or maintain",
+          "if_session_1_poorly_tolerated": "Reduce dose (100+50 mg or 80+40 mg)",
+          "typical": "Most patients receive same dose for all 3 sessions"
+        }
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "standard_dose_120_60",
+          "next_step": 8,
+          "description": "MAPS standard: 120 mg initial + 60 mg supplemental"
+        },
+        {
+          "outcome_id": "lower_dose_80_40",
+          "next_step": 8,
+          "description": "Conservative dosing: 80 mg + 40 mg for smaller/anxious/cautious patients"
+        },
+        {
+          "outcome_id": "higher_dose_120_60_max",
+          "next_step": 8,
+          "description": "Maximum tested dose in trials"
+        }
+      ]
+    },
+    {
+      "sequence_order": 8,
+      "step_type": "intervention",
+      "title": "MDMA Session 1 - First Experimental Session",
+      "description": "Full-day MDMA-assisted therapy session (8-10 hours). Administration of MDMA in safe therapeutic setting with continuous psychological support and medical monitoring. Trauma processing facilitated by MDMA's empathogenic and fear-reducing effects.",
+      "duration_minutes": 480,
+      "required_roles": ["therapist_facilitator", "co_therapist", "physician_on_call", "nurse"],
+      "pre_session_procedures": {
+        "arrival": {
+          "time": "Morning, typically 9-10 AM",
+          "activities": [
+            "Greeting by therapy team",
+            "Brief check-in (how are you feeling, sleep, readiness)",
+            "Settling into therapy room",
+            "Review of intentions"
+          ]
+        },
+        "baseline_assessments": {
+          "vitals": "Blood pressure, heart rate, temperature, weight",
+          "psychological": "Brief mood and anxiety check, suicidal ideation screening",
+          "medical_clearance": "Physician confirms patient medically stable for MDMA",
+          "pregnancy_test": "If applicable (must be negative)"
+        },
+        "informed_consent": "Final confirmation of consent to proceed"
+      },
+      "session_environment": {
+        "room_setup": [
+          "Comfortable, living room-like setting",
+          "Futon or daybed with pillows and blankets",
+          "Soft, warm lighting",
+          "Aesthetic, calming decor (plants, art)",
+          "Bathroom nearby",
+          "Privacy and quiet"
+        ],
+        "sensory_elements": [
+          "Curated music playlist (6-8 hours) - key therapeutic element",
+          "Eyeshades (encourage introspection)",
+          "Tissues readily available",
+          "Water and light snacks available",
+          "Fresh flowers or natural elements"
+        ],
+        "therapist_positioning": "Both therapists seated near patient, attentive but not intrusive"
+      },
+      "mdma_administration": {
+        "timing": "Approximately 10:00 AM",
+        "initial_dose": "80-120 mg MDMA hydrochloride in gelatin capsule",
+        "administration": "Oral with water",
+        "supplemental_dose": {
+          "dose": "40-60 mg (half of initial dose)",
+          "timing": "1.5 to 2 hours after initial dose (typically when effects peaking)",
+          "rationale": "Extends therapeutic window without excessive peak intensity",
+          "patient_choice": "Patient can decline supplemental dose if desired"
+        }
+      },
+      "session_timeline": {
+        "onset_phase": {
+          "timeframe": "T+0 to T+45 minutes",
+          "patient_experience": "Gradual onset; possible initial anxiety, nausea, temperature changes; beginning to feel effects",
+          "therapist_actions": [
+            "Calm, supportive presence",
+            "Encourage patient to lie back, use eyeshades, listen to music",
+            "Reassurance if anxiety arises",
+            "Minimal talking - allow patient to turn inward",
+            "Check-ins: 'How are you feeling?'"
+          ],
+          "vitals": "Blood pressure, heart rate, temperature at T+30 min"
+        },
+        "ascent_phase": {
+          "timeframe": "T+45 to T+90 minutes",
+          "patient_experience": "Effects intensifying; increased empathy, openness, reduced fear; trauma material may begin emerging",
+          "therapist_actions": [
+            "Continue non-directive presence",
+            "If patient speaks, listen attentively and reflect",
+            "Gentle encouragement to stay with whatever arises",
+            "Do not direct toward specific content - follow patient's process",
+            "Music continues as primary guide"
+          ],
+          "vitals": "BP, HR, temp at T+60 min and T+90 min"
+        },
+        "peak_phase": {
+          "timeframe": "T+90 to T+240 minutes (1.5 to 4 hours)",
+          "patient_experience": "Peak MDMA effects; profound empathy, self-compassion, ability to approach trauma without overwhelming fear; trauma processing often happens here; emotional release, insights, reframing",
+          "therapist_actions": [
+            "Remain quietly present, both therapists in room",
+            "Non-directive support - patient leads content",
+            "Active listening if patient sharing trauma material",
+            "Reflection, validation, gentle questions: 'What's that like for you?', 'What do you need right now?'",
+            "Support emotional expression (crying, anger, grief) without judgment",
+            "Encourage staying present: 'Stay with it', 'You're safe'",
+            "Physical comfort if requested (hand holding, tissue, blanket)",
+            "Somatic awareness: 'Where do you feel that in your body?'",
+            "Respect silence - not all moments need words"
+          ],
+          "supplemental_dose": "Offered at T+90-120 min (1.5-2 hours)",
+          "vitals": "BP, HR, temp every 60 minutes (T+120, T+180, T+240)",
+          "trauma_processing": {
+            "typical_patterns": [
+              "Revisiting traumatic memories with reduced fear",
+              "Experiencing self-compassion and forgiveness",
+              "Releasing shame and guilt",
+              "Connecting trauma to current symptoms",
+              "Reframing traumatic experience",
+              "Expressing emotions that were suppressed",
+              "Somatic release of trauma held in body"
+            ],
+            "therapist_facilitation": [
+              "Encourage staying with memory/emotion rather than avoiding",
+              "Help patient notice somatic sensations",
+              "Validate all experiences and emotions",
+              "Provide grounding if patient becomes overwhelmed (but trust process)",
+              "Minimal interpretation - let patient derive own meaning"
+            ]
+          }
+        },
+        "descent_phase": {
+          "timeframe": "T+240 to T+360 minutes (4 to 6 hours)",
+          "patient_experience": "MDMA effects gradually diminishing; integration beginning; may feel peaceful, tired, emotionally open",
+          "therapist_actions": [
+            "Continue supportive presence",
+            "Begin gentle check-ins and integration conversation",
+            "What stands out from your experience?",
+            "Encourage patient to express insights or realizations",
+            "Help patient begin making sense of experience",
+            "Support any continued emotional processing"
+          ],
+          "vitals": "BP, HR, temp at T+300 and T+360"
+        },
+        "return_and_integration": {
+          "timeframe": "T+360 to T+480 minutes (6 to 8 hours)",
+          "patient_experience": "Mostly returned to baseline; reflective, often peaceful; emotionally tender",
+          "therapist_actions": [
+            "Integration conversation about session",
+            "What did you learn or realize?",
+            "How do you feel about the trauma now?",
+            "What shifted or changed?",
+            "Normalizing tiredness and emotional openness",
+            "Encouragement and affirmation of work done",
+            "Preparing for evening and next day"
+          ],
+          "vitals": "Final BP, HR, temp before discharge",
+          "discharge_criteria": [
+            "Vital signs near baseline (BP <140/90, HR <100)",
+            "Patient alert, oriented, communicative",
+            "Emotionally stable (not in acute distress)",
+            "Safe transportation home with responsible adult",
+            "Understanding of post-session care instructions"
+          ]
+        }
+      },
+      "vitals_monitoring": {
+        "required": ["blood_pressure", "heart_rate", "temperature", "respiratory_rate"],
+        "frequency": "Every 30-60 minutes throughout session, more frequent if concerns",
+        "alert_parameters": {
+          "systolic_bp": "> 180 mmHg or < 90 mmHg",
+          "diastolic_bp": "> 110 mmHg",
+          "heart_rate": "> 120 bpm or < 50 bpm",
+          "temperature": "> 38.5°C (101.3°F)",
+          "action_if_abnormal": "Physician evaluation, consider rescue medications, possible session interruption"
+        },
+        "typical_mdma_effects": "BP increase 20-30 mmHg, HR increase 20-30 bpm, temp increase 0.5-1°C - monitor but expected"
+      },
+      "rescue_medications_available": {
+        "benzodiazepine": {
+          "medication": "Lorazepam 1-2 mg PO or IM",
+          "indication": "Severe anxiety, panic, or hypertension not responding to reassurance",
+          "note": "Use sparingly - may interfere with therapeutic process"
+        },
+        "antihypertensive": {
+          "medication": "Labetalol 10-20 mg IV or nifedipine 10 mg SL",
+          "indication": "Severe hypertension (SBP >200 or DBP >120) or symptomatic",
+          "note": "Rare need in healthy patients"
+        },
+        "antiemetic": {
+          "medication": "Ondansetron 4-8 mg IV/PO",
+          "indication": "Nausea or vomiting",
+          "note": "Can give prophylactically if patient prone to nausea"
+        }
+      },
+      "post_session_care": {
+        "evening_instructions": [
+          "Rest at home with trusted person present overnight",
+          "Light, healthy dinner",
+          "Journaling encouraged but optional",
+          "No alcohol or recreational drugs",
+          "Early bedtime (MDMA can interfere with sleep initially)",
+          "Hydration",
+          "Self-compassion and gentleness with self",
+          "Contact emergency number if any concerns"
+        ],
+        "common_post_session_experiences": [
+          "Tiredness, need for rest",
+          "Emotional openness, vulnerability",
+          "Sense of peace or clarity",
+          "Some patients feel 'afterglow' for days",
+          "Some patients feel mild 'comedown' (low mood, fatigue) days 2-5 - normalize and reassure"
+        ],
+        "next_day": "Integration session scheduled (typically 10-11 AM following morning)"
+      }
+    },
+    {
+      "sequence_order": 9,
+      "step_type": "followup",
+      "title": "Integration Session 1 - Day After MDMA Session 1",
+      "description": "Critical integration session occurring morning after MDMA session to process experience, capture insights, solidify trauma processing, and address emotional responses.",
+      "duration_minutes": 90,
+      "required_roles": ["therapist_facilitator", "co_therapist"],
+      "session_structure": {
+        "check_in": [
+          "How did you sleep?",
+          "How do you feel this morning (physically, emotionally)?",
+          "Any lingering effects?",
+          "Overall sense of yesterday's experience?"
+        ],
+        "experience_review": [
+          "Open invitation to share about MDMA session",
+          "Timeline of experience - what happened when",
+          "Traumatic memories that emerged",
+          "Emotions experienced",
+          "Physical sensations and somatic experiences",
+          "Insights or realizations",
+          "Challenging moments and how they were navigated",
+          "Peak moments or breakthroughs"
+        ],
+        "trauma_processing_integration": [
+          "How do you feel about the trauma now compared to before?",
+          "Any shifts in perspective or understanding?",
+          "Beliefs about self, safety, or world that changed?",
+          "Shame, guilt, or self-blame - any movement?",
+          "Forgiveness (of self or others)?",
+          "Meaning-making about traumatic experience"
+        ],
+        "insight_consolidation": [
+          "What did you learn or realize?",
+          "What messages or themes emerged?",
+          "Connections between trauma and current symptoms?",
+          "Parts of yourself that you reconnected with?",
+          "Resources or strengths you discovered?"
+        ],
+        "emotional_processing": [
+          "What emotions are present now?",
+          "Grief, relief, anger, peace, confusion?",
+          "Validating and normalizing all responses",
+          "Supporting continued emotional expression if needed"
+        ],
+        "somatic_integration": [
+          "How does your body feel?",
+          "Any shifts in where you hold trauma in body?",
+          "Somatic release or relaxation noticed?"
+        ]
+      },
+      "clinical_monitoring": {
+        "ptsd_symptoms": "Brief check on current PTSD symptoms - any immediate changes?",
+        "mood": "Depression, anxiety levels",
+        "suicidal_ideation": "Safety check (C-SSRS)",
+        "adverse_effects": "Any concerning psychological or physical effects"
+      },
+      "homework": [
+        "Continue journaling about experience and insights",
+        "Noticing any shifts in PTSD symptoms, triggers, or avoidance",
+        "Self-care and gentleness with self",
+        "Staying connected to insights from session"
+      ]
+    },
+    {
+      "sequence_order": 10,
+      "step_type": "followup",
+      "title": "Integration Sessions 2-3 (Weeks Following MDMA 1)",
+      "description": "Two additional integration sessions in weeks following first MDMA session to continue processing trauma, consolidate gains, and prepare for second MDMA session.",
+      "duration_minutes": 90,
+      "required_roles": ["therapist_facilitator", "co_therapist"],
+      "session_focus": [
+        "Continued trauma processing building on MDMA session",
+        "Deepening insights and realizations from MDMA experience",
+        "Addressing trauma material that emerged or remains",
+        "Monitoring PTSD symptoms - tracking changes",
+        "Addressing avoidance and facilitating approach",
+        "Cognitive processing - challenging trauma-related beliefs",
+        "Preparing for second MDMA session - what still needs to be addressed?"
+      ],
+      "typical_timeline": "Week 2 and Week 3-4 after MDMA Session 1",
+      "clinical_monitoring": {
+        "scales": "PHQ-9, GAD-7, PCL-5 (PTSD symptoms)",
+        "ptsd_trajectory": "Are symptoms improving, stable, or worsening?",
+        "safety": "Suicidal ideation, self-harm, substance use",
+        "functioning": "Work, relationships, self-care"
+      }
+    },
+    {
+      "sequence_order": 11,
+      "step_type": "intervention",
+      "title": "MDMA Session 2 - Second Experimental Session",
+      "description": "Second full-day MDMA session, typically 3-5 weeks after Session 1. Same protocol structure, deepening trauma processing and consolidating therapeutic gains.",
+      "duration_minutes": 480,
+      "required_roles": ["therapist_facilitator", "co_therapist", "physician_on_call", "nurse"],
+      "session_notes": {
+        "timing": "Typically 3-5 weeks after first MDMA session (per MAPS protocol)",
+        "dose": "Same as Session 1 unless adjustment indicated (typically 120 mg + 60 mg)",
+        "structure": "Identical to Session 1 (same timeline, monitoring, therapeutic approach)",
+        "focus": [
+          "Often deeper trauma processing in second session",
+          "Building on work from first session",
+          "Addressing trauma material that wasn't fully processed first time",
+          "Consolidating insights and healing",
+          "Many patients report second session is most profound"
+        ],
+        "common_patterns": [
+          "Reduced anxiety going into session (know what to expect)",
+          "Deeper trust in therapists and process",
+          "Ability to go further into traumatic material",
+          "More somatic release and emotional expression",
+          "Integration of dissociated trauma fragments"
+        ]
+      },
+      "vitals_monitoring": "Same as Session 1 - every 30-60 minutes",
+      "same_day_integration": "Brief integration at end of session",
+      "next_day_integration": "Integration session scheduled for following morning"
+    },
+    {
+      "sequence_order": 12,
+      "step_type": "followup",
+      "title": "Integration Sessions After MDMA 2 (3 sessions)",
+      "description": "Three integration sessions in weeks following second MDMA session. Continued trauma processing, symptom monitoring, and preparation for third session.",
+      "duration_minutes": 90,
+      "required_roles": ["therapist_facilitator", "co_therapist"],
+      "session_focus": [
+        "Processing second MDMA experience",
+        "Comparing first and second sessions - patterns or differences",
+        "Continued trauma-focused therapy",
+        "PTSD symptom monitoring and management",
+        "Functional improvement - returning to avoided situations",
+        "Preparing for final MDMA session",
+        "Identifying remaining trauma work"
+      ],
+      "timing": "Weeks 6-8 (approximately)",
+      "clinical_scales": "PHQ-9, GAD-7, PCL-5 mid-treatment"
+    },
+    {
+      "sequence_order": 13,
+      "step_type": "intervention",
+      "title": "MDMA Session 3 - Third and Final Experimental Session",
+      "description": "Third and final MDMA session, typically 3-5 weeks after Session 2 (around Week 9-10 of protocol). Consolidation of trauma processing and therapeutic gains.",
+      "duration_minutes": 480,
+      "required_roles": ["therapist_facilitator", "co_therapist", "physician_on_call", "nurse"],
+      "session_notes": {
+        "timing": "Typically 3-5 weeks after second MDMA session",
+        "dose": "Same as prior sessions unless adjustment indicated",
+        "structure": "Same as Sessions 1 and 2",
+        "focus": [
+          "Final trauma processing",
+          "Consolidation of healing",
+          "Integration of all three MDMA experiences",
+          "Often sense of completion or closure",
+          "Preparing for life without continued MDMA sessions",
+          "Strengthening insights and changes"
+        ],
+        "common_patterns": [
+          "Third session often feels integrative rather than opening new material",
+          "Sense of completion or resolution",
+          "Increased self-compassion and forgiveness",
+          "Reconnection with parts of self lost to trauma",
+          "Hope and readiness to move forward"
+        ]
+      }
+    },
+    {
+      "sequence_order": 14,
+      "step_type": "followup",
+      "title": "Integration Sessions After MDMA 3 (3 sessions)",
+      "description": "Three final integration sessions following third MDMA session. Focus shifts to consolidating gains, relapse prevention, and preparing for treatment termination.",
+      "duration_minutes": 90,
+      "required_roles": ["therapist_facilitator", "co_therapist"],
+      "session_focus": [
+        "Integration of third MDMA session",
+        "Reflection on entire treatment experience (all 3 MDMA sessions)",
+        "What changed? What was learned?",
+        "PTSD symptom review - comparing to baseline",
+        "Functional improvement - work, relationships, quality of life",
+        "Relapse prevention planning",
+        "Triggers and coping strategies",
+        "Ongoing therapy or support needs",
+        "Preparing for termination of MAPS protocol",
+        "Celebration of healing and growth"
+      ],
+      "timing": "Weeks 11-15",
+      "clinical_monitoring": {
+        "scales": "PHQ-9, GAD-7, PCL-5, functional measures",
+        "symptom_tracking": "PTSD symptoms compared to baseline and mid-treatment",
+        "safety": "Ongoing suicidal ideation screening, substance use"
+      }
+    },
+    {
+      "sequence_order": 15,
+      "step_type": "followup",
+      "title": "End of Treatment CAPS-5 Assessment (Week 18)",
+      "description": "Comprehensive CAPS-5 assessment by independent rater at Week 18 (primary endpoint) to evaluate PTSD symptom change from baseline. This is the primary outcome measure for FDA approval.",
+      "duration_minutes": 90,
+      "required_roles": ["independent_caps_rater", "psychiatrist"],
+      "assessment_components": {
+        "caps_5_interview": {
+          "administered_by": "Independent rater (blind to treatment condition in trials; not therapy team to reduce bias)",
+          "purpose": "Assess PTSD symptom severity at end of treatment",
+          "comparison": "Compare to baseline CAPS-5 score",
+          "primary_outcome": "Change in CAPS-5 total score from baseline to Week 18"
+        },
+        "response_and_remission_criteria": {
+          "response": "CAPS-5 score reduction ≥ 10 points from baseline OR loss of PTSD diagnosis",
+          "remission": "No longer meets CAPS-5 criteria for PTSD (score typically <20)",
+          "maps_phase_3_results": {
+            "mapp1_trial": "71% of MDMA group no longer met PTSD criteria vs. 48% placebo (with therapy)",
+            "mapp2_trial": "86% of MDMA group achieved clinically significant benefit"
+          }
+        }
+      },
+      "clinical_scales": [
+        "CAPS-5 (primary)",
+        "PCL-5",
+        "Sheehan Disability Scale",
+        "PHQ-9",
+        "GAD-7",
+        "Clinical Global Impression - Improvement (CGI-I)",
+        "Patient Global Impression of Change (PGIC)",
+        "Quality of life measures"
+      ]
+    },
+    {
+      "sequence_order": 16,
+      "step_type": "followup",
+      "title": "Final Therapy Session & Termination Planning",
+      "description": "Final session with therapy team to review outcomes, celebrate progress, plan for ongoing care, and say goodbye to therapeutic relationship.",
+      "duration_minutes": 120,
+      "required_roles": ["therapist_facilitator", "co_therapist", "psychiatrist"],
+      "session_structure": {
+        "outcome_review": [
+          "Review CAPS-5 results and clinical assessment",
+          "Discussion of symptom changes",
+          "Functional improvement",
+          "Quality of life changes",
+          "What changed, what remains to work on"
+        ],
+        "reflection_on_treatment": [
+          "Reflecting on entire 18-week journey",
+          "Most meaningful moments or sessions",
+          "What was learned about self, trauma, healing",
+          "How MDMA sessions contributed to healing",
+          "Role of therapeutic relationship",
+          "What helped, what was challenging"
+        ],
+        "ongoing_care_planning": {
+          "if_in_remission": [
+            "Relapse prevention plan",
+            "Early warning signs of PTSD symptom return",
+            "Coping strategies and resources",
+            "When to seek help",
+            "Ongoing therapy recommendation (continued processing, life transitions)",
+            "Possible booster MDMA session in future if needed (6-12 months)"
+          ],
+          "if_partial_response": [
+            "Continued trauma-focused therapy (PE, CPT, EMDR)",
+            "Medication consideration",
+            "Possible additional MDMA sessions (per protocol or off-label)",
+            "Intensive therapy programs",
+            "Support groups"
+          ],
+          "if_non_response": [
+            "Alternative treatments (different trauma therapy, medications, intensive programs)",
+            "Evaluation of barriers to treatment",
+            "Ongoing psychiatric care",
+            "Safety planning if needed"
+          ]
+        },
+        "termination_processing": [
+          "Saying goodbye to therapy team",
+          "Processing ending of this intense therapeutic relationship",
+          "Gratitude and appreciation (mutual)",
+          "Acknowledging patient's courage and hard work",
+          "Celebration of healing"
+        ]
+      }
+    }
+  ],
+  "ongoing_monitoring": {
+    "follow_up_assessments": {
+      "one_month_post_treatment": {
+        "timing": "Week 22 (1 month after Week 18 endpoint)",
+        "scales": "CAPS-5, PCL-5, functional measures",
+        "purpose": "Assess durability of response"
+      },
+      "two_months_post_treatment": {
+        "timing": "Week 26",
+        "scales": "CAPS-5, PCL-5, safety monitoring",
+        "purpose": "Continued durability assessment"
+      },
+      "twelve_months_post_treatment": {
+        "timing": "1 year after treatment completion",
+        "scales": "Full CAPS-5, comprehensive assessment",
+        "purpose": "Long-term outcome evaluation (MAPS trials tracked to 12 months)",
+        "maps_findings": "Most patients maintained improvement at 12-month follow-up"
+      }
+    },
+    "booster_sessions": {
+      "indication": "PTSD symptom re-emergence after initial response",
+      "timing": "Not before 6 months after final MDMA session",
+      "protocol": "1-2 preparation sessions + MDMA session + integration sessions",
+      "evidence": "Some patients benefit from occasional booster sessions; individualized decision"
+    }
+  },
+  "safety_monitoring": {
+    "absolute_contraindications": [
+      "Uncontrolled hypertension or significant cardiovascular disease",
+      "Psychotic disorder (current or past)",
+      "Bipolar I disorder",
+      "Seizure disorder",
+      "Severe hepatic impairment",
+      "Pregnancy or breastfeeding",
+      "Active moderate-severe substance use disorder",
+      "MAOI use (within 2 weeks)",
+      "Active suicidal intent with plan"
+    ],
+    "relative_contraindications": [
+      "Borderline personality disorder (requires careful evaluation)",
+      "Dissociative disorders",
+      "Controlled hypertension on medication",
+      "Depression with passive suicidal ideation"
+    ],
+    "adverse_effects_monitoring": [
+      {
+        "effect": "Cardiovascular (elevated BP/HR)",
+        "frequency": "Universal during MDMA sessions",
+        "management": "Monitor closely, rescue medications if severe",
+        "duration": "During session, resolves within hours"
+      },
+      {
+        "effect": "Jaw clenching, bruxism",
+        "frequency": "Very common (50-70%)",
+        "management": "Magnesium supplementation, jaw massage, mouth guard",
+        "duration": "During session and potentially 1-2 days after"
+      },
+      {
+        "effect": "Nausea",
+        "frequency": "Common (20-40%)",
+        "management": "Ondansetron prophylaxis or treatment",
+        "duration": "During onset and peak, usually resolves"
+      },
+      {
+        "effect": "Hyperthermia (increased body temperature)",
+        "frequency": "Mild elevation common",
+        "management": "Monitor temperature, cooling measures, hydration",
+        "duration": "During session"
+      },
+      {
+        "effect": "Mydriasis (pupil dilation)",
+        "frequency": "Universal",
+        "management": "Benign, no intervention needed",
+        "duration": "During and several hours after session"
+      },
+      {
+        "effect": "Emotional lability, crying",
+        "frequency": "Very common (part of therapeutic process)",
+        "management": "Therapeutic support, validation",
+        "duration": "During session and days after"
+      },
+      {
+        "effect": "Mid-week 'comedown' (low mood, fatigue)",
+        "frequency": "Common (30-50%), typically days 2-5 post-session",
+        "management": "Normalize, reassure, self-care, usually mild and self-limiting",
+        "duration": "2-5 days, resolves spontaneously"
+      },
+      {
+        "effect": "Insomnia (night of MDMA session)",
+        "frequency": "Common (40-60%)",
+        "management": "Expected, sleep hygiene, may offer short-acting sleep aid",
+        "duration": "1-2 nights"
+      },
+      {
+        "effect": "Increased PTSD symptoms (temporary)",
+        "frequency": "Occasional (10-20%) - trauma processing can temporarily increase symptoms",
+        "management": "Increased support, integration therapy, normalize as part of healing",
+        "duration": "Days to weeks, typically improves with integration"
+      },
+      {
+        "effect": "Liver enzyme elevation",
+        "frequency": "Rare with therapeutic dosing",
+        "management": "Monitor LFTs at baseline and if concerns; dose reduction or discontinuation",
+        "duration": "Variable"
+      },
+      {
+        "effect": "Serotonin syndrome",
+        "frequency": "Very rare (requires combination with serotonergic drugs)",
+        "management": "Medication washout pre-treatment, avoid combining with SSRIs/MAOIs",
+        "duration": "Acute, requires emergency treatment"
+      }
+    ],
+    "long_term_safety": {
+      "neurotoxicity_concerns": {
+        "background": "High-dose, frequent recreational MDMA use associated with serotonergic neurotoxicity in animal studies",
+        "therapeutic_dosing": "Limited evidence of neurotoxicity with 3 therapeutic sessions at moderate doses",
+        "maps_findings": "No evidence of cognitive decline or neurotoxicity in Phase 2/3 trials",
+        "monitoring": "Cognitive function assessed pre/post treatment; no impairment found"
+      },
+      "abuse_potential": {
+        "risk": "MDMA has abuse potential (Schedule I/Class A)",
+        "therapeutic_context": "Very low abuse risk in controlled therapeutic setting with trauma focus",
+        "maps_trials": "No cases of MDMA abuse or misuse in trials",
+        "safeguards": "Limited number of sessions, no take-home MDMA, therapeutic container"
+      }
+    }
+  },
+  "special_populations": {
+    "complex_ptsd": {
+      "considerations": [
+        "Childhood trauma, developmental trauma, repeated trauma",
+        "May require more sessions or ongoing therapy",
+        "Strong therapeutic relationship essential",
+        "May have more dissociation - therapist training important",
+        "MAPS trials included complex PTSD - effective"
+      ]
+    },
+    "comorbid_depression": {
+      "considerations": [
+        "Very common with PTSD (not exclusionary)",
+        "MDMA therapy often improves depression along with PTSD",
+        "Monitor mood throughout treatment",
+        "May need antidepressant washout pre-MDMA"
+      ]
+    },
+    "veterans_and_military": {
+      "considerations": [
+        "Combat trauma common indication",
+        "May have complex/repeated trauma, moral injury",
+        "Strong evidence of benefit in veteran populations",
+        "Culturally sensitive approach important",
+        "VA and DOD exploring MDMA therapy implementation"
+      ]
+    },
+    "sexual_assault_survivors": {
+      "considerations": [
+        "Trauma-informed, gender-sensitive approach essential",
+        "Therapy team gender composition may matter (patient choice)",
+        "Consent and boundaries particularly important",
+        "Strong evidence of benefit for sexual trauma PTSD",
+        "May have complex trauma, shame, dissociation"
+      ]
+    },
+    "first_responders": {
+      "considerations": [
+        "Repeated trauma exposure, critical incidents",
+        "Occupational stigma around mental health treatment",
+        "Peer support important",
+        "MAPS trials included first responders successfully"
+      ]
+    }
+  },
+  "therapist_training_requirements": {
+    "maps_certification": {
+      "required": "MAPS-certified MDMA therapy training for therapists conducting FDA-approved treatment",
+      "components": [
+        "120+ hours didactic training",
+        "Experiential learning (some programs include therapist's own psychedelic experience)",
+        "Supervised practice sessions",
+        "Ongoing supervision and consultation",
+        "Understanding of trauma, PTSD, psychedelic pharmacology, inner healing intelligence model"
+      ]
+    },
+    "core_competencies": [
+      "Trauma-focused therapy skills",
+      "Non-directive, client-centered approach",
+      "Comfort with intense emotional expression",
+      "Ability to hold space without imposing agenda",
+      "Crisis management and grounding techniques",
+      "Somatic awareness and body-based interventions",
+      "Co-therapy dyad collaboration",
+      "Cultural humility and sensitivity"
+    ]
+  },
+  "clinical_pearls": [
+    "Therapeutic relationship is foundation - invest in preparation phase",
+    "Non-directive approach during MDMA sessions allows patient's inner healing intelligence to guide",
+    "Music is a key therapeutic element - carefully curated playlists guide emotional journey",
+    "MDMA creates window of optimal arousal - not too numb, not too overwhelmed - to approach trauma",
+    "Integration therapy is where healing is consolidated - MDMA opens door, therapy walks through it",
+    "Three sessions is protocol standard, but some patients benefit from more or fewer",
+    "Safety screening is paramount - cardiovascular and psychiatric contraindications must be respected",
+    "Mid-week 'comedown' is common and self-limiting - normalize and support patients through it",
+    "Trauma processing can temporarily increase symptoms - part of healing, not treatment failure",
+    "Most patients maintain gains long-term (12+ months) - durable treatment for chronic PTSD",
+    "FDA approval makes this first-line option for treatment-resistant PTSD",
+    "Co-therapy dyad provides safety, support, and balanced perspectives throughout treatment"
+  ]
+}

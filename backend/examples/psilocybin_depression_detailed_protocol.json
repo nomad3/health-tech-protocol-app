@@ -1,0 +1,1057 @@
+{
+  "protocol": {
+    "name": "Psilocybin-Assisted Therapy for Treatment-Resistant Depression",
+    "version": "1.0",
+    "therapy_type": "psilocybin_psychedelic",
+    "condition_treated": "Treatment-Resistant Depression (TRD)",
+    "evidence_level": "phase_3_clinical_trial",
+    "overview": "Evidence-based psilocybin-assisted psychotherapy protocol based on COMP360 Phase 3 trials and Johns Hopkins University research. Integrates psychological support with controlled psilocybin administration for major depressive disorder unresponsive to at least two prior antidepressant trials.",
+    "duration_weeks": 12,
+    "total_sessions": 15,
+    "evidence_sources": [
+      "Goodwin GM, et al. N Engl J Med. 2022;387(18):1637-1648 (PMID: 36322843)",
+      "Davis AK, et al. JAMA Psychiatry. 2021;78(5):481-489 (PMID: 33146667)",
+      "Johnson MW, et al. J Psychopharmacol. 2008;22(6):603-620 (PMID: 18593734)",
+      "Carhart-Harris RL, et al. Lancet Psychiatry. 2021;8(3):203-212 (PMID: 33545078)",
+      "FDA Breakthrough Therapy Designation 2018",
+      "COMP360 Phase 3 Trial Protocol (NCT03775200)"
+    ]
+  },
+  "steps": [
+    {
+      "sequence_order": 1,
+      "step_type": "screening",
+      "title": "Comprehensive Psychiatric Evaluation",
+      "description": "Detailed psychiatric assessment to confirm treatment-resistant depression diagnosis, assess eligibility, and establish baseline mental health status. Requires documented failure of at least two adequate antidepressant trials.",
+      "duration_minutes": 90,
+      "required_roles": ["psychiatrist", "clinical_psychologist"],
+      "clinical_scales": [
+        "MADRS (Montgomery-Åsberg Depression Rating Scale) - Primary outcome measure",
+        "PHQ-9 (Patient Health Questionnaire-9)",
+        "GAD-7 (Generalized Anxiety Disorder-7)",
+        "QIDS-SR-16 (Quick Inventory of Depressive Symptomatology)",
+        "Sheehan Disability Scale (SDS)",
+        "WHO Quality of Life-BREF"
+      ],
+      "diagnostic_criteria": {
+        "depression_severity": "MADRS score ≥ 20 (moderate to severe depression)",
+        "trd_definition": "Failed at least 2 adequate trials (≥6 weeks, therapeutic dose) of antidepressants",
+        "current_episode_duration": "≥ 4 weeks"
+      },
+      "documentation_requirements": {
+        "psychiatric_history": [
+          "Detailed depression history and timeline",
+          "Prior antidepressant trials with doses, durations, responses",
+          "Previous psychiatric hospitalizations",
+          "Suicide attempt history",
+          "Other mental health diagnoses",
+          "Substance use history including psychedelics"
+        ],
+        "current_medications": [
+          "All psychiatric medications with doses",
+          "Non-psychiatric medications",
+          "Supplements and herbals",
+          "Recreational drug use"
+        ],
+        "suicide_risk_assessment": [
+          "Columbia-Suicide Severity Rating Scale (C-SSRS)",
+          "Current suicidal ideation and intent",
+          "Access to means",
+          "Protective factors",
+          "Safety planning needs"
+        ]
+      }
+    },
+    {
+      "sequence_order": 2,
+      "step_type": "screening",
+      "title": "Medical Clearance & Safety Screening",
+      "description": "Comprehensive medical evaluation to identify contraindications and ensure patient safety for psilocybin administration. Focus on cardiovascular, neurological, and metabolic health.",
+      "duration_minutes": 60,
+      "required_roles": ["physician", "nurse_practitioner"],
+      "vitals_monitoring": {
+        "required": ["blood_pressure", "heart_rate", "temperature", "weight", "height", "bmi"]
+      },
+      "lab_tests_required": [
+        "Complete Blood Count (CBC)",
+        "Comprehensive Metabolic Panel (CMP)",
+        "Thyroid Function Tests (TSH, Free T4)",
+        "Electrocardiogram (ECG) - especially if age >40 or cardiac risk factors",
+        "Pregnancy test (for women of childbearing potential)",
+        "Urine drug screen"
+      ],
+      "medical_history_focus": [
+        "Cardiovascular disease history",
+        "Seizure disorder history",
+        "Liver or kidney disease",
+        "Uncontrolled hypertension",
+        "Personal or family history of psychotic disorders",
+        "Current pregnancy or breastfeeding"
+      ]
+    },
+    {
+      "sequence_order": 3,
+      "step_type": "decision_point",
+      "title": "Safety & Eligibility Determination",
+      "description": "Comprehensive evaluation of inclusion/exclusion criteria based on psychiatric and medical screening to determine patient eligibility for psilocybin-assisted therapy.",
+      "duration_minutes": 30,
+      "required_roles": ["psychiatrist", "study_physician"],
+      "evaluation_rules": {
+        "type": "safety_assessment",
+        "absolute_contraindications": [
+          {
+            "condition": "psychotic_disorder_history",
+            "description": "Personal history of schizophrenia, schizoaffective disorder, or psychotic disorder",
+            "action": "exclude_from_treatment"
+          },
+          {
+            "condition": "first_degree_relative_psychosis",
+            "description": "First-degree family member with schizophrenia or psychotic disorder",
+            "action": "exclude_from_treatment"
+          },
+          {
+            "condition": "bipolar_type_1",
+            "description": "Bipolar I disorder with history of manic episodes",
+            "action": "exclude_from_treatment"
+          },
+          {
+            "condition": "active_suicidal_intent",
+            "description": "Current suicidal intent with plan or recent attempt (<6 months)",
+            "action": "exclude_from_treatment"
+          },
+          {
+            "condition": "severe_cardiovascular_disease",
+            "description": "Uncontrolled hypertension (>140/90), recent MI (<6 months), unstable angina",
+            "action": "exclude_from_treatment"
+          },
+          {
+            "condition": "pregnancy_breastfeeding",
+            "description": "Currently pregnant or breastfeeding",
+            "action": "exclude_from_treatment"
+          },
+          {
+            "condition": "seizure_disorder",
+            "description": "History of seizures (except childhood febrile seizures)",
+            "action": "exclude_from_treatment"
+          },
+          {
+            "condition": "active_substance_dependence",
+            "description": "Current moderate-severe substance use disorder (except tobacco, cannabis)",
+            "action": "defer_until_resolved"
+          }
+        ],
+        "medication_contraindications": [
+          {
+            "medication_class": "MAOIs",
+            "description": "Monoamine oxidase inhibitors",
+            "required_washout": "2 weeks",
+            "reason": "Serotonin syndrome risk"
+          },
+          {
+            "medication_class": "lithium",
+            "description": "Lithium therapy",
+            "required_washout": "Consult with psychiatrist; may need discontinuation",
+            "reason": "Seizure risk potentiation"
+          },
+          {
+            "medication_class": "antipsychotics",
+            "description": "First or second generation antipsychotics",
+            "required_action": "May attenuate psilocybin effects; consider tapering if clinically appropriate",
+            "reason": "5-HT2A receptor antagonism"
+          }
+        ],
+        "acceptable_concomitant_medications": [
+          "SSRIs/SNRIs (may reduce psilocybin effects but not contraindicated in COMP360 trial)",
+          "Benzodiazepines at stable doses (available as rescue medication)",
+          "Sleep medications (if stable)",
+          "Thyroid replacement",
+          "Antihypertensives (if well-controlled)"
+        ]
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "eligible_for_treatment",
+          "next_step": 4,
+          "description": "Patient meets inclusion criteria, no absolute contraindications"
+        },
+        {
+          "outcome_id": "excluded_safety",
+          "next_step": "exit_protocol",
+          "description": "Absolute contraindication present, refer to alternative treatments"
+        },
+        {
+          "outcome_id": "conditional_eligible",
+          "next_step": 4,
+          "description": "Eligible after medication adjustment or washout period"
+        }
+      ]
+    },
+    {
+      "sequence_order": 4,
+      "step_type": "preparation",
+      "title": "Preparation Session 1 - Therapeutic Alliance & Education",
+      "description": "First psychological preparation session focused on building therapeutic rapport, education about psilocybin effects, and setting intentions. Critical for establishing trust and safety.",
+      "duration_minutes": 90,
+      "required_roles": ["therapist_facilitator", "co_facilitator"],
+      "session_structure": {
+        "therapeutic_alliance": [
+          "Introduction to therapy team (primary therapist and co-facilitator)",
+          "Discussion of therapist backgrounds and approach",
+          "Patient sharing of depression history and personal story",
+          "Establishing trust and comfort with therapy team",
+          "Clarifying patient's goals and hopes for treatment"
+        ],
+        "education_components": [
+          "Pharmacology of psilocybin (onset, peak, duration, metabolism)",
+          "Expected psychological effects (perceptual changes, emotional intensity, ego dissolution)",
+          "Physical effects (nausea, changes in temperature perception, altered proprioception)",
+          "Safety measures during dosing session",
+          "Role of therapists during session (non-directive support)",
+          "Integration work importance"
+        ],
+        "set_and_setting_introduction": [
+          "Concept of 'set' (mindset, intentions, expectations)",
+          "Concept of 'setting' (physical environment, music, support)",
+          "Tour of dosing room (if not already shown)",
+          "Discussion of comfort measures (blankets, eyeshades, tissues)",
+          "Introduction to curated music playlist"
+        ],
+        "addressing_concerns": [
+          "Common fears (losing control, going crazy, bad trip)",
+          "Reassurance about safety monitoring",
+          "Discussion of 'challenging experiences' as potentially therapeutic",
+          "Review of therapist support strategies"
+        ]
+      },
+      "homework_assigned": [
+        "Journaling about depression history and turning points",
+        "Reflecting on intentions for treatment",
+        "Writing about fears or concerns",
+        "Optional: listening to sample music from dosing playlist"
+      ]
+    },
+    {
+      "sequence_order": 5,
+      "step_type": "preparation",
+      "title": "Preparation Session 2 - Intention Setting & Trust Surrender",
+      "description": "Second preparation session focused on deepening therapeutic relationship, setting specific intentions, and introducing concepts of trust, surrender, and acceptance during the psilocybin experience.",
+      "duration_minutes": 90,
+      "required_roles": ["therapist_facilitator", "co_facilitator"],
+      "session_structure": {
+        "homework_review": [
+          "Review journaling about depression and intentions",
+          "Discuss insights or emotions that arose",
+          "Identify themes or patterns"
+        ],
+        "intention_setting": [
+          "Articulating specific intentions for psilocybin session",
+          "Exploring what healing might look or feel like",
+          "Identifying aspects of self or life to explore",
+          "Framing intentions as open questions rather than demands",
+          "Examples: 'Help me understand my depression', 'Show me what I need to see', 'Help me feel connection again'"
+        ],
+        "trust_surrender_acceptance": [
+          "Philosophy of 'trusting, letting go, being open' (Johns Hopkins framework)",
+          "Practicing acceptance of whatever arises",
+          "Discussing resistance and how to work with it",
+          "Concept of 'going toward' difficult emotions rather than avoiding",
+          "Metaphors: surfing waves, river flowing, passenger not driver"
+        ],
+        "difficult_experience_preparation": [
+          "Normalizing challenging moments during sessions",
+          "Strategies: deep breathing, trusting the process, calling for therapist support",
+          "Reassurance that difficult experiences often precede breakthroughs",
+          "Discussion of physical comfort measures (removing eyeshades, sitting up, therapist holding hand)"
+        ],
+        "practical_preparation": [
+          "What to wear (comfortable clothing)",
+          "What to eat day before and morning of (light, healthy foods)",
+          "What NOT to consume (alcohol, recreational drugs)",
+          "Arrival time and session timeline",
+          "Post-session pickup arrangements (cannot drive)"
+        ]
+      },
+      "homework_assigned": [
+        "Finalizing intentions (can write down and bring to session)",
+        "Self-care practices (sleep, nutrition, stress reduction)",
+        "Continued journaling if helpful"
+      ]
+    },
+    {
+      "sequence_order": 6,
+      "step_type": "preparation",
+      "title": "Preparation Session 3 - Final Preparation & Safety Review",
+      "description": "Final preparation session before dosing, reviewing practical details, finalizing intentions, addressing any remaining concerns, and reinforcing trust in the process and therapy team.",
+      "duration_minutes": 90,
+      "required_roles": ["therapist_facilitator", "co_facilitator"],
+      "session_structure": {
+        "readiness_assessment": [
+          "Check-in on emotional readiness",
+          "Address any new concerns or fears",
+          "Review of sleep quality, stress levels, life circumstances",
+          "Ensure patient feels supported and prepared"
+        ],
+        "timeline_walkthrough": [
+          "Step-by-step review of dosing day from arrival to departure",
+          "Typical timeline: onset (30-45 min), peak (2-3 hours), gradual descent (3-4 hours), return (6-8 hours total)",
+          "What therapists will be doing during session (present, observing, occasional check-ins)",
+          "When and how to request support"
+        ],
+        "intention_refinement": [
+          "Revisiting and refining intentions",
+          "Balancing specific goals with openness to unexpected insights",
+          "Encouraging curiosity and non-attachment to outcomes"
+        ],
+        "music_and_eyeshades": [
+          "Importance of music as guide for journey",
+          "Encouragement to keep eyeshades on (promotes introspection)",
+          "Permission to adjust or remove if needed"
+        ],
+        "safety_review": [
+          "Medical monitoring during session (vitals every 30 minutes)",
+          "Therapists remain in room entire time",
+          "Bathroom breaks (with assistance if needed)",
+          "Rescue medication available if needed (benzodiazepine for severe distress)",
+          "Emergency protocols"
+        ],
+        "post_session_expectations": [
+          "Likely feeling tired, emotionally raw, or unusually open",
+          "Importance of integration session next day",
+          "Journaling or resting in evening",
+          "Not processing alone - saving for integration"
+        ]
+      },
+      "final_checklist": [
+        "Confirm dosing day logistics (arrival time, transportation)",
+        "Verify fasting instructions (no food 4 hours before, light breakfast okay)",
+        "Medication check (continue or hold current medications as directed)",
+        "Emergency contact information updated",
+        "Informed consent re-confirmed"
+      ]
+    },
+    {
+      "sequence_order": 7,
+      "step_type": "decision_point",
+      "title": "Dose Determination",
+      "description": "Clinical decision-making to determine optimal psilocybin dose based on patient factors, depression severity, anxiety level, prior psychedelic experience, and risk assessment. Based on COMP360 trial dosing.",
+      "duration_minutes": 20,
+      "required_roles": ["psychiatrist", "study_physician"],
+      "evaluation_rules": {
+        "type": "dose_calculation",
+        "comp360_dosing_framework": {
+          "therapeutic_doses_tested": ["25mg", "10mg (comparator)", "1mg (control)"],
+          "primary_therapeutic_dose": "25mg psilocybin",
+          "note": "COMP360 uses synthetic psilocybin; doses not equivalent to psilocybin mushrooms"
+        },
+        "johns_hopkins_dosing_framework": {
+          "low_dose": "10-15mg (threshold effects, minimal perceptual changes)",
+          "moderate_dose": "20-25mg (significant psychological effects)",
+          "high_dose": "30mg (profound mystical-type experiences)",
+          "note": "Higher doses associated with greater mystical experience and better depression outcomes"
+        },
+        "dose_selection_factors": [
+          {
+            "factor": "depression_severity",
+            "considerations": [
+              {"severity": "MADRS 20-29 (moderate)", "recommendation": "20-25mg may be appropriate"},
+              {"severity": "MADRS ≥30 (severe)", "recommendation": "25mg standard dose"},
+              {"severity": "MADRS ≥35 (very severe)", "recommendation": "25mg, consider 30mg with experience"}
+            ]
+          },
+          {
+            "factor": "anxiety_comorbidity",
+            "considerations": [
+              {"anxiety": "GAD-7 <10 (mild)", "recommendation": "Standard dosing appropriate"},
+              {"anxiety": "GAD-7 10-14 (moderate)", "recommendation": "May need more preparation but standard dose"},
+              {"anxiety": "GAD-7 ≥15 (severe)", "recommendation": "Consider lower initial dose (20mg) or enhanced support"}
+            ]
+          },
+          {
+            "factor": "prior_psychedelic_experience",
+            "considerations": [
+              {"experience": "Naive", "recommendation": "Standard protocol, potentially start 20-25mg"},
+              {"experience": "Some recreational use", "recommendation": "25mg standard dose"},
+              {"experience": "Extensive experience", "recommendation": "25-30mg, higher dose may be beneficial"},
+              {"experience": "Prior difficult experience", "recommendation": "Address in preparation, may reduce initial dose"}
+            ]
+          },
+          {
+            "factor": "body_weight",
+            "note": "COMP360 used fixed dosing (not weight-based), but some protocols consider weight",
+            "considerations": [
+              {"weight_range": "<60kg", "consideration": "Standard dose appropriate, monitor closely"},
+              {"weight_range": "60-90kg", "consideration": "Standard dose 25mg"},
+              {"weight_range": ">90kg", "consideration": "Standard dose, may consider 30mg if other factors support"}
+            ]
+          },
+          {
+            "factor": "psychological_resilience",
+            "considerations": [
+              "History of handling stress and emotions",
+              "Support system quality",
+              "Capacity for introspection",
+              "Motivation and commitment to process"
+            ]
+          }
+        ],
+        "standard_protocol": {
+          "first_session_dose": "25mg psilocybin (COMP360 standard)",
+          "second_session_dose": "Same or adjusted based on first session response",
+          "third_session_dose": "If needed, adjusted based on response pattern"
+        }
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "dose_20mg",
+          "next_step": 8,
+          "description": "Conservative initial dose for higher anxiety or first-time psychedelic use"
+        },
+        {
+          "outcome_id": "dose_25mg",
+          "next_step": 8,
+          "description": "Standard therapeutic dose based on COMP360 trial evidence"
+        },
+        {
+          "outcome_id": "dose_30mg",
+          "next_step": 8,
+          "description": "Higher dose for severe depression or experienced individuals"
+        }
+      ]
+    },
+    {
+      "sequence_order": 8,
+      "step_type": "intervention",
+      "title": "Psilocybin Dosing Session (Day 0)",
+      "description": "Full-day supervised psilocybin administration in controlled clinical setting with continuous psychological support and medical monitoring. Duration typically 8-10 hours from arrival to discharge.",
+      "duration_minutes": 480,
+      "required_roles": ["psychiatrist", "therapist_facilitator", "co_facilitator", "nurse", "physician_on_call"],
+      "pre_session_preparation": {
+        "arrival_and_check_in": {
+          "time": "Morning (typically 8-9 AM)",
+          "activities": [
+            "Greeting and settling into dosing room",
+            "Review of intentions and any last questions",
+            "Vital signs assessment (baseline)",
+            "Urine drug screen (if required by protocol)",
+            "Pregnancy test (if applicable)",
+            "Final consent confirmation",
+            "Review of comfort with therapists and setting"
+          ]
+        },
+        "baseline_assessments": {
+          "time": "30 minutes before dosing",
+          "measures": [
+            "Blood pressure, heart rate, temperature",
+            "Brief psychiatric assessment (mood, anxiety)",
+            "MADRS quick check",
+            "Medical clearance confirmation"
+          ]
+        }
+      },
+      "dosing_protocol": {
+        "administration_time": "Approximately 9:00-10:00 AM",
+        "medication_form": "Psilocybin capsules (COMP360) or synthetic psilocybin solution",
+        "administration_method": "Oral administration with water",
+        "co_medications": [
+          "Anti-nausea medication may be offered (ondansetron 4-8mg) 30 min before",
+          "Benzodiazepine available as rescue (lorazepam 1-2mg) for severe anxiety"
+        ],
+        "setting": {
+          "room_design": "Comfortable, living room-like with couch/bed, soft lighting, aesthetic elements",
+          "music": "Curated playlist (6-8 hours) - classical, world, ambient, emotionally evocative",
+          "comfort_items": "Eyeshades, blankets, tissues, water, fresh flowers",
+          "therapist_positioning": "Seated nearby, attentive but not intrusive presence"
+        }
+      },
+      "session_timeline": {
+        "onset_phase": {
+          "timeframe": "T+0 to T+45 minutes",
+          "patient_experience": "Subtle shifts in perception, possible nausea, mild anxiety or excitement",
+          "therapist_actions": [
+            "Gentle reassurance and presence",
+            "Encourage patient to lie back, put on eyeshades, listen to music",
+            "Minimal verbal interaction unless patient initiates",
+            "Observe for early anxiety and provide calming presence"
+          ],
+          "vitals_monitoring": "Every 30 minutes"
+        },
+        "ascent_phase": {
+          "timeframe": "T+45 to T+120 minutes",
+          "patient_experience": "Intensifying effects, visual phenomena, emotional waves, possible challenging content",
+          "therapist_actions": [
+            "Maintain supportive presence",
+            "If patient shows distress: use reassuring touch (hand on shoulder), gentle words",
+            "Reminders: 'trust, let go, be open', 'go toward it, not away'",
+            "Encourage keeping eyeshades on for deeper introspection",
+            "Minimal conversation - allow internal journey"
+          ],
+          "vitals_monitoring": "Every 30 minutes (BP, HR, temp)"
+        },
+        "peak_phase": {
+          "timeframe": "T+120 to T+240 minutes (2-4 hours)",
+          "patient_experience": "Peak intensity, possible mystical experience, ego dissolution, profound insights, emotional catharsis",
+          "therapist_actions": [
+            "Remain quietly present",
+            "One therapist in room at all times, both during peak if possible",
+            "Non-directive support - mirror patient's emotional state without interpreting",
+            "If patient speaks: active listening, reflection, minimal guidance",
+            "Support bathroom breaks if needed (assist walking if unsteady)",
+            "Track any significant utterances or insights for later integration",
+            "Manage challenging experiences with calm, grounding presence"
+          ],
+          "vitals_monitoring": "Every 30 minutes",
+          "special_monitoring": [
+            "Psychological state (anxiety, confusion, distress level)",
+            "Need for intervention or rescue medication",
+            "Safety awareness (patient staying on couch/bed, not leaving room)"
+          ]
+        },
+        "descent_phase": {
+          "timeframe": "T+240 to T+360 minutes (4-6 hours)",
+          "patient_experience": "Gradual reduction in intensity, integration of experience beginning, emotional processing",
+          "therapist_actions": [
+            "Continue supportive presence",
+            "May begin gentle check-ins: 'How are you feeling?'",
+            "Allow patient to remove eyeshades when ready",
+            "Offer water, light snacks if patient interested",
+            "Begin gentle grounding (noticing room, physical sensations)",
+            "Listen to patient's initial reflections without interpretation"
+          ],
+          "vitals_monitoring": "Every 30-60 minutes"
+        },
+        "return_phase": {
+          "timeframe": "T+360 to T+480 minutes (6-8 hours)",
+          "patient_experience": "Mostly returned to baseline, may feel tired, emotionally open, vulnerable, or peaceful",
+          "therapist_actions": [
+            "Check-in conversation about experience",
+            "Ask open questions: 'What stands out?', 'How do you feel?'",
+            "Reassurance and normalization",
+            "Encourage journaling if patient feels ready",
+            "Prepare for discharge and next-day integration",
+            "Review self-care instructions for evening"
+          ],
+          "vitals_monitoring": "Final assessment before discharge",
+          "discharge_criteria": [
+            "Vital signs stable and near baseline",
+            "Patient alert and oriented",
+            "No acute psychological distress",
+            "Safe transportation arranged (cannot drive)",
+            "Patient understands post-session care instructions"
+          ]
+        }
+      },
+      "vitals_monitoring": {
+        "required": ["blood_pressure", "heart_rate", "temperature", "respiratory_rate"],
+        "frequency": "Every 30 minutes throughout session",
+        "alert_parameters": {
+          "systolic_bp": "> 180 or < 90 mmHg",
+          "diastolic_bp": "> 110 or < 50 mmHg",
+          "heart_rate": "> 120 or < 50 bpm",
+          "temperature": "> 38.5°C (101.3°F)",
+          "action_if_abnormal": "Physician evaluation, consider rescue medication or medical intervention"
+        }
+      },
+      "rescue_protocols": {
+        "psychological_distress": {
+          "mild_anxiety": "Verbal reassurance, hand holding, grounding techniques",
+          "moderate_distress": "Therapist speaking directly, physical comfort, reminding of safety",
+          "severe_distress": "Benzodiazepine (lorazepam 1-2mg PO or IM), physician evaluation, trip-sitting until resolution"
+        },
+        "medical_emergency": {
+          "procedures": "Emergency medical kit available, physician on-call, protocol for 911 if needed",
+          "rare_complications": "Seizure, cardiovascular event, severe hypertension"
+        }
+      },
+      "therapist_documentation": {
+        "session_notes": [
+          "Timeline of effects",
+          "Behavioral observations",
+          "Emotional expressions",
+          "Significant statements or insights",
+          "Interventions provided",
+          "Challenging moments and how resolved",
+          "Overall character of session"
+        ],
+        "scales": [
+          "5D-ASC (5-Dimensional Altered States of Consciousness) - administered next day",
+          "MEQ30 (Mystical Experience Questionnaire) - administered next day"
+        ]
+      },
+      "post_session_care": {
+        "evening_instructions": [
+          "Rest at home with trusted person present",
+          "Light, healthy dinner",
+          "Journaling if desired, but no pressure to process",
+          "No alcohol or recreational drugs",
+          "Early bedtime encouraged",
+          "Contact emergency number if any concerns"
+        ],
+        "next_day": "Integration session scheduled (typically 10-11 AM following day)"
+      }
+    },
+    {
+      "sequence_order": 9,
+      "step_type": "followup",
+      "title": "Integration Session 1 - Day After Dosing (Day 1)",
+      "description": "Critical first integration session occurring 1 day after psilocybin dosing to process experience, capture insights, address emotional responses, and begin translating experience into actionable changes.",
+      "duration_minutes": 90,
+      "required_roles": ["therapist_facilitator", "co_facilitator"],
+      "session_structure": {
+        "check_in": [
+          "How did you sleep?",
+          "How do you feel physically and emotionally this morning?",
+          "Any lingering effects or unusual experiences?",
+          "Overall sense of the experience in retrospect?"
+        ],
+        "experience_review": [
+          "Open-ended invitation to share experience",
+          "What stands out most prominently?",
+          "Timeline exploration (what happened when)",
+          "Challenging moments and how they were navigated",
+          "Peak moments or breakthrough experiences",
+          "Unexpected elements"
+        ],
+        "insight_identification": [
+          "What did you learn or realize?",
+          "Any perspectives that shifted?",
+          "Messages or themes that emerged?",
+          "Symbols, visions, or metaphors that feel meaningful?",
+          "Connection to depression and healing?"
+        ],
+        "emotional_processing": [
+          "What emotions came up during session?",
+          "What emotions are present now?",
+          "Any grief, relief, joy, confusion?",
+          "Validating and normalizing all responses"
+        ],
+        "meaning_making": [
+          "What does this experience mean to you?",
+          "How does it relate to your depression journey?",
+          "What feels different or new?",
+          "Beginning to connect insights to daily life"
+        ],
+        "mystical_experience_assessment": [
+          "Administer MEQ30 (Mystical Experience Questionnaire)",
+          "Discuss any spiritual or transcendent aspects",
+          "Normalize variety of experiences (mystical or psychological)"
+        ],
+        "altered_states_assessment": [
+          "Administer 5D-ASC (5-Dimensional Altered States of Consciousness)",
+          "Capture phenomenology of experience for clinical record"
+        ]
+      },
+      "clinical_scales": [
+        "MEQ30 (Mystical Experience Questionnaire) - predictive of outcomes",
+        "5D-ASC (5-Dimensional Altered States of Consciousness)",
+        "EBI (Emotional Breakthrough Inventory)"
+      ],
+      "homework_assigned": [
+        "Continued journaling about experience and emerging insights",
+        "Noticing any shifts in mood, perspective, or behavior",
+        "Self-compassion practices",
+        "Identifying one small change to implement based on insights"
+      ]
+    },
+    {
+      "sequence_order": 10,
+      "step_type": "followup",
+      "title": "Integration Session 2 - Week 1 Post-Dosing",
+      "description": "Second integration session focusing on translating insights into behavioral changes, monitoring mood shifts, and supporting integration into daily life.",
+      "duration_minutes": 60,
+      "required_roles": ["therapist_facilitator"],
+      "session_structure": {
+        "mood_assessment": [
+          "How has your mood been this week?",
+          "Changes in energy, motivation, sleep, appetite?",
+          "Administer PHQ-9, GAD-7",
+          "Suicidal ideation check"
+        ],
+        "integration_deepening": [
+          "Insights continuing to unfold?",
+          "Revisiting challenging parts of experience",
+          "Connecting experience to ongoing life",
+          "Processing any difficult emotions arising"
+        ],
+        "behavioral_activation": [
+          "Identifying concrete changes or actions from insights",
+          "Setting small, achievable goals",
+          "Reconnecting with values and meaningful activities",
+          "Addressing barriers to change"
+        ],
+        "social_integration": [
+          "Sharing experience with others (or choosing not to)",
+          "Changes in relationships or social engagement?",
+          "Re-entry into normal life and routines"
+        ]
+      },
+      "clinical_scales": ["PHQ-9", "GAD-7"],
+      "homework_assigned": [
+        "Implementing one behavioral change from insights",
+        "Mindfulness or meditation practice if interested",
+        "Tracking mood daily"
+      ]
+    },
+    {
+      "sequence_order": 11,
+      "step_type": "followup",
+      "title": "Integration Session 3 - Week 2 Post-Dosing",
+      "description": "Continued integration work with focus on sustaining changes, addressing challenges, and monitoring depression symptoms.",
+      "duration_minutes": 60,
+      "required_roles": ["therapist_facilitator"],
+      "session_structure": {
+        "progress_review": [
+          "Mood and symptom tracking",
+          "Behavioral changes implemented",
+          "Challenges encountered",
+          "Wins or positive shifts"
+        ],
+        "deeper_therapy": [
+          "Using psilocybin insights for ongoing therapeutic work",
+          "Addressing core beliefs or patterns revealed",
+          "Trauma processing if relevant",
+          "Relationship patterns or life direction"
+        ],
+        "sustaining_change": [
+          "What's helping maintain positive changes?",
+          "What threatens regression?",
+          "Building new habits and routines",
+          "Cultivating supports"
+        ]
+      },
+      "clinical_scales": ["PHQ-9", "GAD-7"]
+    },
+    {
+      "sequence_order": 12,
+      "step_type": "followup",
+      "title": "Week 3 Assessment - Clinical Outcome Evaluation",
+      "description": "Comprehensive clinical assessment at 3 weeks post-dosing to evaluate treatment response and determine next steps.",
+      "duration_minutes": 60,
+      "required_roles": ["psychiatrist", "therapist_facilitator"],
+      "clinical_scales": [
+        "MADRS (primary outcome - administered by trained rater)",
+        "PHQ-9",
+        "GAD-7",
+        "QIDS-SR-16",
+        "Sheehan Disability Scale",
+        "WHO Quality of Life-BREF",
+        "C-SSRS (suicidality)"
+      ],
+      "assessment_focus": [
+        "Depression severity compared to baseline",
+        "Functional improvement",
+        "Quality of life changes",
+        "Sustained vs. temporary improvement",
+        "Adverse effects or concerns",
+        "Integration quality"
+      ]
+    },
+    {
+      "sequence_order": 13,
+      "step_type": "decision_point",
+      "title": "Treatment Response Evaluation & Second Session Decision",
+      "description": "Clinical decision point to evaluate response to first psilocybin session and determine need for second dosing session. Based on COMP360 protocol which typically includes 1-3 sessions.",
+      "duration_minutes": 30,
+      "required_roles": ["psychiatrist", "study_physician"],
+      "evaluation_rules": {
+        "type": "treatment_response_assessment",
+        "response_criteria": [
+          {
+            "category": "full_response",
+            "definition": "MADRS reduction ≥50% from baseline OR MADRS score <10 (remission)",
+            "clinical_significance": "Substantial improvement, depression in remission or near-remission",
+            "recommendation": "Continue integration therapy, monitor closely, second session may not be immediately needed"
+          },
+          {
+            "category": "partial_response",
+            "definition": "MADRS reduction 25-49% from baseline",
+            "clinical_significance": "Meaningful improvement but still symptomatic",
+            "recommendation": "Schedule second psilocybin session, continue integration"
+          },
+          {
+            "category": "minimal_response",
+            "definition": "MADRS reduction <25% from baseline",
+            "clinical_significance": "Limited benefit, still significantly depressed",
+            "recommendation": "Schedule second session with possible dose adjustment, evaluate other factors"
+          },
+          {
+            "category": "no_response",
+            "definition": "No improvement or worsening",
+            "clinical_significance": "Treatment not effective for this patient",
+            "recommendation": "Consider alternative treatments, evaluate session quality, address barriers"
+          }
+        ],
+        "timing_considerations": {
+          "standard_protocol": "Second session typically 3-5 weeks after first session",
+          "comp360_protocol": "Up to 3 sessions spaced weeks apart",
+          "rationale": "Allow time for integration and assessment before re-dosing"
+        },
+        "dose_adjustment_for_second_session": [
+          {
+            "first_session_dose": "20mg",
+            "first_session_response": "Good tolerance, partial response",
+            "second_session_recommendation": "Increase to 25mg"
+          },
+          {
+            "first_session_dose": "25mg",
+            "first_session_response": "Good tolerance, partial response",
+            "second_session_recommendation": "Continue 25mg or consider 30mg"
+          },
+          {
+            "first_session_dose": "25mg",
+            "first_session_response": "Excessive anxiety or poor tolerance",
+            "second_session_recommendation": "Reduce to 20mg or enhance preparation"
+          },
+          {
+            "first_session_dose": "30mg",
+            "first_session_response": "Well-tolerated",
+            "second_session_recommendation": "Continue 30mg"
+          }
+        ],
+        "factors_affecting_decision": [
+          "Quantitative symptom improvement (MADRS, PHQ-9)",
+          "Quality of mystical experience (MEQ30 score - higher scores predict better outcomes)",
+          "Quality of integration work",
+          "Patient's subjective sense of benefit",
+          "Tolerability and safety",
+          "Patient preference and readiness",
+          "Life circumstances and stability"
+        ]
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "schedule_second_session",
+          "next_step": 14,
+          "description": "Second psilocybin session recommended, return to preparation phase"
+        },
+        {
+          "outcome_id": "continue_integration_only",
+          "next_step": 15,
+          "description": "Strong response, continue integration therapy without immediate re-dosing"
+        },
+        {
+          "outcome_id": "consider_alternative_treatment",
+          "next_step": "exit_protocol",
+          "description": "Minimal benefit, explore other treatment options"
+        }
+      ]
+    },
+    {
+      "sequence_order": 14,
+      "step_type": "followup",
+      "title": "Ongoing Integration Sessions (Weeks 4-12)",
+      "description": "Weekly or bi-weekly integration therapy sessions to sustain and deepen therapeutic gains, process ongoing insights, and support behavioral changes.",
+      "duration_minutes": 60,
+      "required_roles": ["therapist_facilitator"],
+      "session_frequency": "Weekly for weeks 4-8, then bi-weekly weeks 9-12 (adjust based on need)",
+      "session_focus": [
+        "Mood and symptom monitoring",
+        "Behavioral activation and valued living",
+        "Relationship improvements",
+        "Processing trauma or difficult emotions revealed",
+        "Mindfulness and self-compassion practices",
+        "Relapse prevention and coping skills",
+        "Life changes and goal-setting",
+        "Preparing for treatment end and maintenance"
+      ],
+      "clinical_monitoring": {
+        "frequency": "Every 2 weeks",
+        "scales": ["PHQ-9", "GAD-7", "C-SSRS"],
+        "purpose": "Track symptom trajectory and identify early relapse signs"
+      }
+    },
+    {
+      "sequence_order": 15,
+      "step_type": "followup",
+      "title": "End of Treatment Assessment (Week 12)",
+      "description": "Comprehensive end-of-protocol assessment to evaluate overall outcomes, prepare for transition to maintenance care, and celebrate progress.",
+      "duration_minutes": 90,
+      "required_roles": ["psychiatrist", "therapist_facilitator"],
+      "clinical_scales": [
+        "MADRS (primary outcome)",
+        "PHQ-9",
+        "GAD-7",
+        "QIDS-SR-16",
+        "Sheehan Disability Scale",
+        "WHO Quality of Life-BREF",
+        "Patient Global Impression of Change (PGI-C)",
+        "Clinical Global Impression (CGI-I)"
+      ],
+      "assessment_components": {
+        "symptom_outcomes": [
+          "Depression severity compared to baseline and week 3",
+          "Remission status (MADRS <10)",
+          "Response status (≥50% reduction)",
+          "Anxiety symptoms",
+          "Suicidal ideation",
+          "Functional improvement",
+          "Quality of life"
+        ],
+        "process_outcomes": [
+          "Quality of therapeutic relationship",
+          "Integration success",
+          "Behavioral changes sustained",
+          "Insights applied to daily life",
+          "Patient satisfaction with treatment"
+        ],
+        "safety_outcomes": [
+          "Adverse events throughout protocol",
+          "Tolerability assessment",
+          "Any concerning psychological reactions",
+          "Physical health changes"
+        ]
+      },
+      "transition_planning": {
+        "if_in_remission": [
+          "Monthly check-ins for 3-6 months",
+          "Relapse prevention plan",
+          "Early warning signs identification",
+          "Coping strategies",
+          "When to seek help",
+          "Possibility of booster session if needed (6-12 months)"
+        ],
+        "if_partial_response": [
+          "Continued integration therapy",
+          "Consider third psilocybin session",
+          "Adjunctive treatments (medication, other therapies)",
+          "Ongoing monitoring"
+        ],
+        "if_non_response": [
+          "Referral to alternative treatments",
+          "Evaluation of treatment barriers",
+          "Medication optimization",
+          "Other evidence-based therapies (ECT, TMS, ketamine)"
+        ]
+      }
+    }
+  ],
+  "ongoing_monitoring": {
+    "follow_up_assessments": {
+      "one_month_post_treatment": {
+        "scales": ["MADRS", "PHQ-9", "GAD-7"],
+        "purpose": "Assess durability of response"
+      },
+      "three_months_post_treatment": {
+        "scales": ["MADRS", "PHQ-9", "GAD-7", "WHO-QOL"],
+        "purpose": "Long-term outcome evaluation"
+      },
+      "six_months_post_treatment": {
+        "scales": ["MADRS", "PHQ-9", "Relapse assessment"],
+        "purpose": "Durability and relapse monitoring"
+      }
+    },
+    "booster_sessions": {
+      "indication": "Symptom re-emergence after initial response",
+      "timing": "Typically not before 6 months after initial treatment",
+      "protocol": "Abbreviated preparation (1-2 sessions) + dosing + integration"
+    }
+  },
+  "safety_monitoring": {
+    "absolute_contraindications": [
+      "Personal history of psychotic disorder",
+      "First-degree relative with schizophrenia",
+      "Bipolar I disorder with manic episodes",
+      "Immediate suicidal intent with plan",
+      "Pregnancy or breastfeeding",
+      "Unstable cardiovascular disease",
+      "Seizure disorder (except childhood febrile seizures)"
+    ],
+    "relative_contraindications": [
+      "Bipolar II disorder (proceed with caution)",
+      "Controlled cardiovascular disease",
+      "Severe anxiety (requires enhanced preparation)",
+      "Current SSRI use (may reduce effects but not contraindicated)"
+    ],
+    "adverse_effects_monitoring": [
+      {
+        "effect": "Transient anxiety/paranoia during session",
+        "frequency": "Common (20-30%)",
+        "management": "Therapeutic support, rarely rescue benzodiazepine",
+        "duration": "Resolves within session"
+      },
+      {
+        "effect": "Nausea/vomiting",
+        "frequency": "Common (10-20%)",
+        "management": "Prophylactic ondansetron",
+        "duration": "First 1-2 hours"
+      },
+      {
+        "effect": "Headache",
+        "frequency": "Occasional (5-10%)",
+        "management": "Acetaminophen post-session",
+        "duration": "1-2 days"
+      },
+      {
+        "effect": "Emotional lability post-session",
+        "frequency": "Common (30-40%)",
+        "management": "Integration therapy, normalization",
+        "duration": "Days to weeks"
+      },
+      {
+        "effect": "Hallucinogen Persisting Perception Disorder (HPPD)",
+        "frequency": "Very rare (<1%)",
+        "management": "Reassurance, psychiatry follow-up, usually self-limiting",
+        "duration": "Variable"
+      },
+      {
+        "effect": "Prolonged psychological difficulty",
+        "frequency": "Rare (1-2%)",
+        "management": "Intensive integration therapy, psychiatric support, possible medication",
+        "duration": "Weeks to months, typically resolves"
+      }
+    ],
+    "emergency_protocols": {
+      "severe_psychological_distress": "Benzodiazepine administration, psychiatric evaluation, possible hospitalization",
+      "medical_emergency": "On-site physician, emergency medical services, hospital transfer",
+      "suicidal_crisis": "Safety assessment, psychiatric hospitalization if needed, intensive follow-up"
+    }
+  },
+  "special_populations": {
+    "elderly_patients": {
+      "considerations": [
+        "More thorough cardiovascular screening",
+        "May need more preparation sessions",
+        "Enhanced support during session",
+        "Careful medication interaction review"
+      ]
+    },
+    "patients_with_trauma_history": {
+      "considerations": [
+        "Trauma-informed approach throughout",
+        "Extended preparation focusing on safety and control",
+        "Possible trauma re-experiencing during session (can be therapeutic)",
+        "Trauma-focused integration therapy",
+        "Collaboration with trauma specialist"
+      ]
+    },
+    "patients_on_ssris_snris": {
+      "considerations": [
+        "May have blunted psilocybin response (serotonin receptor downregulation)",
+        "Not contraindicated in COMP360 trial (most patients were on antidepressants)",
+        "Consider higher dose or medication taper if appropriate",
+        "No serotonin syndrome risk with psilocybin"
+      ]
+    }
+  },
+  "research_context": {
+    "comp360_phase_3_results": {
+      "primary_outcome": "MADRS reduction at week 3",
+      "25mg_response_rate": "Approximately 37% remission (MADRS <10), 29% response (≥50% reduction)",
+      "durability": "Effects sustained in many patients at 12 weeks",
+      "comparison": "Superior to 1mg control, comparable to 10mg comparator dose"
+    },
+    "johns_hopkins_findings": {
+      "mystical_experience_correlation": "Higher MEQ30 scores predict better depression outcomes",
+      "dose_response": "Higher doses (20-30mg/70kg) more likely to produce therapeutic mystical experiences",
+      "long_term_outcomes": "Many patients maintain improvement 6-12 months post-treatment"
+    }
+  },
+  "clinical_pearls": [
+    "Therapeutic relationship quality is critical - invest in preparation phase",
+    "Music and setting profoundly influence experience - attend to details",
+    "Challenging experiences during session often lead to breakthroughs - encourage acceptance",
+    "Mystical experience quality predicts outcomes - support conditions for transcendent experience",
+    "Integration is where healing happens - don't underestimate post-session therapy",
+    "Safety screening is paramount - err on side of caution with contraindications",
+    "Set and setting cannot be overemphasized - every detail matters"
+  ]
+}
