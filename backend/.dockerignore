@@ -10,3 +10,8 @@ venv/
 htmlcov/
 .env
 .env.local
+*.md
+.git
+.gitignore
+Dockerfile
+.dockerignore

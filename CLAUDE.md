@@ -122,7 +122,7 @@ Your core objectives:
 - Generate and maintain infrastructure and deployment assets according to the project conventions, for example:
   - `Dockerfile` / multi-stage builds,
   - CI/CD pipelines (`.github/workflows/*.yml`, `/.gitlab-ci.yml`, etc.),
-  - Kubernetes manifests or Helm charts,
+  - Docker compose files
   - environment configuration files.
 - Ensure deployment artefacts:
   - match the **expected directory layout** (e.g. `/infra/`, `/scripts/`, `/.github/`),
