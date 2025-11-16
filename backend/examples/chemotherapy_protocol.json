@@ -1,0 +1,787 @@
+{
+  "protocol": {
+    "name": "FOLFOX Chemotherapy for Colorectal Cancer (Adjuvant)",
+    "version": "1.0",
+    "therapy_type": "chemotherapy",
+    "condition_treated": "Stage III Colorectal Cancer (Adjuvant Treatment)",
+    "evidence_level": "fda_approved",
+    "overview": "Modified FOLFOX6 regimen for adjuvant treatment of stage III colon cancer following surgical resection. This protocol combines oxaliplatin, leucovorin, and 5-fluorouracil (5-FU) administered every 2 weeks for 12 cycles (24 weeks total). Based on MOSAIC trial and NCCN guidelines.",
+    "duration_weeks": 24,
+    "total_sessions": 36,
+    "evidence_sources": [
+      "Andre T, et al. N Engl J Med. 2004;350(23):2343-2351 (MOSAIC trial)",
+      "NCCN Clinical Practice Guidelines in Oncology: Colon Cancer v2.2024",
+      "FDA approval for oxaliplatin in combination with 5-FU/LV"
+    ]
+  },
+  "steps": [
+    {
+      "sequence_order": 1,
+      "step_type": "screening",
+      "title": "Oncology Consultation & Treatment Planning",
+      "description": "Comprehensive oncology consultation to review pathology, staging, discuss treatment goals, risks/benefits, and obtain informed consent for adjuvant chemotherapy.",
+      "duration_minutes": 90,
+      "required_roles": ["medical_oncologist", "oncology_nurse"],
+      "documentation_requirements": {
+        "staging": "Pathologic stage (TNM), number of nodes examined and positive",
+        "surgery": "Type and date of resection, margin status, complications",
+        "performance_status": "ECOG performance status (0-2 required for treatment)",
+        "comorbidities": "Cardiac, renal, hepatic, neurologic history",
+        "goals_of_care": "Curative intent adjuvant therapy discussion"
+      },
+      "informed_consent_topics": [
+        "Rationale for adjuvant chemotherapy (reduction in recurrence risk)",
+        "Expected treatment schedule (12 cycles, 24 weeks)",
+        "Common side effects (neuropathy, nausea, diarrhea, fatigue, cytopenias)",
+        "Serious risks (neutropenic fever, severe neuropathy, allergic reactions)",
+        "Fertility impact and contraception requirements",
+        "Alternative treatment options",
+        "Right to refuse or discontinue treatment"
+      ]
+    },
+    {
+      "sequence_order": 2,
+      "step_type": "screening",
+      "title": "Pre-Treatment Assessment & Baseline Labs",
+      "description": "Comprehensive baseline assessment including laboratory tests, imaging, and functional assessments required before chemotherapy initiation.",
+      "duration_minutes": 60,
+      "required_roles": ["oncology_nurse", "phlebotomist"],
+      "lab_tests_required": [
+        "Complete Blood Count with Differential (CBC)",
+        "Comprehensive Metabolic Panel (CMP) including creatinine, liver enzymes",
+        "Magnesium, calcium, phosphorus",
+        "Carcinoembryonic Antigen (CEA) baseline",
+        "Pregnancy test (if applicable)",
+        "Blood type and screen (if port placement planned)"
+      ],
+      "imaging_required": [
+        "CT chest/abdomen/pelvis (baseline restaging post-surgery)"
+      ],
+      "functional_assessments": [
+        {
+          "assessment": "ECOG Performance Status",
+          "requirement": "Must be 0-2 to proceed with treatment"
+        },
+        {
+          "assessment": "Neurologic Exam",
+          "purpose": "Baseline neuropathy assessment (CTCAE grading)",
+          "required": "Document any pre-existing neuropathy"
+        },
+        {
+          "assessment": "Nutritional Assessment",
+          "purpose": "Assess for malnutrition, plan supportive care"
+        }
+      ],
+      "vitals_monitoring": {
+        "required": ["blood_pressure", "heart_rate", "temperature", "weight", "height", "bsa"]
+      },
+      "minimum_lab_requirements": {
+        "anc": "> 1500/μL",
+        "platelets": "> 100,000/μL",
+        "creatinine_clearance": "> 30 mL/min (for oxaliplatin dosing)",
+        "total_bilirubin": "< 2x ULN",
+        "ast_alt": "< 3x ULN"
+      }
+    },
+    {
+      "sequence_order": 3,
+      "step_type": "preparation",
+      "title": "Vascular Access Placement (Optional)",
+      "description": "Placement of central venous catheter (port-a-cath or PICC) for chemotherapy administration and labs if needed. Not required but often preferred for patient comfort.",
+      "duration_minutes": 60,
+      "required_roles": ["interventional_radiologist", "surgeon"],
+      "options": [
+        {
+          "device": "Implanted Port (Port-a-Cath)",
+          "pros": ["Most convenient for long-term use", "Preserved peripheral veins", "Better quality of life"],
+          "cons": ["Surgical procedure", "Infection risk", "Cost"],
+          "preferred": true
+        },
+        {
+          "device": "PICC Line",
+          "pros": ["Less invasive", "Can be placed at bedside"],
+          "cons": ["External catheter", "Activity restrictions", "Higher thrombosis risk"],
+          "preferred": false
+        },
+        {
+          "device": "Peripheral IV",
+          "pros": ["No procedure needed"],
+          "cons": ["Vein irritation", "Difficult 5-FU pump connection", "Repeated sticks"],
+          "preferred": false
+        }
+      ],
+      "post_placement_requirements": [
+        "Chest X-ray to confirm position (for PICC/port)",
+        "Patient education on care and flushing",
+        "Emergency instructions for complications"
+      ]
+    },
+    {
+      "sequence_order": 4,
+      "step_type": "decision_point",
+      "title": "Chemotherapy Dose Calculation & Regimen Confirmation",
+      "description": "Calculate individualized chemotherapy doses based on body surface area (BSA) and renal function. Confirm FOLFOX6 regimen dosing.",
+      "duration_minutes": 20,
+      "required_roles": ["medical_oncologist", "oncology_pharmacist"],
+      "evaluation_rules": {
+        "type": "dose_calculation",
+        "bsa_calculation": "Mosteller formula: sqrt((height_cm x weight_kg) / 3600)",
+        "dose_capping": {
+          "maximum_bsa": 2.2,
+          "rationale": "Reduce toxicity in very large patients without compromising efficacy"
+        },
+        "renal_dose_adjustment": {
+          "oxaliplatin": [
+            {
+              "creatinine_clearance": "> 50 mL/min",
+              "dose_adjustment": "No adjustment needed"
+            },
+            {
+              "creatinine_clearance": "30-50 mL/min",
+              "dose_adjustment": "Reduce oxaliplatin to 65 mg/m²"
+            },
+            {
+              "creatinine_clearance": "< 30 mL/min",
+              "dose_adjustment": "Consider alternative regimen (CAPOX or 5-FU/LV alone)"
+            }
+          ]
+        },
+        "standard_folfox6_regimen": {
+          "cycle_length": "14 days (every 2 weeks)",
+          "total_cycles": 12,
+          "day_1_drugs": [
+            {
+              "drug": "Oxaliplatin",
+              "dose": "85 mg/m²",
+              "route": "IV infusion over 2 hours",
+              "sequence": 1
+            },
+            {
+              "drug": "Leucovorin",
+              "dose": "400 mg/m²",
+              "route": "IV infusion over 2 hours (concurrent with oxaliplatin)",
+              "sequence": 1
+            },
+            {
+              "drug": "5-Fluorouracil",
+              "dose": "400 mg/m²",
+              "route": "IV bolus",
+              "sequence": 2,
+              "timing": "After leucovorin/oxaliplatin"
+            },
+            {
+              "drug": "5-Fluorouracil",
+              "dose": "2400 mg/m²",
+              "route": "Continuous IV infusion over 46 hours via pump",
+              "sequence": 3,
+              "timing": "Immediately after bolus"
+            }
+          ],
+          "day_3_intervention": [
+            {
+              "intervention": "5-FU pump disconnect",
+              "timing": "Approximately 46-48 hours after pump connection"
+            }
+          ]
+        }
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "standard_dosing",
+          "description": "Normal renal function, standard FOLFOX6 doses calculated",
+          "next_step": 5
+        },
+        {
+          "outcome_id": "renal_adjusted_dosing",
+          "description": "Renal impairment, oxaliplatin dose reduced",
+          "next_step": 5
+        }
+      ]
+    },
+    {
+      "sequence_order": 5,
+      "step_type": "preparation",
+      "title": "Pre-Chemotherapy Patient Education",
+      "description": "Comprehensive education session covering chemotherapy administration, expected side effects, self-care strategies, and emergency contact information.",
+      "duration_minutes": 45,
+      "required_roles": ["oncology_nurse", "oncology_pharmacist"],
+      "education_topics": [
+        {
+          "topic": "Treatment Schedule",
+          "content": "12 cycles every 2 weeks (total 24 weeks), Day 1 infusion (~6 hours), Day 3 pump disconnect, labs before each cycle"
+        },
+        {
+          "topic": "Common Side Effects",
+          "content": [
+            "Neuropathy (cold sensitivity, numbness/tingling) - cumulative with oxaliplatin",
+            "Nausea/vomiting - usually controlled with medications",
+            "Diarrhea - take anti-diarrheal as prescribed",
+            "Fatigue - pace yourself, rest as needed",
+            "Mouth sores - good oral hygiene, avoid spicy/acidic foods",
+            "Hair thinning (not complete baldness typically)"
+          ]
+        },
+        {
+          "topic": "Neutropenia Precautions",
+          "content": "Avoid crowds, wash hands frequently, report fever > 100.4°F immediately"
+        },
+        {
+          "topic": "Cold Sensitivity (Oxaliplatin)",
+          "content": "Avoid cold drinks/foods for 3-5 days after treatment, wear gloves for cold items, no ice"
+        },
+        {
+          "topic": "5-FU Pump Care",
+          "content": "Wear pump in provided pouch, avoid getting wet, return if alarm sounds or stops working"
+        },
+        {
+          "topic": "Supportive Medications",
+          "content": "Anti-nausea, anti-diarrheal, growth factors if needed - when and how to take"
+        },
+        {
+          "topic": "Emergency Symptoms",
+          "content": [
+            "Fever ≥ 100.4°F (neutropenic fever emergency)",
+            "Severe diarrhea (> 6 stools/day or bloody)",
+            "Difficulty breathing or chest pain",
+            "Severe allergic reaction (rash, swelling, wheezing)",
+            "Uncontrolled nausea/vomiting",
+            "Signs of blood clots (leg pain, swelling, redness)"
+          ]
+        }
+      ],
+      "handouts_provided": [
+        "FOLFOX patient guide",
+        "Neuropathy management tips",
+        "Neutropenia precautions",
+        "Diet recommendations during chemotherapy",
+        "24/7 oncology on-call number"
+      ]
+    },
+    {
+      "sequence_order": 6,
+      "step_type": "dosing",
+      "title": "Cycle 1, Day 1 - Chemotherapy Infusion",
+      "description": "First chemotherapy treatment with FOLFOX regimen. Includes pre-medications, oxaliplatin, leucovorin, 5-FU bolus, and connection of 5-FU continuous infusion pump.",
+      "duration_minutes": 360,
+      "required_roles": ["oncology_nurse", "medical_oncologist", "oncology_pharmacist"],
+      "pre_medications": [
+        {
+          "medication": "Dexamethasone",
+          "dose": "12 mg IV",
+          "timing": "30 minutes before chemotherapy"
+        },
+        {
+          "medication": "Ondansetron or Palonosetron",
+          "dose": "Ondansetron 16-24 mg IV or Palonosetron 0.25 mg IV",
+          "timing": "30 minutes before chemotherapy"
+        },
+        {
+          "medication": "Diphenhydramine (optional)",
+          "dose": "25-50 mg IV",
+          "timing": "If history of oxaliplatin reactions"
+        }
+      ],
+      "infusion_sequence": [
+        {
+          "step": 1,
+          "medication": "Oxaliplatin + Leucovorin",
+          "dose": "85 mg/m² oxaliplatin + 400 mg/m² leucovorin",
+          "route": "Concurrent IV infusion via Y-connector",
+          "duration": "2 hours",
+          "special_instructions": "Do NOT use ice for extravasation. Oxaliplatin in D5W (never saline)"
+        },
+        {
+          "step": 2,
+          "medication": "5-Fluorouracil bolus",
+          "dose": "400 mg/m²",
+          "route": "IV push",
+          "duration": "5-10 minutes",
+          "timing": "After oxaliplatin/leucovorin completion"
+        },
+        {
+          "step": 3,
+          "medication": "5-Fluorouracil continuous infusion",
+          "dose": "2400 mg/m²",
+          "route": "Continuous IV infusion via portable pump",
+          "duration": "46 hours",
+          "timing": "Immediately after bolus, patient goes home with pump"
+        }
+      ],
+      "vitals_monitoring": {
+        "frequency": "Every 30 minutes during infusion",
+        "parameters": ["blood_pressure", "heart_rate", "respiratory_rate", "temperature", "oxygen_saturation"],
+        "infusion_reaction_watch": "Especially during oxaliplatin - monitor for bronchospasm, rash, hypotension"
+      },
+      "nursing_assessments": [
+        "IV site patency and phlebitis monitoring",
+        "Nausea/vomiting assessment",
+        "Immediate hypersensitivity reaction monitoring",
+        "Patient teaching reinforcement",
+        "5-FU pump function verification before discharge"
+      ],
+      "discharge_criteria": [
+        "Stable vital signs",
+        "No severe infusion reactions",
+        "5-FU pump functioning properly",
+        "Patient/caregiver understands pump care and emergency instructions",
+        "Prescriptions provided for home anti-emetics and anti-diarrheals"
+      ],
+      "safety_checks": [
+        {
+          "check": "Chemotherapy verification",
+          "requirement": "Two RN verification of patient identity, drug, dose, route per institutional policy"
+        },
+        {
+          "check": "Extravasation kit",
+          "requirement": "Available at bedside - note: NO ice for oxaliplatin extravasation"
+        },
+        {
+          "check": "Emergency medications",
+          "requirement": "Epinephrine, diphenhydramine, hydrocortisone immediately available"
+        }
+      ]
+    },
+    {
+      "sequence_order": 7,
+      "step_type": "followup",
+      "title": "Cycle 1, Day 3 - 5-FU Pump Disconnect",
+      "description": "Patient returns to clinic for removal of 5-FU continuous infusion pump, assessment of acute toxicities, and supportive care.",
+      "duration_minutes": 20,
+      "required_roles": ["oncology_nurse"],
+      "assessments": [
+        "Pump completion verification (should be empty or near-empty)",
+        "IV site assessment (if peripheral) or port access site",
+        "Nausea/vomiting control",
+        "Diarrhea assessment",
+        "Mucositis screening",
+        "Hand-foot syndrome (palmar-plantar erythrodysesthesia) check",
+        "Cold sensitivity symptoms from oxaliplatin"
+      ],
+      "interventions": [
+        "Remove and dispose of 5-FU pump per chemotherapy waste protocol",
+        "Flush port or remove peripheral IV",
+        "Medication adjustments if needed (anti-emetics, anti-diarrheals)",
+        "Patient education reinforcement on delayed side effects"
+      ],
+      "symptom_management": {
+        "nausea": "Prescribe additional anti-emetics if breakthrough nausea",
+        "diarrhea": "Loperamide as needed, hydration counseling",
+        "cold_sensitivity": "Reassure temporary, avoid cold for 3-5 days"
+      }
+    },
+    {
+      "sequence_order": 8,
+      "step_type": "followup",
+      "title": "Mid-Cycle Phone Follow-up (Day 7-10)",
+      "description": "Nurse-initiated phone call to assess delayed side effects, medication adherence, and supportive care needs between cycles.",
+      "duration_minutes": 15,
+      "required_roles": ["oncology_nurse"],
+      "assessment_checklist": [
+        "Fatigue level (0-10 scale)",
+        "Nausea/vomiting (frequency and severity)",
+        "Diarrhea (number of stools per day, hydration status)",
+        "Neuropathy symptoms (cold sensitivity resolved? any numbness/tingling?)",
+        "Mouth sores or difficulty swallowing",
+        "Fever or signs of infection",
+        "Medication adherence and any issues with prescriptions",
+        "Questions or concerns for next treatment"
+      ],
+      "red_flag_symptoms_requiring_immediate_escalation": [
+        "Fever ≥ 100.4°F",
+        "Severe diarrhea (> 6 stools/day or bloody stools)",
+        "Intractable nausea/vomiting",
+        "Signs of dehydration",
+        "Chest pain or dyspnea",
+        "Severe abdominal pain"
+      ],
+      "documentation": "Document call in EMR, escalate concerns to oncologist, provide reassurance and supportive care guidance"
+    },
+    {
+      "sequence_order": 9,
+      "step_type": "decision_point",
+      "title": "Pre-Cycle Labs & Treatment Decision (Day 14)",
+      "description": "Laboratory assessment before each cycle to determine fitness to proceed with chemotherapy, need for dose adjustments, or treatment delays.",
+      "duration_minutes": 30,
+      "required_roles": ["medical_oncologist", "oncology_nurse"],
+      "lab_tests_required": [
+        "Complete Blood Count with Differential (CBC)",
+        "Comprehensive Metabolic Panel (CMP)",
+        "Magnesium level"
+      ],
+      "clinical_assessment": [
+        "ECOG performance status",
+        "Neuropathy assessment (CTCAE grade)",
+        "Mucositis grade",
+        "Diarrhea grade",
+        "Hand-foot syndrome grade",
+        "Overall toxicity review"
+      ],
+      "evaluation_rules": {
+        "type": "treatment_decision",
+        "proceed_criteria": {
+          "anc": "> 1500/μL",
+          "platelets": "> 75,000/μL",
+          "creatinine": "< 1.5x baseline or CrCl > 30 mL/min",
+          "total_bilirubin": "< 2x ULN",
+          "neuropathy": "≤ Grade 2",
+          "diarrhea": "Resolved to ≤ Grade 1",
+          "mucositis": "Resolved to ≤ Grade 1"
+        },
+        "delay_criteria": [
+          {
+            "condition": "anc_low",
+            "threshold": "ANC 1000-1500/μL",
+            "action": "Delay 1 week, recheck labs"
+          },
+          {
+            "condition": "platelets_low",
+            "threshold": "Platelets 50,000-75,000/μL",
+            "action": "Delay 1 week, recheck labs"
+          },
+          {
+            "condition": "neuropathy_grade_3",
+            "action": "Hold oxaliplatin until ≤ Grade 1, consider dose reduction"
+          },
+          {
+            "condition": "severe_diarrhea_grade_3_4",
+            "action": "Delay until resolved to Grade 1, reduce 5-FU dose by 20%"
+          }
+        ],
+        "dose_reduction_criteria": [
+          {
+            "toxicity": "Neutropenic fever or Grade 4 neutropenia",
+            "dose_modification": "Reduce 5-FU bolus and infusion by 20%"
+          },
+          {
+            "toxicity": "Grade 3 neuropathy",
+            "dose_modification": "Reduce oxaliplatin from 85 to 65 mg/m²"
+          },
+          {
+            "toxicity": "Persistent Grade 2 neuropathy",
+            "dose_modification": "Consider reducing oxaliplatin from 85 to 75 mg/m² after cycle 6-8"
+          },
+          {
+            "toxicity": "Grade 3-4 diarrhea",
+            "dose_modification": "Reduce 5-FU by 20%"
+          },
+          {
+            "toxicity": "Grade 3-4 mucositis",
+            "dose_modification": "Reduce 5-FU by 20%"
+          }
+        ],
+        "discontinuation_criteria": [
+          {
+            "condition": "Grade 4 neuropathy or persistent Grade 3",
+            "action": "Discontinue oxaliplatin permanently, continue 5-FU/LV if appropriate"
+          },
+          {
+            "condition": "Severe allergic reaction to oxaliplatin",
+            "action": "Discontinue oxaliplatin, consider alternative regimen"
+          },
+          {
+            "condition": "Disease progression",
+            "action": "Discontinue protocol, reassess treatment plan"
+          },
+          {
+            "condition": "Patient decline ECOG ≥ 3",
+            "action": "Consider treatment discontinuation or palliative care"
+          }
+        ]
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "proceed_standard_dose",
+          "description": "Labs adequate, no significant toxicities, proceed with standard doses",
+          "next_step": 10
+        },
+        {
+          "outcome_id": "proceed_reduced_dose",
+          "description": "Prior toxicities require dose reduction, proceed with modified doses",
+          "next_step": 10
+        },
+        {
+          "outcome_id": "delay_one_week",
+          "description": "Cytopenias or toxicities not resolved, delay treatment 1 week",
+          "next_step": 9
+        },
+        {
+          "outcome_id": "modify_regimen",
+          "description": "Severe toxicity, modify regimen (e.g., discontinue oxaliplatin, continue 5-FU)",
+          "next_step": "modified_protocol"
+        },
+        {
+          "outcome_id": "discontinue_treatment",
+          "description": "Unacceptable toxicity or progression, stop chemotherapy",
+          "next_step": "exit_protocol"
+        }
+      ]
+    },
+    {
+      "sequence_order": 10,
+      "step_type": "dosing",
+      "title": "Subsequent Cycles (Cycles 2-12)",
+      "description": "Repeat cycles of FOLFOX chemotherapy following same sequence as Cycle 1, with dose adjustments as determined by toxicity assessments.",
+      "duration_minutes": 360,
+      "required_roles": ["oncology_nurse", "medical_oncologist"],
+      "cycle_components": "Repeat steps 6-9 for each cycle with toxicity-driven modifications",
+      "cumulative_toxicity_monitoring": {
+        "neuropathy": {
+          "concern": "Cumulative with oxaliplatin, often worsens after cycles 8-10",
+          "monitoring": "Assess grade at each visit, patient-reported numbness/tingling diary",
+          "management": "Dose reduction or discontinuation based on grade and impact on function"
+        },
+        "fatigue": {
+          "concern": "Cumulative fatigue increases over treatment course",
+          "monitoring": "Fatigue scale at each visit",
+          "management": "Activity balance, nutritional support, rule out anemia"
+        },
+        "cytopenias": {
+          "concern": "Bone marrow reserve may diminish over time",
+          "monitoring": "CBC before each cycle",
+          "management": "Dose reductions or G-CSF support if recurrent neutropenia"
+        }
+      },
+      "special_cycle_considerations": {
+        "cycle_6": "Mid-treatment assessment, consider imaging if symptoms suggest progression",
+        "cycle_9_10": "Neuropathy often peaks, many patients require oxaliplatin dose reduction or early discontinuation",
+        "cycle_12": "Final cycle - schedule restaging scans and survivorship planning"
+      }
+    },
+    {
+      "sequence_order": 11,
+      "step_type": "decision_point",
+      "title": "Restaging Imaging & Response Assessment",
+      "description": "CT scans performed after cycles 4, 8, and 12 to assess for disease recurrence (though rare in adjuvant setting) and post-treatment surveillance planning.",
+      "duration_minutes": 30,
+      "required_roles": ["medical_oncologist", "radiologist"],
+      "imaging_schedule": [
+        {
+          "timing": "After Cycle 4 (Week 8)",
+          "scans": "CT chest/abdomen/pelvis",
+          "purpose": "Early assessment, rule out progression (rare but important to catch early)"
+        },
+        {
+          "timing": "After Cycle 8 (Week 16)",
+          "scans": "CT chest/abdomen/pelvis",
+          "purpose": "Mid-treatment assessment"
+        },
+        {
+          "timing": "After Cycle 12 (Week 24) - End of Treatment",
+          "scans": "CT chest/abdomen/pelvis",
+          "purpose": "Establish new baseline for surveillance"
+        }
+      ],
+      "evaluation_rules": {
+        "type": "response_assessment",
+        "outcomes": [
+          {
+            "finding": "No evidence of disease (NED)",
+            "action": "Continue planned treatment to completion, proceed to survivorship care",
+            "expected": "Most common in adjuvant setting"
+          },
+          {
+            "finding": "New metastatic disease detected",
+            "action": "Stop adjuvant protocol, discuss metastatic treatment options",
+            "next_step": "Palliative chemotherapy protocol"
+          },
+          {
+            "finding": "Local recurrence",
+            "action": "Multidisciplinary tumor board, consider surgery/radiation +/- chemotherapy change"
+          }
+        ]
+      },
+      "additional_monitoring": {
+        "cea_levels": "Check CEA with each restaging scan, rising CEA may indicate recurrence even if scans negative"
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "ned_continue_treatment",
+          "description": "No recurrence, continue adjuvant chemotherapy as planned",
+          "next_step": 10
+        },
+        {
+          "outcome_id": "recurrence_detected",
+          "description": "Disease recurrence identified",
+          "next_step": "mtb_discussion"
+        }
+      ]
+    },
+    {
+      "sequence_order": 12,
+      "step_type": "integration",
+      "title": "Treatment Completion & Survivorship Planning",
+      "description": "Final visit after completing 12 cycles of FOLFOX. Review treatment summary, discuss surveillance plan, address long-term side effects, and transition to survivorship care.",
+      "duration_minutes": 60,
+      "required_roles": ["medical_oncologist", "oncology_nurse", "survivorship_navigator"],
+      "completion_assessments": [
+        "Final ECOG performance status",
+        "Residual neuropathy grade (often persists for months after oxaliplatin completion)",
+        "Fatigue assessment",
+        "Nutritional status",
+        "Psychosocial adjustment",
+        "Quality of life assessment"
+      ],
+      "survivorship_care_plan_components": [
+        {
+          "topic": "Treatment Summary",
+          "content": "Diagnosis, stage, surgery date, chemotherapy regimen and doses, toxicities experienced, final scans"
+        },
+        {
+          "topic": "Surveillance Schedule",
+          "content": [
+            "History & Physical: Every 3-6 months for 2 years, then every 6 months for years 3-5, then annually",
+            "CEA: Every 3-6 months for 2 years (if elevated at diagnosis)",
+            "CT chest/abdomen/pelvis: Annually for 3-5 years",
+            "Colonoscopy: 1 year after surgery, then per guidelines based on findings"
+          ]
+        },
+        {
+          "topic": "Long-term Side Effects",
+          "content": [
+            "Neuropathy: May persist for 6-12 months or longer; refer to neurology if severe",
+            "Fatigue: Gradual improvement expected over 6-12 months",
+            "Cognitive changes: 'Chemo brain' may occur, usually improves with time",
+            "Fertility: May be impaired; refer to reproductive endocrinology if pregnancy desired",
+            "Secondary malignancies: Small increased risk; maintain cancer screening"
+          ]
+        },
+        {
+          "topic": "Healthy Lifestyle",
+          "content": [
+            "Diet: Balanced diet, maintain healthy weight",
+            "Exercise: Goal of 150 minutes moderate activity per week",
+            "Smoking cessation: Critical for reducing recurrence risk",
+            "Alcohol: Limit intake",
+            "Sun protection"
+          ]
+        },
+        {
+          "topic": "Psychosocial Support",
+          "content": [
+            "Cancer survivorship support groups",
+            "Individual counseling if needed for anxiety/depression",
+            "Financial counseling for treatment costs",
+            "Return to work planning"
+          ]
+        },
+        {
+          "topic": "Warning Signs",
+          "content": "Symptoms that should prompt immediate evaluation: abdominal pain, rectal bleeding, unexplained weight loss, persistent cough, bone pain"
+        }
+      ],
+      "referrals": [
+        "Primary care physician (send survivorship care plan)",
+        "Neurology (if Grade 2+ neuropathy persists)",
+        "Physical therapy (if significant functional impairment)",
+        "Nutrition services",
+        "Social work/survivorship navigator"
+      ],
+      "port_removal": {
+        "timing": "Can remove 4-8 weeks after final treatment if no longer needed",
+        "discussion": "Discuss pros/cons of keeping vs. removing with patient"
+      }
+    }
+  ],
+  "supportive_care_throughout_treatment": {
+    "nausea_vomiting_prophylaxis": {
+      "acute": [
+        "Dexamethasone 12 mg IV day 1",
+        "Palonosetron 0.25 mg IV or ondansetron 16-24 mg IV day 1",
+        "Consider NK-1 antagonist (aprepitant) for high-risk patients"
+      ],
+      "delayed": [
+        "Dexamethasone 8 mg PO days 2-3",
+        "Metoclopramide or prochlorperazine as needed",
+        "Ondansetron 8 mg PO q8h as needed days 2-5"
+      ],
+      "breakthrough": [
+        "Olanzapine 5-10 mg PO daily (very effective for refractory nausea)",
+        "Lorazepam for anticipatory nausea"
+      ]
+    },
+    "diarrhea_management": {
+      "prevention": "Loperamide 2 mg after each loose stool, max 16 mg/day",
+      "severe_diarrhea": "Hold chemotherapy, hydration (IV if needed), consider hospitalization for Grade 3-4"
+    },
+    "neuropathy_management": {
+      "cold_avoidance": "Critical for 3-5 days post-oxaliplatin",
+      "pharmacologic": "Duloxetine 30-60 mg daily (evidence-based for chemotherapy-induced neuropathy)",
+      "non_pharmacologic": "Occupational therapy, hand/foot warming, compression gloves"
+    },
+    "neutropenia_management": {
+      "prophylactic_gcsf": "Generally not needed for FOLFOX, but consider if recurrent neutropenia or neutropenic fever",
+      "dose_dense_option": "Pegfilgrastim if dose-dense schedule"
+    },
+    "mucositis_prevention": {
+      "oral_cryotherapy": "Ice chips during 5-FU bolus (may reduce mucositis)",
+      "oral_care": "Gentle brushing, alcohol-free mouthwash, salt/soda rinses"
+    },
+    "hand_foot_syndrome": {
+      "prevention": "Moisturize hands/feet, avoid heat, wear comfortable shoes",
+      "treatment": "Dose reduction of 5-FU if Grade 2-3"
+    }
+  },
+  "safety_monitoring": {
+    "absolute_contraindications": [
+      "Pregnancy or breastfeeding",
+      "Known DPD deficiency (5-FU metabolism)",
+      "Severe bone marrow suppression",
+      "Severe hepatic or renal impairment",
+      "Active uncontrolled infection",
+      "ECOG performance status ≥ 3"
+    ],
+    "serious_adverse_events": [
+      {
+        "event": "Neutropenic Fever",
+        "definition": "ANC < 500/μL + fever ≥ 100.4°F",
+        "management": "Emergency! Immediate hospitalization, broad-spectrum antibiotics, G-CSF",
+        "future_prevention": "Dose reduction or G-CSF prophylaxis for subsequent cycles"
+      },
+      {
+        "event": "Oxaliplatin Anaphylaxis",
+        "incidence": "Rare but can occur, more common with cumulative cycles",
+        "management": "Stop infusion, epinephrine, steroids, antihistamines",
+        "future_prevention": "Discontinue oxaliplatin permanently"
+      },
+      {
+        "event": "Severe Diarrhea (Grade 3-4)",
+        "management": "Hospitalization for IV hydration, hold chemotherapy, dose reduction when resume",
+        "complications": "Dehydration, electrolyte abnormalities, renal failure"
+      },
+      {
+        "event": "Thromboembolic Events",
+        "risk": "Cancer patients have increased VTE risk",
+        "management": "Anticoagulation, consider holding chemotherapy if life-threatening PE",
+        "prevention": "Early mobilization, consider prophylaxis in high-risk patients"
+      },
+      {
+        "event": "Hand-Foot Syndrome (Grade 3)",
+        "management": "Hold 5-FU, topical steroids, dose reduction when resume"
+      }
+    ]
+  },
+  "protocol_modifications_special_populations": {
+    "elderly_patients_age_75_plus": {
+      "considerations": [
+        "Increased toxicity risk, especially neuropathy and cytopenias",
+        "Comprehensive geriatric assessment recommended",
+        "Consider dose reduction (80% starting dose) or alternative regimen (CAPOX, 5-FU/LV alone)",
+        "Enhanced supportive care and monitoring"
+      ]
+    },
+    "renal_impairment": {
+      "mild_moderate": "Reduce oxaliplatin dose as per protocol",
+      "severe": "Consider alternative regimen without oxaliplatin or close nephrology collaboration"
+    },
+    "hepatic_impairment": {
+      "mild": "Usually tolerated, close monitoring",
+      "moderate_severe": "5-FU dose reduction, consider alternative agents"
+    }
+  },
+  "quality_metrics": {
+    "completion_rate": "Goal > 70% of patients complete 12 cycles",
+    "dose_intensity": "Goal > 85% relative dose intensity",
+    "toxicity_rates": "Monitor Grade 3-4 toxicity rates, neutropenic fever, hospitalizations",
+    "patient_satisfaction": "Quality of life assessments, symptom management adequacy"
+  }
+}

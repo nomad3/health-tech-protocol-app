@@ -1,0 +1,577 @@
+{
+  "protocol": {
+    "name": "Testosterone Optimization Protocol for Men's Health",
+    "version": "1.0",
+    "therapy_type": "testosterone",
+    "condition_treated": "Age-Related Testosterone Decline / Men's Health Optimization",
+    "evidence_level": "clinical_practice",
+    "overview": "Evidence-based testosterone optimization protocol for men over 35 experiencing age-related decline in testosterone levels. Focuses on improving energy, muscle mass, libido, cognitive function, and overall vitality through monitored testosterone optimization. This is NOT for hypogonadism treatment but for health optimization in otherwise healthy men with suboptimal testosterone levels (300-500 ng/dL range).",
+    "duration_weeks": 26,
+    "total_sessions": 8,
+    "evidence_sources": [
+      "Men's health and testosterone optimization research",
+      "Age management medicine guidelines",
+      "Preventive endocrinology best practices"
+    ],
+    "target_patient_profile": {
+      "age_range": "35-65 years",
+      "baseline_testosterone": "300-500 ng/dL (suboptimal but not hypogonadal)",
+      "health_status": "Generally healthy, seeking optimization",
+      "symptoms": "Low energy, decreased libido, difficulty building muscle, brain fog, mood changes"
+    }
+  },
+  "steps": [
+    {
+      "sequence_order": 1,
+      "step_type": "screening",
+      "title": "Initial Men's Health Assessment",
+      "description": "Comprehensive evaluation of symptoms, lifestyle factors, and current health status. Assess motivation and goals for testosterone optimization.",
+      "duration_minutes": 45,
+      "required_roles": ["physician", "mens_health_specialist"],
+      "clinical_scales": ["ADAM Questionnaire (Androgen Deficiency in Aging Males)"],
+      "documentation_requirements": {
+        "symptoms": [
+          "Energy levels and fatigue patterns",
+          "Libido and sexual function",
+          "Mood and cognitive function",
+          "Muscle mass and body composition changes",
+          "Sleep quality",
+          "Exercise capacity"
+        ],
+        "lifestyle_factors": [
+          "Exercise frequency and type",
+          "Diet quality and protein intake",
+          "Sleep duration and quality",
+          "Stress levels",
+          "Alcohol consumption"
+        ],
+        "health_history": [
+          "Cardiovascular health",
+          "Prostate health (family history, symptoms)",
+          "Sleep apnea screening",
+          "Current medications and supplements"
+        ]
+      }
+    },
+    {
+      "sequence_order": 2,
+      "step_type": "screening",
+      "title": "Baseline Laboratory Panel",
+      "description": "Comprehensive hormone and safety labs obtained in morning (7-9 AM fasting) to establish baseline testosterone levels and rule out contraindications.",
+      "duration_minutes": 15,
+      "required_roles": ["phlebotomist"],
+      "lab_tests_required": [
+        "Total Testosterone (7-9 AM, fasting)",
+        "Free Testosterone (calculated or direct)",
+        "Sex Hormone Binding Globulin (SHBG)",
+        "Estradiol (E2)",
+        "Luteinizing Hormone (LH)",
+        "Follicle Stimulating Hormone (FSH)",
+        "Prostate Specific Antigen (PSA)",
+        "Complete Blood Count (CBC with hematocrit)",
+        "Comprehensive Metabolic Panel",
+        "Lipid Panel",
+        "Thyroid Panel (TSH, Free T3, Free T4)",
+        "Vitamin D",
+        "DHEA-S"
+      ],
+      "notes": "Two separate morning measurements recommended if initial total testosterone is 300-500 ng/dL to confirm consistent suboptimal levels"
+    },
+    {
+      "sequence_order": 3,
+      "step_type": "decision_point",
+      "title": "Assess Testosterone Optimization Candidacy",
+      "description": "Evaluate lab results and determine if patient is a candidate for testosterone optimization therapy.",
+      "evaluation_rules": {
+        "type": "multi_factor",
+        "factors": [
+          {
+            "factor": "patient.labs.total_testosterone_ng_dl",
+            "operator": "in_range",
+            "ranges": [
+              {"min": 0, "max": 300, "value": "low", "note": "Clinical hypogonadism - needs medical TRT"},
+              {"min": 300, "max": 500, "value": "suboptimal", "note": "Optimization candidate"},
+              {"min": 500, "max": 1200, "value": "normal", "note": "Unlikely to benefit"}
+            ]
+          },
+          {
+            "factor": "patient.age",
+            "operator": "in_range",
+            "ranges": [
+              {"min": 35, "max": 50, "value": "middle_age"},
+              {"min": 50, "max": 65, "value": "older"},
+              {"min": 65, "max": 999, "value": "elderly"}
+            ]
+          },
+          {
+            "factor": "patient.labs.hematocrit_percent",
+            "operator": "threshold",
+            "thresholds": [
+              {"max": 50, "value": "safe"},
+              {"min": 50, "value": "elevated_risk"}
+            ]
+          },
+          {
+            "factor": "patient.labs.psa_ng_ml",
+            "operator": "threshold",
+            "thresholds": [
+              {"max": 2.5, "value": "safe"},
+              {"min": 2.5, "value": "elevated_monitoring"}
+            ]
+          }
+        ],
+        "decision_matrix": {
+          "suboptimal + middle_age + safe + safe": "proceed_standard",
+          "suboptimal + older + safe + safe": "proceed_conservative",
+          "suboptimal + elderly + safe + safe": "proceed_conservative",
+          "low + * + safe + safe": "refer_endocrinologist",
+          "normal + * + * + *": "optimize_lifestyle_first",
+          "* + * + elevated_risk + *": "defer_until_hematocrit_managed",
+          "* + * + * + elevated_monitoring": "defer_until_psa_evaluated",
+          "default": "proceed_standard"
+        }
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "proceed_standard",
+          "next_step_id": 4,
+          "rationale": "Patient is good candidate for testosterone optimization with standard monitoring"
+        },
+        {
+          "outcome_id": "proceed_conservative",
+          "next_step_id": 4,
+          "rationale": "Patient is candidate but requires more frequent monitoring due to age"
+        },
+        {
+          "outcome_id": "refer_endocrinologist",
+          "next_step_id": null,
+          "rationale": "Clinical hypogonadism detected - needs specialist evaluation, not optimization protocol"
+        },
+        {
+          "outcome_id": "optimize_lifestyle_first",
+          "next_step_id": 10,
+          "rationale": "Testosterone in normal range - focus on lifestyle optimization first"
+        },
+        {
+          "outcome_id": "defer_until_hematocrit_managed",
+          "next_step_id": null,
+          "rationale": "Elevated hematocrit is contraindication - must be addressed before testosterone therapy"
+        },
+        {
+          "outcome_id": "defer_until_psa_evaluated",
+          "next_step_id": null,
+          "rationale": "Elevated PSA requires urological evaluation before testosterone therapy"
+        }
+      ]
+    },
+    {
+      "sequence_order": 4,
+      "step_type": "preparation",
+      "title": "Treatment Education and Protocol Selection",
+      "description": "Educate patient on testosterone optimization, discuss delivery methods, set expectations, and select optimal protocol based on lifestyle and preferences.",
+      "duration_minutes": 30,
+      "required_roles": ["physician"],
+      "education_topics": [
+        "How testosterone affects energy, muscle, mood, libido, and cognition",
+        "Difference between optimization and medical replacement",
+        "Delivery method options: injections vs topical vs pellets",
+        "Expected timeline for results (2-6 weeks for energy, 3-6 months for body composition)",
+        "Monitoring requirements and lab schedules",
+        "Potential side effects and management",
+        "Lifestyle factors that support optimization"
+      ],
+      "protocol_options": [
+        {
+          "name": "Injectable (Testosterone Cypionate)",
+          "dosing": "100-200 mg weekly or 50-100 mg twice weekly",
+          "pros": ["Most cost-effective", "Stable levels with frequent dosing", "Easy to adjust"],
+          "cons": ["Requires injections", "Potential for peaks/troughs if weekly"]
+        },
+        {
+          "name": "Topical (Cream/Gel)",
+          "dosing": "50-100 mg daily application",
+          "pros": ["No injections", "Daily dosing mimics natural rhythm", "Easy to discontinue"],
+          "cons": ["Transfer risk to partners/children", "Higher cost", "Absorption variability"]
+        },
+        {
+          "name": "Subcutaneous Pellets",
+          "dosing": "Pellet insertion every 3-4 months",
+          "pros": ["Most convenient", "Stable levels", "Minimal daily effort"],
+          "cons": ["Highest cost", "Minor procedure", "Cannot adjust dose easily"]
+        }
+      ]
+    },
+    {
+      "sequence_order": 5,
+      "step_type": "decision_point",
+      "title": "Select Initial Dosing Protocol",
+      "description": "Determine starting dose based on baseline testosterone, age, weight, and delivery method preference.",
+      "evaluation_rules": {
+        "type": "multi_factor",
+        "factors": [
+          {
+            "factor": "patient.labs.total_testosterone_ng_dl",
+            "operator": "in_range",
+            "ranges": [
+              {"min": 300, "max": 400, "value": "very_low"},
+              {"min": 400, "max": 500, "value": "moderately_low"}
+            ]
+          },
+          {
+            "factor": "patient.age",
+            "operator": "in_range",
+            "ranges": [
+              {"min": 35, "max": 50, "value": "younger"},
+              {"min": 50, "max": 999, "value": "older"}
+            ]
+          },
+          {
+            "factor": "patient.delivery_method_preference",
+            "operator": "equals",
+            "values": ["injectable", "topical", "pellets"]
+          }
+        ],
+        "decision_matrix": {
+          "very_low + younger + injectable": "inject_150mg_weekly",
+          "very_low + older + injectable": "inject_100mg_weekly",
+          "moderately_low + younger + injectable": "inject_100mg_weekly",
+          "moderately_low + older + injectable": "inject_80mg_weekly",
+          "very_low + * + topical": "cream_100mg_daily",
+          "moderately_low + * + topical": "cream_75mg_daily",
+          "* + * + pellets": "pellets_standard_dose",
+          "default": "inject_100mg_weekly"
+        }
+      },
+      "branch_outcomes": [
+        {"outcome_id": "inject_150mg_weekly", "dosing_instructions": "150 mg testosterone cypionate IM weekly"},
+        {"outcome_id": "inject_100mg_weekly", "dosing_instructions": "100 mg testosterone cypionate IM weekly"},
+        {"outcome_id": "inject_80mg_weekly", "dosing_instructions": "80 mg testosterone cypionate IM weekly"},
+        {"outcome_id": "cream_100mg_daily", "dosing_instructions": "100 mg testosterone cream applied daily to shoulders/arms"},
+        {"outcome_id": "cream_75mg_daily", "dosing_instructions": "75 mg testosterone cream applied daily to shoulders/arms"},
+        {"outcome_id": "pellets_standard_dose", "dosing_instructions": "Pellet insertion (dose determined by provider)"}
+      ]
+    },
+    {
+      "sequence_order": 6,
+      "step_type": "dosing",
+      "title": "Treatment Initiation",
+      "description": "Begin testosterone optimization therapy with selected protocol. Provide patient education on administration technique (if injectable), safety precautions, and symptom tracking.",
+      "duration_minutes": 30,
+      "required_roles": ["physician", "nurse"],
+      "patient_education": [
+        "Proper injection technique (if injectable)",
+        "Application technique (if topical)",
+        "Symptom tracking - what to monitor",
+        "When to contact provider (side effects, concerns)",
+        "Lifestyle optimization tips (sleep, exercise, nutrition)"
+      ]
+    },
+    {
+      "sequence_order": 7,
+      "step_type": "followup",
+      "title": "6-Week Follow-up Labs and Adjustment",
+      "description": "First follow-up to assess response, check safety labs, and adjust dose if needed. Most men start noticing improvements in energy and libido by this point.",
+      "duration_minutes": 30,
+      "required_roles": ["physician"],
+      "timing_from_start": "6 weeks",
+      "lab_tests_required": [
+        "Total Testosterone (trough for injectables, any time for topical)",
+        "Free Testosterone",
+        "Estradiol (E2)",
+        "Complete Blood Count (monitor hematocrit)",
+        "Prostate Specific Antigen (PSA)",
+        "Comprehensive Metabolic Panel"
+      ],
+      "clinical_assessment": [
+        "Symptom improvement questionnaire",
+        "Energy levels (1-10 scale)",
+        "Libido improvement",
+        "Mood and cognitive function",
+        "Side effects screening",
+        "Body composition changes"
+      ],
+      "target_levels": {
+        "total_testosterone": "700-900 ng/dL (upper-normal for optimal function)",
+        "free_testosterone": "15-20 ng/dL",
+        "estradiol": "20-30 pg/mL (not too high)",
+        "hematocrit": "<50%"
+      }
+    },
+    {
+      "sequence_order": 8,
+      "step_type": "decision_point",
+      "title": "Dose Adjustment Decision",
+      "description": "Based on 6-week labs and clinical response, determine if dose adjustment is needed.",
+      "evaluation_rules": {
+        "type": "multi_factor",
+        "factors": [
+          {
+            "factor": "patient.labs.total_testosterone_ng_dl_week6",
+            "operator": "in_range",
+            "ranges": [
+              {"min": 0, "max": 600, "value": "too_low"},
+              {"min": 600, "max": 900, "value": "optimal"},
+              {"min": 900, "max": 1500, "value": "too_high"}
+            ]
+          },
+          {
+            "factor": "patient.labs.estradiol_pg_ml_week6",
+            "operator": "in_range",
+            "ranges": [
+              {"min": 0, "max": 40, "value": "acceptable"},
+              {"min": 40, "max": 999, "value": "elevated"}
+            ]
+          },
+          {
+            "factor": "patient.symptom_improvement_percent",
+            "operator": "threshold",
+            "thresholds": [
+              {"max": 30, "value": "minimal"},
+              {"min": 30, "max": 70, "value": "moderate"},
+              {"min": 70, "value": "excellent"}
+            ]
+          }
+        ],
+        "decision_matrix": {
+          "too_low + * + *": "increase_dose",
+          "optimal + acceptable + excellent": "maintain_dose",
+          "optimal + acceptable + moderate": "maintain_dose",
+          "optimal + elevated + *": "add_aromatase_inhibitor",
+          "too_high + * + *": "decrease_dose",
+          "* + * + minimal": "reassess_expectations",
+          "default": "maintain_dose"
+        }
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "increase_dose",
+          "next_step_id": 9,
+          "rationale": "Testosterone levels below optimal - increase by 20-25%",
+          "action": "Increase weekly dose by 20-25 mg if injectable, or increase cream by 25%"
+        },
+        {
+          "outcome_id": "maintain_dose",
+          "next_step_id": 9,
+          "rationale": "Testosterone in optimal range with good clinical response",
+          "action": "Continue current dose"
+        },
+        {
+          "outcome_id": "decrease_dose",
+          "next_step_id": 9,
+          "rationale": "Testosterone levels above optimal range",
+          "action": "Decrease weekly dose by 20-25 mg if injectable"
+        },
+        {
+          "outcome_id": "add_aromatase_inhibitor",
+          "next_step_id": 9,
+          "rationale": "Estradiol elevated (>40 pg/mL) - add low-dose anastrozole to prevent aromatization",
+          "action": "Add anastrozole 0.25 mg twice weekly, maintain testosterone dose"
+        },
+        {
+          "outcome_id": "reassess_expectations",
+          "next_step_id": 9,
+          "rationale": "Limited symptom improvement despite optimal levels - evaluate other factors",
+          "action": "Review lifestyle factors, sleep, stress, thyroid function. May need non-hormonal interventions"
+        }
+      ]
+    },
+    {
+      "sequence_order": 9,
+      "step_type": "followup",
+      "title": "12-Week Optimization Check",
+      "description": "Assess treatment response and fine-tune protocol. Most men should be at optimal levels and experiencing significant benefits by this point.",
+      "duration_minutes": 30,
+      "required_roles": ["physician"],
+      "timing_from_start": "12 weeks",
+      "lab_tests_required": [
+        "Total Testosterone",
+        "Free Testosterone",
+        "Estradiol",
+        "Hematocrit",
+        "PSA"
+      ],
+      "clinical_assessment": [
+        "Symptom improvement tracking (compare to baseline)",
+        "Quality of life changes",
+        "Body composition changes (muscle gain, fat loss)",
+        "Exercise performance improvements",
+        "Sleep quality improvements",
+        "Mood and cognitive function",
+        "Side effects review"
+      ],
+      "optimization_targets": {
+        "energy": "Reported improvement in daily energy and reduced afternoon fatigue",
+        "libido": "Return to youthful libido levels",
+        "muscle": "Easier muscle gain, improved gym performance",
+        "mood": "Improved mood stability and reduced irritability",
+        "cognition": "Better focus, mental clarity, memory"
+      }
+    },
+    {
+      "sequence_order": 10,
+      "step_type": "followup",
+      "title": "Lifestyle Optimization Consultation",
+      "description": "For patients who don't qualify for testosterone therapy or need additional support - focus on natural optimization through lifestyle interventions.",
+      "duration_minutes": 45,
+      "required_roles": ["health_coach", "physician"],
+      "lifestyle_interventions": [
+        {
+          "category": "Exercise",
+          "recommendations": [
+            "Resistance training 3-4x/week (compound movements prioritized)",
+            "High-intensity interval training 2x/week",
+            "Avoid chronic cardio (can lower testosterone)",
+            "Prioritize recovery between sessions"
+          ]
+        },
+        {
+          "category": "Nutrition",
+          "recommendations": [
+            "Adequate protein intake (1g per lb body weight)",
+            "Healthy fats (omega-3, saturated fat from quality sources)",
+            "Micronutrients: Zinc (30mg), Magnesium (400mg), Vitamin D (5000 IU)",
+            "Minimize alcohol and processed foods",
+            "Maintain slight caloric surplus if building muscle"
+          ]
+        },
+        {
+          "category": "Sleep",
+          "recommendations": [
+            "7-9 hours of quality sleep per night",
+            "Consistent sleep schedule",
+            "Screen sleep apnea if snoring/fatigue",
+            "Optimize sleep environment (dark, cool, quiet)"
+          ]
+        },
+        {
+          "category": "Stress Management",
+          "recommendations": [
+            "Chronic stress management (meditation, breathwork)",
+            "Work-life balance assessment",
+            "Adaptogenic supplements if appropriate",
+            "Consider therapy for chronic stress/anxiety"
+          ]
+        },
+        {
+          "category": "Environmental",
+          "recommendations": [
+            "Minimize endocrine disruptors (plastics, fragrances)",
+            "Filter drinking water",
+            "Choose organic foods when possible",
+            "Avoid excessive heat exposure to testicles"
+          ]
+        }
+      ],
+      "retest_schedule": "Repeat labs in 3 months after lifestyle optimization"
+    },
+    {
+      "sequence_order": 11,
+      "step_type": "followup",
+      "title": "Quarterly Maintenance Labs",
+      "description": "Ongoing monitoring for men on long-term testosterone optimization. Quarterly labs for first year, then twice yearly if stable.",
+      "duration_minutes": 15,
+      "required_roles": ["phlebotomist"],
+      "frequency": "Every 3 months",
+      "lab_tests_required": [
+        "Total Testosterone (trough)",
+        "Estradiol",
+        "Complete Blood Count (hematocrit monitoring)",
+        "PSA (prostate monitoring)",
+        "Comprehensive Metabolic Panel (liver function)"
+      ],
+      "monitoring_targets": {
+        "testosterone": "Maintain 700-900 ng/dL",
+        "hematocrit": "Keep <50% (elevated risk if higher)",
+        "estradiol": "Keep 20-30 pg/mL (sweet spot for men)",
+        "psa": "Monitor for changes >0.3 ng/mL per year"
+      }
+    },
+    {
+      "sequence_order": 12,
+      "step_type": "followup",
+      "title": "Annual Comprehensive Review",
+      "description": "Yearly comprehensive assessment of testosterone optimization outcomes, benefits vs risks analysis, and protocol adjustments.",
+      "duration_minutes": 45,
+      "required_roles": ["physician"],
+      "timing_from_start": "52 weeks",
+      "comprehensive_assessment": [
+        "Review all quarterly lab trends",
+        "Assess long-term symptom improvements",
+        "Evaluate quality of life changes (validated questionnaires)",
+        "Body composition changes (DEXA scan if available)",
+        "Cardiovascular risk assessment",
+        "Prostate health evaluation",
+        "Benefits vs risks analysis",
+        "Discuss continuation vs modification vs discontinuation"
+      ],
+      "lab_tests_required": [
+        "Full hormone panel (testosterone, free T, SHBG, estradiol, LH, FSH)",
+        "Complete Blood Count",
+        "Comprehensive Metabolic Panel",
+        "Lipid Panel (assess cardiovascular effects)",
+        "PSA + Digital Rectal Exam (DRE)",
+        "Vitamin D, DHEA-S"
+      ],
+      "outcome_measures": [
+        "ADAM Questionnaire (compare to baseline)",
+        "Quality of life improvements",
+        "Body composition changes",
+        "Exercise performance metrics",
+        "Sexual function improvements",
+        "Mood and cognitive function"
+      ]
+    }
+  ],
+  "safety_checks": [
+    {
+      "check_type": "absolute_contraindication",
+      "condition": {
+        "type": "diagnosis",
+        "conditions": ["prostate_cancer", "breast_cancer", "uncontrolled_heart_failure", "untreated_sleep_apnea"]
+      },
+      "severity": "blocking",
+      "override_allowed": false,
+      "rationale": "These conditions are absolute contraindications to testosterone therapy"
+    },
+    {
+      "check_type": "relative_contraindication",
+      "condition": {
+        "type": "lab_value",
+        "test": "hematocrit",
+        "threshold": ">50%"
+      },
+      "severity": "warning",
+      "override_allowed": true,
+      "override_requirements": ["hematology_consultation", "phlebotomy_if_needed"],
+      "rationale": "Elevated hematocrit increases risk of blood clots"
+    },
+    {
+      "check_type": "relative_contraindication",
+      "condition": {
+        "type": "lab_value",
+        "test": "psa",
+        "threshold": ">2.5 ng/mL"
+      },
+      "severity": "warning",
+      "override_allowed": true,
+      "override_requirements": ["urology_consultation", "prostate_exam"],
+      "rationale": "Elevated PSA requires evaluation before testosterone therapy"
+    },
+    {
+      "check_type": "risk_factor",
+      "condition": {
+        "type": "age",
+        "threshold": ">65 years"
+      },
+      "severity": "info",
+      "monitoring_required": "Increased monitoring frequency recommended for men over 65",
+      "rationale": "Older men have higher baseline cardiovascular and prostate cancer risk"
+    }
+  ],
+  "clinical_notes": {
+    "patient_selection": "This protocol is designed for otherwise healthy men over 35 with age-related testosterone decline (300-500 ng/dL). It is NOT for clinical hypogonadism (<300 ng/dL), which requires different management.",
+    "goals": "Optimize testosterone to upper-normal range (700-900 ng/dL) to improve energy, muscle mass, libido, mood, and cognitive function while maintaining safety through regular monitoring.",
+    "typical_patient_profile": "45-year-old man with fatigue, decreased libido, difficulty building muscle despite exercise, total testosterone 380 ng/dL. Wants to feel like he did in his 30s.",
+    "success_metrics": "70-80% of patients report significant improvements in energy, libido, muscle mass, and overall quality of life within 3-6 months"
+  }
+}

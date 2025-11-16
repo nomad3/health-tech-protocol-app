@@ -8,9 +8,9 @@
 
 ## Executive Summary
 
-**PsyProtocol** is an AI-powered protocol engine and patient journey platform for psychedelic-assisted therapy. It connects patients with therapists/clinics, guides them through evidence-based treatment protocols with dynamic branching, and ensures safety through tiered contraindication checking and comprehensive session documentation.
+**PsyProtocol** is an AI-powered protocol engine and patient journey platform for protocol-based medical treatments. It connects patients with therapists/clinics, guides them through evidence-based treatment protocols with dynamic branching, and ensures safety through tiered contraindication checking and comprehensive session documentation.
 
-**Target Market:** Psychedelic therapy clinics (psilocybin, MDMA, ketamine)
+**Target Market:** Medical clinics offering protocol-based treatments (psychedelics, hormone therapy, cancer treatments, regenerative medicine, emerging therapies)
 **MVP Timeline:** 2-3 months with small team
 **Tech Stack:** Python/FastAPI backend, React/TypeScript frontend, PostgreSQL, Redis, Claude AI
 **Deployment:** Single GCP VM with Docker Compose (simplified for MVP)
@@ -22,15 +22,15 @@
 ### Product Vision
 
 **What it is:**
-An AI-powered protocol engine and patient journey platform for psychedelic-assisted therapy. Connects patients with therapists/clinics, guides them through evidence-based treatment protocols with dynamic branching, and ensures safety through tiered contraindication checking and comprehensive session documentation.
+An AI-powered protocol engine and patient journey platform for protocol-based medical treatments. Connects patients with therapists/clinics, guides them through evidence-based treatment protocols with dynamic branching, and ensures safety through tiered contraindication checking and comprehensive session documentation. Supports psychedelics, hormone therapy, cancer treatments, regenerative medicine, and emerging therapies.
 
 ### Core Value Propositions
 
 **For Patients:**
-- Discover safe, evidence-based psychedelic therapy
+- Discover safe, evidence-based medical treatment protocols
 - Understand what to expect through AI-generated guides
 - Get matched with qualified providers
-- Track treatment progress
+- Track treatment progress across diverse therapy types
 
 **For Therapists/Clinics:**
 - Deploy validated protocols instantly
@@ -859,6 +859,162 @@ backend/
 - Vitals every 10 minutes
 - Dissociation scale tracking
 - Blood pressure monitoring (critical)
+
+### Protocol 4: Testosterone Replacement Therapy (TRT)
+
+**Based on:** Endocrine Society Clinical Practice Guidelines
+
+**Overview:**
+- Duration: 12-24 weeks initial protocol
+- Total sessions: 8-12
+- Evidence level: Clinical practice guidelines
+
+**Steps:**
+1. Initial Endocrine Evaluation (60 min)
+   - Comprehensive hormone panel (Total T, Free T, LH, FSH, E2, SHBG)
+   - Medical history and symptom assessment
+   - Physical examination
+2. Baseline Labs & Contraindication Check (30 min)
+   - Prostate specific antigen (PSA)
+   - Complete blood count (CBC)
+   - Lipid panel
+3. **DECISION POINT:** Treatment Modality Selection
+   - Injectable (weekly/bi-weekly)
+   - Topical gel (daily)
+   - Subcutaneous pellets (quarterly)
+4. **DECISION POINT:** Dose Determination
+   - Based on age, weight, baseline levels
+   - Typical range: 100-200mg weekly (injectable)
+5. Treatment Initiation (30 min)
+   - Patient education on administration
+   - Self-injection training (if applicable)
+   - Side effect monitoring plan
+6. Follow-up Labs - Week 6 (30 min)
+   - Hormone levels (trough and peak)
+   - Hematocrit monitoring
+   - Liver function tests
+7. **DECISION POINT:** Dose Adjustment
+   - Evaluate symptom improvement
+   - Adjust based on lab values
+   - Target: Total T 500-900 ng/dL
+8. Follow-up Sessions (Quarterly)
+   - Symptom tracking
+   - Lab monitoring
+   - Side effect assessment
+
+**Safety Checks:**
+- Absolute contraindications: Active prostate cancer, breast cancer, severe heart failure
+- Relative contraindications: Elevated hematocrit (>50%), sleep apnea, benign prostatic hyperplasia
+- Monitoring requirements: PSA every 6 months, CBC quarterly, liver function annually
+
+### Protocol 5: Cancer Chemotherapy Protocol (Example: FOLFOX for Colorectal Cancer)
+
+**Based on:** NCCN Clinical Practice Guidelines in Oncology
+
+**Overview:**
+- Duration: 12 cycles (24 weeks)
+- Total sessions: 24-36 (including supportive care visits)
+- Evidence level: FDA approved, standard of care
+
+**Steps:**
+1. Oncology Consultation & Staging (90 min)
+   - Review pathology and imaging
+   - Discuss treatment goals and expectations
+   - Obtain informed consent
+2. Pre-Treatment Assessment (60 min)
+   - Complete blood count with differential
+   - Comprehensive metabolic panel
+   - Baseline neuropathy assessment
+   - ECOG performance status
+3. Port Placement Coordination (if needed)
+4. **DECISION POINT:** Dose Calculation
+   - Based on body surface area (BSA)
+   - Oxaliplatin: 85 mg/m²
+   - Leucovorin: 400 mg/m²
+   - 5-FU: 400 mg/m² bolus + 2400 mg/m² continuous infusion
+5. Cycle 1 - Day 1 Infusion (4-6 hours)
+   - Pre-medications (antiemetics, steroids)
+   - Vitals every 30 minutes
+   - Infusion reaction monitoring
+   - Patient education on 5-FU pump
+6. Cycle 1 - Day 2 Pump Disconnect (15 min)
+   - Remove 5-FU pump
+   - Assess for immediate toxicities
+7. Mid-Cycle Phone Check-In (15 min)
+   - Symptom assessment
+   - Medication adherence
+   - Supportive care needs
+8. Pre-Cycle Labs & Assessment (30 min)
+   - CBC to assess counts
+   - Metabolic panel
+   - **DECISION POINT:** Proceed vs. Delay vs. Reduce Dose
+     - ANC > 1500, Platelets > 75,000 required
+     - Adjust for toxicities (neuropathy, diarrhea)
+9. Repeat Cycles 2-12
+10. Restaging Scans (after cycles 4, 8, 12)
+    - **DECISION POINT:** Continue vs. Modify vs. Complete therapy
+11. Survivorship Planning (after cycle 12)
+
+**Safety Checks:**
+- Absolute contraindications: Severe bone marrow suppression, active infection, organ failure
+- Dose-limiting toxicities: Neuropathy grade 3+, neutropenic fever, severe diarrhea
+- Required monitoring: CBC before each cycle, metabolic panel, neuropathy assessment
+
+### Protocol 6: Stem Cell Therapy for Osteoarthritis
+
+**Based on:** Emerging clinical practice and research protocols
+
+**Overview:**
+- Duration: 6-12 months
+- Total sessions: 4-6
+- Evidence level: Clinical practice (varies by jurisdiction)
+
+**Steps:**
+1. Initial Orthopedic Evaluation (60 min)
+   - Joint assessment and imaging review
+   - Pain scale baseline (VAS, WOMAC)
+   - Range of motion measurement
+   - Patient selection criteria review
+2. Pre-Procedure Labs & Screening (30 min)
+   - CBC, coagulation studies
+   - Infectious disease screening
+   - Contraindication check
+3. **DECISION POINT:** Stem Cell Source Selection
+   - Bone marrow aspirate concentrate (BMAC)
+   - Adipose-derived stem cells
+   - Umbilical cord-derived cells
+4. Harvest Procedure (60-90 min)
+   - Local anesthesia
+   - Bone marrow aspiration (if BMAC)
+   - Or lipoaspiration (if adipose)
+5. Cell Processing & Preparation (2-3 hours)
+   - Centrifugation and concentration
+   - Cell count and viability testing
+6. Intra-articular Injection (30 min)
+   - Ultrasound or fluoroscopy guidance
+   - Sterile technique
+   - Post-procedure monitoring
+7. Post-Procedure Monitoring (1 week)
+   - Phone check-in
+   - Activity modification guidance
+   - Pain management
+8. Follow-up Assessment - Week 6 (30 min)
+   - Pain scale reassessment
+   - Range of motion
+   - Patient-reported outcomes
+9. **DECISION POINT:** Response Evaluation
+   - Significant improvement: Continue monitoring
+   - Minimal improvement: Consider repeat injection
+   - No improvement: Consider alternative therapies
+10. Follow-up Sessions (3, 6, 12 months)
+    - Outcome measure tracking
+    - Imaging as indicated
+    - Long-term safety monitoring
+
+**Safety Checks:**
+- Absolute contraindications: Active joint infection, malignancy, pregnancy
+- Relative contraindications: Bleeding disorders, immunosuppression, severe joint degeneration
+- Monitoring requirements: Infection monitoring, pain tracking, functional outcomes
 
 ---
 

@@ -1,16 +1,43 @@
 # PsyProtocol Platform
 
-A comprehensive health technology platform for psychological protocols, client management, and AI-powered chat interactions.
+A comprehensive health technology platform for protocol-based medical treatments, client management, and AI-powered clinical support. Supporting psychedelics, hormone therapy, cancer treatments, regenerative medicine, and emerging therapies.
 
 ## Features
 
 - User authentication and authorization (JWT-based)
 - Role-based access control (Admin, Therapist, Client)
-- Protocol management and client assignments
-- AI-powered chat using Anthropic's Claude
+- Protocol management and client assignments for diverse medical treatments
+- AI-powered clinical support using Anthropic's Claude
 - Payment processing via Stripe
 - Real-time caching with Redis
 - RESTful API with comprehensive documentation
+
+## Supported Protocol Types
+
+### Psychedelic Therapy
+- Psilocybin, MDMA, Ketamine, LSD, Ibogaine
+
+### Hormone Replacement Therapy
+- Testosterone replacement therapy (TRT)
+- Estrogen therapy
+- Growth hormone protocols
+- Peptide therapies
+
+### Cancer Treatments
+- Chemotherapy protocols
+- Immunotherapy regimens
+- Radiation therapy schedules
+
+### Regenerative Medicine
+- Stem cell therapy
+- Platelet-rich plasma (PRP)
+- Exosome treatments
+
+### Emerging Therapies
+- Gene therapy
+- CRISPR-based treatments
+- CAR-T cell therapy
+- Longevity protocols
 
 ## Quick Start with Docker
 

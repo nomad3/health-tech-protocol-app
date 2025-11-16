@@ -5,7 +5,7 @@ from app.api.v1 import auth, protocols, admin, patients, therapists
 
 app = FastAPI(
     title="PsyProtocol API",
-    description="AI-powered psychedelic therapy protocol platform",
+    description="AI-powered protocol platform for medical treatments including psychedelics, hormone therapy, cancer treatments, regenerative medicine, and emerging therapies",
     version="1.0.0",
     debug=settings.DEBUG,
 )

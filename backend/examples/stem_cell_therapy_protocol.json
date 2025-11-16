@@ -1,0 +1,881 @@
+{
+  "protocol": {
+    "name": "Autologous Bone Marrow Stem Cell Therapy for Knee Osteoarthritis",
+    "version": "1.0",
+    "therapy_type": "stem_cell",
+    "condition_treated": "Knee Osteoarthritis (Kellgren-Lawrence Grade 2-3)",
+    "evidence_level": "clinical_practice",
+    "overview": "Bone marrow aspirate concentrate (BMAC) stem cell therapy protocol for symptomatic knee osteoarthritis. This minimally invasive regenerative medicine approach involves harvesting bone marrow from the patient's iliac crest, concentrating mesenchymal stem cells and growth factors, and injecting into the affected knee joint under imaging guidance. Evidence suggests potential for pain reduction and functional improvement, though long-term efficacy continues to be studied.",
+    "duration_weeks": 52,
+    "total_sessions": 8,
+    "evidence_sources": [
+      "Chahla J, et al. Bone Marrow Aspirate Concentrate for Orthopaedic Applications. JBJS Rev. 2021",
+      "Kim GB, et al. Bone Marrow Aspirate Concentrate: Its Uses in Osteoarthritis. Int J Mol Sci. 2020",
+      "Centeno CJ, et al. A specific protocol of autologous bone marrow concentrate and platelet products. Biomed Res Int. 2020"
+    ]
+  },
+  "steps": [
+    {
+      "sequence_order": 1,
+      "step_type": "screening",
+      "title": "Initial Orthopedic Consultation & Patient Selection",
+      "description": "Comprehensive orthopedic evaluation to assess candidacy for stem cell therapy, review imaging, establish baseline pain and function scores, and discuss treatment expectations.",
+      "duration_minutes": 60,
+      "required_roles": ["orthopedic_surgeon", "sports_medicine_physician"],
+      "patient_selection_criteria": {
+        "inclusion": [
+          "Age 18-75 years",
+          "Symptomatic knee osteoarthritis (pain > 3 months)",
+          "Kellgren-Lawrence Grade 2-3 on X-ray",
+          "Failed conservative management (PT, NSAIDs, injections)",
+          "Willing to comply with post-procedure rehabilitation",
+          "Realistic expectations about outcomes"
+        ],
+        "exclusion": [
+          "Kellgren-Lawrence Grade 4 (bone-on-bone severe OA)",
+          "Active knee infection",
+          "Inflammatory arthritis (RA, lupus, gout)",
+          "Malignancy (current or within 5 years)",
+          "Pregnancy or breastfeeding",
+          "Severe medical comorbidities precluding procedure",
+          "Immunosuppressive therapy",
+          "Unrealistic expectations (expecting complete cure)",
+          "Significant malalignment requiring osteotomy",
+          "Large meniscal tears requiring repair"
+        ]
+      },
+      "clinical_assessment": [
+        {
+          "component": "History",
+          "details": "Pain duration, severity, location, mechanical symptoms, prior treatments, functional limitations"
+        },
+        {
+          "component": "Physical Examination",
+          "tests": [
+            "Gait assessment",
+            "Range of motion (flexion/extension)",
+            "Effusion/swelling",
+            "Joint line tenderness",
+            "Stability testing (ACL/PCL/collaterals)",
+            "Patellar tracking",
+            "Hip and ankle examination (rule out referred pain)"
+          ]
+        },
+        {
+          "component": "Imaging Review",
+          "required": [
+            "Weight-bearing knee X-rays (AP, lateral, sunrise, notch views)",
+            "MRI of knee (assess cartilage defects, meniscus, ligaments, subchondral bone)"
+          ],
+          "assess": "Kellgren-Lawrence grade, joint space narrowing, osteophytes, subchondral sclerosis, cartilage integrity"
+        }
+      ],
+      "baseline_outcome_measures": [
+        {
+          "measure": "Visual Analog Scale (VAS)",
+          "description": "Pain score 0-10",
+          "baseline_required": true
+        },
+        {
+          "measure": "WOMAC Score",
+          "description": "Western Ontario and McMaster Universities Arthritis Index",
+          "components": "Pain (5 items), Stiffness (2 items), Function (17 items)"
+        },
+        {
+          "measure": "KOOS Score",
+          "description": "Knee Injury and Osteoarthritis Outcome Score",
+          "subscales": "Pain, Symptoms, ADL, Sport/Rec, QOL"
+        },
+        {
+          "measure": "Range of Motion",
+          "assessment": "Active and passive flexion/extension in degrees"
+        },
+        {
+          "measure": "6-Minute Walk Test",
+          "purpose": "Functional capacity baseline"
+        }
+      ],
+      "informed_consent_topics": [
+        "Investigational nature (FDA does not regulate autologous same-day procedures but evidence still emerging)",
+        "Procedure risks: infection, bleeding, pain, nerve injury, failure to improve",
+        "Expected outcomes: Variable response, 60-70% report improvement but not cure",
+        "Timeline: May take 3-6 months to see maximal benefit",
+        "Cost: Often not covered by insurance, patient responsibility",
+        "Alternative treatments: Continued conservative care, viscosupplementation, PRP, eventual knee replacement",
+        "Post-procedure requirements: Activity modification, rehabilitation, follow-up visits"
+      ],
+      "documentation_requirements": {
+        "medical_necessity": "Document failed conservative treatments (PT, NSAIDs, corticosteroid injection, etc.)",
+        "imaging_documentation": "Photos of X-rays and key MRI images in chart",
+        "patient_education": "Provide written patient guide on stem cell therapy"
+      }
+    },
+    {
+      "sequence_order": 2,
+      "step_type": "screening",
+      "title": "Pre-Procedure Laboratory & Medical Clearance",
+      "description": "Obtain necessary labs, screen for contraindications, and ensure medical optimization before procedure.",
+      "duration_minutes": 30,
+      "required_roles": ["nurse", "phlebotomist"],
+      "lab_tests_required": [
+        "Complete Blood Count (CBC)",
+        "Coagulation studies (PT/INR, PTT if on anticoagulation)",
+        "Comprehensive Metabolic Panel (CMP)",
+        "Infectious disease screening (if required by facility protocol)",
+        "Pregnancy test (if applicable)"
+      ],
+      "medication_review": {
+        "anticoagulation": {
+          "instruction": "Hold aspirin 7 days prior, hold NSAIDs 5 days prior, hold warfarin/DOACs per protocol",
+          "bridging": "Coordinate with prescribing physician if high-risk patient"
+        },
+        "immunosuppressives": {
+          "instruction": "Patients on chronic steroids, biologics, or immunosuppressants may not be candidates",
+          "action": "Discuss with rheumatology/primary care before proceeding"
+        }
+      },
+      "medical_clearance": {
+        "cardiac_clearance": "If age > 65 or significant cardiac history, consider cardiology clearance",
+        "anesthesia_clearance": "If using moderate sedation, ensure anesthesia consult if high-risk (ASA 3+)"
+      },
+      "pre_procedure_instructions": [
+        "NPO after midnight if moderate sedation planned (local anesthesia alone may not require NPO)",
+        "Arrange transportation (cannot drive after sedation)",
+        "Wear comfortable loose clothing",
+        "Stop anti-inflammatory medications as instructed",
+        "Continue other medications with small sip of water unless instructed otherwise"
+      ]
+    },
+    {
+      "sequence_order": 3,
+      "step_type": "decision_point",
+      "title": "Stem Cell Source & Processing Method Selection",
+      "description": "Determine optimal stem cell source and concentration system based on patient factors and available technology.",
+      "duration_minutes": 15,
+      "required_roles": ["orthopedic_surgeon", "regenerative_medicine_specialist"],
+      "evaluation_rules": {
+        "type": "source_selection",
+        "options": [
+          {
+            "source": "Bone Marrow Aspirate Concentrate (BMAC)",
+            "harvest_site": "Posterior iliac crest",
+            "pros": [
+              "High concentration of MSCs and growth factors",
+              "Most evidence in orthopedic literature",
+              "Same-day procedure",
+              "Autologous (no rejection risk)"
+            ],
+            "cons": [
+              "Requires bone marrow aspiration (painful)",
+              "MSC concentration decreases with age",
+              "Donor site soreness for several days"
+            ],
+            "typical_yield": "2000-6000 CFU-F/mL (colony forming units - fibroblasts)",
+            "preferred_for": "Knee osteoarthritis, cartilage defects"
+          },
+          {
+            "source": "Adipose-Derived Stem Cells",
+            "harvest_site": "Abdomen or flank liposuction",
+            "pros": [
+              "Abundant source",
+              "Higher cell numbers",
+              "Less painful harvest than bone marrow"
+            ],
+            "cons": [
+              "More processing required (may require enzymatic digestion - FDA regulatory issues)",
+              "Less evidence in knee OA specifically",
+              "Requires liposuction procedure"
+            ],
+            "regulatory_note": "Enzymatic digestion makes it 'more than minimally manipulated' - FDA oversight"
+          },
+          {
+            "source": "Umbilical Cord-Derived Allogenic Cells",
+            "pros": [
+              "No harvest needed",
+              "Younger cells (potentially more potent)"
+            ],
+            "cons": [
+              "Allogenic (not patient's own)",
+              "FDA has issued warning letters to many companies",
+              "Regulatory uncertainty",
+              "Higher cost"
+            ],
+            "regulatory_status": "Many products not FDA approved, use with caution"
+          }
+        ],
+        "concentration_systems": [
+          {
+            "system": "Centrifuge-based systems",
+            "examples": "Arthrex Angel, Harvest SmartPReP, Biomet BioCUE",
+            "principle": "Density gradient centrifugation",
+            "typical_concentration_factor": "5-8x baseline"
+          },
+          {
+            "system": "Filtration-based systems",
+            "principle": "Size-based filtration",
+            "less_common": true
+          }
+        ]
+      },
+      "recommended_approach": {
+        "standard_protocol": "BMAC from posterior iliac crest using centrifuge-based concentration system",
+        "rationale": "Most evidence-based, autologous, same-day, regulatory compliance (minimal manipulation)"
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "bmac_selected",
+          "description": "Bone marrow aspirate concentrate from iliac crest",
+          "next_step": 4
+        },
+        {
+          "outcome_id": "adipose_selected",
+          "description": "Adipose-derived stem cells",
+          "next_step": 4
+        }
+      ]
+    },
+    {
+      "sequence_order": 4,
+      "step_type": "dosing",
+      "title": "Bone Marrow Harvest Procedure",
+      "description": "Percutaneous bone marrow aspiration from posterior iliac crest under local anesthesia with optional sedation.",
+      "duration_minutes": 45,
+      "required_roles": ["orthopedic_surgeon", "physician_assistant", "nurse"],
+      "procedure_setting": "Outpatient procedure room or ambulatory surgery center",
+      "anesthesia_options": [
+        {
+          "type": "Local anesthesia only",
+          "medications": "Lidocaine 1% with epinephrine, possibly bupivacaine for longer duration",
+          "pros": "No sedation risks, patient can drive home",
+          "cons": "Patient may experience discomfort during aspiration"
+        },
+        {
+          "type": "Local + oral anxiolytic",
+          "medications": "Local anesthetic + oral diazepam or lorazepam",
+          "pros": "Reduced anxiety, minimal monitoring required",
+          "cons": "Patient cannot drive, mild sedation"
+        },
+        {
+          "type": "Local + IV moderate sedation",
+          "medications": "Local anesthetic + fentanyl/midazolam or propofol",
+          "pros": "Patient comfort maximized",
+          "cons": "Requires anesthesia monitoring, longer recovery, cannot drive"
+        }
+      ],
+      "procedure_steps": [
+        {
+          "step": 1,
+          "action": "Patient positioning",
+          "details": "Prone position, posterior superior iliac spine (PSIS) exposed and prepped"
+        },
+        {
+          "step": 2,
+          "action": "Sterile preparation",
+          "details": "Chlorhexidine or betadine skin prep, sterile draping"
+        },
+        {
+          "step": 3,
+          "action": "Local anesthesia",
+          "details": "Infiltrate skin, subcutaneous tissue, and periosteum with lidocaine/bupivacaine"
+        },
+        {
+          "step": 4,
+          "action": "Skin incision",
+          "details": "Small stab incision with 11-blade scalpel (3-5mm)"
+        },
+        {
+          "step": 5,
+          "action": "Bone marrow aspiration",
+          "details": [
+            "Insert bone marrow aspiration needle through incision to PSIS",
+            "Advance needle through cortical bone into marrow space",
+            "Aspirate 2cc aliquots from multiple sites (move needle in different directions)",
+            "Total aspiration volume: 30-60cc",
+            "NOTE: Small volume aspirates from multiple sites yield higher MSC concentration than large single aspirate"
+          ]
+        },
+        {
+          "step": 6,
+          "action": "Collect aspirate",
+          "details": "Transfer bone marrow aspirate into sterile syringe with anticoagulant (ACD-A or heparin)"
+        },
+        {
+          "step": 7,
+          "action": "Hemostasis",
+          "details": "Apply manual pressure to aspiration site"
+        },
+        {
+          "step": 8,
+          "action": "Wound closure",
+          "details": "Single stitch or skin adhesive, sterile dressing applied"
+        }
+      ],
+      "aspiration_technique_key_points": [
+        "Multisite aspiration: Move needle to 4-6 different locations within marrow space",
+        "Small volume per site: 2cc maximum per aspiration to maximize nucleated cell concentration",
+        "Avoid peripheral blood dilution: Do not aspirate > 2cc from single site",
+        "Target volume: 30-60cc total raw aspirate"
+      ],
+      "vitals_monitoring": {
+        "frequency": "Every 5 minutes during procedure if sedation used",
+        "parameters": ["blood_pressure", "heart_rate", "oxygen_saturation", "respiratory_rate"]
+      },
+      "complications_monitoring": [
+        "Excessive bleeding",
+        "Vasovagal reaction",
+        "Nerve injury (rare)",
+        "Fracture (very rare with proper technique)"
+      ]
+    },
+    {
+      "sequence_order": 5,
+      "step_type": "preparation",
+      "title": "Bone Marrow Concentration & Cell Processing",
+      "description": "Centrifugation and concentration of bone marrow aspirate to yield high-density mesenchymal stem cell and growth factor product.",
+      "duration_minutes": 30,
+      "required_roles": ["lab_technician", "nurse"],
+      "processing_protocol": {
+        "system_used": "FDA-cleared centrifuge system (e.g., Arthrex Angel, Harvest SmartPReP2)",
+        "steps": [
+          {
+            "step": 1,
+            "action": "Transfer bone marrow aspirate to processing device",
+            "volume": "30-60cc raw aspirate"
+          },
+          {
+            "step": 2,
+            "action": "Centrifugation",
+            "parameters": "Device-specific protocol, typically 3200 RPM for 15 minutes",
+            "principle": "Density gradient separation - RBCs settle, buffy coat contains MSCs and growth factors"
+          },
+          {
+            "step": 3,
+            "action": "Extract concentrate",
+            "details": "Collect buffy coat layer (nucleated cell layer) containing MSCs",
+            "yield": "Approximately 3-6cc of BMAC from 60cc aspirate (concentration factor ~10x)"
+          },
+          {
+            "step": 4,
+            "action": "Optional: Add activating agent",
+            "options": [
+              "Autologous platelet-rich plasma (PRP) from same patient",
+              "Calcium chloride to activate platelets and release growth factors",
+              "Thrombin (avoid if possible due to immunogenicity)"
+            ],
+            "note": "Some protocols combine BMAC + PRP for synergistic effect"
+          },
+          {
+            "step": 5,
+            "action": "Quality check (if equipment available)",
+            "parameters": [
+              "Total nucleated cell count (TNC)",
+              "CFU-F assay (colony forming units - gold standard for MSC quantification, but takes 2 weeks)",
+              "Platelet count if PRP combined"
+            ],
+            "typical_values": "TNC 100-500 million per 6cc concentrate"
+          }
+        ],
+        "sterile_technique": "All processing in sterile field, closed system preferred",
+        "time_sensitivity": "Complete within 2 hours of aspiration for optimal cell viability"
+      },
+      "final_product": {
+        "volume": "3-6cc BMAC concentrate",
+        "cell_content": "Mesenchymal stem cells, hematopoietic progenitors, platelets, growth factors (PDGF, TGF-β, VEGF, IGF)",
+        "storage": "Keep at room temperature, use within 1 hour (cells are living, viability decreases over time)"
+      }
+    },
+    {
+      "sequence_order": 6,
+      "step_type": "dosing",
+      "title": "Intra-articular Knee Injection of BMAC",
+      "description": "Image-guided (ultrasound or fluoroscopy) injection of concentrated bone marrow stem cells into the affected knee joint.",
+      "duration_minutes": 30,
+      "required_roles": ["orthopedic_surgeon", "radiologist", "ultrasound_technician"],
+      "pre_injection_preparation": [
+        "Patient positioning: Supine with knee slightly flexed (pillow under knee)",
+        "Imaging setup: Ultrasound or fluoroscopy machine positioned",
+        "Sterile preparation of injection site"
+      ],
+      "imaging_guidance": {
+        "preferred": "Ultrasound",
+        "alternative": "Fluoroscopy",
+        "rationale": "Ensures accurate intra-articular placement, avoids extra-articular injection"
+      },
+      "injection_procedure": [
+        {
+          "step": 1,
+          "action": "Joint aspiration (if effusion present)",
+          "details": "Remove any joint fluid to create space for injectate and reduce dilution"
+        },
+        {
+          "step": 2,
+          "action": "Skin preparation",
+          "details": "Chlorhexidine or betadine prep, sterile draping"
+        },
+        {
+          "step": 3,
+          "action": "Local anesthesia",
+          "details": "Lidocaine skin wheal and subcutaneous track anesthesia"
+        },
+        {
+          "step": 4,
+          "action": "Needle insertion",
+          "approach": "Superolateral approach (most common) or medial/lateral as anatomy permits",
+          "needle": "22-gauge spinal needle or 18-20 gauge for thicker preparations",
+          "guidance": "Real-time ultrasound or fluoroscopy to confirm intra-articular position"
+        },
+        {
+          "step": 5,
+          "action": "BMAC injection",
+          "volume": "3-6cc of BMAC concentrate",
+          "technique": "Slow, steady injection under image guidance",
+          "distribution": "Visualize distribution within joint space on ultrasound"
+        },
+        {
+          "step": 6,
+          "action": "Post-injection",
+          "details": "Withdraw needle, apply pressure, sterile bandage"
+        },
+        {
+          "step": 7,
+          "action": "Range of motion",
+          "details": "Gently flex and extend knee 10-15 times to distribute BMAC throughout joint"
+        }
+      ],
+      "injection_site_options": [
+        {
+          "site": "Intra-articular (standard)",
+          "indication": "Generalized osteoarthritis, chondral lesions"
+        },
+        {
+          "site": "Subchondral bone injection (advanced technique)",
+          "indication": "Bone marrow edema lesions, osteochondral defects",
+          "technique": "Direct injection into subchondral bone under fluoroscopy",
+          "note": "More invasive, reserved for specific cases"
+        }
+      ],
+      "post_injection_monitoring": {
+        "observation_period": "15-30 minutes",
+        "watch_for": [
+          "Vasovagal reaction",
+          "Acute pain or swelling (suggest extra-articular injection)",
+          "Allergic reaction (rare with autologous product)"
+        ]
+      },
+      "discharge_instructions": [
+        "Ice knee 20 minutes every 2-3 hours for first 48 hours",
+        "Elevate leg when resting",
+        "Avoid NSAIDs for 2 weeks (may impair healing response)",
+        "Acetaminophen or tramadol for pain if needed",
+        "Activity modification per protocol (see step 7)",
+        "Watch for signs of infection: fever, increasing redness, warmth, purulent drainage (rare but serious)",
+        "Emergency contact number provided"
+      ]
+    },
+    {
+      "sequence_order": 7,
+      "step_type": "integration",
+      "title": "Post-Procedure Activity Modification & Rehabilitation Phase 1 (Weeks 1-6)",
+      "description": "Structured activity modification and gradual rehabilitation to optimize healing while protecting the joint and allowing stem cell engraftment.",
+      "duration_minutes": 45,
+      "required_roles": ["physical_therapist", "orthopedic_surgeon"],
+      "phase_1_weeks_1_to_2": {
+        "goals": [
+          "Protect joint during initial healing",
+          "Minimize inflammation",
+          "Maintain range of motion"
+        ],
+        "activity_restrictions": [
+          "No impact activities (running, jumping)",
+          "No squatting or kneeling",
+          "Minimize stairs (use one step at a time)",
+          "Crutches or cane if needed for comfort (partial weight-bearing as tolerated)",
+          "Avoid prolonged standing or walking (> 15 minutes continuously)"
+        ],
+        "allowed_activities": [
+          "Gentle walking (short distances, flat surfaces)",
+          "Stationary bike (no resistance, high seat)",
+          "Pool walking (if incision healed)",
+          "Gentle stretching"
+        ],
+        "physical_therapy": [
+          "Begin PT at 1 week post-procedure",
+          "Gentle range of motion exercises",
+          "Quad sets, ankle pumps",
+          "Straight leg raises",
+          "Gentle stationary bike",
+          "Ice and elevation as needed"
+        ]
+      },
+      "phase_1_weeks_3_to_6": {
+        "goals": [
+          "Gradual increase in activity",
+          "Strengthen surrounding musculature",
+          "Improve proprioception"
+        ],
+        "activity_progression": [
+          "Increase walking duration and distance gradually",
+          "Wean off assistive devices as pain allows",
+          "Low-resistance stationary bike",
+          "Elliptical machine (low resistance)",
+          "Swimming or water aerobics"
+        ],
+        "physical_therapy_progression": [
+          "Progressive resistance exercises (quad, hamstring, hip strengthening)",
+          "Balance and proprioception training",
+          "Gait training",
+          "Increase stationary bike resistance",
+          "Pool exercises"
+        ],
+        "continued_restrictions": [
+          "No impact activities (running, jumping, sports)",
+          "No deep squatting",
+          "Avoid prolonged kneeling"
+        ]
+      },
+      "pain_management_phase_1": {
+        "preferred": [
+          "Ice therapy",
+          "Acetaminophen",
+          "Tramadol if needed"
+        ],
+        "avoid": [
+          "NSAIDs (ibuprofen, naproxen) for at least 2 weeks, preferably 6 weeks",
+          "Rationale: May impair healing response and stem cell activity"
+        ],
+        "note": "Some post-procedure soreness is normal (injection site, knee), but severe or worsening pain should be reported"
+      }
+    },
+    {
+      "sequence_order": 8,
+      "step_type": "followup",
+      "title": "Two-Week Follow-up Assessment",
+      "description": "Early follow-up to assess for complications, review activity adherence, and ensure appropriate healing.",
+      "duration_minutes": 20,
+      "required_roles": ["physician_assistant", "nurse_practitioner"],
+      "assessments": [
+        "Wound healing (harvest site and injection site)",
+        "Pain level compared to baseline",
+        "Knee swelling or effusion",
+        "Range of motion",
+        "Gait pattern",
+        "Complication screening (infection, excessive pain, DVT symptoms)",
+        "Activity log review",
+        "Physical therapy compliance"
+      ],
+      "expected_findings": {
+        "harvest_site": "Mild soreness improving, incision healed",
+        "knee": "Mild soreness or swelling common, should be improving",
+        "function": "Similar to baseline or slightly worse (early phase, healing in progress)"
+      },
+      "red_flags": [
+        "Fever or systemic symptoms",
+        "Increasing knee pain, warmth, redness (infection)",
+        "Large effusion (aspiration may be needed)",
+        "DVT symptoms (calf pain, swelling)"
+      ],
+      "reinforcement": [
+        "Continue activity modifications",
+        "Avoid NSAIDs",
+        "Importance of PT adherence",
+        "Timeline expectations (improvement may not be seen yet)"
+      ]
+    },
+    {
+      "sequence_order": 9,
+      "step_type": "followup",
+      "title": "Six-Week Follow-up & Outcome Assessment",
+      "description": "Reassess pain and function, review imaging if indicated, and progress to next rehabilitation phase.",
+      "duration_minutes": 30,
+      "required_roles": ["orthopedic_surgeon", "sports_medicine_physician"],
+      "assessments": [
+        "Pain level (VAS score)",
+        "WOMAC or KOOS score",
+        "Range of motion measurement",
+        "Physical examination (effusion, stability, strength)",
+        "Activity level and satisfaction"
+      ],
+      "expected_outcomes": {
+        "pain": "Many patients report some improvement by 6 weeks, but maximal benefit may take 3-6 months",
+        "function": "Gradual improvement in activities of daily living",
+        "range_of_motion": "Should be similar to or better than baseline"
+      },
+      "imaging": {
+        "routine_imaging": "Not typically needed at 6 weeks",
+        "MRI_if_indicated": [
+          "Persistent or worsening symptoms",
+          "Suspicion of new injury (meniscal tear, etc.)",
+          "Research protocol"
+        ]
+      },
+      "decision_point": {
+        "significant_improvement": "Continue rehabilitation progression, advance to Phase 2",
+        "minimal_improvement": "Continue current rehab, reassess at 3 months",
+        "worse": "Investigate for complications, consider additional imaging or interventions"
+      }
+    },
+    {
+      "sequence_order": 10,
+      "step_type": "integration",
+      "title": "Rehabilitation Phase 2 (Weeks 7-12): Progressive Strengthening",
+      "description": "Advance rehabilitation with progressive resistance training, functional exercises, and gradual return to desired activities.",
+      "duration_minutes": 60,
+      "required_roles": ["physical_therapist"],
+      "phase_2_goals": [
+        "Restore full or near-full range of motion",
+        "Improve lower extremity strength (quad, hamstring, hip, calf)",
+        "Enhance balance and proprioception",
+        "Begin sport-specific or activity-specific training (if applicable)"
+      ],
+      "exercises": [
+        "Progressive resistance training (leg press, hamstring curls, calf raises)",
+        "Single-leg exercises (step-ups, single-leg stance)",
+        "Balance board or BOSU ball exercises",
+        "Plyometric exercises (light jumping, hopping) - gradually introduced",
+        "Agility drills (cones, ladder drills) if patient goals include sports",
+        "Cycling with increased resistance",
+        "Elliptical or stair climber"
+      ],
+      "activity_progression": [
+        "Walking unlimited",
+        "Light jogging on soft surfaces (if pain-free) by week 10-12",
+        "Swimming, cycling, elliptical without restrictions",
+        "Low-impact sports (golf, doubles tennis) may begin",
+        "Avoid high-impact sports (basketball, soccer, running > 3 miles) until 3-6 months"
+      ],
+      "monitoring": [
+        "Pain during and after exercise (should be minimal)",
+        "Swelling (mild swelling after exercise OK, but should resolve overnight)",
+        "PT should communicate with physician if concerns arise"
+      ]
+    },
+    {
+      "sequence_order": 11,
+      "step_type": "followup",
+      "title": "Three-Month Follow-up & Outcome Evaluation",
+      "description": "Comprehensive outcome assessment to evaluate treatment response and determine need for additional interventions.",
+      "duration_minutes": 30,
+      "required_roles": ["orthopedic_surgeon", "sports_medicine_physician"],
+      "outcome_measures": [
+        {
+          "measure": "VAS Pain Score",
+          "comparison": "Compare to baseline",
+          "clinically_significant": "Reduction of ≥ 2 points or ≥ 30% improvement"
+        },
+        {
+          "measure": "WOMAC or KOOS",
+          "comparison": "Compare to baseline",
+          "clinically_significant": "Improvement in total score and subscales"
+        },
+        {
+          "measure": "Range of Motion",
+          "comparison": "Compare to baseline and contralateral knee"
+        },
+        {
+          "measure": "6-Minute Walk Test",
+          "comparison": "Compare to baseline"
+        },
+        {
+          "measure": "Patient Satisfaction",
+          "scale": "Very satisfied, satisfied, neutral, dissatisfied, very dissatisfied"
+        },
+        {
+          "measure": "Patient Global Impression of Change",
+          "scale": "Much better, better, slightly better, no change, worse"
+        }
+      ],
+      "physical_examination": [
+        "Gait analysis",
+        "Range of motion (active and passive)",
+        "Strength testing (quad, hamstring)",
+        "Effusion assessment",
+        "Joint line tenderness",
+        "Functional tests (squat, single-leg stance)"
+      ],
+      "imaging_optional": {
+        "mri": "May be obtained for research purposes or if considering additional injection",
+        "assess": "Cartilage signal changes, subchondral bone edema resolution, joint effusion"
+      },
+      "decision_tree": {
+        "significant_improvement_60_plus_percent": {
+          "action": "Continue current activity level, maintenance exercises, follow-up at 6 and 12 months",
+          "activity_clearance": "May gradually return to higher-impact activities if pain-free"
+        },
+        "moderate_improvement_30_to_60_percent": {
+          "action": "Continue rehabilitation, consider repeat injection at 6 months if plateaued",
+          "discussion": "Set realistic expectations, may achieve additional benefit over next 3 months"
+        },
+        "minimal_improvement_less_than_30_percent": {
+          "action": "Re-evaluate diagnosis, consider additional imaging, discuss alternative treatments",
+          "options": [
+            "Repeat BMAC injection (some protocols use 2-3 injections)",
+            "Add PRP or hyaluronic acid",
+            "Consider surgical options (arthroscopy, osteotomy, eventual replacement)",
+            "Continue conservative management"
+          ]
+        },
+        "worse": {
+          "action": "MRI to rule out new pathology, consider alternative diagnosis",
+          "possibilities": "Meniscal tear, progression of OA, infection (rare), inflammatory arthritis"
+        }
+      }
+    },
+    {
+      "sequence_order": 12,
+      "step_type": "followup",
+      "title": "Six-Month and One-Year Follow-ups",
+      "description": "Long-term outcome monitoring to assess durability of treatment effect and guide further management.",
+      "duration_minutes": 30,
+      "required_roles": ["orthopedic_surgeon", "sports_medicine_physician"],
+      "six_month_assessment": {
+        "purpose": "Evaluate maximal treatment benefit (most studies show peak benefit 6-12 months post-injection)",
+        "assessments": [
+          "VAS, WOMAC/KOOS scores",
+          "Physical examination",
+          "Activity level",
+          "Patient satisfaction"
+        ],
+        "decision_point": {
+          "continued_benefit": "Annual follow-up, continue activity modifications",
+          "benefit_plateau_or_decline": "Consider repeat injection (some protocols allow repeat at 6-12 month intervals)",
+          "no_benefit_or_worse": "Discuss alternative treatments (surgery, etc.)"
+        }
+      },
+      "one_year_assessment": {
+        "purpose": "Long-term efficacy and safety evaluation",
+        "assessments": [
+          "Outcome scores (VAS, WOMAC/KOOS)",
+          "X-rays (assess for OA progression)",
+          "Physical examination",
+          "Return to activities and sports",
+          "Patient satisfaction and willingness to repeat procedure"
+        ],
+        "long_term_outcomes_expected": [
+          "60-70% of patients report sustained improvement at 1 year",
+          "Improvement may persist 1-2 years in many patients",
+          "Some patients may require repeat injection",
+          "Does not halt OA progression but may slow it and improve symptoms"
+        ]
+      },
+      "repeat_injection_considerations": {
+        "indications": [
+          "Initial good response with symptom recurrence",
+          "Partial response with desire for additional improvement",
+          "Patient request and willingness"
+        ],
+        "timing": "Typically 6-12 months after initial injection",
+        "evidence": "Limited data on optimal timing and number of repeat injections"
+      }
+    }
+  ],
+  "safety_monitoring": {
+    "absolute_contraindications": [
+      "Active joint infection or systemic infection",
+      "Active malignancy (current cancer, not in remission)",
+      "Pregnancy or breastfeeding",
+      "Severe immunosuppression",
+      "Allergy to local anesthetics (can substitute alternative anesthetics)",
+      "Inability to comply with post-procedure activity restrictions"
+    ],
+    "relative_contraindications": [
+      "Inflammatory arthritis (RA, lupus) - may have reduced efficacy",
+      "Advanced osteoarthritis (K-L Grade 4, bone-on-bone) - lower success rates",
+      "Bleeding disorders or anticoagulation (require careful management)",
+      "Significant knee malalignment (varus/valgus) - may need osteotomy first",
+      "Large meniscal tears - may need surgical repair first",
+      "Unstable ligaments - may need stabilization first"
+    ],
+    "adverse_events_to_monitor": [
+      {
+        "event": "Infection",
+        "incidence": "< 0.1% (very rare with sterile technique)",
+        "presentation": "Fever, increasing pain, warmth, redness, purulent drainage",
+        "management": "Urgent evaluation, joint aspiration, antibiotics, possible surgical irrigation"
+      },
+      {
+        "event": "Post-injection pain/swelling",
+        "incidence": "Common (30-50% have transient increase in pain)",
+        "duration": "Typically resolves within 2-7 days",
+        "management": "Ice, elevation, acetaminophen, reassurance; avoid NSAIDs"
+      },
+      {
+        "event": "Hemarthrosis (bloody joint effusion)",
+        "incidence": "Rare, more common if on anticoagulation",
+        "management": "Usually self-limited, aspiration if large and symptomatic"
+      },
+      {
+        "event": "Allergic reaction",
+        "incidence": "Extremely rare (autologous product)",
+        "management": "Treat as any allergic reaction, epinephrine if anaphylaxis"
+      },
+      {
+        "event": "Nerve injury",
+        "incidence": "Very rare",
+        "types": "Transient numbness from local anesthetic (common), permanent nerve damage (extremely rare)"
+      },
+      {
+        "event": "No improvement or worsening",
+        "incidence": "30-40% may not achieve significant benefit",
+        "management": "Evaluate for other pathology, discuss alternative treatments"
+      },
+      {
+        "event": "Iliac crest donor site pain",
+        "incidence": "Common (most patients have some soreness)",
+        "duration": "Typically resolves within 1-2 weeks",
+        "management": "Ice, acetaminophen, gradual improvement expected"
+      }
+    ],
+    "long_term_safety": {
+      "tumor_risk": "Theoretical concern, but no documented cases of tumor formation from autologous MSC injections in joints to date",
+      "monitoring": "Annual clinical follow-up, report any unusual masses or symptoms"
+    }
+  },
+  "special_populations": {
+    "elderly_patients": {
+      "considerations": [
+        "MSC concentration and function may decline with age",
+        "May have slower recovery",
+        "Higher likelihood of comorbidities requiring medical optimization",
+        "May have lower success rates but still reasonable to try before knee replacement"
+      ]
+    },
+    "athletes": {
+      "considerations": [
+        "May have higher expectations for return to sport",
+        "Require sport-specific rehabilitation protocols",
+        "Timeline to full sports participation: 3-6 months minimum",
+        "May combine with other biologics (PRP, etc.) for optimal results"
+      ]
+    },
+    "bilateral_knee_oa": {
+      "approach": "Typically treat one knee at a time, separated by 2-4 weeks if doing both"
+    }
+  },
+  "outcome_data_from_literature": {
+    "expected_outcomes": {
+      "pain_reduction": "60-70% of patients report clinically significant pain reduction (VAS decrease ≥ 2 points)",
+      "functional_improvement": "50-65% report meaningful functional improvement (WOMAC/KOOS)",
+      "duration_of_benefit": "Improvement typically sustained 12-24 months in responders"
+    },
+    "predictors_of_success": [
+      "Younger age (< 65)",
+      "Lower BMI (< 30)",
+      "Less severe OA (K-L Grade 2 better than Grade 3)",
+      "Higher MSC concentration in injectate",
+      "Good rehabilitation compliance"
+    ],
+    "comparison_to_other_treatments": {
+      "vs_placebo": "Modest superiority over saline injection (placebo effect is strong in knee OA)",
+      "vs_corticosteroid": "Longer duration of benefit, no cartilage toxicity concerns",
+      "vs_hyaluronic_acid": "Similar or possibly superior outcomes in some studies",
+      "vs_prp": "Comparable or slightly better in some studies, often combined",
+      "vs_knee_replacement": "Not a replacement for severe OA, but may delay surgery in appropriate candidates"
+    }
+  },
+  "cost_and_insurance": {
+    "typical_cost": "$3000-$7000 (varies by location and facility)",
+    "insurance_coverage": "Most insurance does not cover (considered investigational/experimental)",
+    "patient_responsibility": "Typically self-pay",
+    "documentation_for_appeal": "Can provide medical necessity letter citing failed conservative treatments for insurance appeal"
+  }
+}

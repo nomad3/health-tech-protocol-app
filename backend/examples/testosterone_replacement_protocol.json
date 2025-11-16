@@ -1,0 +1,557 @@
+{
+  "protocol": {
+    "name": "Testosterone Replacement Therapy (TRT) - Standard Protocol",
+    "version": "1.0",
+    "therapy_type": "testosterone",
+    "condition_treated": "Male Hypogonadism / Low Testosterone",
+    "evidence_level": "clinical_practice",
+    "overview": "Evidence-based testosterone replacement therapy protocol for adult males with clinically confirmed hypogonadism. Follows Endocrine Society Clinical Practice Guidelines for diagnosis, treatment initiation, monitoring, and dose optimization.",
+    "duration_weeks": 24,
+    "total_sessions": 10,
+    "evidence_sources": [
+      "Endocrine Society Clinical Practice Guidelines (2018)",
+      "American Urological Association Guidelines",
+      "Bhasin S, et al. J Clin Endocrinol Metab. 2018"
+    ]
+  },
+  "steps": [
+    {
+      "sequence_order": 1,
+      "step_type": "screening",
+      "title": "Initial Endocrine Evaluation",
+      "description": "Comprehensive evaluation including symptom assessment, medical history, physical examination, and initial laboratory testing to confirm diagnosis of hypogonadism.",
+      "duration_minutes": 60,
+      "required_roles": ["endocrinologist", "urologist", "primary_care"],
+      "clinical_scales": ["ADAM Questionnaire", "AMS Score"],
+      "vitals_monitoring": {
+        "required": ["blood_pressure", "heart_rate", "weight", "height", "bmi"]
+      },
+      "documentation_requirements": {
+        "symptoms": ["fatigue", "decreased_libido", "erectile_dysfunction", "mood_changes", "decreased_muscle_mass"],
+        "medical_history": ["cardiovascular_disease", "diabetes", "sleep_apnea", "prostate_history"],
+        "medications": ["current_medications", "supplements"]
+      }
+    },
+    {
+      "sequence_order": 2,
+      "step_type": "screening",
+      "title": "Baseline Laboratory Testing",
+      "description": "Comprehensive hormone panel and safety labs obtained in morning (7-11 AM) to confirm diagnosis and establish baseline values.",
+      "duration_minutes": 30,
+      "required_roles": ["phlebotomist", "lab_technician"],
+      "lab_tests_required": [
+        "Total Testosterone (repeat if low)",
+        "Free Testosterone",
+        "Sex Hormone Binding Globulin (SHBG)",
+        "Luteinizing Hormone (LH)",
+        "Follicle Stimulating Hormone (FSH)",
+        "Estradiol (E2)",
+        "Prostate Specific Antigen (PSA)",
+        "Complete Blood Count (CBC)",
+        "Comprehensive Metabolic Panel (CMP)",
+        "Lipid Panel",
+        "Hemoglobin A1c"
+      ],
+      "diagnostic_criteria": {
+        "testosterone_threshold": "< 300 ng/dL on two separate morning measurements",
+        "symptoms_required": true
+      }
+    },
+    {
+      "sequence_order": 3,
+      "step_type": "decision_point",
+      "title": "Safety Check & Contraindication Review",
+      "description": "Evaluate absolute and relative contraindications before treatment initiation.",
+      "duration_minutes": 20,
+      "required_roles": ["endocrinologist", "urologist"],
+      "evaluation_rules": {
+        "type": "safety_assessment",
+        "absolute_contraindications": [
+          {
+            "condition": "prostate_cancer",
+            "description": "Active or history of prostate cancer",
+            "action": "exclude_from_treatment"
+          },
+          {
+            "condition": "breast_cancer",
+            "description": "Active or history of male breast cancer",
+            "action": "exclude_from_treatment"
+          },
+          {
+            "condition": "severe_heart_failure",
+            "description": "NYHA Class IV heart failure",
+            "action": "exclude_from_treatment"
+          },
+          {
+            "condition": "hematocrit_high",
+            "threshold": "> 54%",
+            "action": "defer_until_resolved"
+          }
+        ],
+        "relative_contraindications": [
+          {
+            "condition": "sleep_apnea_untreated",
+            "description": "Untreated obstructive sleep apnea",
+            "action": "require_treatment_first"
+          },
+          {
+            "condition": "bph_severe",
+            "description": "Severe benign prostatic hyperplasia with urinary symptoms",
+            "action": "optimize_before_treatment"
+          },
+          {
+            "condition": "psa_elevated",
+            "threshold": "> 4.0 ng/mL or > 3.0 ng/mL with high risk",
+            "action": "urology_evaluation_required"
+          }
+        ]
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "cleared_for_treatment",
+          "next_step": 4,
+          "description": "No contraindications identified, proceed to treatment modality selection"
+        },
+        {
+          "outcome_id": "defer_treatment",
+          "next_step": "exit_protocol",
+          "description": "Absolute contraindication present, patient not candidate for TRT"
+        },
+        {
+          "outcome_id": "conditional_clearance",
+          "next_step": 4,
+          "description": "Relative contraindications addressed, proceed with enhanced monitoring"
+        }
+      ]
+    },
+    {
+      "sequence_order": 4,
+      "step_type": "decision_point",
+      "title": "Treatment Modality Selection",
+      "description": "Select optimal testosterone delivery method based on patient preference, lifestyle, cost, and clinical factors.",
+      "duration_minutes": 30,
+      "required_roles": ["endocrinologist", "urologist"],
+      "evaluation_rules": {
+        "type": "multi_factor_decision",
+        "factors": [
+          {
+            "factor": "patient_preference",
+            "options": ["injectable", "topical", "pellet", "oral"]
+          },
+          {
+            "factor": "cost_considerations",
+            "weight": "medium"
+          },
+          {
+            "factor": "compliance_likelihood",
+            "weight": "high"
+          },
+          {
+            "factor": "hematocrit_baseline",
+            "consideration": "If elevated, prefer topical to minimize erythrocytosis risk"
+          }
+        ],
+        "modality_options": [
+          {
+            "modality": "intramuscular_injection",
+            "description": "Testosterone cypionate or enanthate IM",
+            "frequency": "Weekly or bi-weekly",
+            "pros": ["Cost-effective", "Reliable absorption", "Stable levels with weekly dosing"],
+            "cons": ["Injection required", "Potential peak/trough fluctuations with bi-weekly"],
+            "typical_dose": "100-200 mg weekly or 200 mg bi-weekly"
+          },
+          {
+            "modality": "subcutaneous_injection",
+            "description": "Testosterone cypionate or enanthate SubQ",
+            "frequency": "2-3 times weekly",
+            "pros": ["Stable levels", "Smaller needles", "Self-administered"],
+            "cons": ["More frequent injections", "Some insurance coverage issues"],
+            "typical_dose": "50-80 mg 2-3 times weekly"
+          },
+          {
+            "modality": "topical_gel",
+            "description": "Transdermal testosterone gel 1-2%",
+            "frequency": "Daily application",
+            "pros": ["Non-invasive", "Steady levels", "Flexible dosing"],
+            "cons": ["Daily compliance required", "Transfer risk", "More expensive"],
+            "typical_dose": "50-100 mg daily"
+          },
+          {
+            "modality": "pellet_implant",
+            "description": "Subcutaneous testosterone pellets",
+            "frequency": "Every 3-6 months",
+            "pros": ["Infrequent dosing", "Excellent compliance", "Stable levels"],
+            "cons": ["Minor surgical procedure", "Expensive", "Difficult dose adjustment"],
+            "typical_dose": "800-1200 mg every 3-6 months"
+          }
+        ]
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "injectable_selected",
+          "next_step": 5
+        },
+        {
+          "outcome_id": "topical_selected",
+          "next_step": 5
+        },
+        {
+          "outcome_id": "pellet_selected",
+          "next_step": 5
+        }
+      ]
+    },
+    {
+      "sequence_order": 5,
+      "step_type": "decision_point",
+      "title": "Initial Dose Determination",
+      "description": "Calculate individualized starting dose based on patient factors, baseline testosterone level, and selected modality.",
+      "duration_minutes": 15,
+      "required_roles": ["endocrinologist", "urologist"],
+      "evaluation_rules": {
+        "type": "dose_calculation",
+        "factors": [
+          {
+            "factor": "baseline_testosterone",
+            "ranges": [
+              {"min": 0, "max": 150, "severity": "severe", "dose_adjustment": "standard_dose"},
+              {"min": 150, "max": 264, "severity": "moderate", "dose_adjustment": "standard_dose"},
+              {"min": 264, "max": 300, "severity": "mild", "dose_adjustment": "lower_dose"}
+            ]
+          },
+          {
+            "factor": "age",
+            "consideration": "Older patients (>65) may start at lower doses"
+          },
+          {
+            "factor": "body_weight",
+            "consideration": "Higher body weight may require higher doses"
+          },
+          {
+            "factor": "shbg_level",
+            "consideration": "High SHBG may require higher doses to achieve adequate free T"
+          }
+        ],
+        "dosing_recommendations": {
+          "injectable_im_weekly": {
+            "standard": "100 mg weekly",
+            "range": "80-200 mg weekly"
+          },
+          "injectable_subq": {
+            "standard": "50 mg 2x weekly or 35 mg 3x weekly",
+            "range": "40-80 mg per injection"
+          },
+          "topical_gel": {
+            "standard": "50 mg daily (one pump)",
+            "range": "25-100 mg daily"
+          },
+          "pellet": {
+            "standard": "900-1000 mg every 4 months",
+            "range": "800-1200 mg"
+          }
+        }
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "standard_dose",
+          "next_step": 6
+        },
+        {
+          "outcome_id": "adjusted_dose",
+          "next_step": 6
+        }
+      ]
+    },
+    {
+      "sequence_order": 6,
+      "step_type": "preparation",
+      "title": "Treatment Initiation & Patient Education",
+      "description": "Administer or prescribe initial treatment dose and provide comprehensive patient education on administration, monitoring, and potential side effects.",
+      "duration_minutes": 45,
+      "required_roles": ["endocrinologist", "urologist", "nurse", "pharmacist"],
+      "education_topics": [
+        "How to self-administer injections (if applicable)",
+        "Proper application technique for gels (if applicable)",
+        "Expected timeline for symptom improvement (4-12 weeks)",
+        "Potential side effects and when to report",
+        "Importance of follow-up labs and appointments",
+        "Contraception counseling (TRT causes infertility)",
+        "Avoiding transfer of topical products to partners/children",
+        "Signs of adverse effects (chest pain, leg swelling, breathing difficulty)"
+      ],
+      "monitoring_plan": {
+        "symptom_tracking": "Patient to log symptoms weekly",
+        "adverse_events": "Report immediately: chest pain, dyspnea, leg swelling, urinary retention",
+        "next_labs": "6 weeks post-initiation"
+      }
+    },
+    {
+      "sequence_order": 7,
+      "step_type": "followup",
+      "title": "Early Follow-up Check (Week 2-4)",
+      "description": "Early phone or in-person check to assess tolerance, compliance, and any immediate concerns.",
+      "duration_minutes": 15,
+      "required_roles": ["nurse", "medical_assistant"],
+      "assessment_points": [
+        "Treatment compliance",
+        "Any injection site reactions or skin irritation",
+        "Early adverse effects",
+        "Questions or concerns",
+        "Reinforcement of administration technique"
+      ]
+    },
+    {
+      "sequence_order": 8,
+      "step_type": "followup",
+      "title": "Six-Week Labs & Clinical Assessment",
+      "description": "First comprehensive follow-up with labs to assess testosterone levels, safety parameters, and early response.",
+      "duration_minutes": 30,
+      "required_roles": ["endocrinologist", "urologist"],
+      "lab_tests_required": [
+        "Total Testosterone (trough for injectables, steady-state for topicals)",
+        "Free Testosterone",
+        "Estradiol",
+        "Complete Blood Count (CBC) - especially hematocrit",
+        "Comprehensive Metabolic Panel",
+        "PSA"
+      ],
+      "clinical_assessment": [
+        "Symptom improvement (energy, libido, mood)",
+        "Physical examination",
+        "Adverse effects screening",
+        "Compliance assessment"
+      ],
+      "vitals_monitoring": {
+        "required": ["blood_pressure", "heart_rate", "weight"]
+      },
+      "target_levels": {
+        "total_testosterone": "500-900 ng/dL (mid-normal range)",
+        "free_testosterone": "Within normal range",
+        "estradiol": "< 50 pg/mL (some patients may need AI if elevated)",
+        "hematocrit": "< 52%",
+        "psa": "< 4.0 ng/mL and not rising rapidly"
+      }
+    },
+    {
+      "sequence_order": 9,
+      "step_type": "decision_point",
+      "title": "Dose Optimization Decision",
+      "description": "Evaluate lab results and clinical response to determine if dose adjustment is needed.",
+      "duration_minutes": 20,
+      "required_roles": ["endocrinologist", "urologist"],
+      "evaluation_rules": {
+        "type": "dose_adjustment",
+        "conditions": [
+          {
+            "condition": "testosterone_low",
+            "criteria": "Total T < 500 ng/dL",
+            "action": "increase_dose",
+            "adjustment": "Increase by 20-25%"
+          },
+          {
+            "condition": "testosterone_high",
+            "criteria": "Total T > 1000 ng/dL or free T elevated",
+            "action": "decrease_dose",
+            "adjustment": "Decrease by 20-25%"
+          },
+          {
+            "condition": "testosterone_optimal",
+            "criteria": "Total T 500-900 ng/dL, symptoms improving",
+            "action": "continue_current_dose"
+          },
+          {
+            "condition": "hematocrit_elevated",
+            "criteria": "Hct 52-54%",
+            "action": "decrease_dose_or_phlebotomy",
+            "note": "Consider therapeutic phlebotomy if T levels optimal"
+          },
+          {
+            "condition": "hematocrit_high",
+            "criteria": "Hct > 54%",
+            "action": "hold_treatment",
+            "note": "Hold TRT until Hct < 52%, then restart at lower dose"
+          },
+          {
+            "condition": "estradiol_high",
+            "criteria": "E2 > 50 pg/mL with symptoms (gynecomastia, water retention)",
+            "action": "consider_aromatase_inhibitor",
+            "options": ["Decrease dose", "Add low-dose anastrozole 0.25-0.5 mg twice weekly"]
+          }
+        ],
+        "decision_matrix": {
+          "low_T_good_response": "Increase dose to optimize levels",
+          "optimal_T_good_response": "Continue current regimen",
+          "optimal_T_poor_response": "Consider other causes, specialty referral",
+          "high_T_any_response": "Decrease dose",
+          "elevated_hematocrit": "Phlebotomy or dose reduction",
+          "high_hematocrit": "Hold treatment temporarily"
+        }
+      },
+      "branch_outcomes": [
+        {
+          "outcome_id": "increase_dose",
+          "next_step": 10,
+          "description": "Increase dose, repeat labs in 6 weeks"
+        },
+        {
+          "outcome_id": "decrease_dose",
+          "next_step": 10,
+          "description": "Decrease dose, repeat labs in 6 weeks"
+        },
+        {
+          "outcome_id": "continue_dose",
+          "next_step": 10,
+          "description": "Continue current dose, proceed to maintenance monitoring"
+        },
+        {
+          "outcome_id": "hold_treatment",
+          "next_step": "specialty_management",
+          "description": "Hold TRT, address safety concern, reassess for restart"
+        }
+      ]
+    },
+    {
+      "sequence_order": 10,
+      "step_type": "followup",
+      "title": "Three-Month Follow-up & Optimization",
+      "description": "Comprehensive follow-up after dose adjustments to confirm optimal levels and clinical response.",
+      "duration_minutes": 30,
+      "required_roles": ["endocrinologist", "urologist"],
+      "lab_tests_required": [
+        "Total Testosterone",
+        "Free Testosterone",
+        "Estradiol",
+        "CBC (hematocrit)",
+        "CMP",
+        "PSA",
+        "Lipid Panel"
+      ],
+      "clinical_assessment": [
+        "Symptom resolution assessment",
+        "Physical examination including DRE (if indicated)",
+        "Quality of life assessment",
+        "Adverse effects monitoring",
+        "Compliance and satisfaction"
+      ],
+      "goals": {
+        "primary": "Testosterone levels in target range (500-900 ng/dL)",
+        "secondary": [
+          "Symptom improvement or resolution",
+          "No significant adverse effects",
+          "Hematocrit < 52%",
+          "Stable PSA",
+          "Good treatment adherence"
+        ]
+      }
+    }
+  ],
+  "ongoing_monitoring": {
+    "first_year": {
+      "frequency": "Every 3-6 months",
+      "labs": ["Total T", "CBC", "PSA", "CMP"],
+      "clinical": "Symptom assessment, physical exam, adverse effects"
+    },
+    "after_first_year": {
+      "frequency": "Every 6-12 months (if stable)",
+      "labs": ["Total T", "CBC", "PSA", "CMP", "Lipids annually"],
+      "clinical": "Symptom maintenance, DRE annually if age-appropriate, bone density if indicated"
+    }
+  },
+  "safety_monitoring": {
+    "absolute_contraindications": [
+      "Prostate cancer (active or history)",
+      "Breast cancer (active or history)",
+      "Severe heart failure (NYHA Class IV)",
+      "Hematocrit > 54%",
+      "Severe untreated obstructive sleep apnea"
+    ],
+    "adverse_effects_to_monitor": [
+      {
+        "effect": "Erythrocytosis",
+        "monitoring": "CBC with differential every 3-6 months",
+        "management": "Dose reduction, therapeutic phlebotomy, or treatment discontinuation if Hct > 54%"
+      },
+      {
+        "effect": "Prostate effects",
+        "monitoring": "PSA and DRE at baseline and regularly",
+        "management": "Urology referral if PSA increases > 1.4 ng/mL in 12 months or > 0.4 ng/mL annually"
+      },
+      {
+        "effect": "Gynecomastia",
+        "monitoring": "Clinical breast exam",
+        "management": "Check estradiol, consider aromatase inhibitor or dose adjustment"
+      },
+      {
+        "effect": "Sleep apnea worsening",
+        "monitoring": "Sleep quality assessment at each visit",
+        "management": "Sleep study if symptoms worsen, optimize CPAP compliance"
+      },
+      {
+        "effect": "Cardiovascular events",
+        "monitoring": "Blood pressure, cardiovascular symptoms",
+        "management": "Risk factor optimization, cardiology referral if needed"
+      },
+      {
+        "effect": "Liver toxicity",
+        "monitoring": "CMP with liver function tests",
+        "management": "Dose adjustment or discontinuation if LFTs elevated"
+      },
+      {
+        "effect": "Fluid retention",
+        "monitoring": "Weight, edema assessment",
+        "management": "Sodium restriction, dose adjustment if significant"
+      },
+      {
+        "effect": "Acne/oily skin",
+        "monitoring": "Skin assessment",
+        "management": "Dermatology referral if severe, dose optimization"
+      },
+      {
+        "effect": "Testicular atrophy",
+        "monitoring": "Physical examination",
+        "management": "Expected with TRT; if fertility desired, consider hCG co-treatment"
+      },
+      {
+        "effect": "Mood changes",
+        "monitoring": "Depression/anxiety screening",
+        "management": "Dose adjustment, mental health referral if needed"
+      }
+    ]
+  },
+  "special_populations": {
+    "elderly_patients": {
+      "considerations": [
+        "Start at lower doses",
+        "More gradual titration",
+        "Enhanced cardiovascular monitoring",
+        "More frequent PSA monitoring",
+        "Greater risk of polycythemia"
+      ]
+    },
+    "patients_with_cardiovascular_disease": {
+      "considerations": [
+        "Cardiology clearance may be needed",
+        "Start at lower doses",
+        "Close monitoring of blood pressure and symptoms",
+        "Hematocrit monitoring critical",
+        "Consider risks vs. benefits carefully"
+      ]
+    },
+    "fertility_preservation": {
+      "considerations": [
+        "TRT causes suppression of spermatogenesis",
+        "Offer sperm banking before treatment",
+        "Consider hCG monotherapy or hCG + FSH if fertility desired",
+        "Regular counseling about contraception needs during TRT"
+      ]
+    }
+  },
+  "discontinuation_criteria": [
+    "Patient request",
+    "Persistent hematocrit > 54% despite interventions",
+    "Prostate cancer diagnosis",
+    "Severe cardiovascular event potentially related to TRT",
+    "Intolerable side effects not manageable with dose adjustment",
+    "Non-compliance with monitoring requirements"
+  ]
+}

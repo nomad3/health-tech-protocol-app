@@ -6,12 +6,37 @@ from app.database import Base
 
 
 class TherapyType(str, Enum):
-    """Therapy type enumeration."""
+    """Therapy type enumeration for protocol-based medical treatments."""
+    # Psychedelics
     PSILOCYBIN = "psilocybin"
     MDMA = "mdma"
     KETAMINE = "ketamine"
     LSD = "lsd"
     IBOGAINE = "ibogaine"
+
+    # Hormone Therapy
+    TESTOSTERONE = "testosterone"
+    ESTROGEN = "estrogen"
+    GROWTH_HORMONE = "growth_hormone"
+    PEPTIDES = "peptides"
+
+    # Cancer Treatments
+    CHEMOTHERAPY = "chemotherapy"
+    IMMUNOTHERAPY = "immunotherapy"
+    RADIATION = "radiation"
+
+    # Regenerative Medicine
+    STEM_CELL = "stem_cell"
+    PLATELET_RICH_PLASMA = "platelet_rich_plasma"
+    EXOSOME = "exosome"
+
+    # Emerging Treatments
+    GENE_THERAPY = "gene_therapy"
+    CRISPR = "crispr"
+    CAR_T = "car_t"
+    LONGEVITY = "longevity"
+
+    # General
     OTHER = "other"
 
 
