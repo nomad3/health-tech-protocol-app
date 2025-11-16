@@ -1,7 +1,10 @@
-"""Protocol engine service for decision point evaluation."""
+"""Protocol engine service for decision point evaluation and protocol execution."""
 
 from typing import Any, Dict, List, Optional
-from app.models.protocol import ProtocolStep
+from sqlalchemy.orm import Session
+from app.models.protocol import Protocol, ProtocolStep, StepType
+from app.models.treatment import TreatmentPlan, TreatmentSession, SessionStatus, TreatmentStatus
+from app.services.safety_service import SafetyService
 
 
 class ProtocolEngine:
@@ -266,3 +269,161 @@ class ProtocolEngine:
             if false_value is None:
                 raise ValueError("Missing false_value for boolean operator")
             return false_value
+
+    def get_current_step(self, treatment_plan: TreatmentPlan) -> Optional[ProtocolStep]:
+        """
+        Get the current active step for a treatment plan.
+
+        This method determines which step the patient is currently on
+        based on completed sessions and the protocol sequence.
+
+        Args:
+            treatment_plan: TreatmentPlan instance with protocol and sessions loaded
+
+        Returns:
+            Current ProtocolStep to be performed, or None if all steps are complete
+        """
+        # Get all completed sessions for this treatment plan
+        completed_session_step_ids = set()
+        for session in treatment_plan.sessions:
+            if session.status == SessionStatus.COMPLETED:
+                completed_session_step_ids.add(session.protocol_step_id)
+
+        # Get all steps for the protocol, ordered by sequence
+        protocol_steps = sorted(treatment_plan.protocol.steps, key=lambda s: s.sequence_order)
+
+        # Find first step that hasn't been completed
+        for step in protocol_steps:
+            if step.id not in completed_session_step_ids:
+                return step
+
+        # All steps completed
+        return None
+
+    def get_next_step(
+        self,
+        protocol: Protocol,
+        current_step: ProtocolStep,
+        patient_data: Optional[dict] = None
+    ) -> Optional[ProtocolStep]:
+        """
+        Determine the next step in the protocol.
+
+        Handles both linear progression and decision point branches.
+
+        Args:
+            protocol: Protocol instance with steps loaded
+            current_step: Current ProtocolStep
+            patient_data: Patient data for decision point evaluation (required for decision points)
+
+        Returns:
+            Next ProtocolStep to perform, or None if protocol is complete
+
+        Raises:
+            ValueError: If decision point step lacks patient_data
+        """
+        # If current step is a decision point, evaluate it
+        if current_step.step_type == StepType.DECISION_POINT:
+            if patient_data is None:
+                raise ValueError("patient_data required for decision point evaluation")
+
+            # Evaluate decision point to get outcome
+            outcome_id = self.evaluate_decision_point(current_step, patient_data)
+
+            # Find the next step based on outcome
+            branch_outcomes = current_step.branch_outcomes
+            if not branch_outcomes:
+                raise ValueError("Decision point missing branch_outcomes")
+
+            # Find matching outcome
+            next_step_order = None
+            for outcome in branch_outcomes:
+                if outcome.get("outcome_id") == outcome_id:
+                    next_step_order = outcome.get("next_step_order")
+                    break
+
+            if next_step_order is None:
+                raise ValueError(f"No branch found for outcome: {outcome_id}")
+
+            # Find step with matching sequence order
+            for step in protocol.steps:
+                if step.sequence_order == next_step_order:
+                    return step
+
+            raise ValueError(f"No step found with sequence_order: {next_step_order}")
+
+        # Linear progression - get next step in sequence
+        next_order = current_step.sequence_order + 1
+
+        for step in protocol.steps:
+            if step.sequence_order == next_order:
+                return step
+
+        # No next step found - protocol complete
+        return None
+
+    def is_protocol_complete(self, treatment_plan: TreatmentPlan) -> bool:
+        """
+        Check if all required steps in the protocol are completed.
+
+        Args:
+            treatment_plan: TreatmentPlan instance with protocol and sessions loaded
+
+        Returns:
+            True if all protocol steps are completed, False otherwise
+        """
+        # Get all completed session step IDs
+        completed_session_step_ids = set()
+        for session in treatment_plan.sessions:
+            if session.status == SessionStatus.COMPLETED:
+                completed_session_step_ids.add(session.protocol_step_id)
+
+        # Get all protocol step IDs
+        protocol_step_ids = set(step.id for step in treatment_plan.protocol.steps)
+
+        # Check if all protocol steps have been completed
+        return protocol_step_ids.issubset(completed_session_step_ids)
+
+    def can_progress_to_step(
+        self,
+        treatment_plan: TreatmentPlan,
+        next_step: ProtocolStep,
+        patient_data: dict,
+        db: Session
+    ) -> dict:
+        """
+        Validate if patient can progress to the next step.
+
+        Runs safety checks and validates prerequisites.
+
+        Args:
+            treatment_plan: TreatmentPlan instance
+            next_step: ProtocolStep to validate progression to
+            patient_data: Patient data for safety evaluation
+            db: Database session
+
+        Returns:
+            Dictionary with:
+                - can_progress: bool - Whether progression is allowed
+                - blockers: list - Blocking contraindications preventing progression
+                - warnings: list - Warnings that don't block but require attention
+                - risk_factors: list - Informational risk factors
+        """
+        # Initialize safety service
+        safety_service = SafetyService()
+
+        # Get all safety checks for this step
+        safety_checks = next_step.safety_checks
+
+        # Run safety check evaluation
+        safety_result = safety_service.check_contraindications(patient_data, safety_checks)
+
+        # Can progress only if eligible (no blocking contraindications)
+        can_progress = safety_result["eligible"]
+
+        return {
+            "can_progress": can_progress,
+            "blockers": safety_result["contraindications"],
+            "warnings": safety_result["warnings"],
+            "risk_factors": safety_result["risk_factors"]
+        }
