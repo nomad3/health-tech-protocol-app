@@ -15,3 +15,5 @@ export type { ModalProps } from './Modal';
 
 export { default as Spinner } from './Spinner';
 export type { SpinnerProps, SpinnerSize } from './Spinner';
+
+export { default as Navigation } from './Navigation';

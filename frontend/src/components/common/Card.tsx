@@ -5,6 +5,7 @@ export interface CardProps {
   className?: string;
   padding?: 'none' | 'sm' | 'md' | 'lg';
   shadow?: 'none' | 'sm' | 'md' | 'lg';
+  onClick?: () => void;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -12,6 +13,7 @@ const Card: React.FC<CardProps> = ({
   className = '',
   padding = 'md',
   shadow = 'md',
+  onClick,
 }) => {
   const paddingClasses = {
     none: '',
@@ -29,7 +31,11 @@ const Card: React.FC<CardProps> = ({
 
   const classes = `bg-white rounded-lg ${paddingClasses[padding]} ${shadowClasses[shadow]} ${className}`.trim();
 
-  return <div className={classes}>{children}</div>;
+  return (
+    <div className={classes} onClick={onClick}>
+      {children}
+    </div>
+  );
 };
 
 export default Card;

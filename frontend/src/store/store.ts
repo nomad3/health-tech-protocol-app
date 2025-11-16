@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './authSlice';
+import protocolReducer from './protocolSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    protocol: protocolReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
