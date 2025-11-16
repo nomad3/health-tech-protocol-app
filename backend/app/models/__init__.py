@@ -20,6 +20,7 @@ from app.models.profiles import (
     TherapistProfile,
     PatientProfile,
 )
+from app.models.audit import AuditLog
 
 __all__ = [
     "Base",
@@ -39,4 +40,5 @@ __all__ = [
     "Clinic",
     "TherapistProfile",
     "PatientProfile",
+    "AuditLog",
 ]
