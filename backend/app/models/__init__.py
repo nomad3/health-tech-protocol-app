@@ -8,6 +8,13 @@ from app.models.protocol import (
     EvidenceLevel,
     StepType,
 )
+from app.models.treatment import (
+    TreatmentPlan,
+    TreatmentSession,
+    SessionDocumentation,
+    TreatmentStatus,
+    SessionStatus,
+)
 
 __all__ = [
     "Base",
@@ -19,4 +26,9 @@ __all__ = [
     "TherapyType",
     "EvidenceLevel",
     "StepType",
+    "TreatmentPlan",
+    "TreatmentSession",
+    "SessionDocumentation",
+    "TreatmentStatus",
+    "SessionStatus",
 ]
