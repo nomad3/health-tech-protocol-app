@@ -15,6 +15,11 @@ from app.models.treatment import (
     TreatmentStatus,
     SessionStatus,
 )
+from app.models.profiles import (
+    Clinic,
+    TherapistProfile,
+    PatientProfile,
+)
 
 __all__ = [
     "Base",
@@ -31,4 +36,7 @@ __all__ = [
     "SessionDocumentation",
     "TreatmentStatus",
     "SessionStatus",
+    "Clinic",
+    "TherapistProfile",
+    "PatientProfile",
 ]

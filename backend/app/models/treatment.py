@@ -29,7 +29,7 @@ class TreatmentPlan(Base):
     id = Column(Integer, primary_key=True, index=True)
     patient_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     therapist_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    clinic_id = Column(Integer, nullable=True)  # Nullable for solo practitioners, FK will be added when Clinic model exists
+    clinic_id = Column(Integer, ForeignKey("clinics.id"), nullable=True)  # Nullable for solo practitioners
     protocol_id = Column(Integer, ForeignKey("protocols.id"), nullable=False)
     protocol_version = Column(String(50), nullable=False)
     status = Column(SQLEnum(TreatmentStatus), nullable=False)
@@ -42,6 +42,7 @@ class TreatmentPlan(Base):
     # Relationships
     patient = relationship("User", foreign_keys=[patient_id])
     therapist = relationship("User", foreign_keys=[therapist_id])
+    clinic = relationship("Clinic")
     protocol = relationship("Protocol")
     sessions = relationship("TreatmentSession", back_populates="treatment_plan")
 
