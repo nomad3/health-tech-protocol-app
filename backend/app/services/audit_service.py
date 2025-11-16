@@ -131,3 +131,43 @@ class AuditService:
             .order_by(AuditLog.timestamp.desc())
             .all()
         )
+
+    def log_ai_interaction(
+        self,
+        db: Session,
+        user_id: int,
+        action: str,
+        input_data: Dict[str, Any],
+        output_data: Dict[str, Any],
+        metadata: Optional[Dict[str, Any]] = None,
+    ) -> AuditLog:
+        """Log an AI interaction for audit and compliance.
+
+        Args:
+            db: Database session
+            user_id: ID of the user making the AI request
+            action: Type of AI action (e.g., "protocol_extraction", "patient_education_generation")
+            input_data: Input data sent to AI (anonymized if needed)
+            output_data: Summary of AI output (not full output due to size)
+            metadata: Additional metadata (confidence scores, warnings, etc.)
+
+        Returns:
+            The created AuditLog instance
+        """
+        audit_log = AuditLog(
+            user_id=user_id,
+            action=f"ai_{action}",
+            resource_type="ai_interaction",
+            resource_id=0,  # AI interactions don't have a specific resource ID
+            changes={
+                "input_summary": input_data,
+                "output_summary": output_data,
+                "metadata": metadata or {}
+            }
+        )
+
+        db.add(audit_log)
+        db.commit()
+        db.refresh(audit_log)
+
+        return audit_log
