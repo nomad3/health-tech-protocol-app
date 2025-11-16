@@ -4,7 +4,16 @@ from sqlalchemy.orm import Session
 from app.models.user import User, UserRole
 from app.models.audit import AuditLog
 from app.services.audit_service import AuditService
-from app.database import SessionLocal
+from app.database import SessionLocal, engine
+from app.models import Base
+
+
+@pytest.fixture(scope="function", autouse=True)
+def setup_database():
+    """Create tables before each test and drop after."""
+    Base.metadata.create_all(bind=engine)
+    yield
+    Base.metadata.drop_all(bind=engine)
 
 
 @pytest.fixture
