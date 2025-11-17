@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAppSelector } from './hooks';
 import { Navigation } from './components/common';
+import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
@@ -39,6 +40,7 @@ function App() {
     <Router>
       <Routes>
         {/* Public routes */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
 
@@ -105,9 +107,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
-        {/* Root redirect */}
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </Router>
   );

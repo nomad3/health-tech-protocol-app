@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchProtocols, setFilters, clearFilters, fetchProtocol } from '../../store/protocolSlice';
 import ProtocolCard from '../../components/protocols/ProtocolCard';
 import ProtocolDetail from '../../components/protocols/ProtocolDetail';
-import { Input, Button, Spinner } from '../../components/common';
+import { Input, Spinner, EmptyState } from '../../components/common';
 import { TherapyType, EvidenceLevel, type Protocol } from '../../types/protocol';
 
 const ProtocolBrowser: React.FC = () => {
@@ -43,109 +43,165 @@ const ProtocolBrowser: React.FC = () => {
 
   const activeFiltersCount = Object.keys(filters).filter(key => filters[key as keyof typeof filters]).length;
 
+  const therapyTypeColors: Record<TherapyType, string> = {
+    psilocybin: 'from-purple-500 to-pink-500',
+    mdma: 'from-blue-500 to-cyan-500',
+    ketamine: 'from-cyan-500 to-teal-500',
+    lsd: 'from-green-500 to-emerald-500',
+    ibogaine: 'from-amber-500 to-orange-500',
+    other: 'from-indigo-500 to-purple-500',
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-teal-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Protocol Browser</h1>
-          <p className="text-gray-600">
-            Browse evidence-based psychedelic therapy protocols
+        <div className="mb-8 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
+            Discover{' '}
+            <span className="bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+              Evidence-Based
+            </span>{' '}
+            Protocols
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Browse scientifically-validated psychedelic therapy protocols tailored to your needs
           </p>
         </div>
 
-        {/* Search and Filters */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <form onSubmit={handleSearch} className="mb-4">
-            <div className="flex gap-2">
+        {/* Search Bar */}
+        <div className="mb-8 max-w-3xl mx-auto">
+          <form onSubmit={handleSearch}>
+            <div className="relative">
               <Input
                 type="text"
-                placeholder="Search protocols..."
+                placeholder="Search protocols by name, condition, or therapy type..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1"
+                className="w-full shadow-lg"
+                icon="🔍"
+                iconPosition="left"
               />
-              <Button type="submit">Search</Button>
+              <button
+                type="submit"
+                className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2 bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-semibold rounded-lg hover:from-teal-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg"
+              >
+                Search
+              </button>
             </div>
           </form>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Therapy Type Filter */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Therapy Type
-              </label>
-              <select
-                value={filters.therapy_type || 'all'}
-                onChange={(e) => handleFilterChange('therapy_type', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+        {/* Filters */}
+        <div className="mb-8 bg-white rounded-2xl shadow-lg p-6 max-w-5xl mx-auto">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-gray-900">Filters</h3>
+            {activeFiltersCount > 0 && (
+              <button
+                onClick={handleClearFilters}
+                className="text-sm text-teal-600 hover:text-teal-700 font-medium flex items-center gap-1"
               >
-                <option value="all">All Types</option>
-                {Object.values(TherapyType).map((type) => (
-                  <option key={type} value={type}>
-                    {type.toUpperCase()}
-                  </option>
-                ))}
-              </select>
-            </div>
+                <span>✕</span> Clear all ({activeFiltersCount})
+              </button>
+            )}
+          </div>
 
-            {/* Evidence Level Filter */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Evidence Level
-              </label>
-              <select
-                value={filters.evidence_level || 'all'}
-                onChange={(e) => handleFilterChange('evidence_level', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+          {/* Therapy Type Pills */}
+          <div className="mb-4">
+            <label className="block text-sm font-semibold text-gray-700 mb-3">Therapy Type</label>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => handleFilterChange('therapy_type', 'all')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  !filters.therapy_type
+                    ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-md'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
               >
-                <option value="all">All Levels</option>
-                {Object.values(EvidenceLevel).map((level) => (
-                  <option key={level} value={level}>
-                    {level.replace(/_/g, ' ').toUpperCase()}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Status Filter */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Status
-              </label>
-              <select
-                value={filters.status || 'all'}
-                onChange={(e) => handleFilterChange('status', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
-              >
-                <option value="all">All Status</option>
-                <option value="active">Active</option>
-                <option value="draft">Draft</option>
-                <option value="archived">Archived</option>
-              </select>
+                All Types
+              </button>
+              {Object.values(TherapyType).map((type) => (
+                <button
+                  key={type}
+                  onClick={() => handleFilterChange('therapy_type', type)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    filters.therapy_type === type
+                      ? `bg-gradient-to-r ${therapyTypeColors[type]} text-white shadow-md`
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {type.toUpperCase()}
+                </button>
+              ))}
             </div>
           </div>
 
-          {activeFiltersCount > 0 && (
-            <div className="mt-4">
-              <Button variant="outline" size="sm" onClick={handleClearFilters}>
-                Clear Filters ({activeFiltersCount})
-              </Button>
+          {/* Evidence Level Pills */}
+          <div className="mb-4">
+            <label className="block text-sm font-semibold text-gray-700 mb-3">Evidence Level</label>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => handleFilterChange('evidence_level', 'all')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  !filters.evidence_level
+                    ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-md'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                All Levels
+              </button>
+              {Object.values(EvidenceLevel).map((level) => (
+                <button
+                  key={level}
+                  onClick={() => handleFilterChange('evidence_level', level)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    filters.evidence_level === level
+                      ? 'bg-gradient-to-r from-green-600 to-teal-600 text-white shadow-md'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {level.replace(/_/g, ' ').toUpperCase()}
+                </button>
+              ))}
             </div>
-          )}
+          </div>
+
+          {/* Status Pills */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-3">Status</label>
+            <div className="flex flex-wrap gap-2">
+              {['all', 'active', 'draft', 'archived'].map((status) => (
+                <button
+                  key={status}
+                  onClick={() => handleFilterChange('status', status)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    (!filters.status && status === 'all') || filters.status === status
+                      ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-md'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {status === 'all' ? 'All Status' : status.charAt(0).toUpperCase() + status.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
-            {error}
+          <div className="bg-red-50 border border-red-200 text-red-700 px-6 py-4 rounded-xl mb-6 max-w-3xl mx-auto shadow-md">
+            <div className="flex items-center gap-2">
+              <span className="text-xl">⚠️</span>
+              <span className="font-medium">{error}</span>
+            </div>
           </div>
         )}
 
         {/* Loading State */}
         {loading && (
-          <div className="flex justify-center items-center py-12">
+          <div className="flex flex-col justify-center items-center py-20">
             <Spinner size="lg" />
+            <p className="mt-4 text-gray-600 font-medium">Loading protocols...</p>
           </div>
         )}
 
@@ -153,22 +209,36 @@ const ProtocolBrowser: React.FC = () => {
         {!loading && (
           <>
             {protocols.length === 0 ? (
-              <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">No protocols found</p>
-                <p className="text-gray-400 text-sm mt-2">
-                  Try adjusting your filters or search query
-                </p>
-              </div>
+              <EmptyState
+                icon="🔬"
+                title="No protocols found"
+                description="Try adjusting your filters or search query to find what you're looking for"
+                action={{
+                  label: 'Clear Filters',
+                  onClick: handleClearFilters,
+                }}
+              />
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {protocols.map((protocol) => (
-                  <ProtocolCard
-                    key={protocol.id}
-                    protocol={protocol}
-                    onClick={() => handleProtocolClick(protocol)}
-                  />
-                ))}
-              </div>
+              <>
+                <div className="mb-4 text-center">
+                  <p className="text-gray-600">
+                    Showing <span className="font-semibold text-gray-900">{protocols.length}</span> protocols
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  {protocols.map((protocol) => (
+                    <div
+                      key={protocol.id}
+                      className="transform transition-all duration-300 hover:scale-105"
+                    >
+                      <ProtocolCard
+                        protocol={protocol}
+                        onClick={() => handleProtocolClick(protocol)}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </>
             )}
           </>
         )}

@@ -17,3 +17,18 @@ export { default as Spinner } from './Spinner';
 export type { SpinnerProps, SpinnerSize } from './Spinner';
 
 export { default as Navigation } from './Navigation';
+
+export { default as StatCard } from './StatCard';
+export type { StatCardProps } from './StatCard';
+
+export { default as ProgressBar } from './ProgressBar';
+export type { ProgressBarProps } from './ProgressBar';
+
+export { default as Avatar } from './Avatar';
+export type { AvatarProps } from './Avatar';
+
+export { default as StatusBadge } from './StatusBadge';
+export type { StatusBadgeProps } from './StatusBadge';
+
+export { default as EmptyState } from './EmptyState';
+export type { EmptyStateProps } from './EmptyState';
