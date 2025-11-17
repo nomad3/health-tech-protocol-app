@@ -1,4 +1,4 @@
-# PsyProtocol Platform
+# Health Protocol Platform
 
 A comprehensive health technology platform for protocol-based medical treatments, client management, and AI-powered clinical support. Supporting psychedelics, hormone therapy, cancer treatments, regenerative medicine, and emerging therapies.
 
