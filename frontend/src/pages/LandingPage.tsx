@@ -2,7 +2,6 @@ import {
   Activity,
   ArrowRight,
   ChevronRight,
-  FileText,
   Heart,
   ShieldCheck,
   Sun,
@@ -37,9 +36,9 @@ const LandingPage: React.FC = () => {
             </span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#treatments" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Treatments</a>
-            <a href="#safety" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Safety</a>
-            <a href="#science" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Clinical Evidence</a>
+            <a href="#benefits" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Benefits</a>
+            <a href="#approach" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Our Approach</a>
+            <a href="#stories" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Success Stories</a>
             <button
               onClick={() => navigate('/login')}
               className="px-5 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 text-sm font-medium transition-all backdrop-blur-sm"
@@ -76,15 +75,15 @@ const LandingPage: React.FC = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up delay-100">
-            <span className="block text-white mb-2">Evidence-Based</span>
+            <span className="block text-white mb-2">Reclaim Your Life With</span>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-blue-500 to-purple-600 animate-gradient-x">
-              Psychedelic Medicine
+              Advanced Mental Healthcare
             </span>
           </h1>
 
           <p className="mt-4 text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-fade-in-up delay-200 leading-relaxed">
-            Access world-class treatment protocols for Depression, PTSD, and Anxiety.
-            Guided by expert therapists, validated by clinical science, and personalized for your healing journey.
+            Break free from Depression, PTSD, and Anxiety.
+            Experience lasting relief through our evidence-based, personalized treatment programs designed for deep healing.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up delay-300">
@@ -99,15 +98,15 @@ const LandingPage: React.FC = () => {
               onClick={() => navigate('/protocols')}
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold backdrop-blur-sm transition-all flex items-center justify-center"
             >
-              View Treatments
+              View Programs
             </button>
           </div>
 
           {/* Stats/Trust Indicators */}
           <div className="mt-16 pt-8 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in-up delay-500">
             <div>
-              <div className="text-3xl font-bold text-white">FDA</div>
-              <div className="text-sm text-slate-500 mt-1">Aligned Protocols</div>
+              <div className="text-3xl font-bold text-white">85%</div>
+              <div className="text-sm text-slate-500 mt-1">Patient Improvement</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-white">100%</div>
@@ -115,23 +114,23 @@ const LandingPage: React.FC = () => {
             </div>
             <div>
               <div className="text-3xl font-bold text-white">24/7</div>
-              <div className="text-sm text-slate-500 mt-1">Patient Support</div>
+              <div className="text-sm text-slate-500 mt-1">Care Support</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-white">Phase 3</div>
-              <div className="text-sm text-slate-500 mt-1">Clinical Standards</div>
+              <div className="text-3xl font-bold text-white">FDA</div>
+              <div className="text-sm text-slate-500 mt-1">Aligned Standards</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Features Section */}
-      <div id="treatments" className="relative py-24 bg-slate-950">
+      <div id="benefits" className="relative py-24 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">A New Standard of Care</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why Choose Advanced Care?</h2>
             <p className="text-slate-400 max-w-2xl mx-auto">
-              We combine the latest medical research with compassionate care to provide safe, effective, and legal access to psychedelic therapies.
+              Traditional treatments don't work for everyone. We offer a new path forward focused on root-cause healing and long-term resilience.
             </p>
           </div>
 
@@ -141,11 +140,11 @@ const LandingPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
               <div className="relative z-10">
                 <div className="w-12 h-12 rounded-lg bg-teal-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <FileText className="w-6 h-6 text-teal-400" />
+                  <Sun className="w-6 h-6 text-teal-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Validated Protocols</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Lasting Breakthroughs</h3>
                 <p className="text-slate-400 leading-relaxed">
-                  Treatment plans derived directly from successful clinical trials. Structured specifically for Psilocybin, MDMA, and Ketamine therapies.
+                  Go beyond symptom management. Our protocols are designed to help you process trauma, shift perspectives, and achieve durable remission.
                 </p>
               </div>
             </div>
@@ -157,9 +156,9 @@ const LandingPage: React.FC = () => {
                 <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <ShieldCheck className="w-6 h-6 text-blue-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Medical Safety</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Safe, Guided Healing</h3>
                 <p className="text-slate-400 leading-relaxed">
-                  Comprehensive medical screening and continuous monitoring. We ensure every treatment is medically appropriate for your unique history.
+                  Your safety is our priority. Every step of your journey is monitored by medical professionals and supported by advanced safety protocols.
                 </p>
               </div>
             </div>
@@ -169,11 +168,11 @@ const LandingPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
               <div className="relative z-10">
                 <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Sun className="w-6 h-6 text-purple-400" />
+                  <Heart className="w-6 h-6 text-purple-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Holistic Integration</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Support Beyond the Session</h3>
                 <p className="text-slate-400 leading-relaxed">
-                  The medicine is just the beginning. Our platform supports your long-term integration with journaling, symptom tracking, and therapist connection.
+                  Healing continues after the treatment. We provide comprehensive integration support to help you apply your insights to daily life.
                 </p>
               </div>
             </div>
@@ -189,8 +188,8 @@ const LandingPage: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Compassionate Care, <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">Professionally Delivered</span>
+                Your Path to <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">Total Wellness</span>
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -198,8 +197,8 @@ const LandingPage: React.FC = () => {
                     <Users className="w-3 h-3 text-teal-400" />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold">Expert Therapist Network</h4>
-                    <p className="text-slate-400 text-sm mt-1">Connect with licensed professionals specialized in psychedelic-assisted psychotherapy.</p>
+                    <h4 className="text-white font-semibold">Dedicated Care Team</h4>
+                    <p className="text-slate-400 text-sm mt-1">You are never alone. Our network of compassionate therapists and medical experts is with you at every step.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -207,8 +206,8 @@ const LandingPage: React.FC = () => {
                     <Activity className="w-3 h-3 text-blue-400" />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold">Personalized Treatment Plans</h4>
-                    <p className="text-slate-400 text-sm mt-1">Your journey is unique. Your protocol adapts to your needs, progress, and therapeutic goals.</p>
+                    <h4 className="text-white font-semibold">Personalized for You</h4>
+                    <p className="text-slate-400 text-sm mt-1">No two journeys are alike. We tailor your treatment plan to your unique history, biology, and goals.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -216,8 +215,8 @@ const LandingPage: React.FC = () => {
                     <Heart className="w-3 h-3 text-purple-400" />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold">Safe & Supportive Environment</h4>
-                    <p className="text-slate-400 text-sm mt-1">We prioritize your safety and comfort at every step, from preparation to integration.</p>
+                    <h4 className="text-white font-semibold">Empowering Your Growth</h4>
+                    <p className="text-slate-400 text-sm mt-1">We give you the tools, insights, and support to build a life of meaning, connection, and joy.</p>
                   </div>
                 </div>
               </div>
