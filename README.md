@@ -1,10 +1,98 @@
-# PsyProtocol Platform
+# 🧠 PsyProtocol
 
-> **AI-Powered Protocol Management for Modern Medicine**
+> **Advanced Mental Healthcare Platform** — Evidence-based treatment protocols for Depression, PTSD, Anxiety, and beyond.
 
-A comprehensive, production-ready platform for managing evidence-based medical treatment protocols. Supports psychedelic therapies, hormone optimization, cancer treatments, regenerative medicine, and emerging therapies.
+A comprehensive platform connecting patients with breakthrough therapies through clinically validated treatment protocols. Built for therapists, patients, and healthcare administrators.
 
-**Built with:** FastAPI (Python) + React (TypeScript) + PostgreSQL + Redis + Claude AI
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
+[![Python](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org/)
+[![Tests](https://img.shields.io/badge/tests-309%20passing-brightgreen)](tests/)
+
+---
+
+## 📺 Platform Demo
+
+### Landing Page & Neural Network Effect
+![Landing Page Demo](file:///Users/nomade/.gemini/antigravity/brain/6cb5185e-84de-411e-bd80-bbd0bacf26b5/landing_page_demo_1763678541668.webp)
+
+*Interactive neural network background responds to mouse movement, symbolizing the rewiring of neural pathways through therapy.*
+
+### Patient Experience
+![Patient Flow](file:///Users/nomade/.gemini/antigravity/brain/6cb5185e-84de-411e-bd80-bbd0bacf26b5/patient_flow_demo_1763678593413.webp)
+
+*Browse evidence-based protocols, view detailed treatment plans, and track your healing journey.*
+
+### Therapist Dashboard
+![Therapist Dashboard](file:///Users/nomade/.gemini/antigravity/brain/6cb5185e-84de-411e-bd80-bbd0bacf26b5/therapist_dashboard_demo_1763678666224.webp)
+
+*Manage patients, document sessions, and access AI-powered clinical decision support.*
+
+---
+
+## 🎯 What is PsyProtocol?
+
+PsyProtocol is a **mental healthcare platform** that bridges the gap between cutting-edge clinical research and real-world patient care. We provide:
+
+- **🔬 Evidence-Based Protocols** — Treatment plans derived directly from Phase 3 clinical trials
+- **🤝 Patient-Therapist Connection** — Seamless care coordination and communication
+- **🛡️ Safety-First Approach** — Comprehensive medical screening and continuous monitoring
+- **📊 Outcome Tracking** — Measure progress with validated clinical scales (MADRS, CAPS-5, PHQ-9)
+- **🤖 AI-Powered Support** — Clinical decision support and patient education generation
+
+### Who Is This For?
+
+**Patients** seeking lasting relief from:
+- Treatment-Resistant Depression
+- PTSD and Complex Trauma
+- Anxiety Disorders
+- Addiction and Substance Use Disorders
+
+**Therapists** who want to:
+- Access evidence-based treatment protocols
+- Streamline session documentation
+- Receive AI-powered clinical decision support
+- Track patient outcomes systematically
+
+**Healthcare Organizations** looking to:
+- Implement novel therapies safely and effectively
+- Ensure regulatory compliance (HIPAA, FDA)
+- Scale evidence-based care delivery
+- Maintain comprehensive audit trails
+
+---
+
+## ✨ Key Features
+
+### 🌈 For Patients
+
+| Feature | Description |
+|---------|-------------|
+| **Protocol Browser** | Explore 8+ evidence-based treatment protocols with detailed information |
+| **Pre-Screening** | Complete medical screening questionnaires to determine eligibility |
+| **Treatment Plans** | View your personalized treatment journey with progress tracking |
+| **Educational Resources** | AI-generated guides explaining what to expect at each step |
+| **Secure Messaging** | Communicate with your care team (coming soon) |
+
+### 👨‍⚕️ For Therapists
+
+| Feature | Description |
+|---------|-------------|
+| **Modern Dashboard** | See today's sessions, upcoming appointments, and patient alerts at a glance |
+| **Session Documentation** | Log vitals, clinical notes, and outcomes in a streamlined interface |
+| **Protocol Engine** | Step-by-step guidance through complex treatment workflows |
+| **Safety Monitoring** | Real-time contraindication checking against patient history |
+| **AI Decision Support** | Get evidence-based recommendations during critical decision points |
+
+### 🔧 For Administrators
+
+| Feature | Description |
+|---------|-------------|
+| **Protocol Builder** | Create and edit treatment protocols with a visual step-by-step wizard |
+| **AI Extraction** | Upload research papers and automatically extract protocol structure |
+| **Safety Configuration** | Define contraindications, warnings, and risk factors |
+| **Publishing Workflow** | Review and approve protocols before making them available |
+| **Audit Logs** | HIPAA-compliant tracking of all system activities |
 
 ---
 
@@ -12,193 +100,149 @@ A comprehensive, production-ready platform for managing evidence-based medical t
 
 ### Prerequisites
 
-- Docker & Docker Compose
-- Node.js 18+ (for local frontend development)
-- Python 3.11+ (for local backend development)
+- **Docker** & **Docker Compose** (recommended)
+- **Node.js 18+** (for local frontend development)
+- **Python 3.11+** (for local backend development)
 
-### Start the Platform (Docker - Recommended)
+### 1. Clone & Start
 
 ```bash
 # Clone the repository
 git clone <your-repo-url>
 cd health-tech-protocol-app
 
-# Start all services
+# Start all services with Docker
 docker-compose up -d
 
 # Wait 10 seconds for services to initialize
-# Backend will automatically run migrations
+# Backend automatically runs migrations
 
-# Start frontend (separate terminal)
+# Install frontend dependencies and start dev server
 cd frontend
 npm install
 npm run dev
 ```
 
-**Access the platform:**
-- **Frontend UI:** http://localhost:5173
-- **Backend API:** http://localhost:8000
-- **API Docs (Swagger):** http://localhost:8000/docs
-
-### Seed Demo Data
+### 2. Seed Demo Data
 
 ```bash
 # Load example protocols and demo users
 docker-compose exec backend python seed_database.py
-
-# Or reset database and seed fresh
-cd backend
-./scripts/reset_and_seed.sh
 ```
 
----
+### 3. Access the Platform
 
-## 👥 Demo Credentials
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:8000
+- **API Docs:** http://localhost:8000/docs
 
-The platform includes pre-seeded demo users:
+### 4. Login with Demo Credentials
 
-| Role | Email | Password | Features |
-|------|-------|----------|----------|
-| **Platform Admin** | admin@psyprotocol.com | Admin123! | Create protocols, manage users, full access |
-| **Medical Director** | director@psyprotocol.com | Director123! | Clinical oversight, protocol approval |
-| **Therapist** | therapist1@psyprotocol.com | Therapist123! | Patient management, session documentation |
-| **Therapist** | therapist2@psyprotocol.com | Therapist123! | Patient management, session documentation |
-| **Patient** | patient1@psyprotocol.com | Patient123! | Browse protocols, view treatment plans |
-| **Patient** | patient2@psyprotocol.com | Patient123! | Browse protocols, view treatment plans |
-
----
-
-## 🌟 Platform Features
-
-### For Patients
-- **Browse 91+ Protocols** - Psychedelic therapies, hormone optimization, cancer treatments, regenerative medicine
-- **Search & Filter** - By therapy type, condition, evidence level
-- **Provider Matching** - Find certified therapists and clinics
-- **Treatment Journey** - Track your progress through protocols
-- **AI-Powered Education** - Personalized treatment explanations
-
-### For Therapists
-- **Dashboard** - Today's sessions, patient list, pending tasks
-- **Session Documentation** - Log vitals, clinical notes, track progress
-- **Decision Support** - AI-powered clinical recommendations
-- **Protocol Execution** - Guided workflow through treatment steps
-- **Safety Monitoring** - Real-time contraindication checking
-
-### For Admins
-- **Protocol Builder** - Create and edit protocols with step-by-step wizard
-- **AI Extraction** - Extract protocols from research papers automatically
-- **Safety Configuration** - Define contraindications and risk factors
-- **Publishing Workflow** - Review and publish protocols
-- **Audit Logs** - HIPAA-compliant activity tracking
+| Role | Email | Password |
+|------|-------|----------|
+| **Patient** | patient1@psyprotocol.com | Patient123! |
+| **Therapist** | therapist1@psyprotocol.com | Therapist123! |
+| **Admin** | admin@psyprotocol.com | Admin123! |
 
 ---
 
-## 🧬 Supported Therapies (20 Types)
+## 🧬 Included Treatment Protocols
+
+The platform comes pre-loaded with **8 complete, evidence-based protocols**:
 
 ### Psychedelic Therapies
-- Psilocybin, MDMA, Ketamine, LSD, Ibogaine
 
-### Hormone Optimization
-- Testosterone, Estrogen, Growth Hormone, Peptides
-
-### Cancer Treatments
-- Chemotherapy, Immunotherapy, Radiation
-
-### Regenerative Medicine
-- Stem Cell Therapy, Platelet-Rich Plasma (PRP), Exosomes
-
-### Emerging Therapies
-- Gene Therapy, CRISPR, CAR-T Cell Therapy, Longevity Protocols
-
-### General
-- Any evidence-based protocol
-
----
-
-## 📚 Example Protocols (8 Included)
-
-Complete, evidence-based protocols ready to use:
-
-1. **Psilocybin-Assisted Therapy for Treatment-Resistant Depression** (15 steps, 12 weeks)
+1. **Psilocybin-Assisted Therapy for Treatment-Resistant Depression**
+   - 15 steps, 12 weeks
    - Based on COMP360 Phase 3 trials & Johns Hopkins protocols
-   - Includes dose determination, safety checks, integration sessions
+   - Includes preparation, dosing sessions, and integration
 
-2. **MDMA-Assisted Therapy for PTSD** (16 steps, 18 weeks)
-   - MAPS Phase 3 protocol (FDA-approved August 2024)
-   - Complete manualized therapy with co-therapist model
+2. **MDMA-Assisted Therapy for PTSD**
+   - 16 steps, 18 weeks
+   - MAPS Phase 3 protocol (FDA Breakthrough Therapy designation)
+   - Manualized therapy with co-therapist model
 
-3. **Ketamine Infusion Therapy for Depression** (11 steps, 6 sessions)
+3. **Ketamine Infusion Therapy for Depression**
+   - 11 steps, 6 sessions
    - Standard 0.5 mg/kg IV protocol
-   - Vitals monitoring every 10 minutes
+   - Continuous vitals monitoring
 
-4. **LSD Microdosing Protocol** (9 steps, 12 weeks)
+4. **LSD Microdosing Protocol**
+   - 9 steps, 12 weeks
    - Fadiman protocol with dose calibration
-   - Daily tracking and mood optimization
+   - Daily mood and productivity tracking
 
-5. **Testosterone Optimization for Men's Health** (12 steps, 26 weeks)
-   - Age-related optimization (ages 35+)
-   - Lifestyle + hormone therapy combination
+### Other Therapies
 
-6. **Testosterone Replacement Therapy (TRT)** (10 steps, 24 weeks)
-   - Medical TRT for clinical hypogonadism
+5. **Testosterone Optimization for Men's Health**
+   - 12 steps, 26 weeks
+   - Age-related optimization (35+)
+   - Lifestyle + hormone therapy
+
+6. **Testosterone Replacement Therapy (TRT)**
+   - 10 steps, 24 weeks
+   - Medical TRT for hypogonadism
    - Multiple delivery methods
 
-7. **FOLFOX Chemotherapy for Colorectal Cancer** (12 cycles, 24 weeks)
+7. **FOLFOX Chemotherapy for Colorectal Cancer**
+   - 12 cycles, 24 weeks
    - Complete chemotherapy protocol
-   - Toxicity management and dose modifications
+   - Toxicity management
 
-8. **Autologous Stem Cell Therapy for Osteoarthritis** (12 steps, 52 weeks)
+8. **Autologous Stem Cell Therapy for Osteoarthritis**
+   - 12 steps, 52 weeks
    - Bone marrow harvest to rehabilitation
-   - One-year follow-up protocol
+   - One-year follow-up
 
-All protocols located in: `/backend/examples/`
+All protocol files are located in `/backend/examples/` and can be imported via the admin interface.
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Technology Stack
 
-### Technology Stack
+### Backend
+- **FastAPI** (Python 3.11) — High-performance async API framework
+- **PostgreSQL 15** — Robust relational database
+- **Redis 7** — Session management and caching
+- **SQLAlchemy 2.0** — Modern Python ORM
+- **Alembic** — Database migrations
+- **Anthropic Claude 4.5** — AI-powered features
+- **JWT Authentication** — Secure token-based auth
+- **Stripe** — Payment processing (configured)
 
-**Backend:**
-- **Framework:** FastAPI (Python 3.11)
-- **Database:** PostgreSQL 15
-- **Cache:** Redis 7
-- **ORM:** SQLAlchemy 2.0
-- **Migrations:** Alembic
-- **AI:** Anthropic Claude API (Sonnet 4.5)
-- **Auth:** JWT (python-jose), Argon2 (passlib)
-- **Payments:** Stripe (configured)
+### Frontend
+- **React 19** — Modern UI library
+- **TypeScript** — Type-safe JavaScript
+- **React Router v7** — Client-side routing
+- **Redux Toolkit** — Predictable state management
+- **Tailwind CSS v4** — Utility-first styling
+- **Vite** — Lightning-fast build tool
+- **Axios** — HTTP client
 
-**Frontend:**
-- **Framework:** React 19
-- **Language:** TypeScript
-- **Routing:** React Router v7
-- **State:** Redux Toolkit
-- **HTTP Client:** Axios
-- **Styling:** Tailwind CSS v4
-- **Build Tool:** Vite
-- **Testing:** Vitest + React Testing Library
+### Infrastructure
+- **Docker** — Containerization
+- **Docker Compose** — Multi-container orchestration
+- **Nginx** — Reverse proxy (production)
+- **Let's Encrypt** — SSL certificates (production)
 
-**Deployment:**
-- **Containers:** Docker + Docker Compose
-- **Database:** PostgreSQL with volume persistence
-- **Cache:** Redis for sessions
-- **Reverse Proxy:** Nginx (for production)
+---
 
-### System Architecture
+## 📊 System Architecture
 
 ```
 ┌─────────────────────────────────────────────┐
-│         Frontend (React + TypeScript)        │
-│         http://localhost:5173               │
-│   Landing | Patient | Therapist | Admin     │
+│    Frontend (React + TypeScript)            │
+│    http://localhost:3000                    │
+│                                             │
+│  Landing | Patient | Therapist | Admin     │
 └────────────────────┬────────────────────────┘
                      │
-                     ▼ REST API
+                     ▼ REST API (JWT Auth)
 ┌─────────────────────────────────────────────┐
-│         Backend (FastAPI + Python)          │
-│         http://localhost:8000               │
-│  Auth | Protocols | Patients | AI Services │
+│    Backend (FastAPI + Python)               │
+│    http://localhost:8000                    │
+│                                             │
+│  Auth | Protocols | Sessions | AI Services │
 └────────────┬────────────────────────────────┘
              │
     ┌────────┴────────┬──────────────┐
@@ -211,9 +255,67 @@ All protocols located in: `/backend/examples/`
 
 ---
 
-## 📖 API Documentation
+## 🔐 Security & Compliance
 
-### Interactive Documentation
+### HIPAA Compliance Features
+
+- ✅ **Audit Logging** — All actions tracked with timestamps, user IDs, IP addresses
+- ✅ **PHI Access Tracking** — Specialized logging for protected health information
+- ✅ **Data Encryption** — TLS for data in transit, encrypted database connections
+- ✅ **Access Controls** — Role-based access, session timeouts, automatic logoff
+- ✅ **Business Associate Agreements** — Ready for Anthropic Claude, Stripe
+
+### Authentication & Authorization
+
+- **JWT Tokens** — 15-minute access tokens, 7-day refresh tokens
+- **Password Hashing** — Argon2 (OWASP recommended)
+- **Role-Based Access Control** — 5 roles (patient, therapist, clinic_admin, medical_director, platform_admin)
+- **Resource-Level Permissions** — Therapists can only access their own patients
+
+---
+
+## 🤖 AI Integration
+
+### Powered by Anthropic Claude 4.5
+
+The platform includes three AI-powered features:
+
+#### 1. Protocol Extraction
+Upload research papers (PDF or text) and automatically extract:
+- Treatment steps and timelines
+- Dosing protocols
+- Contraindications and warnings
+- Evidence sources and citations
+
+#### 2. Patient Education Generation
+Create personalized "what to expect" guides:
+- Adapts tone based on patient anxiety level
+- Evidence-based, compassionate explanations
+- Markdown formatted for easy reading
+
+#### 3. Clinical Decision Support
+Real-time analysis during therapy sessions:
+- Risk level assessment (low/moderate/high/critical)
+- Evidence-based recommendations
+- Flags cases requiring immediate attention
+- Conservative, safety-first approach
+
+### Enable AI Features
+
+```bash
+# 1. Get API key from https://console.anthropic.com/
+# 2. Add to backend/.env
+ANTHROPIC_API_KEY=sk-ant-your-key-here
+
+# 3. Restart backend
+docker-compose restart backend
+```
+
+---
+
+## 📚 API Documentation
+
+### Interactive Docs
 
 - **Swagger UI:** http://localhost:8000/docs
 - **ReDoc:** http://localhost:8000/redoc
@@ -221,534 +323,166 @@ All protocols located in: `/backend/examples/`
 
 ### API Endpoints (34 Total)
 
-**Authentication (5):**
-- `POST /api/v1/auth/register` - Create account
-- `POST /api/v1/auth/login` - Get JWT tokens
-- `POST /api/v1/auth/refresh` - Refresh access token
-- `POST /api/v1/auth/logout` - Logout
-- `GET /api/v1/auth/me` - Get current user
+<details>
+<summary><b>Authentication (5 endpoints)</b></summary>
 
-**Protocols - Public (4):**
-- `GET /api/v1/protocols` - List protocols (with filters & search)
-- `GET /api/v1/protocols/{id}` - Protocol details
-- `GET /api/v1/protocols/{id}/steps` - Protocol steps
-- `GET /api/v1/protocols/search` - Search protocols
+- `POST /api/v1/auth/register` — Create account
+- `POST /api/v1/auth/login` — Get JWT tokens
+- `POST /api/v1/auth/refresh` — Refresh access token
+- `POST /api/v1/auth/logout` — Logout
+- `GET /api/v1/auth/me` — Get current user
 
-**Admin - Protocol Management (8):**
-- `POST /api/v1/admin/protocols` - Create protocol
-- `PUT /api/v1/admin/protocols/{id}` - Update protocol
-- `DELETE /api/v1/admin/protocols/{id}` - Archive protocol
-- `POST /api/v1/admin/protocols/{id}/steps` - Add step
-- `PUT /api/v1/admin/protocols/{id}/steps/{step_id}` - Update step
-- `DELETE /api/v1/admin/protocols/{id}/steps/{step_id}` - Delete step
-- `POST /api/v1/admin/protocols/{id}/steps/{step_id}/safety-checks` - Add safety check
-- `POST /api/v1/admin/protocols/{id}/publish` - Publish protocol
+</details>
 
-**Patient Journey (6):**
-- `GET /api/v1/patients/providers/search` - Find providers
-- `POST /api/v1/patients/protocols/{id}/pre-screen` - Pre-screening quiz
-- `POST /api/v1/patients/consultation-request` - Request consultation
-- `GET /api/v1/patients/treatment-plans` - My treatment plans
-- `GET /api/v1/patients/treatment-plans/{id}` - Treatment plan details
-- `POST /api/v1/patients/consent/{plan_id}` - Sign consent
+<details>
+<summary><b>Protocols - Public (4 endpoints)</b></summary>
 
-**Therapist Workflow (8):**
-- `GET /api/v1/therapist/dashboard` - Dashboard data
-- `GET /api/v1/therapist/patients` - My patients
-- `POST /api/v1/therapist/treatment-plans` - Create treatment plan
-- `GET /api/v1/therapist/sessions/{id}` - Session details
-- `POST /api/v1/therapist/sessions/{id}/vitals` - Log vitals
-- `POST /api/v1/therapist/sessions/{id}/documentation` - Save notes
-- `POST /api/v1/therapist/sessions/{id}/complete` - Complete session
-- `POST /api/v1/therapist/decision-points/{id}/evaluate` - Evaluate decision
+- `GET /api/v1/protocols` — List protocols (with filters & search)
+- `GET /api/v1/protocols/{id}` — Protocol details
+- `GET /api/v1/protocols/{id}/steps` — Protocol steps
+- `GET /api/v1/protocols/search` — Search protocols
 
-**AI Services (3):**
-- `POST /api/v1/ai/extract-protocol` - Extract from research paper
-- `POST /api/v1/ai/generate-patient-education` - Generate patient guide
-- `POST /api/v1/ai/decision-support` - Clinical decision support
+</details>
 
----
+<details>
+<summary><b>Admin - Protocol Management (8 endpoints)</b></summary>
 
-## 🔧 Configuration
+- `POST /api/v1/admin/protocols` — Create protocol
+- `PUT /api/v1/admin/protocols/{id}` — Update protocol
+- `DELETE /api/v1/admin/protocols/{id}` — Archive protocol
+- `POST /api/v1/admin/protocols/{id}/steps` — Add step
+- `PUT /api/v1/admin/protocols/{id}/steps/{step_id}` — Update step
+- `DELETE /api/v1/admin/protocols/{id}/steps/{step_id}` — Delete step
+- `POST /api/v1/admin/protocols/{id}/steps/{step_id}/safety-checks` — Add safety check
+- `POST /api/v1/admin/protocols/{id}/publish` — Publish protocol
 
-### Environment Variables
+</details>
 
-**Backend (`backend/.env`):**
+<details>
+<summary><b>Patient Journey (6 endpoints)</b></summary>
 
-```bash
-# Database
-DATABASE_URL=postgresql://psyprotocol:psyprotocol_dev_password@postgres:5432/psyprotocol
-REDIS_URL=redis://redis:6379/0
+- `GET /api/v1/patients/providers/search` — Find providers
+- `POST /api/v1/patients/protocols/{id}/pre-screen` — Pre-screening quiz
+- `POST /api/v1/patients/consultation-request` — Request consultation
+- `GET /api/v1/patients/treatment-plans` — My treatment plans
+- `GET /api/v1/patients/treatment-plans/{id}` — Treatment plan details
+- `POST /api/v1/patients/consent/{plan_id}` — Sign consent
 
-# Security
-JWT_SECRET=dev_secret_change_in_production
-JWT_ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=15
-REFRESH_TOKEN_EXPIRE_DAYS=7
+</details>
 
-# API Keys
-ANTHROPIC_API_KEY=sk-ant-your-key-here  # Get from https://console.anthropic.com/
-STRIPE_SECRET_KEY=sk_test_your-key-here
+<details>
+<summary><b>Therapist Workflow (8 endpoints)</b></summary>
 
-# Environment
-ENVIRONMENT=development
-DEBUG=true
-```
+- `GET /api/v1/therapist/dashboard` — Dashboard data
+- `GET /api/v1/therapist/patients` — My patients
+- `POST /api/v1/therapist/treatment-plans` — Create treatment plan
+- `GET /api/v1/therapist/sessions/{id}` — Session details
+- `POST /api/v1/therapist/sessions/{id}/vitals` — Log vitals
+- `POST /api/v1/therapist/sessions/{id}/documentation` — Save notes
+- `POST /api/v1/therapist/sessions/{id}/complete` — Complete session
+- `POST /api/v1/therapist/decision-points/{id}/evaluate` — Evaluate decision
 
-**Frontend (`frontend/.env`):**
+</details>
 
-```bash
-VITE_API_URL=http://localhost:8000
-```
+<details>
+<summary><b>AI Services (3 endpoints)</b></summary>
 
-### Enable AI Features
+- `POST /api/v1/ai/extract-protocol` — Extract from research paper
+- `POST /api/v1/ai/generate-patient-education` — Generate patient guide
+- `POST /api/v1/ai/decision-support` — Clinical decision support
 
-To activate AI-powered features:
-
-1. Get Anthropic API key: https://console.anthropic.com/
-2. Add to `backend/.env`: `ANTHROPIC_API_KEY=sk-ant-...`
-3. Restart backend: `docker-compose restart backend`
-
-AI features will then work for:
-- Protocol extraction from PDFs
-- Patient education generation
-- Clinical decision support
+</details>
 
 ---
 
-## 🧪 Development
-
-### Running Locally (without Docker)
-
-**Backend:**
-```bash
-cd backend
-
-# Install dependencies
-pip install -r requirements.txt -r requirements-dev.txt
-
-# Setup database (PostgreSQL must be running)
-cp .env.example .env
-# Edit .env with your database URL
-
-# Run migrations
-alembic upgrade head
-
-# Seed database
-python seed_database.py
-
-# Start server
-uvicorn app.main:app --reload
-```
-
-**Frontend:**
-```bash
-cd frontend
-
-# Install dependencies
-npm install
-
-# Start dev server
-npm run dev
-```
-
-### Running Tests
-
-**Backend:**
-```bash
-cd backend
-
-# Run all tests
-pytest
-
-# Run specific test file
-pytest tests/test_api/test_auth.py
-
-# Run with coverage
-pytest --cov=app --cov-report=html
-```
-
-**Frontend:**
-```bash
-cd frontend
-
-# Run all tests
-npm test
-
-# Run with UI
-npm run test:ui
-
-# Run with coverage
-npm run test:coverage
-```
-
-### Building for Production
-
-**Frontend:**
-```bash
-cd frontend
-npm run build
-
-# Output in: frontend/dist/
-```
-
-**Backend (Docker):**
-```bash
-docker build -t psyprotocol-backend backend/
-```
-
----
-
-## 📊 Database Schema
-
-### Core Models (11 Total)
-
-**Users & Profiles:**
-- `users` - Authentication and role-based access
-- `patient_profiles` - Patient medical history
-- `therapist_profiles` - Therapist credentials
-- `clinics` - Clinic/practice information
-
-**Protocols:**
-- `protocols` - Treatment protocols
-- `protocol_steps` - Individual protocol steps
-- `safety_checks` - Contraindications and risk factors
-
-**Treatment:**
-- `treatment_plans` - Patient treatment assignments
-- `treatment_sessions` - Individual sessions
-- `session_documentation` - Vitals, notes, outcomes
-
-**Compliance:**
-- `audit_logs` - HIPAA-compliant audit trail
-
-### Database Migrations
-
-```bash
-# Create new migration
-alembic revision --autogenerate -m "description"
-
-# Apply migrations
-alembic upgrade head
-
-# Rollback one migration
-alembic downgrade -1
-
-# View migration history
-alembic history
-
-# Check current version
-alembic current
-```
-
----
-
-## 🔐 Security & Compliance
-
-### Authentication
-- **JWT Tokens:** 15-minute access tokens, 7-day refresh tokens
-- **Password Hashing:** Argon2 (OWASP recommended)
-- **Role-Based Access Control:** 5 roles (patient, therapist, clinic_admin, medical_director, platform_admin)
-
-### Authorization
-- Resource-level permissions (therapists can only access their own patients)
-- Endpoint-level role requirements
-- Token validation on all protected routes
-
-### HIPAA Compliance Features
-- **Audit Logging:** All actions tracked with timestamps, user IDs, IP addresses
-- **PHI Access Tracking:** Specialized logging for protected health information
-- **Data Encryption:** TLS for data in transit, encrypted database connections
-- **Access Controls:** Role-based access, session timeouts, automatic logoff
-- **Business Associate Agreements:** Ready for Anthropic Claude, Stripe
-
-### Security Best Practices
-- Environment-based secrets (no hardcoded credentials)
-- SQL injection protection (SQLAlchemy ORM)
-- XSS protection (React escaping)
-- CORS configuration
-- Rate limiting ready (can add with Redis)
-- Input validation (Pydantic schemas)
-
----
-
-## 🎨 Frontend Design
-
-### Design System
-
-**Components (11 total):**
-- Button (5 variants: primary, secondary, danger, outline, ghost, gradient)
-- Card (with hover effects, gradients)
-- Input (with icons, validation states)
-- Badge (6 variants for status indicators)
-- Modal (4 sizes, keyboard navigation)
-- Spinner (3 sizes, loading states)
-- StatCard (gradient backgrounds, icons)
-- ProgressBar (animated, color-coded)
-- Avatar (auto-generated from names)
-- StatusBadge (protocol/session/patient statuses)
-- EmptyState (beautiful empty states)
-
-**Color Scheme:**
-- Primary: Teal (#14b8a6)
-- Success: Green (#10b981)
-- Warning: Amber (#f59e0b)
-- Danger: Red (#ef4444)
-- Therapy-specific gradients (purple-pink, blue-cyan, green-teal, red-orange)
-
-**Animations:**
-- Fade-in, slide-up, pulse, bounce
-- Hover effects (lift, scale, glow)
-- Smooth transitions (200-300ms)
-
-### Pages
-
-**Public:**
-- Landing Page - Marketing site with features, stats, CTA
-- Login Page - Split-screen with animated gradients
-- Register Page - Split-screen onboarding
-
-**Patient:**
-- Protocol Browser - Pinterest-style grid with filters
-- Protocol Details - Modal with full protocol information
-
-**Therapist:**
-- Dashboard - Modern SaaS interface with stat cards
-- Session Documentation - Clinical interface with vitals logger
-
-**Admin:**
-- Protocol Management - Table view with actions
-- Protocol Builder - Step-by-step protocol creation
-
----
-
-## 🤖 AI Integration
-
-### Features
-
-**1. Protocol Extraction**
-- Upload research papers (PDF or text)
-- AI extracts protocol structure automatically
-- Returns: steps, dosages, contraindications, evidence sources
-- Admin reviews and publishes
-
-**2. Patient Education**
-- Generates personalized "what to expect" guides
-- Adapts tone based on patient anxiety level
-- Evidence-based, compassionate explanations
-- Markdown formatted output
-
-**3. Clinical Decision Support**
-- Real-time analysis during sessions
-- Risk level assessment (low/moderate/high/critical)
-- Evidence-based recommendations
-- Flags cases requiring immediate attention
-- Conservative, safety-first approach
-
-### API Endpoints
-
-```bash
-# Extract protocol from research text
-POST /api/v1/ai/extract-protocol
-{
-  "research_text": "...",
-  "therapy_type": "psilocybin",
-  "condition": "depression"
-}
-
-# Generate patient education
-POST /api/v1/ai/generate-patient-education
-{
-  "protocol_id": 1,
-  "patient_context": {
-    "anxiety_level": "moderate",
-    "age": 42
-  }
-}
-
-# Clinical decision support
-POST /api/v1/ai/decision-support
-{
-  "session_data": {...},
-  "protocol_context": {...},
-  "patient_history": {...}
-}
-```
-
----
-
-## 📦 Project Structure
-
-```
-health-tech-protocol-app/
-├── backend/
-│   ├── app/
-│   │   ├── api/v1/           # API endpoints
-│   │   ├── models/           # SQLAlchemy models
-│   │   ├── schemas/          # Pydantic schemas
-│   │   ├── services/         # Business logic
-│   │   ├── core/             # Security, config
-│   │   └── utils/            # AI prompts, helpers
-│   ├── alembic/              # Database migrations
-│   ├── tests/                # 216 tests
-│   ├── examples/             # 8 protocol JSON files (298 KB)
-│   ├── seed_database.py      # Database seeding script
-│   ├── Dockerfile
-│   └── requirements.txt
-├── frontend/
-│   ├── src/
-│   │   ├── components/       # React components
-│   │   │   ├── common/       # Design system (11 components)
-│   │   │   ├── landing/      # Landing page sections
-│   │   │   ├── protocols/    # Protocol cards & details
-│   │   │   ├── therapist/    # Therapist UI components
-│   │   │   └── admin/        # Admin UI components
-│   │   ├── pages/            # Page components
-│   │   ├── services/         # API client
-│   │   ├── store/            # Redux state
-│   │   ├── types/            # TypeScript types
-│   │   └── hooks/            # Custom hooks
-│   ├── tests/                # 93 tests
-│   ├── package.json
-│   └── vite.config.ts
-├── docs/                     # Design & implementation docs
-├── docker-compose.yml        # Multi-container orchestration
-├── README.md                 # This file
-├── PLATFORM_COMPLETE.md      # Completion guide
-└── .gitignore
-```
-
----
-
-## 🔍 Testing
+## 🧪 Testing
 
 ### Test Coverage
 
-**Backend: 216 tests**
-- Model tests (database schemas)
-- Service tests (protocol engine, safety, AI)
-- API integration tests (all endpoints)
-- End-to-end workflow tests
+- **Backend:** 216 tests (models, services, API, end-to-end)
+- **Frontend:** 93 tests (components, services, Redux, pages)
+- **Total:** 309 tests — all passing ✅
 
-**Frontend: 93 tests**
-- Component unit tests
-- Service tests (API client)
-- Redux slice tests
-- Page integration tests
-
-**Total: 309 tests** (all passing)
-
-### Running Specific Tests
+### Run Tests
 
 ```bash
-# Backend - specific module
+# Backend tests
 cd backend
-pytest tests/test_api/test_auth.py -v
+pytest
 
-# Backend - specific test
-pytest tests/test_services/test_protocol_engine.py::test_psilocybin_dose_determination
-
-# Frontend - specific component
+# Frontend tests
 cd frontend
-npm test -- Button.test.tsx
+npm test
 
-# Frontend - watch mode
-npm test -- --watch
+# With coverage
+pytest --cov=app --cov-report=html  # Backend
+npm run test:coverage               # Frontend
 ```
 
 ---
 
 ## 🚀 Deployment
 
-### Development (Current Setup)
-
-Uses Docker Compose with:
-- PostgreSQL on port 5433
-- Redis on port 6380
-- Backend on port 8000
-- Frontend on port 5173 (npm run dev)
-
-### Production Deployment (Ready For)
+### Production Deployment Options
 
 **Option 1: Single VM (GCP/AWS/Azure)**
-- Use included `deploy.sh` script (when created)
-- Nginx reverse proxy with SSL
-- Let's Encrypt for certificates
-- PM2 or systemd for process management
+```bash
+# Use included deployment script
+./deploy.sh
 
-**Option 2: Kubernetes**
+# Includes:
+# - Nginx reverse proxy with SSL
+# - Let's Encrypt certificates
+# - Docker Compose orchestration
+# - Automated migrations
+```
+
+**Option 2: Platform-as-a-Service**
+- Frontend: Vercel, Netlify, Cloudflare Pages
+- Backend: Heroku, Render, Railway, Fly.io
+- Database: AWS RDS, GCP Cloud SQL, Supabase
+- Redis: ElastiCache, Redis Cloud
+
+**Option 3: Kubernetes**
 - Container images ready
 - Helm charts (to be created)
 - Horizontal pod autoscaling
 - Load balancer with SSL termination
 
-**Option 3: Platform-as-a-Service**
-- Heroku, Render, Railway, Fly.io
-- Frontend: Vercel, Netlify, Cloudflare Pages
-- Database: Managed PostgreSQL (AWS RDS, GCP Cloud SQL)
-- Redis: Managed Redis (ElastiCache, Redis Cloud)
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
 
 ---
 
-## 📝 Additional Documentation
+## 📁 Project Structure
 
-- **Design Document:** `/docs/plans/2025-11-15-psyprotocol-platform-design.md`
-- **Implementation Plan:** `/docs/plans/2025-11-15-psyprotocol-implementation-plan.md`
-- **Platform Completion Guide:** `/PLATFORM_COMPLETE.md`
-- **API Examples:**
-  - `/backend/ADMIN_API_EXAMPLES.md`
-  - `/backend/THERAPIST_API_CURL_EXAMPLES.md`
-  - `/backend/AI_INTEGRATION_SUMMARY.md`
-- **Database Seeding:** `/backend/DATABASE_SEEDING.md`
-
----
-
-## 🐛 Troubleshooting
-
-### Backend won't start
-
-```bash
-# Check logs
-docker-compose logs backend
-
-# Restart services
-docker-compose restart
-
-# Full reset
-docker-compose down -v
-docker-compose up -d
 ```
-
-### Database migration issues
-
-```bash
-# Check current migration
-docker-compose exec backend alembic current
-
-# Manually run migrations
-docker-compose exec backend alembic upgrade head
-
-# Reset database
-docker-compose exec backend python -c "from app.database import Base, engine; Base.metadata.drop_all(bind=engine); Base.metadata.create_all(bind=engine)"
-```
-
-### Frontend not loading
-
-```bash
-# Clear node_modules and reinstall
-cd frontend
-rm -rf node_modules package-lock.json
-npm install
-npm run dev
-```
-
-### CSS not showing
-
-```bash
-# Rebuild Tailwind
-cd frontend
-rm -rf node_modules/.vite
-npm run dev
+health-tech-protocol-app/
+├── backend/
+│   ├── app/
+│   │   ├── api/v1/           # 34 API endpoints
+│   │   ├── models/           # 11 SQLAlchemy models
+│   │   ├── schemas/          # Pydantic validation
+│   │   ├── services/         # Business logic (Protocol Engine, AI)
+│   │   ├── core/             # Security, config
+│   │   └── utils/            # AI prompts, helpers
+│   ├── alembic/              # Database migrations
+│   ├── tests/                # 216 tests
+│   ├── examples/             # 8 protocol JSON files
+│   └── seed_database.py      # Demo data loader
+├── frontend/
+│   ├── src/
+│   │   ├── components/       # 11 reusable components
+│   │   ├── pages/            # Landing, Patient, Therapist, Admin
+│   │   ├── services/         # API client
+│   │   ├── store/            # Redux state management
+│   │   └── types/            # TypeScript definitions
+│   ├── tests/                # 93 tests
+│   └── package.json
+├── docs/                     # Design & implementation docs
+├── docker-compose.yml        # Multi-container orchestration
+├── deploy.sh                 # Production deployment script
+├── DEPLOYMENT.md             # Deployment guide
+└── README.md                 # This file
 ```
 
 ---
@@ -756,11 +490,11 @@ npm run dev
 ## 🤝 Contributing
 
 This is a production-ready codebase with:
-- Clean architecture (separation of concerns)
-- Comprehensive testing
-- TypeScript for type safety
-- API documentation
-- Code quality tools (ESLint, Black, Ruff)
+- ✅ Clean architecture (separation of concerns)
+- ✅ Comprehensive testing (309 tests)
+- ✅ TypeScript for type safety
+- ✅ API documentation
+- ✅ Code quality tools (ESLint, Black, Ruff)
 
 **Development workflow:**
 1. Create feature branch
@@ -778,27 +512,36 @@ This is a production-ready codebase with:
 
 ---
 
-## 🙋 Support
+## 🙋 Support & Resources
 
-**Documentation:** See `/docs/` folder
-**API Docs:** http://localhost:8000/docs
-**Issues:** [Your GitHub issues URL]
-**Email:** [Your support email]
-
----
-
-## ⭐ Key Stats
-
-- **38 commits** - Clean incremental development
-- **~18,000 lines** of production code
-- **309 tests** - Comprehensive coverage
-- **34 API endpoints** - Complete REST API
-- **91 protocols** - Pre-loaded in database
-- **20 therapy types** - Comprehensive coverage
-- **11 database models** - Complete schema
-- **3 AI services** - Claude-powered intelligence
-- **Production-ready** - Docker deployed, tests passing
+- **Documentation:** See `/docs/` folder
+- **API Docs:** http://localhost:8000/docs
+- **Deployment Guide:** [DEPLOYMENT.md](DEPLOYMENT.md)
+- **Protocol Workflow System:** [PROTOCOL_WORKFLOW_SYSTEM.md](PROTOCOL_WORKFLOW_SYSTEM.md)
+- **Issues:** [Your GitHub issues URL]
+- **Email:** [Your support email]
 
 ---
 
-**Built with ❤️ using Claude Code and modern best practices**
+## ⭐ Project Stats
+
+| Metric | Value |
+|--------|-------|
+| **Lines of Code** | ~18,000 |
+| **Tests** | 309 (all passing) |
+| **API Endpoints** | 34 |
+| **Database Models** | 11 |
+| **Pre-loaded Protocols** | 8 |
+| **Supported Therapy Types** | 20+ |
+| **AI Services** | 3 (Claude-powered) |
+| **Status** | Production-ready ✅ |
+
+---
+
+<div align="center">
+
+**Built with ❤️ for advancing mental healthcare**
+
+[Get Started](#-quick-start) • [View Demo](#-platform-demo) • [Read Docs](docs/)
+
+</div>
