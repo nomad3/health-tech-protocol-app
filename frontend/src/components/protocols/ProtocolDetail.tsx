@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Badge, Button } from '../common';
 import type { Protocol, ProtocolStep, StepType } from '../../types/protocol';
+import { Badge, Button, Modal } from '../common';
 
 interface ProtocolDetailProps {
   protocol: Protocol;
@@ -133,8 +133,18 @@ const ProtocolDetail: React.FC<ProtocolDetailProps> = ({ protocol, isOpen, onClo
         )}
 
         {/* Footer */}
-        <div className="flex justify-end pt-4 border-t border-gray-200">
-          <Button onClick={onClose}>Close</Button>
+        <div className="flex justify-between items-center pt-4 border-t border-gray-200">
+          <Button
+            variant="gradient"
+            onClick={() => {
+              // TODO: Navigate to pre-screening page with protocol ID
+              console.log('Start pre-screening for protocol:', protocol.id);
+              alert(`Pre-screening feature coming soon for ${protocol.name}!`);
+            }}
+          >
+            Start Pre-Screening
+          </Button>
+          <Button onClick={onClose} variant="outline">Close</Button>
         </div>
       </div>
     </Modal>
