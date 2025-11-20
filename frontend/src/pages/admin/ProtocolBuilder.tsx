@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchProtocol, createProtocol, updateProtocol } from '../../store/protocolSlice';
-import { Card, Input, Button, Spinner, Badge } from '../../components/common';
-import StepEditor from '../../components/admin/StepEditor';
+import { useNavigate, useParams } from 'react-router-dom';
 import SafetyCheckEditor from '../../components/admin/SafetyCheckEditor';
-import { TherapyType, EvidenceLevel, type Protocol, type ProtocolStep, type SafetyCheck } from '../../types/protocol';
+import StepEditor from '../../components/admin/StepEditor';
+import { Badge, Button, Card, Input, Spinner } from '../../components/common';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import protocolService from '../../services/protocolService';
+import { createProtocol, fetchProtocol, updateProtocol } from '../../store/protocolSlice';
+import { EvidenceLevel, TherapyType, type Protocol, type ProtocolStep, type SafetyCheck } from '../../types/protocol';
 
 const ProtocolBuilder: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { selectedProtocol, loading } = useAppSelector((state) => state.protocol);
-  const isEditMode = id !== 'new';
+  const isEditMode = !!id && id !== 'new';
 
   const [formData, setFormData] = useState<Partial<Protocol>>({
     name: '',

@@ -20,16 +20,16 @@ const EmptyState: React.FC<EmptyStateProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col items-center justify-center py-12 px-4 ${className}`}>
-      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-4xl mb-4">
+    <div className={`flex flex-col items-center justify-center py-12 px-4 text-center ${className}`}>
+      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-teal-50 to-blue-50 border border-teal-100 flex items-center justify-center text-4xl mb-6 shadow-sm">
         {icon}
       </div>
-      <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+      <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
       {description && (
-        <p className="text-gray-500 text-center max-w-sm mb-6">{description}</p>
+        <p className="text-gray-500 max-w-sm mb-8 leading-relaxed">{description}</p>
       )}
       {action && (
-        <Button onClick={action.onClick} variant="primary">
+        <Button onClick={action.onClick} variant="gradient">
           {action.label}
         </Button>
       )}

@@ -1,18 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useAppSelector } from './hooks';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Navigation } from './components/common';
-import LandingPage from './pages/LandingPage';
+import { useAppSelector } from './hooks';
+import ProtocolBuilder from './pages/admin/ProtocolBuilder';
+import ProtocolManagement from './pages/admin/ProtocolManagement';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
+import LandingPage from './pages/LandingPage';
 import ProtocolBrowser from './pages/patient/ProtocolBrowser';
 import TherapistDashboard from './pages/therapist/TherapistDashboard';
-import ProtocolManagement from './pages/admin/ProtocolManagement';
-import ProtocolBuilder from './pages/admin/ProtocolBuilder';
 
 // Import SessionDocumentation component dynamically to avoid type-only import error
+// Import SessionDocumentation component dynamically to avoid type-only import error
 const SessionDocumentation = React.lazy(() => import('./pages/therapist/SessionDocumentation'));
+const PreScreeningPage = React.lazy(() => import('./pages/patient/PreScreeningPage'));
 
 // Protected route component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -66,6 +68,18 @@ function App() {
           }
         />
         <Route
+          path="/protocols/:id/pre-screening"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <React.Suspense fallback={<div>Loading...</div>}>
+                  <PreScreeningPage />
+                </React.Suspense>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/therapist/dashboard"
           element={
             <ProtectedRoute>
@@ -93,6 +107,16 @@ function App() {
             <ProtectedRoute>
               <Layout>
                 <ProtocolManagement />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/protocols/new"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <ProtocolBuilder />
               </Layout>
             </ProtectedRoute>
           }

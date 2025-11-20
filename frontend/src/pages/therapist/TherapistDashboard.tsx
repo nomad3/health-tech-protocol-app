@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card, Spinner, StatCard, Avatar, StatusBadge, EmptyState, Button } from '../../components/common';
-import type { TherapySession, Patient, DashboardStats } from '../../types/therapist';
+import { Avatar, Button, Card, EmptyState, Spinner, StatCard, StatusBadge } from '../../components/common';
 import { api } from '../../services/api';
+import type { DashboardStats, Patient, TherapySession } from '../../types/therapist';
 
 const TherapistDashboard: React.FC = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const TherapistDashboard: React.FC = () => {
       setError(null);
 
       const [statsRes, todayRes, upcomingRes, patientsRes] = await Promise.all([
-        api.get<DashboardStats>('/api/v1/therapist/dashboard/stats').catch(() => ({
+        api.get<DashboardStats>('/api/v1/therapist/dashboard').catch(() => ({
           data: {
             total_patients: 12,
             active_treatments: 8,
@@ -140,7 +140,11 @@ const TherapistDashboard: React.FC = () => {
                 <EmptyState
                   icon="✨"
                   title="No sessions today"
-                  description="You have a free day ahead. Use this time to catch up on documentation."
+                  description="You have a free day ahead. Use this time to catch up on documentation or schedule new sessions."
+                  action={{
+                    label: 'Schedule Session',
+                    onClick: () => navigate('/therapist/sessions/new'),
+                  }}
                 />
               </Card>
             ) : (
@@ -168,6 +172,10 @@ const TherapistDashboard: React.FC = () => {
                   icon="📭"
                   title="No upcoming sessions"
                   description="Your schedule is clear for the rest of the week."
+                  action={{
+                    label: 'View Full Schedule',
+                    onClick: () => navigate('/therapist/schedule'),
+                  }}
                 />
               </Card>
             ) : (
@@ -201,7 +209,11 @@ const TherapistDashboard: React.FC = () => {
                   <EmptyState
                     icon="👤"
                     title="No patients yet"
-                    description="Start adding patients to your practice"
+                    description="Start adding patients to your practice to track their progress."
+                    action={{
+                      label: 'Add Patient',
+                      onClick: () => navigate('/therapist/patients/new'),
+                    }}
                   />
                 </div>
               ) : (

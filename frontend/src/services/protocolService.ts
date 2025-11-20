@@ -1,5 +1,5 @@
-import { api } from './api';
 import type { Protocol, ProtocolFilters, ProtocolListResponse, ProtocolStep, SafetyCheck } from '../types/protocol';
+import { api } from './api';
 
 export const protocolService = {
   /**
@@ -93,6 +93,25 @@ export const protocolService = {
    */
   async searchProtocols(query: string): Promise<Protocol[]> {
     const response = await api.get<Protocol[]>(`/api/v1/protocols/search?q=${encodeURIComponent(query)}`);
+    return response.data;
+  },
+
+  /**
+   * Submit pre-screening for a protocol
+   */
+  async submitPreScreening(protocolId: number, data: any): Promise<any> {
+    const response = await api.post<any>(`/api/v1/patients/protocols/${protocolId}/pre-screen`, {
+      protocol_id: protocolId,
+      responses: data
+    });
+    return response.data;
+  },
+
+  /**
+   * Get my treatment plans
+   */
+  async getTreatmentPlans(): Promise<any[]> {
+    const response = await api.get<any[]>('/api/v1/patients/treatment-plans');
     return response.data;
   },
 };

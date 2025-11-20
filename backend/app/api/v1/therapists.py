@@ -189,6 +189,77 @@ def get_therapist_dashboard(
     )
 
 
+@router.get("/sessions/today", response_model=List[TodaySession])
+def get_today_sessions(
+    current_user: User = Depends(require_role(UserRole.THERAPIST)),
+    db: Session = Depends(get_db)
+):
+    """Get all sessions scheduled for today."""
+    today_start = datetime.combine(date.today(), datetime.min.time())
+    today_end = datetime.combine(date.today(), datetime.max.time())
+
+    sessions = db.query(TreatmentSession).filter(
+        and_(
+            TreatmentSession.therapist_id == current_user.id,
+            TreatmentSession.scheduled_at >= today_start,
+            TreatmentSession.scheduled_at <= today_end
+        )
+    ).all()
+
+    result = []
+    for session in sessions:
+        treatment_plan = db.query(TreatmentPlan).filter(TreatmentPlan.id == session.treatment_plan_id).first()
+        patient = db.query(User).filter(User.id == treatment_plan.patient_id).first()
+        step = db.query(ProtocolStep).filter(ProtocolStep.id == session.protocol_step_id).first()
+
+        result.append(TodaySession(
+            id=session.id,
+            patient_id=treatment_plan.patient_id,
+            patient_email=patient.email,
+            scheduled_at=session.scheduled_at,
+            status=session.status.value,
+            location=session.location,
+            step_title=step.title if step else "Unknown Step"
+        ))
+    return result
+
+
+@router.get("/sessions/upcoming", response_model=List[TodaySession])
+def get_upcoming_sessions(
+    current_user: User = Depends(require_role(UserRole.THERAPIST)),
+    db: Session = Depends(get_db)
+):
+    """Get upcoming sessions for the next 7 days."""
+    start_time = datetime.utcnow()
+    end_time = start_time + timedelta(days=7)
+
+    sessions = db.query(TreatmentSession).filter(
+        and_(
+            TreatmentSession.therapist_id == current_user.id,
+            TreatmentSession.scheduled_at > start_time,
+            TreatmentSession.scheduled_at <= end_time,
+            TreatmentSession.status == SessionStatus.SCHEDULED
+        )
+    ).order_by(TreatmentSession.scheduled_at).all()
+
+    result = []
+    for session in sessions:
+        treatment_plan = db.query(TreatmentPlan).filter(TreatmentPlan.id == session.treatment_plan_id).first()
+        patient = db.query(User).filter(User.id == treatment_plan.patient_id).first()
+        step = db.query(ProtocolStep).filter(ProtocolStep.id == session.protocol_step_id).first()
+
+        result.append(TodaySession(
+            id=session.id,
+            patient_id=treatment_plan.patient_id,
+            patient_email=patient.email,
+            scheduled_at=session.scheduled_at,
+            status=session.status.value,
+            location=session.location,
+            step_title=step.title if step else "Unknown Step"
+        ))
+    return result
+
+
 @router.get("/patients", response_model=List[PatientTreatmentInfo])
 def get_therapist_patients(
     current_user: User = Depends(require_role(UserRole.THERAPIST)),
@@ -439,6 +510,33 @@ def log_session_vitals(
         message="Vitals logged successfully",
         vitals_logged=len(documentation.vitals),
         session_id=session_id
+    )
+
+
+@router.get("/sessions/{session_id}/documentation", response_model=SessionDocumentationResponse)
+def get_session_documentation(
+    session_id: int,
+    current_user: User = Depends(require_role(UserRole.THERAPIST)),
+    db: Session = Depends(get_db)
+):
+    """Get session documentation."""
+    session = verify_therapist_owns_session(current_user.id, session_id, db)
+
+    documentation = db.query(SessionDocumentation).filter(
+        SessionDocumentation.treatment_session_id == session_id
+    ).first()
+
+    if not documentation:
+        return SessionDocumentationResponse(
+            id=0,
+            treatment_session_id=session_id,
+            message="No documentation found"
+        )
+
+    return SessionDocumentationResponse(
+        id=documentation.id,
+        treatment_session_id=session_id,
+        message="Documentation retrieved successfully"
     )
 
 

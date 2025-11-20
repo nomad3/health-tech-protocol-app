@@ -40,9 +40,9 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({
   withDot = true,
   className = '',
 }) => {
-  const normalizedStatus = status.toLowerCase().replace(/\s+/g, '_');
+  const normalizedStatus = (status || 'unknown').toLowerCase().replace(/\s+/g, '_');
   const style = statusStyles[normalizedStatus] || statusStyles.default;
-  const label = status.replace(/_/g, ' ');
+  const label = (status || 'unknown').replace(/_/g, ' ');
 
   return (
     <span

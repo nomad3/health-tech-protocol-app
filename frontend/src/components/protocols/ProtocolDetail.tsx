@@ -26,7 +26,10 @@ const stepTypeLabels: Record<StepType, string> = {
   followup: 'Follow-up',
 };
 
+import { useNavigate } from 'react-router-dom';
+
 const ProtocolDetail: React.FC<ProtocolDetailProps> = ({ protocol, isOpen, onClose }) => {
+  const navigate = useNavigate();
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={protocol.name}>
       <div className="space-y-6">
@@ -137,9 +140,8 @@ const ProtocolDetail: React.FC<ProtocolDetailProps> = ({ protocol, isOpen, onClo
           <Button
             variant="gradient"
             onClick={() => {
-              // TODO: Navigate to pre-screening page with protocol ID
-              console.log('Start pre-screening for protocol:', protocol.id);
-              alert(`Pre-screening feature coming soon for ${protocol.name}!`);
+              onClose();
+              navigate(`/protocols/${protocol.id}/pre-screening`);
             }}
           >
             Start Pre-Screening

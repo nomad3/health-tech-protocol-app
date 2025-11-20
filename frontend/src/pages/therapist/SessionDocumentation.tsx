@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Card, Button, Spinner, StatusBadge, Avatar, ProgressBar } from '../../components/common';
-import VitalsLogger from '../../components/therapist/VitalsLogger';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Avatar, Button, Card, ProgressBar, Spinner, StatusBadge } from '../../components/common';
 import NotesEditor from '../../components/therapist/NotesEditor';
-import type { TherapySession, SessionDocumentation, VitalsData } from '../../types/therapist';
+import VitalsLogger from '../../components/therapist/VitalsLogger';
 import { api } from '../../services/api';
+import type { SessionDocumentation, TherapySession, VitalsData } from '../../types/therapist';
 
 const SessionDocumentation: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -81,7 +81,7 @@ const SessionDocumentation: React.FC = () => {
       setSaving(true);
       setError(null);
 
-      await api.post(`/api/v1/therapist/sessions/${id}/documentation/vitals`, vitals);
+      await api.post(`/api/v1/therapist/sessions/${id}/vitals`, vitals);
 
       setDocumentation((prev) => (prev ? { ...prev, vitals } : null));
       setSuccessMessage('Vitals saved successfully');
@@ -103,7 +103,7 @@ const SessionDocumentation: React.FC = () => {
       setSaving(true);
       setError(null);
 
-      await api.post(`/api/v1/therapist/sessions/${id}/documentation/notes`, {
+      await api.post(`/api/v1/therapist/sessions/${id}/documentation`, {
         therapist_notes: therapistNotes,
         patient_notes: patientNotes,
       });
@@ -280,11 +280,10 @@ const SessionDocumentation: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 font-semibold transition-all duration-200 border-b-2 flex items-center gap-2 ${
-                  activeTab === tab.id
+                className={`px-6 py-3 font-semibold transition-all duration-200 border-b-2 flex items-center gap-2 ${activeTab === tab.id
                     ? 'border-teal-600 text-teal-600 bg-teal-50 rounded-t-lg'
                     : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                }`}
+                  }`}
               >
                 <span className="text-lg">{tab.icon}</span>
                 {tab.label}
