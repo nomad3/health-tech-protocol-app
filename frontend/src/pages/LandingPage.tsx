@@ -1,12 +1,12 @@
 import {
   Activity,
   ArrowRight,
-  Brain,
   ChevronRight,
-  Database,
-  Lock,
+  FileText,
+  Heart,
   ShieldCheck,
-  Sparkles
+  Sun,
+  Users
 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -30,27 +30,27 @@ const LandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-400 to-blue-600 flex items-center justify-center">
-              <Brain className="w-5 h-5 text-white" />
+              <Heart className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
               PsyProtocol
             </span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Features</a>
-            <a href="#protocols" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Protocols</a>
-            <a href="#science" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Science</a>
+            <a href="#treatments" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Treatments</a>
+            <a href="#safety" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Safety</a>
+            <a href="#science" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Clinical Evidence</a>
             <button
               onClick={() => navigate('/login')}
               className="px-5 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 text-sm font-medium transition-all backdrop-blur-sm"
             >
-              Log In
+              Patient Login
             </button>
             <button
               onClick={() => navigate('/register')}
               className="px-5 py-2 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-400 hover:to-blue-500 text-white text-sm font-medium shadow-lg shadow-teal-500/25 transition-all transform hover:scale-105"
             >
-              Get Started
+              Start Your Journey
             </button>
           </div>
         </div>
@@ -60,9 +60,9 @@ const LandingPage: React.FC = () => {
       <div className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/30 rounded-full mix-blend-screen filter blur-[128px] animate-pulse-slow"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-600/30 rounded-full mix-blend-screen filter blur-[128px] animate-pulse-slow delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full mix-blend-screen filter blur-[100px]"></div>
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full mix-blend-screen filter blur-[128px] animate-pulse-slow"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-600/20 rounded-full mix-blend-screen filter blur-[128px] animate-pulse-slow delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 rounded-full mix-blend-screen filter blur-[100px]"></div>
 
           {/* Grid Overlay */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
@@ -72,19 +72,19 @@ const LandingPage: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8 animate-fade-in-up">
             <span className="flex h-2 w-2 rounded-full bg-teal-400 animate-pulse"></span>
-            <span className="text-xs font-medium text-teal-300 tracking-wide uppercase">Now with AI-Driven Protocol Engine</span>
+            <span className="text-xs font-medium text-teal-300 tracking-wide uppercase">Accepting New Patients for 2025</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up delay-100">
-            <span className="block text-white mb-2">The Future of</span>
+            <span className="block text-white mb-2">Evidence-Based</span>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-blue-500 to-purple-600 animate-gradient-x">
-              Psychedelic Therapy
+              Psychedelic Medicine
             </span>
           </h1>
 
           <p className="mt-4 text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-fade-in-up delay-200 leading-relaxed">
-            Manage complex treatment protocols with our advanced AI engine.
-            From Psilocybin to MDMA, ensure patient safety and optimize outcomes with precision data.
+            Access world-class treatment protocols for Depression, PTSD, and Anxiety.
+            Guided by expert therapists, validated by clinical science, and personalized for your healing journey.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up delay-300">
@@ -92,46 +92,46 @@ const LandingPage: React.FC = () => {
               onClick={() => navigate('/register')}
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-400 hover:to-blue-500 text-white font-semibold shadow-lg shadow-teal-500/25 transition-all transform hover:scale-105 flex items-center justify-center group"
             >
-              Start Free Trial
+              Check Eligibility
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <button
               onClick={() => navigate('/protocols')}
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold backdrop-blur-sm transition-all flex items-center justify-center"
             >
-              Explore Protocols
+              View Treatments
             </button>
           </div>
 
           {/* Stats/Trust Indicators */}
           <div className="mt-16 pt-8 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in-up delay-500">
             <div>
-              <div className="text-3xl font-bold text-white">8+</div>
-              <div className="text-sm text-slate-500 mt-1">Active Protocols</div>
+              <div className="text-3xl font-bold text-white">FDA</div>
+              <div className="text-sm text-slate-500 mt-1">Aligned Protocols</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-white">100%</div>
-              <div className="text-sm text-slate-500 mt-1">HIPAA Compliant</div>
+              <div className="text-sm text-slate-500 mt-1">Clinician Led</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-white">24/7</div>
-              <div className="text-sm text-slate-500 mt-1">AI Monitoring</div>
+              <div className="text-sm text-slate-500 mt-1">Patient Support</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-white">Phase 3</div>
-              <div className="text-sm text-slate-500 mt-1">Trial Ready</div>
+              <div className="text-sm text-slate-500 mt-1">Clinical Standards</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Features Section */}
-      <div id="features" className="relative py-24 bg-slate-950">
+      <div id="treatments" className="relative py-24 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Powered by Intelligence</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">A New Standard of Care</h2>
             <p className="text-slate-400 max-w-2xl mx-auto">
-              Our platform combines clinical rigor with cutting-edge technology to deliver the safest, most effective psychedelic therapy management system.
+              We combine the latest medical research with compassionate care to provide safe, effective, and legal access to psychedelic therapies.
             </p>
           </div>
 
@@ -141,11 +141,11 @@ const LandingPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
               <div className="relative z-10">
                 <div className="w-12 h-12 rounded-lg bg-teal-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Brain className="w-6 h-6 text-teal-400" />
+                  <FileText className="w-6 h-6 text-teal-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">AI Protocol Engine</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Validated Protocols</h3>
                 <p className="text-slate-400 leading-relaxed">
-                  Dynamic workflows that adapt to patient data. Our engine handles complex decision points, dosing calculations, and branching logic automatically.
+                  Treatment plans derived directly from successful clinical trials. Structured specifically for Psilocybin, MDMA, and Ketamine therapies.
                 </p>
               </div>
             </div>
@@ -157,9 +157,9 @@ const LandingPage: React.FC = () => {
                 <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <ShieldCheck className="w-6 h-6 text-blue-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Safety First</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Medical Safety</h3>
                 <p className="text-slate-400 leading-relaxed">
-                  Real-time contraindication checking against medical history, medications, and vitals. Automated alerts for absolute and relative risks.
+                  Comprehensive medical screening and continuous monitoring. We ensure every treatment is medically appropriate for your unique history.
                 </p>
               </div>
             </div>
@@ -169,11 +169,11 @@ const LandingPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
               <div className="relative z-10">
                 <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Activity className="w-6 h-6 text-purple-400" />
+                  <Sun className="w-6 h-6 text-purple-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Outcome Tracking</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Holistic Integration</h3>
                 <p className="text-slate-400 leading-relaxed">
-                  Integrated clinical scales (MADRS, CAPS-5, PHQ-9) to track progress. Visualize patient journey from preparation to integration.
+                  The medicine is just the beginning. Our platform supports your long-term integration with journaling, symptom tracking, and therapist connection.
                 </p>
               </div>
             </div>
@@ -189,41 +189,41 @@ const LandingPage: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Designed for the <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">Modern Therapist</span>
+                Compassionate Care, <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">Professionally Delivered</span>
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="mt-1 w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center flex-shrink-0">
-                    <Sparkles className="w-3 h-3 text-teal-400" />
+                    <Users className="w-3 h-3 text-teal-400" />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold">Intuitive Dashboard</h4>
-                    <p className="text-slate-400 text-sm mt-1">Everything you need in one view. Upcoming sessions, patient alerts, and quick actions.</p>
+                    <h4 className="text-white font-semibold">Expert Therapist Network</h4>
+                    <p className="text-slate-400 text-sm mt-1">Connect with licensed professionals specialized in psychedelic-assisted psychotherapy.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
                   <div className="mt-1 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                    <Database className="w-3 h-3 text-blue-400" />
+                    <Activity className="w-3 h-3 text-blue-400" />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold">Comprehensive Records</h4>
-                    <p className="text-slate-400 text-sm mt-1">Securely store session notes, vitals, and integration progress in one HIPAA-compliant place.</p>
+                    <h4 className="text-white font-semibold">Personalized Treatment Plans</h4>
+                    <p className="text-slate-400 text-sm mt-1">Your journey is unique. Your protocol adapts to your needs, progress, and therapeutic goals.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
                   <div className="mt-1 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                    <Lock className="w-3 h-3 text-purple-400" />
+                    <Heart className="w-3 h-3 text-purple-400" />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold">Enterprise Security</h4>
-                    <p className="text-slate-400 text-sm mt-1">Bank-grade encryption and role-based access control to protect sensitive patient data.</p>
+                    <h4 className="text-white font-semibold">Safe & Supportive Environment</h4>
+                    <p className="text-slate-400 text-sm mt-1">We prioritize your safety and comfort at every step, from preparation to integration.</p>
                   </div>
                 </div>
               </div>
 
               <button className="mt-8 text-teal-400 font-medium flex items-center hover:text-teal-300 transition-colors">
-                Learn more about security <ChevronRight className="w-4 h-4 ml-1" />
+                Meet our clinical team <ChevronRight className="w-4 h-4 ml-1" />
               </button>
             </div>
 
@@ -277,22 +277,22 @@ const LandingPage: React.FC = () => {
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full max-w-4xl bg-teal-500/5 blur-[100px] rounded-full pointer-events-none"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Transform Therapy?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Begin Your Healing Journey</h2>
           <p className="text-xl text-slate-400 mb-10">
-            Join the platform that is powering the next generation of mental health treatment.
+            Take the first step towards mental wellness with our evidence-based psychedelic therapy program.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <button
               onClick={() => navigate('/register')}
               className="w-full sm:w-auto px-10 py-4 rounded-full bg-white text-slate-900 font-bold hover:bg-slate-100 transition-colors shadow-lg shadow-white/10"
             >
-              Get Started Now
+              See If You Qualify
             </button>
             <button
               onClick={() => navigate('/contact')}
               className="w-full sm:w-auto px-10 py-4 rounded-full bg-transparent border border-white/20 text-white font-semibold hover:bg-white/5 transition-colors"
             >
-              Contact Sales
+              Speak to a Care Coordinator
             </button>
           </div>
         </div>
@@ -304,7 +304,7 @@ const LandingPage: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Brain className="w-5 h-5 text-teal-500" />
+                <Heart className="w-5 h-5 text-teal-500" />
                 <span className="text-lg font-bold text-white">PsyProtocol</span>
               </div>
               <p className="text-slate-500 text-sm">
@@ -312,21 +312,21 @@ const LandingPage: React.FC = () => {
               </p>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Platform</h4>
+              <h4 className="text-white font-semibold mb-4">Treatments</h4>
               <ul className="space-y-2 text-sm text-slate-400">
-                <li><a href="#" className="hover:text-teal-400 transition-colors">Protocols</a></li>
-                <li><a href="#" className="hover:text-teal-400 transition-colors">Safety Engine</a></li>
-                <li><a href="#" className="hover:text-teal-400 transition-colors">Outcomes</a></li>
-                <li><a href="#" className="hover:text-teal-400 transition-colors">Pricing</a></li>
+                <li><a href="#" className="hover:text-teal-400 transition-colors">Depression</a></li>
+                <li><a href="#" className="hover:text-teal-400 transition-colors">PTSD</a></li>
+                <li><a href="#" className="hover:text-teal-400 transition-colors">Anxiety</a></li>
+                <li><a href="#" className="hover:text-teal-400 transition-colors">Addiction</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
+              <h4 className="text-white font-semibold mb-4">Patients</h4>
               <ul className="space-y-2 text-sm text-slate-400">
-                <li><a href="#" className="hover:text-teal-400 transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-teal-400 transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-teal-400 transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-teal-400 transition-colors">Contact</a></li>
+                <li><a href="#" className="hover:text-teal-400 transition-colors">How it Works</a></li>
+                <li><a href="#" className="hover:text-teal-400 transition-colors">Safety</a></li>
+                <li><a href="#" className="hover:text-teal-400 transition-colors">Pricing</a></li>
+                <li><a href="#" className="hover:text-teal-400 transition-colors">FAQ</a></li>
               </ul>
             </div>
             <div>
