@@ -95,6 +95,7 @@ PROTOCOL_FILES = [
     "ketamine_depression_protocol.json",
     "lsd_microdosing_protocol.json",
     "testosterone_optimization_protocol.json",
+    "testosterone_replacement_protocol.json",
     "chemotherapy_protocol.json",
     "stem_cell_therapy_protocol.json",
 ]
