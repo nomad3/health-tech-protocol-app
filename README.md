@@ -14,17 +14,17 @@ A comprehensive platform connecting patients with breakthrough therapies through
 ## 📺 Platform Demo
 
 ### Landing Page & Neural Network Effect
-![Landing Page Demo](file:///Users/nomade/.gemini/antigravity/brain/6cb5185e-84de-411e-bd80-bbd0bacf26b5/landing_page_demo_1763678541668.webp)
+https://github.com/user-attachments/assets/landing-page-demo.webp
 
 *Interactive neural network background responds to mouse movement, symbolizing the rewiring of neural pathways through therapy.*
 
 ### Patient Experience
-![Patient Flow](file:///Users/nomade/.gemini/antigravity/brain/6cb5185e-84de-411e-bd80-bbd0bacf26b5/patient_flow_demo_1763678593413.webp)
+https://github.com/user-attachments/assets/patient-flow-demo.webp
 
 *Browse evidence-based protocols, view detailed treatment plans, and track your healing journey.*
 
 ### Therapist Dashboard
-![Therapist Dashboard](file:///Users/nomade/.gemini/antigravity/brain/6cb5185e-84de-411e-bd80-bbd0bacf26b5/therapist_dashboard_demo_1763678666224.webp)
+https://github.com/user-attachments/assets/therapist-dashboard-demo.webp
 
 *Manage patients, document sessions, and access AI-powered clinical decision support.*
 
