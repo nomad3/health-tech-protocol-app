@@ -88,8 +88,8 @@ export interface ProtocolFilters {
 }
 
 export interface ProtocolListResponse {
-  protocols: Protocol[];
+  items: Protocol[];
   total: number;
   page: number;
-  page_size: number;
+  size: number;
 }

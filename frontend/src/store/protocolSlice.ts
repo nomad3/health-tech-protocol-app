@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import protocolService from '../services/protocolService';
 import type { Protocol, ProtocolFilters } from '../types/protocol';
 
@@ -91,10 +91,10 @@ const protocolSlice = createSlice({
       })
       .addCase(fetchProtocols.fulfilled, (state, action) => {
         state.loading = false;
-        state.protocols = action.payload.protocols;
+        state.protocols = action.payload.items;
         state.total = action.payload.total;
         state.page = action.payload.page;
-        state.pageSize = action.payload.page_size;
+        state.pageSize = action.payload.size;
       })
       .addCase(fetchProtocols.rejected, (state, action) => {
         state.loading = false;
