@@ -12,9 +12,10 @@ import ProtocolBrowser from './pages/patient/ProtocolBrowser';
 import TherapistDashboard from './pages/therapist/TherapistDashboard';
 
 // Import SessionDocumentation component dynamically to avoid type-only import error
-// Import SessionDocumentation component dynamically to avoid type-only import error
 const SessionDocumentation = React.lazy(() => import('./pages/therapist/SessionDocumentation'));
 const PreScreeningPage = React.lazy(() => import('./pages/patient/PreScreeningPage'));
+const TreatmentPlanDetail = React.lazy(() => import('./pages/patient/TreatmentPlanDetail'));
+const ProtocolDetailPage = React.lazy(() => import('./pages/patient/ProtocolDetailPage'));
 
 // Protected route component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -68,12 +69,36 @@ function App() {
           }
         />
         <Route
+          path="/protocols/:id"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <React.Suspense fallback={<div>Loading...</div>}>
+                  <ProtocolDetailPage />
+                </React.Suspense>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/protocols/:id/pre-screening"
           element={
             <ProtectedRoute>
               <Layout>
                 <React.Suspense fallback={<div>Loading...</div>}>
                   <PreScreeningPage />
+                </React.Suspense>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/treatment/:id"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <React.Suspense fallback={<div>Loading...</div>}>
+                  <TreatmentPlanDetail />
                 </React.Suspense>
               </Layout>
             </ProtectedRoute>
