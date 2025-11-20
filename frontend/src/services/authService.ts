@@ -1,11 +1,11 @@
-import api from './api';
 import type {
-  LoginRequest,
-  RegisterRequest,
   AuthResponse,
+  LoginRequest,
   RefreshTokenRequest,
+  RegisterRequest,
   User,
 } from '../types/auth';
+import api from './api';
 
 const AUTH_API_BASE = '/api/v1/auth';
 
@@ -59,10 +59,9 @@ export const authService = {
   /**
    * Save auth data to localStorage
    */
-  saveAuthData(data: AuthResponse): void {
+  saveAuthData(data: { access_token: string; refresh_token: string }): void {
     localStorage.setItem('access_token', data.access_token);
     localStorage.setItem('refresh_token', data.refresh_token);
-    localStorage.setItem('user', JSON.stringify(data.user));
   },
 
   /**

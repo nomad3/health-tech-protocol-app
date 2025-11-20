@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { AuthState, User, LoginRequest, RegisterRequest } from '../types/auth';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import authService from '../services/authService';
+import type { AuthState, LoginRequest, RegisterRequest, User } from '../types/auth';
 
 const initialState: AuthState = {
   user: authService.getSavedUser(),
@@ -19,9 +19,14 @@ export const loginUser = createAsyncThunk(
     try {
       const response = await authService.login(credentials);
       authService.saveAuthData(response);
-      return response;
+
+      // Fetch user data after login
+      const user = await authService.getMe();
+      localStorage.setItem('user', JSON.stringify(user));
+
+      return { ...response, user };
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Login failed');
+      return rejectWithValue(error.response?.data?.detail || error.response?.data?.message || 'Login failed');
     }
   }
 );
