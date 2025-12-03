@@ -47,7 +47,7 @@ services:
       STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
       ENVIRONMENT: production
       DEBUG: "false"
-      CORS_ORIGINS: https://psycoprotocol.agentprovision.com
+      CORS_ORIGINS: https://health.agentprovision.com
     ports:
       - "${BACKEND_PORT:-8000}:8000"
     depends_on:
@@ -66,7 +66,7 @@ services:
       dockerfile: Dockerfile
       target: production
       args:
-        VITE_API_URL: https://psycoprotocol.agentprovision.com/api
+        VITE_API_URL: https://health.agentprovision.com/api
     container_name: psyprotocol-frontend-prod
     ports:
       - "${FRONTEND_PORT:-3000}:80"
