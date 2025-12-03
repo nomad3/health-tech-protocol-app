@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Deployment Configuration
-DOMAIN="healthprotocol.agentprovision.com"
+DOMAIN="health.agentprovision.com"
 EMAIL="saguilera1608@gmail.com"
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 COMPOSE_FILE="$PROJECT_ROOT/docker-compose.prod.yml"
