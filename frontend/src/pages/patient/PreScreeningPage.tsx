@@ -64,53 +64,92 @@ const PreScreeningPage: React.FC = () => {
 
   if (result) {
     return (
-      <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-4">Screening Result</h2>
+      <div className="min-h-screen bg-gray-50 py-12">
+        <div className="max-w-2xl mx-auto px-4">
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div className={`p-6 ${result.eligible ? 'bg-green-50' : 'bg-amber-50'}`}>
+              <div className="flex items-center gap-4 mb-4">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-2xl ${result.eligible ? 'bg-green-100 text-green-600' : 'bg-amber-100 text-amber-600'
+                  }`}>
+                  {result.eligible ? '✓' : '⚠️'}
+                </div>
+                <div>
+                  <h2 className={`text-2xl font-bold ${result.eligible ? 'text-green-800' : 'text-amber-800'}`}>
+                    {result.eligible ? 'Assessment Complete' : 'Review Needed'}
+                  </h2>
+                  <p className={`font-medium ${result.eligible ? 'text-green-700' : 'text-amber-700'}`}>
+                    {result.eligible ? 'You are eligible to proceed' : 'Further clinical consultation required'}
+                  </p>
+                </div>
+              </div>
+            </div>
 
-        <div className={`p-4 rounded-lg mb-6 ${result.eligible ? 'bg-green-50 border border-green-200' : 'bg-yellow-50 border border-yellow-200'
-          }`}>
-          <h3 className={`font-bold text-lg ${result.eligible ? 'text-green-800' : 'text-yellow-800'
-            }`}>
-            {result.eligible ? 'You are eligible to proceed' : 'Further consultation needed'}
-          </h3>
-          <p className="mt-2 text-gray-700">
-            Risk Level: <span className="font-semibold capitalize">{result.risk_level}</span>
-          </p>
-        </div>
+            <div className="p-8">
+              <div className="mb-8">
+                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Risk Assessment</h3>
+                <div className="flex items-center gap-2">
+                  <span className="text-gray-700">Risk Level:</span>
+                  <span className={`px-3 py-1 rounded-full text-sm font-bold uppercase ${result.risk_level === 'low' ? 'bg-green-100 text-green-800' :
+                    result.risk_level === 'medium' ? 'bg-yellow-100 text-yellow-800' :
+                      'bg-red-100 text-red-800'
+                    }`}>
+                    {result.risk_level}
+                  </span>
+                </div>
+              </div>
 
-        {result.recommendations && result.recommendations.length > 0 && (
-          <div className="mb-6">
-            <h4 className="font-semibold text-gray-900 mb-2">Recommendations:</h4>
-            <ul className="list-disc list-inside space-y-1 text-gray-700">
-              {result.recommendations.map((rec: string, idx: number) => (
-                <li key={idx}>{rec}</li>
-              ))}
-            </ul>
+              {result.recommendations && result.recommendations.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Recommendations</h3>
+                  <ul className="space-y-3">
+                    {result.recommendations.map((rec: string, idx: number) => (
+                      <li key={idx} className="flex items-start gap-3 text-gray-700">
+                        <span className="text-teal-500 mt-1">•</span>
+                        <span>{rec}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <div className="flex flex-col sm:flex-row justify-end gap-4 pt-6 border-t border-gray-100">
+                <Button variant="outline" onClick={() => navigate('/protocols')}>
+                  Browse More Protocols
+                </Button>
+                {result.eligible && (
+                  <Button variant="gradient" onClick={() => navigate('/dashboard')}>
+                    Go to Dashboard
+                  </Button>
+                )}
+              </div>
+            </div>
           </div>
-        )}
-
-        <div className="flex justify-end gap-4">
-          <Button variant="outline" onClick={() => navigate('/protocols')}>
-            Back to Protocols
-          </Button>
-          {result.eligible && (
-            <Button variant="gradient" onClick={() => navigate('/dashboard')}>
-              Go to Dashboard
-            </Button>
-          )}
         </div>
       </div>
     );
+
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <PreScreeningForm
-        protocolId={protocol.id}
-        protocolName={protocol.name}
-        onSubmit={handleSubmit}
-        onCancel={() => navigate('/protocols')}
-      />
+    <div className="min-h-screen bg-gray-50 py-12">
+      <div className="container mx-auto px-4 max-w-3xl">
+        {/* Header */}
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Pre-Screening Assessment
+          </h1>
+          <p className="text-lg text-gray-600">
+            {protocol.name}
+          </p>
+        </div>
+
+        <PreScreeningForm
+          protocolId={protocol.id}
+          protocolName={protocol.name}
+          onSubmit={handleSubmit}
+          onCancel={() => navigate('/protocols')}
+        />
+      </div>
     </div>
   );
 };

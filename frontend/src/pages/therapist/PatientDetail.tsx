@@ -106,19 +106,101 @@ const PatientDetail: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
+            {/* Treatment History */}
             <Card>
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Treatment History</h2>
-              <p className="text-gray-500 italic">No treatment history available.</p>
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold text-gray-900">Treatment History</h2>
+                <Button size="sm" variant="outline">View All History</Button>
+              </div>
+
+              {patient.treatment_plans && patient.treatment_plans.length > 0 ? (
+                <div className="space-y-4">
+                  {patient.treatment_plans.map((plan) => (
+                    <div key={plan.id} className="border border-gray-200 rounded-xl p-4 hover:border-teal-200 transition-colors">
+                      <div className="flex justify-between items-start mb-2">
+                        <div>
+                          <h3 className="font-bold text-gray-900">{plan.protocol_name || 'Unknown Protocol'}</h3>
+                          <p className="text-sm text-gray-500">Started {new Date(plan.start_date).toLocaleDateString()}</p>
+                        </div>
+                        <StatusBadge status={plan.status} />
+                      </div>
+                      <div className="flex items-center gap-4 text-sm text-gray-600 mt-3">
+                        <div className="flex items-center gap-1">
+                          <span>📅</span>
+                          <span>Current Step: {plan.current_step || 1}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <span>🔄</span>
+                          <span>Progress: {plan.progress_percentage || 0}%</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-8 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200">
+                  <span className="text-4xl mb-2 block">📋</span>
+                  <p className="text-gray-500 font-medium">No active treatment plans</p>
+                  <Button variant="ghost" size="sm" className="mt-2 text-teal-600">Assign Protocol</Button>
+                </div>
+              )}
+            </Card>
+
+            {/* Clinical Notes */}
+            <Card>
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold text-gray-900">Clinical Notes</h2>
+                <Button size="sm" variant="gradient">+ New Note</Button>
+              </div>
+              <div className="space-y-4">
+                <div className="bg-yellow-50 p-4 rounded-xl border border-yellow-100">
+                  <div className="flex justify-between items-start mb-2">
+                    <span className="text-xs font-bold text-yellow-800 uppercase tracking-wide">Latest Note</span>
+                    <span className="text-xs text-yellow-700">Today, 9:30 AM</span>
+                  </div>
+                  <p className="text-gray-800 text-sm leading-relaxed">
+                    Patient reported improved sleep quality after the first integration session. Expressed some anxiety about the upcoming dosing session but feels prepared.
+                  </p>
+                </div>
+              </div>
             </Card>
           </div>
 
           {/* Sidebar */}
           <div className="space-y-6">
+            {/* Patient Info */}
             <Card>
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
-              <div className="space-y-2">
-                <Button className="w-full" variant="outline">Edit Profile</Button>
-                <Button className="w-full" variant="outline">Assign Protocol</Button>
+              <h2 className="text-lg font-bold text-gray-900 mb-4">Patient Information</h2>
+              <div className="space-y-4">
+                <div>
+                  <label className="text-xs font-semibold text-gray-500 uppercase">Date of Birth</label>
+                  <p className="text-gray-900 font-medium">Jan 15, 1985 (39 yrs)</p>
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-gray-500 uppercase">Phone</label>
+                  <p className="text-gray-900 font-medium">+1 (555) 123-4567</p>
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-gray-500 uppercase">Emergency Contact</label>
+                  <p className="text-gray-900 font-medium">Sarah Smith (Spouse)</p>
+                  <p className="text-gray-500 text-sm">+1 (555) 987-6543</p>
+                </div>
+              </div>
+            </Card>
+
+            {/* Quick Actions */}
+            <Card>
+              <h2 className="text-lg font-bold text-gray-900 mb-4">Quick Actions</h2>
+              <div className="space-y-3">
+                <Button className="w-full justify-start" variant="outline">
+                  <span className="mr-2">📝</span> Schedule Session
+                </Button>
+                <Button className="w-full justify-start" variant="outline">
+                  <span className="mr-2">💊</span> Prescribe Medication
+                </Button>
+                <Button className="w-full justify-start" variant="outline">
+                  <span className="mr-2">📧</span> Send Message
+                </Button>
               </div>
             </Card>
           </div>
