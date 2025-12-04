@@ -104,7 +104,8 @@ docker-compose -f "$COMPOSE_FILE" down --remove-orphans || true
 
 # --- 4. Build & start services ---
 info "Building and starting services: ${SERVICES[*]}"
-docker-compose -f "$COMPOSE_FILE" up --build -d "${SERVICES[@]}"
+docker-compose -f "$COMPOSE_FILE" build --no-cache "${SERVICES[@]}"
+docker-compose -f "$COMPOSE_FILE" up -d "${SERVICES[@]}"
 
 info "Docker services running. Current status:"
 docker ps --filter "name=psyprotocol" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
