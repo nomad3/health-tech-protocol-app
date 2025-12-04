@@ -23,7 +23,8 @@ from app.schemas.therapist import (
     SessionDetailResponse,
     SessionCompleteResponse,
     DecisionPointEvaluation,
-    DecisionPointResponse
+    DecisionPointResponse,
+    PatientDetailResponse
 )
 from app.api.dependencies import get_current_user, require_role
 
