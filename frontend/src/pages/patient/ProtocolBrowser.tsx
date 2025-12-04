@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchProtocols, setFilters, clearFilters, fetchProtocol } from '../../store/protocolSlice';
+import { EmptyState, Input, Spinner } from '../../components/common';
 import ProtocolCard from '../../components/protocols/ProtocolCard';
 import ProtocolDetail from '../../components/protocols/ProtocolDetail';
-import { Input, Spinner, EmptyState } from '../../components/common';
-import { TherapyType, EvidenceLevel, type Protocol } from '../../types/protocol';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { clearFilters, fetchProtocol, fetchProtocols, setFilters } from '../../store/protocolSlice';
+import { EvidenceLevel, TherapyType, type Protocol } from '../../types/protocol';
 
 const ProtocolBrowser: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -43,7 +43,7 @@ const ProtocolBrowser: React.FC = () => {
 
   const activeFiltersCount = Object.keys(filters).filter(key => filters[key as keyof typeof filters]).length;
 
-  const therapyTypeColors: Record<TherapyType, string> = {
+  const therapyTypeColors: Partial<Record<TherapyType, string>> = {
     psilocybin: 'from-purple-500 to-pink-500',
     mdma: 'from-blue-500 to-cyan-500',
     ketamine: 'from-cyan-500 to-teal-500',
@@ -112,11 +112,10 @@ const ProtocolBrowser: React.FC = () => {
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => handleFilterChange('therapy_type', 'all')}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  !filters.therapy_type
-                    ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-md'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${!filters.therapy_type
+                  ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-md'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
               >
                 All Types
               </button>
@@ -124,11 +123,10 @@ const ProtocolBrowser: React.FC = () => {
                 <button
                   key={type}
                   onClick={() => handleFilterChange('therapy_type', type)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    filters.therapy_type === type
-                      ? `bg-gradient-to-r ${therapyTypeColors[type]} text-white shadow-md`
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${filters.therapy_type === type
+                    ? `bg-gradient-to-r ${therapyTypeColors[type] || 'from-gray-500 to-slate-500'} text-white shadow-md`
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
                 >
                   {type.toUpperCase()}
                 </button>
@@ -142,11 +140,10 @@ const ProtocolBrowser: React.FC = () => {
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => handleFilterChange('evidence_level', 'all')}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  !filters.evidence_level
-                    ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-md'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${!filters.evidence_level
+                  ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-md'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
               >
                 All Levels
               </button>
@@ -154,11 +151,10 @@ const ProtocolBrowser: React.FC = () => {
                 <button
                   key={level}
                   onClick={() => handleFilterChange('evidence_level', level)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    filters.evidence_level === level
-                      ? 'bg-gradient-to-r from-green-600 to-teal-600 text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${filters.evidence_level === level
+                    ? 'bg-gradient-to-r from-green-600 to-teal-600 text-white shadow-md'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
                 >
                   {level.replace(/_/g, ' ').toUpperCase()}
                 </button>
@@ -174,11 +170,10 @@ const ProtocolBrowser: React.FC = () => {
                 <button
                   key={status}
                   onClick={() => handleFilterChange('status', status)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    (!filters.status && status === 'all') || filters.status === status
-                      ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${(!filters.status && status === 'all') || filters.status === status
+                    ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-md'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
                 >
                   {status === 'all' ? 'All Status' : status.charAt(0).toUpperCase() + status.slice(1)}
                 </button>

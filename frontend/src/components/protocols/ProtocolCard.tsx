@@ -1,13 +1,13 @@
 import React from 'react';
+import type { EvidenceLevel, Protocol, TherapyType } from '../../types/protocol';
 import { Badge } from '../common';
-import type { Protocol, TherapyType, EvidenceLevel } from '../../types/protocol';
 
 interface ProtocolCardProps {
   protocol: Protocol;
   onClick?: () => void;
 }
 
-const therapyTypeGradients: Record<TherapyType, string> = {
+const therapyTypeGradients: Partial<Record<TherapyType, string>> = {
   psilocybin: 'from-purple-500 to-pink-500',
   mdma: 'from-blue-500 to-cyan-500',
   ketamine: 'from-cyan-500 to-teal-500',
@@ -35,7 +35,7 @@ const evidenceLevelLabels: Record<EvidenceLevel, string> = {
 };
 
 const ProtocolCard: React.FC<ProtocolCardProps> = ({ protocol, onClick }) => {
-  const gradient = therapyTypeGradients[protocol.therapy_type];
+  const gradient = therapyTypeGradients[protocol.therapy_type] || 'from-gray-500 to-slate-500';
 
   return (
     <div
