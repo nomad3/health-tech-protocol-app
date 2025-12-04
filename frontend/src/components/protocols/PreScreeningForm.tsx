@@ -9,6 +9,7 @@ interface PreScreeningFormProps {
 }
 
 export interface PreScreeningData {
+  age: number;
   medicalHistory: string;
   currentMedications: string;
   hasContraindications: boolean;
@@ -20,6 +21,7 @@ const PreScreeningForm: React.FC<PreScreeningFormProps> = ({
   onCancel,
 }) => {
   const [formData, setFormData] = useState<PreScreeningData>({
+    age: 0,
     medicalHistory: '',
     currentMedications: '',
     hasContraindications: false,
@@ -48,6 +50,25 @@ const PreScreeningForm: React.FC<PreScreeningFormProps> = ({
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-8 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold">1</div>
               <h3 className="text-lg font-bold text-gray-900">Medical Information</h3>
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Age
+              </label>
+              <input
+                type="number"
+                required
+                min="18"
+                max="120"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200"
+                value={formData.age || ''}
+                onChange={(e) => setFormData({ ...formData, age: parseInt(e.target.value) || 0 })}
+                placeholder="Enter your age"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                You must be at least 18 years old to participate.
+              </p>
             </div>
 
             <div>
