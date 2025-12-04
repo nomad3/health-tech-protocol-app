@@ -319,6 +319,134 @@ def get_therapist_patients(
     return patients_info
 
 
+@router.get("/patients/{patient_id}", response_model=PatientDetailResponse)
+def get_patient_details(
+    patient_id: int,
+    current_user: User = Depends(require_role(UserRole.THERAPIST)),
+    db: Session = Depends(get_db)
+):
+    """
+    Get comprehensive details for a specific patient.
+
+    Args:
+        patient_id: Patient user ID
+        current_user: Current authenticated therapist
+        db: Database session
+
+    Returns:
+        PatientDetailResponse: Detailed patient information
+    """
+    # Verify therapist has treated or is treating this patient
+    has_relationship = db.query(TreatmentPlan).filter(
+        and_(
+            TreatmentPlan.therapist_id == current_user.id,
+            TreatmentPlan.patient_id == patient_id
+        )
+    ).first()
+
+    if not has_relationship:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You do not have permission to view this patient's details"
+        )
+
+    # Get patient user info
+    patient = db.query(User).filter(User.id == patient_id).first()
+    if not patient:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Patient not found"
+        )
+
+    # Get patient profile
+    patient_profile = db.query(PatientProfile).filter(
+        PatientProfile.user_id == patient_id
+    ).first()
+
+    # Get all treatment plans
+    treatment_plans = db.query(TreatmentPlan).filter(
+        and_(
+            TreatmentPlan.patient_id == patient_id,
+            TreatmentPlan.therapist_id == current_user.id
+        )
+    ).all()
+
+    # Get session history
+    # We want all sessions for these treatment plans
+    plan_ids = [plan.id for plan in treatment_plans]
+    sessions = db.query(TreatmentSession).filter(
+        TreatmentSession.treatment_plan_id.in_(plan_ids)
+    ).order_by(TreatmentSession.scheduled_at.desc()).all()
+
+    # Format sessions
+    session_history = []
+    for session in sessions:
+        step = db.query(ProtocolStep).filter(ProtocolStep.id == session.protocol_step_id).first()
+
+        # Get documentation if exists
+        documentation = db.query(SessionDocumentation).filter(
+            SessionDocumentation.treatment_session_id == session.id
+        ).first()
+
+        doc_dict = None
+        vitals_list = None
+        if documentation:
+            doc_dict = {
+                "therapist_notes": documentation.therapist_notes,
+                "patient_subjective_notes": documentation.patient_subjective_notes,
+                "clinical_scales": documentation.clinical_scales,
+                "adverse_events": documentation.adverse_events
+            }
+            vitals_list = documentation.vitals
+
+        session_history.append(SessionDetailResponse(
+            id=session.id,
+            treatment_plan_id=session.treatment_plan_id,
+            protocol_step_id=session.protocol_step_id,
+            scheduled_at=session.scheduled_at,
+            actual_start=session.actual_start,
+            actual_end=session.actual_end,
+            status=session.status.value,
+            location=session.location,
+            therapist_id=session.therapist_id,
+            patient_id=patient_id,
+            patient_email=patient.email,
+            step_title=step.title if step else "Unknown Step",
+            step_description=step.description if step else None,
+            vitals=vitals_list,
+            documentation=doc_dict
+        ))
+
+    # Format treatment plans
+    formatted_plans = []
+    for plan in treatment_plans:
+        formatted_plans.append(TreatmentPlanResponse(
+            id=plan.id,
+            patient_id=plan.patient_id,
+            therapist_id=plan.therapist_id,
+            clinic_id=plan.clinic_id,
+            protocol_id=plan.protocol_id,
+            protocol_version=plan.protocol_version,
+            status=plan.status.value,
+            start_date=plan.start_date,
+            estimated_completion=plan.estimated_completion,
+            customizations=plan.customizations,
+            created_at=plan.created_at
+        ))
+
+    return PatientDetailResponse(
+        id=patient.id,
+        email=patient.email,
+        full_name=patient.email.split('@')[0].replace('.', ' ').title(),
+        date_of_birth=patient_profile.date_of_birth if patient_profile else None,
+        medical_history=patient_profile.medical_history if patient_profile else None,
+        medications=patient_profile.medications if patient_profile else None,
+        contraindications=patient_profile.contraindications if patient_profile else None,
+        treatment_plans=formatted_plans,
+        session_history=session_history
+    )
+
+
 @router.post("/treatment-plans", response_model=TreatmentPlanResponse, status_code=status.HTTP_201_CREATED)
 def create_treatment_plan(
     plan_data: TreatmentPlanCreate,

@@ -195,3 +195,19 @@ class DecisionPointResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class PatientDetailResponse(BaseModel):
+    """Comprehensive patient details for therapist view."""
+    id: int
+    email: str
+    full_name: str
+    date_of_birth: Optional[datetime] = None
+    medical_history: Optional[Dict[str, Any]] = None
+    medications: Optional[List[str]] = None
+    contraindications: Optional[List[str]] = None
+    treatment_plans: List[TreatmentPlanResponse]
+    session_history: List[SessionDetailResponse]
+
+    class Config:
+        from_attributes = True

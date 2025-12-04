@@ -78,3 +78,15 @@ export interface TreatmentPlan {
   total_steps?: number;
   progress_percentage?: number;
 }
+
+export interface PatientDetailResponse {
+  id: number;
+  email: string;
+  full_name: string;
+  date_of_birth?: string;
+  medical_history?: Record<string, any>;
+  medications?: string[];
+  contraindications?: string[];
+  treatment_plans: TreatmentPlan[];
+  session_history: TherapySession[];
+}
