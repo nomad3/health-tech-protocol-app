@@ -13,8 +13,8 @@ export const authService = {
   /**
    * Register a new user
    */
-  async register(data: RegisterRequest): Promise<AuthResponse> {
-    const response = await api.post<AuthResponse>(`${AUTH_API_BASE}/register`, data);
+  async register(data: RegisterRequest): Promise<User> {
+    const response = await api.post<User>(`${AUTH_API_BASE}/register`, data);
     return response.data;
   },
 
