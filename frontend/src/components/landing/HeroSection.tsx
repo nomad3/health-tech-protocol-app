@@ -90,7 +90,7 @@ const HeroSection: React.FC = () => {
                   <div className="w-3 h-3 rounded-full bg-green-400"></div>
                 </div>
                 <div className="flex-1 mx-4 bg-white rounded px-3 py-1 text-xs text-gray-500">
-                  psyprotocol.com/protocols
+                  healthprotocol.com/protocols
                 </div>
               </div>
 

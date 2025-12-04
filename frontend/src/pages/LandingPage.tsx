@@ -33,7 +33,7 @@ const LandingPage: React.FC = () => {
               <Heart className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
-              PsyProtocol
+              Health Protocol
             </span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
@@ -306,7 +306,7 @@ const LandingPage: React.FC = () => {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Heart className="w-5 h-5 text-teal-500" />
-                <span className="text-lg font-bold text-white">PsyProtocol</span>
+                <span className="text-lg font-bold text-white">Health Protocol</span>
               </div>
               <p className="text-slate-500 text-sm">
                 Advancing mental healthcare through technology and evidence-based protocols.
@@ -340,7 +340,7 @@ const LandingPage: React.FC = () => {
             </div>
           </div>
           <div className="border-t border-white/10 pt-8 text-center text-sm text-slate-600">
-            &copy; 2025 PsyProtocol. All rights reserved.
+            &copy; 2025 Health Protocol. All rights reserved.
           </div>
         </div>
       </footer>

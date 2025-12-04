@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { registerUser, clearError } from '../../store/authSlice';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button, Input, ProgressBar } from '../../components/common';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { clearError, registerUser } from '../../store/authSlice';
 import { UserRole } from '../../types/auth';
 
 const RegisterPage: React.FC = () => {
@@ -116,7 +116,7 @@ const RegisterPage: React.FC = () => {
             Join the Future of Healthcare
           </h2>
           <p className="text-xl mb-8 text-white/90">
-            Start your journey with PsyProtocol and transform the way you deliver patient care.
+            Start your journey with Health Protocol and transform the way you deliver patient care.
           </p>
           <div className="space-y-4">
             {[

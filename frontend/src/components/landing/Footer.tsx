@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
               <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-blue-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">P</span>
               </div>
-              <span className="text-2xl font-bold text-white">PsyProtocol</span>
+              <span className="text-2xl font-bold text-white">Health Protocol</span>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Evidence-based protocol management for modern medicine. Empowering healthcare providers with AI-powered clinical decision support.
@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
         {/* Bottom bar */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-sm text-gray-400">
-            &copy; {currentYear} PsyProtocol. All rights reserved.
+            &copy; {currentYear} Health Protocol. All rights reserved.
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 text-sm">

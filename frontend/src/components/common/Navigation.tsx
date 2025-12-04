@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { logoutUser, clearAuth } from '../../store/authSlice';
+import { clearAuth, logoutUser } from '../../store/authSlice';
 import Button from './Button';
 
 const Navigation: React.FC = () => {
@@ -62,7 +62,7 @@ const Navigation: React.FC = () => {
           <div className="flex">
             {/* Logo */}
             <Link to="/dashboard" className="flex items-center">
-              <span className="text-2xl font-bold text-teal-600">PsyProtocol</span>
+              <span className="text-2xl font-bold text-teal-600">Health Protocol</span>
             </Link>
 
             {/* Desktop navigation */}
@@ -71,11 +71,10 @@ const Navigation: React.FC = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors ${
-                    isActive(link.path)
+                  className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors ${isActive(link.path)
                       ? 'border-teal-500 text-gray-900'
                       : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                  }`}
+                    }`}
                 >
                   <span className="mr-2">{link.icon}</span>
                   {link.label}
@@ -129,11 +128,10 @@ const Navigation: React.FC = () => {
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
-                  isActive(link.path)
+                className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${isActive(link.path)
                     ? 'bg-teal-50 border-teal-500 text-teal-700'
                     : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800'
-                }`}
+                  }`}
               >
                 <span className="mr-2">{link.icon}</span>
                 {link.label}
