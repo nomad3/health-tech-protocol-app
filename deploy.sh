@@ -208,7 +208,7 @@ server {
 
     # Health check endpoint
     location = /health {
-        proxy_pass http://127.0.0.1:$BACKEND_PORT/api/health;
+        proxy_pass http://127.0.0.1:$BACKEND_PORT/health;
         access_log off;
     }
 }

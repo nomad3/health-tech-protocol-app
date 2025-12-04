@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     # Environment
     ENVIRONMENT: str = "development"
     DEBUG: bool = True
+    CORS_ORIGINS: str = "*"
 
     model_config = SettingsConfigDict(env_file=".env", case_sensitive=True)
 
