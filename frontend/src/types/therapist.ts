@@ -55,6 +55,7 @@ export interface AdverseEvent {
   severity: 'mild' | 'moderate' | 'severe';
   reported_at: string;
   resolved: boolean;
+  resolved_at?: string;
 }
 
 export interface DashboardStats {
@@ -62,4 +63,18 @@ export interface DashboardStats {
   active_treatments: number;
   sessions_this_week: number;
   pending_documentation: number;
+}
+
+export interface TreatmentPlan {
+  id: number;
+  patient_id: number;
+  therapist_id: number;
+  protocol_id: number;
+  protocol_name?: string;
+  status: 'active' | 'completed' | 'cancelled' | 'screening';
+  start_date: string;
+  estimated_completion?: string;
+  current_step?: number;
+  total_steps?: number;
+  progress_percentage?: number;
 }

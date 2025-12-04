@@ -16,6 +16,7 @@ const SessionDocumentation = React.lazy(() => import('./pages/therapist/SessionD
 const PreScreeningPage = React.lazy(() => import('./pages/patient/PreScreeningPage'));
 const TreatmentPlanDetail = React.lazy(() => import('./pages/patient/TreatmentPlanDetail'));
 const ProtocolDetailPage = React.lazy(() => import('./pages/patient/ProtocolDetailPage'));
+const PatientDetail = React.lazy(() => import('./pages/therapist/PatientDetail'));
 
 // Protected route component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -121,6 +122,18 @@ function App() {
               <Layout>
                 <React.Suspense fallback={<div>Loading...</div>}>
                   <SessionDocumentation />
+                </React.Suspense>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/therapist/patients/:id"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <React.Suspense fallback={<div>Loading...</div>}>
+                  <PatientDetail />
                 </React.Suspense>
               </Layout>
             </ProtectedRoute>
