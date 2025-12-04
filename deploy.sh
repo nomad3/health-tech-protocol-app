@@ -3,6 +3,7 @@ set -euo pipefail
 
 # Deployment Configuration
 DOMAIN="health.agentprovision.com"
+ADDITIONAL_DOMAIN="zenbud.cl"
 EMAIL="saguilera1608@gmail.com"
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 COMPOSE_FILE="$PROJECT_ROOT/docker-compose.prod.yml"
@@ -131,7 +132,7 @@ fi
 
 # Main Domain Configuration
 NGINX_CONF_PATH="/etc/nginx/sites-available/$DOMAIN"
-SERVER_NAMES="$DOMAIN"
+SERVER_NAMES="$DOMAIN $ADDITIONAL_DOMAIN"
 
 info "Writing Nginx configuration to $NGINX_CONF_PATH"
 sudo bash -c "cat > $NGINX_CONF_PATH" <<EOF
@@ -225,8 +226,8 @@ info "Reloading Nginx"
 sudo systemctl reload nginx
 
 # --- 7. Issue / renew SSL certificates ---
-info "Requesting/renewing SSL certificate for $DOMAIN"
-sudo certbot --nginx -d "$DOMAIN" --email "$EMAIL" --agree-tos --non-interactive || true
+info "Requesting/renewing SSL certificate for $DOMAIN and $ADDITIONAL_DOMAIN"
+sudo certbot --nginx -d "$DOMAIN" -d "$ADDITIONAL_DOMAIN" --email "$EMAIL" --agree-tos --non-interactive --expand || true
 
 info "Reloading Nginx after Certbot"
 sudo systemctl reload nginx

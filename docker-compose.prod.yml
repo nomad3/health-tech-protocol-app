@@ -47,7 +47,7 @@ services:
       STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
       ENVIRONMENT: production
       DEBUG: "false"
-      CORS_ORIGINS: https://health.agentprovision.com
+      CORS_ORIGINS: https://health.agentprovision.com,https://zenbud.cl
     ports:
       - "${BACKEND_PORT:-8000}:8000"
     depends_on:
