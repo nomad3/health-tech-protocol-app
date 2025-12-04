@@ -1,7 +1,7 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import protocolService from './protocolService';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { EvidenceLevel, TherapyType } from '../types/protocol';
 import { api } from './api';
-import { TherapyType, EvidenceLevel } from '../types/protocol';
+import protocolService from './protocolService';
 
 vi.mock('./api');
 
@@ -14,7 +14,7 @@ describe('protocolService', () => {
     it('should fetch protocols with filters', async () => {
       const mockResponse = {
         data: {
-          protocols: [
+          items: [
             {
               id: 1,
               name: 'Test Protocol',
@@ -39,7 +39,7 @@ describe('protocolService', () => {
       expect(api.get).toHaveBeenCalledWith(
         expect.stringContaining('/api/v1/protocols')
       );
-      expect(result.protocols).toHaveLength(1);
+      expect(result.items).toHaveLength(1);
       expect(result.total).toBe(1);
     });
   });
