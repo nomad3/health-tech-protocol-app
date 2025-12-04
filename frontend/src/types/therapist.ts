@@ -85,7 +85,7 @@ export interface PatientDetailResponse {
   full_name: string;
   date_of_birth?: string;
   medical_history?: Record<string, any>;
-  medications?: string[];
+  medications?: Record<string, any>[];
   contraindications?: string[];
   treatment_plans: TreatmentPlan[];
   session_history: TherapySession[];

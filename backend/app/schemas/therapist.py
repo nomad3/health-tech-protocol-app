@@ -204,7 +204,7 @@ class PatientDetailResponse(BaseModel):
     full_name: str
     date_of_birth: Optional[datetime] = None
     medical_history: Optional[Dict[str, Any]] = None
-    medications: Optional[List[str]] = None
+    medications: Optional[List[Dict[str, Any]]] = None
     contraindications: Optional[List[str]] = None
     treatment_plans: List[TreatmentPlanResponse]
     session_history: List[SessionDetailResponse]
