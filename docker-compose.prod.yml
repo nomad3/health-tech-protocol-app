@@ -66,7 +66,7 @@ services:
       dockerfile: Dockerfile
       target: production
       args:
-        VITE_API_URL: https://health.agentprovision.com/api
+        VITE_API_URL: https://health.agentprovision.com
     container_name: psyprotocol-frontend-prod
     ports:
       - "${FRONTEND_PORT:-3000}:80"
