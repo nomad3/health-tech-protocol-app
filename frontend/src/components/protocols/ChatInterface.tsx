@@ -1,7 +1,7 @@
 import { Bot, Loader2, Send } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
 import api from '../../services/api';
-import { ChatMessage, ChatMessageResponse, ChatSessionResponse } from '../../types/chat';
+import type { ChatMessage, ChatMessageResponse, ChatSessionResponse } from '../../types/chat';
 
 interface ChatInterfaceProps {
   protocolId: number;
