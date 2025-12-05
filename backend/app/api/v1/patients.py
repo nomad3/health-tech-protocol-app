@@ -444,3 +444,52 @@ def sign_consent(
         signature=request.signature,
         consent_version="1.0",
     )
+
+
+# --- AI Chat Endpoints ---
+
+from app.schemas.chat import ChatSessionResponse, ChatMessageRequest, ChatMessageResponse
+from app.services.ai_screener import AIScreenerService
+
+@router.post("/protocols/{protocol_id}/chat/start", response_model=ChatSessionResponse)
+def start_chat_session(
+    protocol_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Start a new AI pre-screening chat session."""
+    service = AIScreenerService(db)
+    session = service.start_session(current_user.id, protocol_id)
+
+    return ChatSessionResponse(
+        session_id=session.id,
+        protocol_id=session.protocol_id,
+        status=session.status,
+        created_at=session.created_at,
+        history=session.history
+    )
+
+@router.post("/chat/{session_id}/message", response_model=ChatMessageResponse)
+def send_chat_message(
+    session_id: int,
+    request: ChatMessageRequest,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Send a message to the AI agent."""
+    service = AIScreenerService(db)
+
+    # Verify ownership
+    from app.models.chat import ChatSession
+    session = db.query(ChatSession).filter(ChatSession.id == session_id).first()
+    if not session or session.user_id != current_user.id:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    result = service.process_message(session_id, request.message)
+
+    return ChatMessageResponse(
+        response=result["response"],
+        session_id=session_id,
+        status=result["status"],
+        eligibility_result=result["eligibility_result"]
+    )
