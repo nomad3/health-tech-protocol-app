@@ -25,10 +25,10 @@ const NeuralBackground: React.FC = () => {
     let animationFrameId: number;
 
     // Configuration
-    const particleCount = 60;
+    const particleCount = 100; // Increased density
     const connectionDistance = 150;
-    const mouseDistance = 200;
-    const particleSpeed = 0.5;
+    const mouseDistance = 250;
+    const particleSpeed = 1.2; // Faster movement
 
     const resizeCanvas = () => {
       canvas.width = container.clientWidth;
@@ -44,7 +44,7 @@ const NeuralBackground: React.FC = () => {
           y: Math.random() * canvas.height,
           vx: (Math.random() - 0.5) * particleSpeed,
           vy: (Math.random() - 0.5) * particleSpeed,
-          size: Math.random() * 2 + 1,
+          size: Math.random() * 2.5 + 1.5, // Slightly larger
         });
       }
     };
@@ -62,11 +62,14 @@ const NeuralBackground: React.FC = () => {
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-        // Draw particle
+        // Draw particle with glow
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(45, 212, 191, 0.5)'; // Teal-400 with opacity
+        ctx.fillStyle = 'rgba(6, 182, 212, 0.9)'; // Bright Cyan (Cyan-500)
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = 'rgba(6, 182, 212, 0.8)';
         ctx.fill();
+        ctx.shadowBlur = 0; // Reset shadow for lines to save performance
 
         // Connect to other particles
         for (let j = i + 1; j < particles.length; j++) {
@@ -77,8 +80,8 @@ const NeuralBackground: React.FC = () => {
 
           if (distance < connectionDistance) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(45, 212, 191, ${0.2 * (1 - distance / connectionDistance)})`;
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = `rgba(6, 182, 212, ${0.4 * (1 - distance / connectionDistance)})`;
+            ctx.lineWidth = 1.5;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
@@ -92,15 +95,15 @@ const NeuralBackground: React.FC = () => {
 
         if (distance < mouseDistance) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(147, 51, 234, ${0.4 * (1 - distance / mouseDistance)})`; // Purple-600 for mouse interaction
-          ctx.lineWidth = 1.5;
+          ctx.strokeStyle = `rgba(168, 85, 247, ${0.8 * (1 - distance / mouseDistance)})`; // Bright Purple (Purple-500)
+          ctx.lineWidth = 2;
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouseRef.current.x, mouseRef.current.y);
           ctx.stroke();
 
-          // Slight attraction to mouse
-          p.x -= dx * 0.01;
-          p.y -= dy * 0.01;
+          // Stronger attraction to mouse
+          p.x -= dx * 0.03;
+          p.y -= dy * 0.03;
         }
       });
 
@@ -132,7 +135,7 @@ const NeuralBackground: React.FC = () => {
     <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-60 mix-blend-screen"
+        className="absolute inset-0 w-full h-full opacity-100 mix-blend-screen"
       />
     </div>
   );
