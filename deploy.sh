@@ -90,6 +90,7 @@ export POSTGRES_PASSWORD
 export BACKEND_PORT
 export FRONTEND_PORT
 export ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+export GEMINI_API_KEY=${GEMINI_API_KEY:-}
 export STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
 
 info "Resolved configuration:"
