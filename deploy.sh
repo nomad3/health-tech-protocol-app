@@ -111,15 +111,9 @@ docker-compose -f "$COMPOSE_FILE" up -d "${SERVICES[@]}"
 info "Docker services running. Current status:"
 docker ps --filter "name=psyprotocol" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 
-# --- 5. Run database migrations and seeding ---
-info "Waiting for database to be ready..."
-sleep 5
+# --- 5. Database Setup ---
+info "Database migrations are handled automatically by the backend container startup script."
 
-info "Running database migrations..."
-docker exec psyprotocol-backend-prod alembic upgrade head
-
-info "Seeding database with demo data..."
-docker exec psyprotocol-backend-prod python seed_database.py || info "Database already seeded"
 
 # --- 6. Configure Nginx (VM mode only) ---
 if [ "$DEPLOY_MODE" != "vm" ]; then
@@ -257,6 +251,9 @@ done
 if [ "$BACKEND_READY" = false ]; then
     info "⚠️  WARNING: Backend did not become ready within expected time"
     info "You may need to check the logs: docker-compose -f $COMPOSE_FILE logs backend-prod"
+else
+    info "Seeding database with demo data..."
+    docker exec psyprotocol-backend-prod python seed_database.py || info "Database already seeded"
 fi
 
 # --- 9. Post-deployment summary ---
