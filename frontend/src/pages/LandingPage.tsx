@@ -1,20 +1,66 @@
 import {
   Activity,
   ArrowRight,
+  Brain,
   ChevronRight,
+  Clock,
+  Database,
+  FlaskConical,
   Heart,
+  HeartPulse,
+  Lightbulb,
+  MessageCircle,
+  Shield,
   ShieldCheck,
-  Sun,
-  Users
+  Sparkles,
+  Target,
+  TrendingUp,
+  Users,
+  Zap
 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import NeuralBackground from '../components/landing/NeuralBackground';
 
+interface ProtocolCardProps {
+  icon: React.ReactNode;
+  code: string;
+  title: string;
+  description: string;
+  features: string[];
+  gradient: string;
+  borderColor: string;
+}
+
+const ProtocolCard: React.FC<ProtocolCardProps> = ({ icon, code, title, description, features, gradient, borderColor }) => (
+  <div className={`group relative p-8 rounded-2xl bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 hover:${borderColor} transition-all duration-300 hover:-translate-y-1`}>
+    <div className={`absolute inset-0 ${gradient} opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl`}></div>
+    <div className="relative z-10">
+      <div className="flex items-center justify-between mb-4">
+        <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          {icon}
+        </div>
+        <span className="text-xs font-mono text-slate-500 bg-white/5 px-2 py-1 rounded">{code}</span>
+      </div>
+      <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
+      <p className="text-slate-400 text-sm leading-relaxed mb-4">{description}</p>
+      <ul className="space-y-2">
+        {features.map((feature, index) => (
+          <li key={index} className="flex items-start space-x-2 text-sm text-slate-500">
+            <ChevronRight className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+);
+
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -22,6 +68,104 @@ const LandingPage: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const currentProtocols = [
+    {
+      icon: <Brain className="w-6 h-6 text-teal-400" />,
+      code: "NDP-1",
+      title: "Neuroadaptive Depression Protocol",
+      description: "A structured treatment pathway for Major Depressive Disorder designed to reduce rumination patterns and improve emotional regulation.",
+      features: [
+        "Medical evaluation & adaptive dosing",
+        "Trauma-informed therapy sessions",
+        "Post-session integration support",
+        "Continuous progress monitoring"
+      ],
+      gradient: "bg-gradient-to-br from-teal-500/10 to-cyan-500/10",
+      borderColor: "border-teal-500/30"
+    },
+    {
+      icon: <HeartPulse className="w-6 h-6 text-purple-400" />,
+      code: "TRP-2",
+      title: "PTSD & Trauma Resolution Protocol",
+      description: "A comprehensive program for trauma survivors incorporating clinician-guided therapeutic sessions and memory reconsolidation.",
+      features: [
+        "Memory reconsolidation protocols",
+        "Somatic & cognitive integration",
+        "Long-term resilience training",
+        "Functional recovery tracking"
+      ],
+      gradient: "bg-gradient-to-br from-purple-500/10 to-pink-500/10",
+      borderColor: "border-purple-500/30"
+    },
+    {
+      icon: <Activity className="w-6 h-6 text-blue-400" />,
+      code: "ARP-3",
+      title: "Anxiety Reduction Protocol",
+      description: "Targeted for chronic anxiety, panic behaviors, and stress dysregulation with focus on nervous system regulation.",
+      features: [
+        "Nervous system regulation exercises",
+        "Guided therapeutic interventions",
+        "Medication-assisted components",
+        "Weekly platform tracking"
+      ],
+      gradient: "bg-gradient-to-br from-blue-500/10 to-indigo-500/10",
+      borderColor: "border-blue-500/30"
+    },
+    {
+      icon: <Target className="w-6 h-6 text-amber-400" />,
+      code: "RPX-4",
+      title: "Addiction Recovery Protocol",
+      description: "A personalized, multi-layered recovery framework with craving prediction and behavioral pattern analysis.",
+      features: [
+        "Behavioral pattern analysis",
+        "Harm-reduction strategies",
+        "Emotional resilience coaching",
+        "Relapse-prevention monitoring"
+      ],
+      gradient: "bg-gradient-to-br from-amber-500/10 to-orange-500/10",
+      borderColor: "border-amber-500/30"
+    }
+  ];
+
+  const upcomingProtocols = [
+    {
+      icon: <FlaskConical className="w-6 h-6 text-emerald-400" />,
+      code: "PAT-5",
+      title: "Psychedelic-Assisted Therapy",
+      description: "Clinical applications pending regulatory alignment.",
+      features: ["Psilocybin-based therapy", "MDMA-assisted therapy", "AI-assisted preparation", "Real-time monitoring"],
+      gradient: "bg-gradient-to-br from-emerald-500/10 to-green-500/10",
+      borderColor: "border-emerald-500/30"
+    },
+    {
+      icon: <Database className="w-6 h-6 text-cyan-400" />,
+      code: "DBX-1",
+      title: "Digital Biomarkers Protocol",
+      description: "Early detection and personalized treatment adjustments.",
+      features: ["Voice biomarkers", "Facial micro-expression analysis", "Wearable data integration", "Behavioral patterns"],
+      gradient: "bg-gradient-to-br from-cyan-500/10 to-sky-500/10",
+      borderColor: "border-cyan-500/30"
+    },
+    {
+      icon: <Zap className="w-6 h-6 text-rose-400" />,
+      code: "CPR-5",
+      title: "Chronic Pain & Somatic Relief",
+      description: "Mind-body modulation for neural and emotional dysregulation.",
+      features: ["Trauma-somatic analysis", "Clinically supervised sessions", "Pain perception recalibration", "Neural pathway work"],
+      gradient: "bg-gradient-to-br from-rose-500/10 to-red-500/10",
+      borderColor: "border-rose-500/30"
+    },
+    {
+      icon: <Lightbulb className="w-6 h-6 text-yellow-400" />,
+      code: "CEP-6",
+      title: "Cognitive Enhancement Protocol",
+      description: "Neuroplasticity-focused performance and recovery program.",
+      features: ["Memory optimization", "Focus enhancement", "Emotional agility", "Stress resilience"],
+      gradient: "bg-gradient-to-br from-yellow-500/10 to-amber-500/10",
+      borderColor: "border-yellow-500/30"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden font-sans selection:bg-teal-500 selection:text-white">
@@ -37,9 +181,9 @@ const LandingPage: React.FC = () => {
             </span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#benefits" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Benefits</a>
-            <a href="#approach" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Our Approach</a>
-            <a href="#stories" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Success Stories</a>
+            <a href="#protocols" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Protocols</a>
+            <a href="#roadmap" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Roadmap</a>
+            <a href="#why-us" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Why Us</a>
             <button
               onClick={() => navigate('/login')}
               className="px-5 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 text-sm font-medium transition-all backdrop-blur-sm"
@@ -64,8 +208,6 @@ const LandingPage: React.FC = () => {
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full mix-blend-screen filter blur-[128px] animate-pulse-slow"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-600/20 rounded-full mix-blend-screen filter blur-[128px] animate-pulse-slow delay-1000"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 rounded-full mix-blend-screen filter blur-[100px]"></div>
-
-          {/* Grid Overlay */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/50 to-slate-950"></div>
         </div>
@@ -79,13 +221,13 @@ const LandingPage: React.FC = () => {
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up delay-100">
             <span className="block text-white mb-2">Reclaim Your Life With</span>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-blue-500 to-purple-600 animate-gradient-x">
-              Advanced Mental Healthcare
+              Advanced, Clinically Guided
             </span>
+            <span className="block text-white mt-2">Mental Healthcare</span>
           </h1>
 
-          <p className="mt-4 text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-fade-in-up delay-200 leading-relaxed">
-            Break free from Depression, PTSD, and Anxiety.
-            Experience lasting relief through our evidence-based, personalized treatment programs designed for deep healing.
+          <p className="mt-4 text-xl text-slate-400 max-w-3xl mx-auto mb-10 animate-fade-in-up delay-200 leading-relaxed">
+            Experience meaningful relief from <strong className="text-white">Depression</strong>, <strong className="text-white">PTSD</strong>, <strong className="text-white">Anxiety</strong>, and <strong className="text-white">Addiction</strong> through structured, evidence-based treatment protocols. Our programs integrate medical oversight, modern therapeutics, biometric insights, and ongoing support.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up delay-300">
@@ -100,7 +242,7 @@ const LandingPage: React.FC = () => {
               onClick={() => navigate('/protocols')}
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold backdrop-blur-sm transition-all flex items-center justify-center"
             >
-              View Programs
+              View Treatment Programs
             </button>
           </div>
 
@@ -126,151 +268,178 @@ const LandingPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Features Section */}
-      <div id="benefits" className="relative py-24 bg-slate-950">
+      {/* Our Clinical Protocols Section */}
+      <section id="protocols" className="relative py-24 bg-slate-950">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why Choose Advanced Care?</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
-              Traditional treatments don't work for everyone. We offer a new path forward focused on root-cause healing and long-term resilience.
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 mb-4">
+              <Shield className="w-4 h-4 text-teal-400" />
+              <span className="text-xs font-medium text-teal-300 tracking-wide uppercase">Outcomes-Driven</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Our Clinical Protocols</h2>
+            <p className="text-slate-400 max-w-3xl mx-auto text-lg">
+              We operate under a structured, outcomes-driven protocol system designed to maximize safety, personalization, and long-term therapeutic impact.
+            </p>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold text-white mb-8 flex items-center">
+              <span className="w-8 h-8 rounded-full bg-teal-500/20 flex items-center justify-center mr-3">
+                <Sparkles className="w-4 h-4 text-teal-400" />
+              </span>
+              Current Protocols (2025)
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {currentProtocols.map((protocol, index) => (
+                <ProtocolCard key={index} {...protocol} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Protocols / Roadmap Section */}
+      <section id="roadmap" className="relative py-24 bg-gradient-to-b from-slate-950 to-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
+              <TrendingUp className="w-4 h-4 text-purple-400" />
+              <span className="text-xs font-medium text-purple-300 tracking-wide uppercase">2025–2026 Roadmap</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Upcoming Protocols</h2>
+            <p className="text-slate-400 max-w-3xl mx-auto text-lg">
+              These programs extend the platform toward deeper precision medicine and next-generation therapeutic models.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {upcomingProtocols.map((protocol, index) => (
+              <div key={index} className={`group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 border-dashed hover:border-solid transition-all duration-300`}>
+                <div className={`absolute inset-0 ${protocol.gradient} opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl`}></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
+                      {protocol.icon}
+                    </div>
+                    <span className="text-xs font-mono text-slate-600 bg-white/5 px-2 py-1 rounded">{protocol.code}</span>
+                  </div>
+                  <h4 className="text-lg font-bold text-white mb-2">{protocol.title}</h4>
+                  <p className="text-slate-500 text-sm mb-4">{protocol.description}</p>
+                  <div className="flex flex-wrap gap-1">
+                    {protocol.features.slice(0, 2).map((feature, idx) => (
+                      <span key={idx} className="text-xs text-slate-600 bg-white/5 px-2 py-1 rounded">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="absolute top-4 right-4">
+                  <span className="text-[10px] font-medium text-slate-600 bg-slate-800 px-2 py-0.5 rounded-full">Coming Soon</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Patients Choose Section */}
+      <section id="why-us" className="py-24 bg-slate-900 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        <div className="absolute top-1/4 left-0 w-72 h-72 bg-teal-500/10 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-purple-500/10 rounded-full blur-[120px]"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Why Patients Choose Health Protocol</h2>
+            <p className="text-slate-400 max-w-3xl mx-auto text-lg">
+              Traditional treatments focus on symptom management. We deliver structured, medically guided programs built around your brain, biology, and story—so healing becomes predictable, supported, and sustainable.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
             <div className="group relative p-8 rounded-2xl bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 hover:border-teal-500/30 transition-all duration-300 hover:-translate-y-1">
               <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
               <div className="relative z-10">
-                <div className="w-12 h-12 rounded-lg bg-teal-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Sun className="w-6 h-6 text-teal-400" />
+                <div className="w-14 h-14 rounded-xl bg-teal-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Brain className="w-7 h-7 text-teal-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Lasting Breakthroughs</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Root-Cause Healing</h3>
                 <p className="text-slate-400 leading-relaxed">
-                  Go beyond symptom management. Our protocols are designed to help you process trauma, shift perspectives, and achieve durable remission.
+                  Go beyond symptom management. Our protocols are designed to help you process trauma, shift perspectives, and achieve durable remission—not just temporary relief.
                 </p>
               </div>
             </div>
 
-            {/* Feature 2 */}
             <div className="group relative p-8 rounded-2xl bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:-translate-y-1">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
               <div className="relative z-10">
-                <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <ShieldCheck className="w-6 h-6 text-blue-400" />
+                <div className="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <ShieldCheck className="w-7 h-7 text-blue-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Safe, Guided Healing</h3>
                 <p className="text-slate-400 leading-relaxed">
-                  Your safety is our priority. Every step of your journey is monitored by medical professionals and supported by advanced safety protocols.
+                  Your safety is our priority. Every step of your journey is monitored by medical professionals and supported by advanced safety protocols and real-time tracking.
                 </p>
               </div>
             </div>
 
-            {/* Feature 3 */}
             <div className="group relative p-8 rounded-2xl bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
               <div className="relative z-10">
-                <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Heart className="w-6 h-6 text-purple-400" />
+                <div className="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Heart className="w-7 h-7 text-purple-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Support Beyond the Session</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Support Beyond Sessions</h3>
                 <p className="text-slate-400 leading-relaxed">
-                  Healing continues after the treatment. We provide comprehensive integration support to help you apply your insights to daily life.
+                  Healing continues after the treatment. We provide comprehensive integration support, ongoing monitoring, and tools to help you apply insights to daily life.
                 </p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Visual Showcase Section */}
-      <div className="py-24 bg-slate-950 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Your Path to <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">Total Wellness</span>
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="mt-1 w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center flex-shrink-0">
-                    <Users className="w-3 h-3 text-teal-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold">Dedicated Care Team</h4>
-                    <p className="text-slate-400 text-sm mt-1">You are never alone. Our network of compassionate therapists and medical experts is with you at every step.</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="mt-1 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                    <Activity className="w-3 h-3 text-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold">Personalized for You</h4>
-                    <p className="text-slate-400 text-sm mt-1">No two journeys are alike. We tailor your treatment plan to your unique history, biology, and goals.</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="mt-1 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                    <Heart className="w-3 h-3 text-purple-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold">Empowering Your Growth</h4>
-                    <p className="text-slate-400 text-sm mt-1">We give you the tools, insights, and support to build a life of meaning, connection, and joy.</p>
-                  </div>
-                </div>
+          {/* Additional Features */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="flex items-start space-x-4 p-6 rounded-xl bg-white/5 border border-white/5">
+              <div className="w-10 h-10 rounded-lg bg-teal-500/20 flex items-center justify-center flex-shrink-0">
+                <Users className="w-5 h-5 text-teal-400" />
               </div>
-
-              <button className="mt-8 text-teal-400 font-medium flex items-center hover:text-teal-300 transition-colors">
-                Meet our clinical team <ChevronRight className="w-4 h-4 ml-1" />
-              </button>
+              <div>
+                <h4 className="text-white font-semibold">Dedicated Care Team</h4>
+                <p className="text-slate-500 text-sm mt-1">Compassionate therapists and medical experts at every step.</p>
+              </div>
             </div>
-
-            <div className="lg:w-1/2 relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-teal-500 to-purple-600 rounded-2xl opacity-20 blur-2xl animate-pulse-slow"></div>
-              <div className="relative bg-slate-900 rounded-xl border border-white/10 shadow-2xl overflow-hidden">
-                {/* Mockup Header */}
-                <div className="h-8 bg-slate-800 border-b border-white/5 flex items-center px-4 space-x-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                </div>
-                {/* Mockup Content - Abstract representation of dashboard */}
-                <div className="p-6 space-y-4">
-                  <div className="flex justify-between items-center">
-                    <div className="h-8 w-32 bg-white/10 rounded animate-pulse"></div>
-                    <div className="h-8 w-8 bg-teal-500/20 rounded-full"></div>
-                  </div>
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="h-24 bg-white/5 rounded-lg border border-white/5 p-3">
-                      <div className="h-2 w-12 bg-teal-500/40 rounded mb-2"></div>
-                      <div className="h-6 w-8 bg-white/20 rounded"></div>
-                    </div>
-                    <div className="h-24 bg-white/5 rounded-lg border border-white/5 p-3">
-                      <div className="h-2 w-12 bg-blue-500/40 rounded mb-2"></div>
-                      <div className="h-6 w-8 bg-white/20 rounded"></div>
-                    </div>
-                    <div className="h-24 bg-white/5 rounded-lg border border-white/5 p-3">
-                      <div className="h-2 w-12 bg-purple-500/40 rounded mb-2"></div>
-                      <div className="h-6 w-8 bg-white/20 rounded"></div>
-                    </div>
-                  </div>
-                  <div className="h-40 bg-white/5 rounded-lg border border-white/5 p-4 space-y-3">
-                    <div className="h-4 w-1/3 bg-white/10 rounded"></div>
-                    <div className="space-y-2">
-                      <div className="h-2 w-full bg-white/5 rounded"></div>
-                      <div className="h-2 w-5/6 bg-white/5 rounded"></div>
-                      <div className="h-2 w-4/6 bg-white/5 rounded"></div>
-                    </div>
-                  </div>
-                </div>
+            <div className="flex items-start space-x-4 p-6 rounded-xl bg-white/5 border border-white/5">
+              <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                <Activity className="w-5 h-5 text-blue-400" />
+              </div>
+              <div>
+                <h4 className="text-white font-semibold">Personalized For You</h4>
+                <p className="text-slate-500 text-sm mt-1">Treatment tailored to your unique history and biology.</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4 p-6 rounded-xl bg-white/5 border border-white/5">
+              <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                <Clock className="w-5 h-5 text-purple-400" />
+              </div>
+              <div>
+                <h4 className="text-white font-semibold">Long-Term Focus</h4>
+                <p className="text-slate-500 text-sm mt-1">Building sustainable recovery, not quick fixes.</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4 p-6 rounded-xl bg-white/5 border border-white/5">
+              <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center flex-shrink-0">
+                <MessageCircle className="w-5 h-5 text-amber-400" />
+              </div>
+              <div>
+                <h4 className="text-white font-semibold">Continuous Support</h4>
+                <p className="text-slate-500 text-sm mt-1">24/7 access to care coordinators and resources.</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* CTA Section */}
       <div className="py-24 relative overflow-hidden">
@@ -280,7 +449,7 @@ const LandingPage: React.FC = () => {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Begin Your Healing Journey</h2>
           <p className="text-xl text-slate-400 mb-10">
-            Take the first step towards mental wellness with our evidence-based psychedelic therapy program.
+            Take the first step toward clinically supported relief and long-term transformation.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <button
@@ -313,12 +482,12 @@ const LandingPage: React.FC = () => {
               </p>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Treatments</h4>
+              <h4 className="text-white font-semibold mb-4">Protocols</h4>
               <ul className="space-y-2 text-sm text-slate-400">
-                <li><a href="#" className="hover:text-teal-400 transition-colors">Depression</a></li>
-                <li><a href="#" className="hover:text-teal-400 transition-colors">PTSD</a></li>
-                <li><a href="#" className="hover:text-teal-400 transition-colors">Anxiety</a></li>
-                <li><a href="#" className="hover:text-teal-400 transition-colors">Addiction</a></li>
+                <li><a href="#" className="hover:text-teal-400 transition-colors">Depression (NDP-1)</a></li>
+                <li><a href="#" className="hover:text-teal-400 transition-colors">PTSD (TRP-2)</a></li>
+                <li><a href="#" className="hover:text-teal-400 transition-colors">Anxiety (ARP-3)</a></li>
+                <li><a href="#" className="hover:text-teal-400 transition-colors">Addiction (RPX-4)</a></li>
               </ul>
             </div>
             <div>
@@ -344,7 +513,7 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
       </footer>
-    </div >
+    </div>
   );
 };
 
