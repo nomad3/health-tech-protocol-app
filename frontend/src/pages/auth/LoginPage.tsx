@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { loginUser, clearError } from '../../store/authSlice';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button, Input } from '../../components/common';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { clearError, loginUser } from '../../store/authSlice';
 
 const LoginPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -77,6 +77,13 @@ const LoginPage: React.FC = () => {
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-md w-full space-y-8">
           <div>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-medium mb-6 group"
+            >
+              <span className="transform group-hover:-translate-x-1 transition-transform">←</span>
+              Back to Home
+            </Link>
             <h1 className="text-4xl font-bold text-gray-900">Welcome back</h1>
             <p className="mt-2 text-lg text-gray-600">
               Sign in to access your account
