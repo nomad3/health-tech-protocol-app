@@ -127,27 +127,20 @@ service:
   targetPort: 8000
 
 # ============================================================================
-# Secrets (External Secrets Operator)
+# Secrets (Native Kubernetes Secrets - created manually or via CI/CD)
 # ============================================================================
 secret:
   enabled: true
+  # Use native k8s secrets instead of External Secrets Operator
   externalSecret:
-    enabled: true
-    secretStoreName: gcpsm-secret-store
-    refreshInterval: 1m
-    data:
-      - secretKey: DATABASE_URL
-        remoteRef:
-          key: healthprotocol-database-url
-      - secretKey: JWT_SECRET
-        remoteRef:
-          key: healthprotocol-jwt-secret
-      - secretKey: GEMINI_API_KEY
-        remoteRef:
-          key: healthprotocol-gemini-api-key
-      - secretKey: REDIS_URL
-        remoteRef:
-          key: healthprotocol-redis-url
+    enabled: false
+  # Secret name to reference (create this manually before deploying)
+  # kubectl create secret generic healthprotocol-backend-secrets -n prod \
+  #   --from-literal=DATABASE_URL="postgresql://postgres:PASSWORD@172.30.0.3:5432/healthprotocol" \
+  #   --from-literal=JWT_SECRET="your-jwt-secret-min-32-chars" \
+  #   --from-literal=GEMINI_API_KEY="your-gemini-api-key" \
+  #   --from-literal=REDIS_URL="redis://localhost:6379"
+  secretName: healthprotocol-backend-secrets
 
 # ============================================================================
 # ConfigMap
