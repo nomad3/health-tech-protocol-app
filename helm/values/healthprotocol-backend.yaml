@@ -198,3 +198,26 @@ tmpVolumes:
       mountPath: /tmp
     - name: cache
       mountPath: /app/.cache
+
+# ============================================================================
+# Cloud SQL Proxy Sidecar
+# ============================================================================
+extraContainers:
+  - name: cloud-sql-proxy
+    image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.14.2
+    args:
+      - "--private-ip"
+      - "--structured-logs"
+      - "--port=5432"
+      - "--http-port=9090"
+      - "ai-agency-479516:us-central1:dev-postgres-instance"
+    securityContext:
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "100m"
