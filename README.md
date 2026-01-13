@@ -1,6 +1,6 @@
 # 🧠 HealthProtocol
 
-> **Advanced Mental Healthcare Platform** — Evidence-based treatment protocols for Depression, PTSD, Anxiety, and beyond.
+> **Advanced Healthcare Platform** — Evidence-based treatment protocols for Depression, PTSD, Anxiety, and beyond.
 
 A platform connecting patients with breakthrough therapies through clinically validated treatment protocols. Built for therapists, patients, and healthcare administrators.
 
