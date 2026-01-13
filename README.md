@@ -1,4 +1,4 @@
-# 🧠 PsyProtocol
+# 🧠 HealthProtocol
 
 > **Advanced Mental Healthcare Platform** — Evidence-based treatment protocols for Depression, PTSD, Anxiety, and beyond.
 
