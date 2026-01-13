@@ -138,7 +138,7 @@ jobs:
 
       - name: Verify Deployment
         run: |
-          kubectl rollout status deployment/${{ env.SERVICE_NAME }} -n ${{ env.NAMESPACE }} --timeout=300s
+          kubectl rollout status deployment/${{ env.SERVICE_NAME }}-microservice -n ${{ env.NAMESPACE }} --timeout=300s
           echo "Deployment successful!"
           kubectl get pods -n ${{ env.NAMESPACE }} -l app=${{ env.SERVICE_NAME }}
 
