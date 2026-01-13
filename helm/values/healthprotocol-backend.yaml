@@ -127,20 +127,12 @@ service:
   targetPort: 8000
 
 # ============================================================================
-# Secrets (Native Kubernetes Secrets - created manually or via CI/CD)
+# Secrets (disabled - using extraEnvFrom with manually created secret)
 # ============================================================================
 secret:
-  enabled: true
-  # Use native k8s secrets instead of External Secrets Operator
+  enabled: false
   externalSecret:
     enabled: false
-  # Secret name to reference (create this manually before deploying)
-  # kubectl create secret generic healthprotocol-backend-secrets -n prod \
-  #   --from-literal=DATABASE_URL="postgresql://postgres:PASSWORD@172.30.0.3:5432/healthprotocol" \
-  #   --from-literal=JWT_SECRET="your-jwt-secret-min-32-chars" \
-  #   --from-literal=GEMINI_API_KEY="your-gemini-api-key" \
-  #   --from-literal=REDIS_URL="redis://localhost:6379"
-  secretName: healthprotocol-backend-secrets
 
 # ============================================================================
 # ConfigMap
@@ -156,25 +148,32 @@ configMap:
     REFRESH_TOKEN_EXPIRE_DAYS: "7"
 
 # ============================================================================
-# Health Probes
+# Health Probes (format expected by deployment template)
 # ============================================================================
-probes:
-  liveness:
-    enabled: true
+livenessProbe:
+  httpGet:
     path: /health
     port: 8000
-    initialDelaySeconds: 60
-    periodSeconds: 30
-    timeoutSeconds: 10
-    failureThreshold: 3
-  readiness:
-    enabled: true
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  timeoutSeconds: 10
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
     path: /health
     port: 8000
-    initialDelaySeconds: 30
-    periodSeconds: 10
-    timeoutSeconds: 5
-    failureThreshold: 3
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+# ============================================================================
+# Extra Environment (reference manually created secret)
+# ============================================================================
+extraEnvFrom:
+  - secretRef:
+      name: healthprotocol-backend-secrets
 
 # ============================================================================
 # Pod Disruption Budget
@@ -184,7 +183,12 @@ pdb:
   minAvailable: 1
 
 # ============================================================================
-# Cloud SQL Proxy Sidecar (using private IP instead)
+# Temporary Volumes (for read-only filesystem)
 # ============================================================================
-cloudSqlProxy:
-  enabled: false
+tmpVolumes:
+  enabled: true
+  volumes:
+    - name: tmp
+      mountPath: /tmp
+    - name: cache
+      mountPath: /app/.cache
