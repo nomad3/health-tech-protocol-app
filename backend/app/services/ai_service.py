@@ -1,9 +1,10 @@
-"""AI service for Claude API integration.
+"""AI service for Google Gemini API integration.
 
-This service handles all interactions with the Anthropic Claude API for:
+This service handles all interactions with the Google Gemini API for:
 - Protocol extraction from research text
 - Patient education content generation
 - Clinical decision support
+- Pre-screening conversations
 
 All AI interactions are logged for audit purposes.
 """
@@ -12,7 +13,10 @@ import json
 import logging
 from datetime import datetime
 from typing import Dict, Any, Optional
-from anthropic import Anthropic, APIError, RateLimitError
+
+import google.generativeai as genai
+from google.api_core import exceptions as google_exceptions
+
 from app.config import settings
 from app.utils.ai_prompts import (
     get_protocol_extraction_prompt,
@@ -39,65 +43,74 @@ class AIRateLimitError(AIServiceError):
 
 
 class AIService:
-    """Service for interacting with Claude API."""
+    """Service for interacting with Google Gemini API."""
 
     def __init__(self):
-        """Initialize AI service with Anthropic client."""
-        self.client = Anthropic(api_key=settings.ANTHROPIC_API_KEY)
-        self.model = "claude-sonnet-4-5-20250929"  # Use latest Sonnet for speed
+        """Initialize AI service with Gemini client."""
+        api_key = getattr(settings, 'GEMINI_API_KEY', None)
+        if api_key:
+            genai.configure(api_key=api_key)
+            self.model = genai.GenerativeModel('gemini-1.5-flash')
+        else:
+            logger.warning("GEMINI_API_KEY not configured. AI features will be limited.")
+            self.model = None
+
         self.max_tokens = 4096
         self.temperature = 0.3  # Lower temperature for consistent, factual outputs
 
-    def _call_claude(self, prompt: str, system_message: Optional[str] = None) -> str:
-        """Make a call to Claude API with error handling and logging.
+    def _call_gemini(self, prompt: str, system_message: Optional[str] = None) -> str:
+        """Make a call to Gemini API with error handling and logging.
 
         Args:
-            prompt: The prompt to send to Claude
+            prompt: The prompt to send to Gemini
             system_message: Optional system message for additional context
 
         Returns:
-            Claude's response text
+            Gemini's response text
 
         Raises:
             AIRateLimitError: If rate limit is exceeded
             AIServiceError: For other API errors
         """
-        try:
-            logger.info(f"Calling Claude API - Model: {self.model}, Prompt length: {len(prompt)}")
+        if not self.model:
+            raise AIServiceError("Gemini API is not configured. Please set GEMINI_API_KEY.")
 
-            # Build message
-            messages = [{"role": "user", "content": prompt}]
+        try:
+            logger.info(f"Calling Gemini API - Model: gemini-1.5-flash, Prompt length: {len(prompt)}")
+
+            # Combine system message with prompt if provided
+            full_prompt = prompt
+            if system_message:
+                full_prompt = f"{system_message}\n\n{prompt}"
+
+            # Configure generation
+            generation_config = genai.types.GenerationConfig(
+                max_output_tokens=self.max_tokens,
+                temperature=self.temperature,
+            )
 
             # Call API
-            kwargs = {
-                "model": self.model,
-                "max_tokens": self.max_tokens,
-                "temperature": self.temperature,
-                "messages": messages,
-            }
-
-            if system_message:
-                kwargs["system"] = system_message
-
-            response = self.client.messages.create(**kwargs)
+            response = self.model.generate_content(
+                full_prompt,
+                generation_config=generation_config,
+            )
 
             # Extract text from response
-            response_text = response.content[0].text
+            response_text = response.text
 
             logger.info(
-                f"Claude API call successful - "
-                f"Response length: {len(response_text)}, "
-                f"Tokens used: {response.usage.input_tokens + response.usage.output_tokens}"
+                f"Gemini API call successful - "
+                f"Response length: {len(response_text)}"
             )
 
             return response_text
 
-        except RateLimitError as e:
+        except google_exceptions.ResourceExhausted as e:
             logger.error(f"Rate limit exceeded: {str(e)}")
             raise AIRateLimitError("API rate limit exceeded. Please try again later.") from e
 
-        except APIError as e:
-            logger.error(f"Anthropic API error: {str(e)}")
+        except google_exceptions.GoogleAPIError as e:
+            logger.error(f"Google API error: {str(e)}")
             raise AIServiceError(f"AI service error: {str(e)}") from e
 
         except Exception as e:
@@ -110,7 +123,7 @@ class AIService:
         therapy_type: str,
         condition: str
     ) -> Dict[str, Any]:
-        """Extract structured protocol from research text using Claude.
+        """Extract structured protocol from research text using Gemini.
 
         Args:
             research_text: Raw text from research paper or guidelines
@@ -144,8 +157,8 @@ class AIService:
             "Be conservative and evidence-based in your extractions."
         )
 
-        # Call Claude
-        response_text = self._call_claude(prompt, system_message)
+        # Call Gemini
+        response_text = self._call_gemini(prompt, system_message)
 
         # Parse JSON response
         try:
@@ -220,8 +233,8 @@ class AIService:
             "Never make unrealistic promises. Always emphasize safety and professional support."
         )
 
-        # Call Claude
-        response_text = self._call_claude(prompt, system_message)
+        # Call Gemini
+        response_text = self._call_gemini(prompt, system_message)
 
         # Calculate metrics
         word_count = len(response_text.split())
@@ -291,8 +304,8 @@ class AIService:
             "Respond with valid JSON matching the requested schema."
         )
 
-        # Call Claude
-        response_text = self._call_claude(prompt, system_message)
+        # Call Gemini
+        response_text = self._call_gemini(prompt, system_message)
 
         # Parse JSON response
         try:
