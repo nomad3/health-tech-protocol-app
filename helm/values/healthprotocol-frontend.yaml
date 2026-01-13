@@ -54,6 +54,12 @@ serviceAccount:
   annotations:
     iam.gke.io/gcp-service-account: "dev-backend-app@ai-agency-479516.iam.gserviceaccount.com"
 
+# Pod Labels (must match selector labels)
+podLabels:
+  app: healthprotocol-frontend
+  tier: frontend
+  environment: production
+
 # ============================================================================
 # Container Configuration
 # ============================================================================
@@ -104,25 +110,38 @@ configMap:
   enabled: false  # Nginx config is baked into image
 
 # ============================================================================
-# Health Probes
+# Health Probes (format expected by deployment template)
 # ============================================================================
-probes:
-  liveness:
-    enabled: true
+livenessProbe:
+  httpGet:
     path: /
     port: 80
-    initialDelaySeconds: 10
-    periodSeconds: 30
-    timeoutSeconds: 5
-    failureThreshold: 3
-  readiness:
-    enabled: true
+  initialDelaySeconds: 10
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
     path: /
     port: 80
-    initialDelaySeconds: 5
-    periodSeconds: 10
-    timeoutSeconds: 3
-    failureThreshold: 3
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 3
+  failureThreshold: 3
+
+# ============================================================================
+# Temporary Volumes (for read-only filesystem)
+# ============================================================================
+tmpVolumes:
+  enabled: true
+  volumes:
+    - name: tmp
+      mountPath: /tmp
+    - name: cache
+      mountPath: /var/cache/nginx
+    - name: run
+      mountPath: /var/run
 
 # ============================================================================
 # Pod Disruption Budget

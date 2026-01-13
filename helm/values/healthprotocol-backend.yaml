@@ -84,6 +84,12 @@ serviceAccount:
   annotations:
     iam.gke.io/gcp-service-account: "dev-backend-app@ai-agency-479516.iam.gserviceaccount.com"
 
+# Pod Labels (must match selector labels)
+podLabels:
+  app: healthprotocol-backend
+  tier: backend
+  environment: production
+
 # ============================================================================
 # Container Configuration
 # ============================================================================
