@@ -2,7 +2,7 @@
 
 > **Advanced Mental Healthcare Platform** — Evidence-based treatment protocols for Depression, PTSD, Anxiety, and beyond.
 
-A comprehensive platform connecting patients with breakthrough therapies through clinically validated treatment protocols. Built for therapists, patients, and healthcare administrators.
+A platform connecting patients with breakthrough therapies through clinically validated treatment protocols. Built for therapists, patients, and healthcare administrators.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
