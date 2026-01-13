@@ -7,8 +7,8 @@ from app.models import Base
 # Alembic Config object
 config = context.config
 
-# Set database URL from settings
-config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+# Set database URL from settings (escape % for configparser)
+config.set_main_option("sqlalchemy.url", settings.DATABASE_URL.replace("%", "%%"))
 
 # Interpret config file for Python logging
 if config.config_file_name is not None:
