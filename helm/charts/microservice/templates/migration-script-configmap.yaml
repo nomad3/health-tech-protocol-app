@@ -1,0 +1,12 @@
+{{- if .Values.migrationScript.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "microservice.fullname" . }}-migration-script
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "microservice.labels" . | nindent 4 }}
+data:
+  migrate.js: |-
+{{ .Files.Get "files/migrate.js" | indent 4 }}
+{{- end }}

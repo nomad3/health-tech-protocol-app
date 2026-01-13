@@ -1,0 +1,132 @@
+# Health Protocol Frontend - Production
+# Helm values for deploying the React SPA to GKE
+
+# Migration/Seed Jobs (not applicable for frontend)
+migrationJob:
+  enabled: false
+seedJob:
+  enabled: false
+snowflakeMigration:
+  enabled: false
+
+# ============================================================================
+# Gateway Configuration (attach to shared prod-external-gateway)
+# ============================================================================
+gateway:
+  enabled: true
+  createGateway: false  # Use existing shared gateway
+  gatewayName: prod-external-gateway
+  gatewayNamespace: gateway-system
+  gatewayClassName: gke-l7-global-external-managed
+  hostnames:
+    - healthprotocol.agentprovision.com
+  rules:
+    # Frontend serves all non-API routes
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: healthprotocol-frontend
+          port: 80
+
+# Note: Backend routes (/api/, /docs, /health) are defined in backend values
+# and will take precedence due to more specific path matching
+
+# Ingress (disabled, using Gateway API)
+ingress:
+  enabled: false
+
+# Managed Certificate (shared with backend)
+managedCertificate:
+  enabled: false  # Already created by backend
+
+# ============================================================================
+# Service Configuration
+# ============================================================================
+serviceName: healthprotocol-frontend
+namespace: prod
+environment: production
+
+# Service Account
+serviceAccount:
+  create: true
+  annotations:
+    iam.gke.io/gcp-service-account: "dev-backend-app@ai-agency-479516.iam.gserviceaccount.com"
+
+# ============================================================================
+# Container Configuration
+# ============================================================================
+image:
+  repository: gcr.io/ai-agency-479516/healthprotocol-frontend
+  tag: "latest"
+  pullPolicy: Always
+
+# No special command needed - nginx starts by default
+
+# Replicas
+replicaCount: 1
+
+# Autoscaling
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+# Resources (frontend is lightweight)
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+
+# ============================================================================
+# Service
+# ============================================================================
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+# ============================================================================
+# Secrets (not needed for frontend)
+# ============================================================================
+secret:
+  enabled: false
+
+# ============================================================================
+# ConfigMap
+# ============================================================================
+configMap:
+  enabled: false  # Nginx config is baked into image
+
+# ============================================================================
+# Health Probes
+# ============================================================================
+probes:
+  liveness:
+    enabled: true
+    path: /
+    port: 80
+    initialDelaySeconds: 10
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readiness:
+    enabled: true
+    path: /
+    port: 80
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+# ============================================================================
+# Pod Disruption Budget
+# ============================================================================
+pdb:
+  enabled: false
+  minAvailable: 1

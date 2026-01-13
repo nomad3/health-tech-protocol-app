@@ -1,0 +1,26 @@
+{{- if .Values.healthCheckPolicy.enabled -}}
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: {{ include "microservice.fullname" . }}-health-check-policy
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "microservice.labels" . | nindent 4 }}
+spec:
+  default:
+    checkIntervalSec: {{ .Values.healthCheckPolicy.checkIntervalSec | default 15 }}
+    timeoutSec: {{ .Values.healthCheckPolicy.timeoutSec | default 15 }}
+    healthyThreshold: {{ .Values.healthCheckPolicy.healthyThreshold | default 1 }}
+    unhealthyThreshold: {{ .Values.healthCheckPolicy.unhealthyThreshold | default 2 }}
+    logConfig:
+      enabled: {{ .Values.healthCheckPolicy.logConfig.enabled | default true }}
+    config:
+      type: HTTP
+      httpHealthCheck:
+        portSpecification: USE_SERVING_PORT
+        requestPath: {{ .Values.healthCheckPolicy.requestPath | default "/health" }}
+  targetRef:
+    group: ""
+    kind: Service
+    name: {{ include "microservice.fullname" . }}
+{{- end }}

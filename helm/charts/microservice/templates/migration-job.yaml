@@ -1,0 +1,57 @@
+{{- if .Values.migrationJob.enabled -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "microservice.fullname" . }}-migration
+  labels:
+    {{- include "microservice.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{ include "microservice.name" . }}-migration
+        {{- include "microservice.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "microservice.serviceAccountName" . }}
+      restartPolicy: OnFailure
+      {{- if .Values.podSecurityContext }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: migration
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              echo "Waiting for Cloud SQL Proxy..."
+              until node -e 'require("net").createConnection(5432, "127.0.0.1").on("connect", ()=>process.exit(0)).on("error", ()=>process.exit(1))'; do
+                echo "Waiting for proxy..."
+                sleep 2
+              done
+              echo "Proxy ready!"
+              node dist/database/migrate.js && node dist/database/seed.js
+              EXIT_CODE=$?
+              echo "Migration finished with exit code $EXIT_CODE"
+              echo "Stopping Cloud SQL Proxy..."
+              node -e 'require("http").request({host:"127.0.0.1", port:9090, path:"/quitquitquit", method:"POST"}, (res)=>{process.exit(0)}).on("error", ()=>process.exit(0)).end()'
+              exit $EXIT_CODE
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "microservice.fullname" . }}-config
+            {{- if .Values.secret.enabled }}
+            - secretRef:
+                name: {{ include "microservice.fullname" . }}-secret
+            {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+        {{- if .Values.extraContainers }}
+          {{- toYaml .Values.extraContainers | nindent 8 }}
+        {{- end }}
+{{- end }}

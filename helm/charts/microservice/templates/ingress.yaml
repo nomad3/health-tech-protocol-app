@@ -1,0 +1,46 @@
+# Ingress for the microservice chart
+{{- if .Values.ingress.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "microservice.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.gateway.ingressClass | default "gce" }}
+    {{- if .Values.managedCertificate.enabled }}
+    networking.gke.io/managed-certificates: {{ include "microservice.fullname" . }}-managed-cert
+    {{- end }}
+    {{- if .Values.ingress.annotations }}
+    {{- range $key, $value := .Values.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+    {{- end }}
+    # Uncomment if using external-dns to manage DNS records automatically
+    # external-dns.alpha.kubernetes.io/hostname: {{ .Values.gateway.hostnames | join "," }}
+spec:
+  rules:
+    {{- range .Values.gateway.hostnames }}
+    - host: {{ . }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "microservice.fullname" $ }}
+                port:
+                  number: {{ $.Values.service.port | default 80 }}
+    {{- end }}
+  {{- if .Values.gateway }}
+  {{- if .Values.gateway.tls }}
+  {{- if .Values.gateway.tls.enabled }}
+  tls:
+    - hosts:
+        {{- range .Values.gateway.hostnames }}
+        - {{ . }}
+        {{- end }}
+      secretName: {{ .Values.gateway.tls.secretName }}
+  {{- end }}
+  {{- end }}
+  {{- end }}
+{{- end }}

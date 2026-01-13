@@ -1,0 +1,197 @@
+# Health Protocol Backend - Production
+# Helm values for deploying the FastAPI backend to GKE
+
+# Migration Job (runs alembic migrations)
+migrationJob:
+  enabled: false  # Run manually first time, then enable for CI/CD
+
+# Seed Job (populates demo data)
+seedJob:
+  enabled: false  # Run manually first time
+
+# Snowflake Migration (not used)
+snowflakeMigration:
+  enabled: false
+
+# ============================================================================
+# Gateway Configuration (attach to shared prod-external-gateway)
+# ============================================================================
+gateway:
+  enabled: true
+  createGateway: false  # Use existing shared gateway
+  gatewayName: prod-external-gateway
+  gatewayNamespace: gateway-system
+  gatewayClassName: gke-l7-global-external-managed
+  hostnames:
+    - healthprotocol.agentprovision.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /api/
+      backendRefs:
+        - name: healthprotocol-backend
+          port: 80
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /docs
+      backendRefs:
+        - name: healthprotocol-backend
+          port: 80
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /redoc
+      backendRefs:
+        - name: healthprotocol-backend
+          port: 80
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /health
+      backendRefs:
+        - name: healthprotocol-backend
+          port: 80
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /openapi.json
+      backendRefs:
+        - name: healthprotocol-backend
+          port: 80
+
+# Ingress (disabled, using Gateway API)
+ingress:
+  enabled: false
+
+# Managed Certificate
+managedCertificate:
+  enabled: true
+  domains:
+    - healthprotocol.agentprovision.com
+
+# ============================================================================
+# Service Configuration
+# ============================================================================
+serviceName: healthprotocol-backend
+namespace: prod
+environment: production
+
+# Service Account (Workload Identity)
+serviceAccount:
+  create: true
+  annotations:
+    iam.gke.io/gcp-service-account: "dev-backend-app@ai-agency-479516.iam.gserviceaccount.com"
+
+# ============================================================================
+# Container Configuration
+# ============================================================================
+image:
+  repository: gcr.io/ai-agency-479516/healthprotocol-backend
+  tag: "latest"
+  pullPolicy: Always
+
+# Container command (run migrations on startup, then start server)
+command: ["sh", "-c"]
+args:
+  - |
+    alembic upgrade head && \
+    uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+# Replicas
+replicaCount: 1
+
+# Autoscaling
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+# Resources
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+# ============================================================================
+# Service
+# ============================================================================
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+
+# ============================================================================
+# Secrets (External Secrets Operator)
+# ============================================================================
+secret:
+  enabled: true
+  externalSecret:
+    enabled: true
+    secretStoreName: gcpsm-secret-store
+    refreshInterval: 1m
+    data:
+      - secretKey: DATABASE_URL
+        remoteRef:
+          key: healthprotocol-database-url
+      - secretKey: JWT_SECRET
+        remoteRef:
+          key: healthprotocol-jwt-secret
+      - secretKey: GEMINI_API_KEY
+        remoteRef:
+          key: healthprotocol-gemini-api-key
+      - secretKey: REDIS_URL
+        remoteRef:
+          key: healthprotocol-redis-url
+
+# ============================================================================
+# ConfigMap
+# ============================================================================
+configMap:
+  enabled: true
+  data:
+    ENVIRONMENT: production
+    DEBUG: "false"
+    CORS_ORIGINS: "https://healthprotocol.agentprovision.com"
+    JWT_ALGORITHM: "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: "15"
+    REFRESH_TOKEN_EXPIRE_DAYS: "7"
+
+# ============================================================================
+# Health Probes
+# ============================================================================
+probes:
+  liveness:
+    enabled: true
+    path: /health
+    port: 8000
+    initialDelaySeconds: 60
+    periodSeconds: 30
+    timeoutSeconds: 10
+    failureThreshold: 3
+  readiness:
+    enabled: true
+    path: /health
+    port: 8000
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+
+# ============================================================================
+# Pod Disruption Budget
+# ============================================================================
+pdb:
+  enabled: false
+  minAvailable: 1
+
+# ============================================================================
+# Cloud SQL Proxy Sidecar (using private IP instead)
+# ============================================================================
+cloudSqlProxy:
+  enabled: false

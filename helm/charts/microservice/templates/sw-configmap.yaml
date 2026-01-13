@@ -1,0 +1,13 @@
+{{- if and .Values.serviceWorker .Values.serviceWorker.enabled -}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "microservice.fullname" . }}-sw-config
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "microservice.labels" . | nindent 4 }}
+data:
+  sw.js: |-
+{{ .Files.Get "files/sw.js" | indent 4 }}
+{{- end }}
